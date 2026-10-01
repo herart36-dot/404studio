@@ -129,7 +129,6 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
       <button data-w="390px" aria-pressed="false" type="button">Phone</button>
     </div>
     <button class="round" id="mfav" type="button">Save</button>
-    <button class="round" id="full" type="button">Open full site</button>
     <button class="btn" id="use" type="button">Use this template</button>
     <button class="round" id="close" type="button">Close</button>
   </div>
@@ -239,7 +238,6 @@ $('q').oninput=e=>{term=e.target.value.trim();render()};
 $('sort').onchange=e=>{if(e.target.value==='r')order=shuffle([...T.keys()]);render()};
 $('rand').onclick=()=>openM(T[Math.floor(Math.random()*T.length)].n);
 $('menu').onclick=()=>$('side').classList.toggle('open');
-$('full').onclick=()=>window.open(curT.f,'_blank','noopener');
 $('close').onclick=closeM;$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
 $('mfav').onclick=()=>toggleFav(curT.n);
 $('use').onclick=()=>{store.set('pick-'+K,curT.n);location.href='index.html#book'};
