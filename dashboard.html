@@ -55,11 +55,11 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
 @keyframes in{from{opacity:0;transform:translateY(16px)}}
 .card:hover{transform:translateY(-8px) rotate(-.4deg);box-shadow:0 28px 60px var(--glow)}
 .thumb{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
-.thumb iframe{position:absolute;top:0;left:0;width:1000px;height:2200px;border:0;transform-origin:0 0;transform:scale(var(--k,.3)) translateY(0);transition:transform 6s cubic-bezier(.4,0,.2,1);pointer-events:none;background:#fff}
+.thumb iframe{position:absolute;top:0;left:0;width:1000px;height:3200px;border:0;transform-origin:0 0;transform:scale(var(--k,.3)) translateY(0);transition:transform 6s cubic-bezier(.4,0,.2,1);pointer-events:none;background:#fff}
 .card:hover .thumb iframe{transform:scale(var(--k,.3)) translateY(var(--sc,0px))}
 .info{display:flex;justify-content:space-between;align-items:center;padding:12px 6px 4px;gap:8px}
 .info b{display:block}.info span{font-size:12px;color:var(--mut)}
-.dots{display:flex;gap:4px;margin-top:6px}.dots i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.1)}
+.desc{font-size:12px;color:var(--mut);margin:6px 0 0;max-width:30ch;line-height:1.4}
 .heart{border:1px solid var(--line);background:#fff;width:38px;height:38px;border-radius:50%;font-size:18px;color:var(--mut);transition:.2s;flex:none}
 .heart:hover{transform:scale(1.15)}.heart.on{color:#e11d48;background:#fff1f2;border-color:#fecdd3}
 .empty{text-align:center;padding:70px 0;color:var(--mut)}
@@ -103,25 +103,25 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
       <div>
         <button class="round" id="menu" type="button" style="color:var(--ink);border-color:var(--line);margin-bottom:12px">Menu</button>
         <h1 id="hello">Welcome</h1>
-        <p class="sub">Browse every template. Hover a card to scroll the page, open one to preview it on desktop, tablet and phone, then save the ones you like.</p>
+        <p class="sub">Explore real sample websites. Hover a card to scroll through the page, open one to use it live on desktop, tablet or phone, and save the ones you like.</p>
       </div>
       <div class="ctl">
-        <input class="in" id="q" type="search" placeholder="Search by name, category or style" aria-label="Search templates">
+        <input class="in" id="q" type="search" placeholder="Search websites" aria-label="Search templates">
         <select class="sel" id="sort" aria-label="Sort"><option value="n">Sort: A to Z</option><option value="c">Sort: Category</option><option value="r">Sort: Random</option></select>
         <button class="btn" id="rand" type="button">Surprise me</button>
       </div>
     </div>
-    <div class="stats"><div class="stat"><b id="s1"></b>templates</div><div class="stat"><b id="s2"></b>categories</div><div class="stat"><b id="s3">0</b>saved by you</div></div>
+    <div class="stats"><div class="stat"><b id="s1"></b>sample sites</div><div class="stat"><b id="s2"></b>categories</div><div class="stat"><b id="s3">0</b>saved by you</div></div>
     <div class="recent hidden" id="recent"><h2>Recently viewed</h2><div class="chips" id="chips"></div></div>
     <div class="grid" id="grid"></div>
-    <p class="empty hidden" id="empty">Nothing here yet. Clear the search, or tap the heart on a template to save it.</p>
+    <p class="empty hidden" id="empty">Nothing here yet. Clear the search, or tap the heart on a website to save it.</p>
   </main>
 </div>
 
 <div id="modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="mt">
   <div class="mbar">
-    <button class="round" id="prev" type="button" aria-label="Previous template">Prev</button>
-    <button class="round" id="next" type="button" aria-label="Next template">Next</button>
+    <button class="round" id="prev" type="button" aria-label="Previous site">Prev</button>
+    <button class="round" id="next" type="button" aria-label="Next site">Next</button>
     <h3 id="mt"></h3><div class="sp"></div>
     <div class="seg" role="group" aria-label="Device">
       <button data-w="1300px" aria-pressed="true" type="button">Desktop</button>
@@ -129,6 +129,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
       <button data-w="390px" aria-pressed="false" type="button">Phone</button>
     </div>
     <button class="round" id="mfav" type="button">Save</button>
+    <button class="round" id="full" type="button">Open full site</button>
     <button class="btn" id="use" type="button">Use this template</button>
     <button class="round" id="close" type="button">Close</button>
   </div>
@@ -158,73 +159,15 @@ sc.onload=async()=>{
 };
 document.head.appendChild(sc);
 
-/* ---------- Template data: name, category, bg, ink, accent, accent2, font, layout, headline, tagline ---------- */
+/* ---------- Your websites ----------
+   To add another sample site: put its .html file in the "sites" folder and add a line below.
+   Fields: n = name, c = category, f = file path, d = short description */
 const T=[
-['Bloom Café','Food','#fff8f0','#3b2a20','#d9793a','#b5482f','Playfair Display','split','Freshly brewed. Slowly savored.','Single-origin beans and warm pastries.'],
-['Brewline','Food','#f3e9dc','#2b1d14','#b4572b','#7a3416','DM Serif Display','editorial','Coffee, roasted slow.','Small-batch beans and a quiet corner.'],
-['Soirée','Events','#1a1025','#f6ecff','#c084fc','#f472b6','Syne','center','Nights worth remembering.','Plan, ticket and host unforgettable events.'],
-['Beatbox','Events','#0b0b14','#ffffff','#22d3ee','#a855f7','Space Grotesk','bento','Live. Loud. Together.','Festival lineups and tickets in one tap.'],
-['Cartly','Store','#ffffff','#1e1b4b','#ec4899','#8b5cf6','Plus Jakarta Sans','grid','Wear what moves you.','New season, free shipping over 1,500.'],
-['Kopa Store','Store','#fffbea','#3a2a00','#f59e0b','#d97706','Plus Jakarta Sans','grid','Everyday goods, fairly priced.','Home, kitchen and desk essentials.'],
-['Bloomroom','Store','#fff1f4','#4a1d2c','#e0456f','#be185d','Playfair Display','split','Flowers for every day.','Fresh bouquets delivered same afternoon.'],
-['Northwind','Business','#f8fafc','#0f172a','#0ea5e9','#4f46e5','Plus Jakarta Sans','left','Strategy that ships.','Consulting for teams that move fast.'],
-['Ledgerly','Business','#0f1b2d','#eaf1fb','#38bdf8','#818cf8','Space Grotesk','center','Books balanced, always.','Accounting and payroll without the chase.'],
-['Lumen Clinic','Business','#effaf7','#0b3b34','#0d9488','#059669','Plus Jakarta Sans','split','Care that fits your schedule.','Book a visit online in under a minute.'],
-['PulseFit','Fitness','#0a0f0d','#ffffff','#22e58a','#0ea5e9','Syne','left','Train harder. Recover smarter.','Small-group classes and expert coaches.'],
-['Ironworks','Fitness','#141414','#f5f5f5','#c6f432','#84cc16','Space Grotesk','bento','Lift. Repeat. Get stronger.','Coached sessions for every level.'],
-['Haven Homes','Property','#fffaf5','#2d2418','#f59e0b','#ef4444','Playfair Display','center','Find a home that feels like yours.','Verified listings and easy viewings.'],
-['Keystone','Property','#f1f5f9','#0f172a','#2563eb','#0ea5e9','DM Serif Display','editorial','Properties with a view.','Buy, sell or rent with local experts.'],
-['Folio','Portfolio','#0f0c1d','#ffffff','#a78bfa','#f472b6','Syne','left','I design calm, useful things.','Product designer based in Manila.'],
-['Atelier Nine','Portfolio','#e9e4f5','#241a3d','#7c3aed','#db2777','DM Serif Display','editorial','Photography, quietly told.','Weddings, travel and editorial stories.'],
-['Pixelhaus','Portfolio','#fff','#111','#ff5a1f','#ffb703','Space Grotesk','bento','Brands with a pulse.','A small studio for bold identities.'],
-['Stackly','SaaS','#f5f3ff','#1e1b4b','#6d28d9','#4f46e5','Plus Jakarta Sans','center','Ship your product 2x faster.','Plan, build and track in one place.'],
-['Orbit','SaaS','#050816','#e6ecff','#6366f1','#22d3ee','Space Grotesk','bento','Analytics on autopilot.','Know what moves your numbers.'],
-['Taskwave','SaaS','#ecfeff','#083344','#06b6d4','#3b82f6','Plus Jakarta Sans','split','Work flows when tasks do.','Simple boards for busy teams.'],
-['Learnly','Education','#fff7ed','#431407','#f97316','#ea580c','Playfair Display','split','Learn a skill that pays.','Short courses taught by working pros.'],
-['Brightpath','Education','#f0fdf4','#14532d','#22c55e','#16a34a','DM Serif Display','center','Every child, a bright start.','A friendly school with room to grow.'],
-['Wanderly','Travel','#ecfdf5','#064e3b','#10b981','#0ea5e9','Playfair Display','editorial','Go where the day takes you.','Handpicked trips for curious travelers.'],
-['Islandhop','Travel','#fefce8','#422006','#eab308','#f97316','Syne','grid','Seven islands. One itinerary.','Beach escapes with local guides.']
-].map(a=>({n:a[0],c:a[1],bg:a[2],ink:a[3],a:a[4],b:a[5],f:a[6],l:a[7],h:a[8],s:a[9]}));
+ {n:'Mayabang na si Mimiyuuuh?',c:'Blog',f:'sites/mimiyuuuh.html',d:'An opinion article about success, being relatable and escaping poverty online.'},
+ {n:'W Fashion Gazette',c:'Magazine',f:'sites/fashion-gazette.html',d:'An independent fashion gazette covering beauty, street style, gowns and editorial culture.'},
+ {n:'Hiblaya',c:'Fashion',f:'sites/hiblaya.html',d:'A home for Philippine fashion. Thread by thread, free to be.'}
+];
 const CATS=[...new Set(T.map(t=>t.c))];
-
-/* ---------- Website renderer (real photos, full page) ---------- */
-const IMG={'Bloom Café':'1766767164066-d2f4571e75d1','Brewline':'1766767164066-d2f4571e75d1','Soirée':'1492684223066-81342ee5ff30','Beatbox':'1470229722913-7c0e2dbbafd3','Cartly':'1483985988355-763728e1935b','Kopa Store':'1522992319-0365e5f11656','Bloomroom':'1541746972996-4e0b0f43e02a','Northwind':'1497366754035-f200968a6e72','Ledgerly':'1517048676732-d65bc937f952','Lumen Clinic':'1560264280-88b68371db39','PulseFit':'1517836357463-d25dfeac3438','Ironworks':'1534528741775-53994a69daeb','Haven Homes':'1600596542815-ffad4c1539a9','Keystone':'1554995207-c18c203602cb','Folio':'1531746020798-e6953c6e8e04','Atelier Nine':'1534528741775-53994a69daeb','Pixelhaus':'1583847268964-b28dc8f51f92','Stackly':'1460925895917-afdab827c52f','Orbit':'1551288049-bebda4e38f71','Taskwave':'1497366754035-f200968a6e72','Learnly':'1523240795612-9a054b0db644','Brightpath':'1522202176988-66273c2fd55f','Wanderly':'1501785888041-af3ef285b470','Islandhop':'1507525428034-b723cf961d3e'};
-const FEAT={Food:['\u2615','Fresh every day','Made in small batches each morning.','\ud83d\udecd\ufe0f','Easy ordering','Order ahead and skip the line.','\ud83d\udd52','Open late','Stay as long as you like.'],Events:['\ud83c\udf9f\ufe0f','Instant tickets','Scan and walk right in.','\ud83c\udfa4','Top lineups','Artists you actually want to see.','\ud83d\udccd','Great venues','Easy to reach, easy to enjoy.'],Store:['\ud83d\ude9a','Fast delivery','Most orders arrive in 2 days.','\u21a9\ufe0f','Easy returns','30 days, no questions asked.','\ud83d\udd12','Secure checkout','Cards, e-wallets and cash on delivery.'],Business:['\ud83d\udcc8','Clear results','Plans tied to numbers you can track.','\ud83e\udd1d','Real people','A dedicated team, not a ticket queue.','\u26a1','Quick start','Up and running in a week.'],Fitness:['\ud83d\udcaa','Expert coaches','Programs built around your goals.','\ud83d\udcc5','Flexible classes','Morning, evening and weekend slots.','\ud83c\udfc6','Real progress','Track every milestone.'],Property:['\ud83c\udfe1','Verified listings','Every home checked in person.','\ud83d\udd0d','Smart search','Filter by budget, size and area.','\ud83d\udcc5','Easy viewings','Book a visit in two taps.'],Portfolio:['\ud83c\udfa8','Original work','Every project made from scratch.','\ud83d\udcac','Clear process','You always know what happens next.','\u23f1\ufe0f','On time','Delivered when promised.'],SaaS:['\u26a1','Set up in minutes','No training needed.','\ud83d\udd17','Works with your tools','Connect the apps you already use.','\ud83d\udee1\ufe0f','Secure by default','Your data stays yours.'],Education:['\ud83c\udf93','Expert teachers','Learn from people who do the work.','\ud83d\udcda','Hands-on lessons','Practice from the very first day.','\ud83d\udcc5','Learn your way','Study at your own pace.'],Travel:['\u2708\ufe0f','Handpicked trips','Places we have been to ourselves.','\ud83d\uddfa\ufe0f','Local guides','Skip the tourist traps.','\ud83d\udcb3','Fair prices','No hidden fees, ever.']};
-const P=(id,w)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w||1000}&q=70`;
-const SITE_CSS=`*{box-sizing:border-box}body{margin:0}.site{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.5;overflow:hidden}
-.s-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 7%;position:relative;z-index:2}.s-nav b{font-family:var(--f);font-size:26px;display:flex;align-items:center;gap:10px}.s-nav b u{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--a),var(--b))}.s-nav i{font-style:normal}.s-nav span{display:flex;gap:30px;font-size:14px;font-weight:600;opacity:.8}.s-nav em{font-style:normal;background:var(--a);color:#fff;padding:11px 24px;border-radius:99px;font-size:14px;font-weight:700}
-.s-h{font-family:var(--f);font-size:68px;line-height:1.02;margin:0 0 18px}.s-p{font-size:20px;opacity:.8;max-width:42ch;margin:0 0 32px}.s-btn{display:inline-block;background:var(--a);color:#fff;padding:16px 32px;border-radius:99px;font-weight:700;margin:0 10px 10px 0}.s-btn.o{background:transparent;color:inherit;border:2px solid currentColor}
-.s-split,.s-ed{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:30px 7% 80px}.s-img{border-radius:30px;background-size:cover;background-position:center;min-height:520px}.s-split .s-img{border-radius:260px 260px 30px 30px}.s-ed .s-img{order:-1;min-height:600px}
-.s-cover{margin:-86px 0 0;padding:210px 9% 120px;background-size:cover;background-position:center;color:#fff}.s-cover.c{text-align:center}.s-cover.c .s-p{margin-inline:auto}.s-cover .s-p{color:#fff;opacity:.92}.s-cover .s-h{max-width:14ch}.s-cover.c .s-h{margin-inline:auto}
-.s-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:0 7% 70px;text-align:center}.s-stats b{display:block;font-family:var(--f);font-size:46px;color:var(--a)}.s-stats span{opacity:.7;font-size:14px}
-.s-title{font-family:var(--f);font-size:44px;text-align:center;margin:0 0 36px}
-.s-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:0 7% 80px}.s-f{background:color-mix(in srgb,var(--ink) 6%,var(--bg));border-radius:24px;padding:30px}.s-f i{display:grid;place-items:center;font-style:normal;font-size:26px;width:56px;height:56px;border-radius:16px;background:color-mix(in srgb,var(--a) 18%,var(--bg));margin-bottom:16px}.s-f b{display:block;font-size:19px;margin-bottom:6px}.s-f span{opacity:.7}
-.s-gal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;padding:0 7% 80px}.s-gal div{height:300px;border-radius:24px;background-size:cover}
-.s-shop{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:70px 7% 70px}.s-pr div{aspect-ratio:3/4;border-radius:20px;background-size:cover;margin-bottom:12px}.s-pr b{display:block}.s-pr span{opacity:.6}
-.s-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:18px;padding:10px 7% 80px}.s-bento div{border-radius:26px;background-size:cover;background-position:center;padding:22px;display:flex;align-items:flex-end;color:#fff;font-weight:700;font-size:20px}.s-bento .w{grid-column:span 2;grid-row:span 2;font-size:30px}
-.s-quote{margin:0 7% 80px;border-radius:32px;padding:60px;text-align:center;background:color-mix(in srgb,var(--a) 12%,var(--bg))}.s-quote q{display:block;font-family:var(--f);font-size:34px;line-height:1.25;max-width:26ch;margin:0 auto 18px;quotes:none}.s-quote span{opacity:.7;font-weight:600}
-.s-cta{margin:0 7% 70px;border-radius:32px;padding:70px;text-align:center;color:#fff;background:linear-gradient(120deg,var(--a),var(--b))}.s-cta .s-h{font-size:52px;margin:0 auto 14px;max-width:16ch}.s-cta .s-p{margin:0 auto 26px;color:#fff}.s-cta .s-btn{background:#fff;color:var(--a)}
-.s-ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;padding:50px 7% 36px;border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);font-size:14px}.s-ft b{display:block;margin-bottom:10px}.s-ft span{display:block;opacity:.65;margin-bottom:6px}
-@media(max-width:760px){.s-nav span{display:none}.s-h,.s-cover .s-h{font-size:40px}.s-split,.s-ed,.s-feat,.s-gal,.s-ft{grid-template-columns:1fr;gap:22px}.s-img{min-height:300px!important}.s-cover{padding:150px 7% 70px}.s-stats{grid-template-columns:1fr}.s-shop,.s-bento{grid-template-columns:1fr 1fr}.s-bento .w{grid-column:span 2}.s-quote,.s-cta{padding:34px 22px}.s-quote q{font-size:24px}.s-cta .s-h{font-size:32px}.s-title{font-size:30px}.s-p{font-size:17px}}`;
-const site=t=>{
- const id=IMG[t.n],bg=(w)=>`background-image:url(${P(id,w)}),linear-gradient(135deg,${t.a},${t.b})`;
- const cta=`<a class=s-btn>Get started</a><a class="s-btn o">Learn more</a>`;
- const txt=`<h1 class=s-h>${t.h}</h1><p class=s-p>${t.s}</p>${cta}`;
- const cov=(c)=>`<div class="s-cover ${c}" style="background-image:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.25)),url(${P(id,1400)}),linear-gradient(135deg,${t.a},${t.b})">${txt}</div>`;
- const hero={split:`<div class=s-split><div>${txt}</div><div class=s-img style="${bg()}"></div></div>`,editorial:`<div class=s-ed><div class=s-img style="${bg()}"></div><div>${txt}</div></div>`,center:cov('c'),left:cov(''),grid:cov('c'),bento:`<div style="padding:30px 7% 40px;text-align:center"><h1 class=s-h style="max-width:14ch;margin-inline:auto">${t.h}</h1><p class=s-p style="margin-inline:auto">${t.s}</p>${cta}</div>`}[t.l];
- const f=FEAT[t.c];
- const mid=t.l==='grid'?`<div class=s-shop>${[['Classic','49'],['Everyday','39'],['Signature','59'],['Essential','29']].map((x,i)=>`<div class=s-pr><div style="${bg(500)};background-position:${i*33}% 50%"></div><b>${x[0]}</b><span>From \u20b1${x[1]}0</span></div>`).join('')}</div>`:t.l==='bento'?`<div class=s-bento><div class=w style="${bg(900)}">Featured</div><div style="${bg(500)};background-position:0 0">Explore</div><div style="${bg(500)};background-position:100% 0">Create</div><div style="${bg(500)};background-position:0 100%">Share</div><div style="${bg(500)};background-position:100% 100%">Grow</div></div>`:'';
- return `<div class=site style="--bg:${t.bg};--ink:${t.ink};--a:${t.a};--b:${t.b};--f:'${t.f}',serif"><div class=s-nav><b><u></u>${t.n}</b><span><i>Home</i><i>About</i><i>Services</i><i>Contact</i></span><em>Contact us</em></div>${hero}${mid}
-<div class=s-stats><div><b>4.9/5</b><span>Average rating</span></div><div><b>12k+</b><span>Happy customers</span></div><div><b>10 yrs</b><span>Of experience</span></div></div>
-<h2 class=s-title>Why people choose ${t.n}</h2>
-<div class=s-feat>${[0,3,6].map(i=>`<div class=s-f><i>${f[i]}</i><b>${f[i+1]}</b><span>${f[i+2]}</span></div>`).join('')}</div>
-<div class=s-gal><div style="${bg(800)}"></div><div style="${bg(500)};background-position:20% 30%"></div><div style="${bg(500)};background-position:90% 80%"></div></div>
-<div class=s-quote><q>Working with ${t.n} was the easiest decision we made this year.</q><span>Maria S., happy customer</span></div>
-<div class=s-cta><h2 class=s-h>Ready when you are.</h2><p class=s-p>Reach out today and we will reply within one business day.</p><a class=s-btn>Contact us</a></div>
-<div class=s-ft><div><b>${t.n}</b><span>${t.s}</span></div><div><b>Company</b><span>About</span><span>Careers</span></div><div><b>Support</b><span>Help center</span><span>Contact</span></div><div><b>Follow</b><span>Instagram</span><span>Facebook</span></div></div></div>`;
-};
-const FONTS='<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;700&family=DM+Serif+Display&family=Syne:wght@700;800&display=swap" rel=stylesheet>';
-const doc=t=>`<!DOCTYPE html><html><head><meta name=viewport content="width=device-width,initial-scale=1">${FONTS}<style>${SITE_CSS}</style></head><body>${site(t)}</body></html>`;
 
 /* ---------- App state ---------- */
 let K='x';
@@ -233,17 +176,17 @@ let cat='All',term='',favs,recent,order=[...T.keys()],cur=0;
 const toast=m=>{const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2200)};
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 
-function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,s=th.firstElementChild;if(!k)return;s.style.setProperty('--k',k);s.style.setProperty('--sc',-Math.max(0,(2200-th.clientHeight/k))+'px')})}
+function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,s=th.firstElementChild;if(!k)return;s.style.setProperty('--k',k);s.style.setProperty('--sc',-Math.max(0,(3200-th.clientHeight/k))+'px')})}
 function list(){
  const q=term.toLowerCase();
- let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.h).toLowerCase().includes(q));
+ let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.d).toLowerCase().includes(q));
  const s=$('sort').value;
  if(s==='n')L.sort((a,b)=>a.n.localeCompare(b.n));else if(s==='c')L.sort((a,b)=>a.c.localeCompare(b.c)||a.n.localeCompare(b.n));
  return L;
 }
 function render(){
  const L=list();
- $('grid').innerHTML=L.map((t,k)=>{const on=favs.includes(t.n);return `<article class="card" style="animation-delay:${Math.min(k,12)*40}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><iframe loading="lazy" tabindex="-1" title="" srcdoc="${esc(doc(t))}"></iframe></div><div class="info"><div><b>${esc(t.n)}</b><span>${esc(t.c)}</span><div class="dots"><i style="background:${t.bg}"></i><i style="background:${t.a}"></i><i style="background:${t.b}"></i></div></div><button class="heart ${on?'on':''}" data-fav="${esc(t.n)}" aria-pressed="${on}" aria-label="Save ${esc(t.n)}">${on?'\u2665':'\u2661'}</button></div></article>`}).join('');
+ $('grid').innerHTML=L.map((t,k)=>{const on=favs.includes(t.n);return `<article class="card" style="animation-delay:${Math.min(k,12)*40}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><iframe loading="lazy" tabindex="-1" title="" src="${esc(t.f)}"></iframe></div><div class="info"><div><b>${esc(t.n)}</b><span>${esc(t.c)}</span><p class="desc">${esc(t.d)}</p></div><button class="heart ${on?'on':''}" data-fav="${esc(t.n)}" aria-pressed="${on}" aria-label="Save ${esc(t.n)}">${on?'\u2665':'\u2661'}</button></div></article>`}).join('');
  $('empty').classList.toggle('hidden',L.length>0);
  $('s3').textContent=favs.length;$('n-fav').textContent=favs.length;
  requestAnimationFrame(fit);
@@ -254,7 +197,7 @@ function renderSide(){
 }
 function renderRecent(){
  $('recent').classList.toggle('hidden',!recent.length);
- $('chips').innerHTML=recent.map(n=>{const t=T.find(x=>x.n===n);return t?`<button class="chip" data-n="${esc(n)}" type="button"><i style="background:linear-gradient(135deg,${t.a},${t.b})"></i>${esc(n)}</button>`:''}).join('');
+ $('chips').innerHTML=recent.map(n=>{const t=T.find(x=>x.n===n);return t?`<button class="chip" data-n="${esc(n)}" type="button"><i style="background:linear-gradient(135deg,#4f46e5,#ec4899)"></i>${esc(n)}</button>`:''}).join('');
 }
 function setCat(c){cat=c;renderSide();render();$('side').classList.remove('open')}
 function toggleFav(n){favs=favs.includes(n)?favs.filter(x=>x!==n):[...favs,n];store.set('fav-'+K,favs);toast(favs.includes(n)?'Saved to favorites':'Removed from favorites');render();renderSide();syncM()}
@@ -265,12 +208,12 @@ function openM(n){
 }
 let curT;
 function loadM(t){
- curT=t;$('mt').textContent=t.n+' \u00b7 '+t.c;$('pf').srcdoc=doc(t);syncM();
+ curT=t;$('mt').textContent=t.n+' \u00b7 '+t.c;$('pf').src=t.f;syncM();
  recent=[t.n,...recent.filter(x=>x!==t.n)].slice(0,6);store.set('rec-'+K,recent);renderRecent();
 }
 function syncM(){if(!curT)return;const on=favs.includes(curT.n);$('mfav').textContent=on?'Saved':'Save'}
 function step(d){const L=list();if(!L.length)return;cur=(cur+d+L.length)%L.length;loadM(L[cur])}
-function closeM(){$('modal').classList.add('hidden');$('pf').srcdoc='';document.body.style.overflow=''}
+function closeM(){$('modal').classList.add('hidden');$('pf').src='about:blank';document.body.style.overflow=''}
 
 function start(){
  K=user.id;favs=store.get('fav-'+K,[]);recent=store.get('rec-'+K,[]);
@@ -296,6 +239,7 @@ $('q').oninput=e=>{term=e.target.value.trim();render()};
 $('sort').onchange=e=>{if(e.target.value==='r')order=shuffle([...T.keys()]);render()};
 $('rand').onclick=()=>openM(T[Math.floor(Math.random()*T.length)].n);
 $('menu').onclick=()=>$('side').classList.toggle('open');
+$('full').onclick=()=>window.open(curT.f,'_blank','noopener');
 $('close').onclick=closeM;$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
 $('mfav').onclick=()=>toggleFav(curT.n);
 $('use').onclick=()=>{store.set('pick-'+K,curT.n);location.href='index.html#book'};
