@@ -119,6 +119,18 @@
       100% { transform: translateY(-40px) rotate(15deg) scale(1.1); }
     }
 
+    /* GOOGLE SIGN-IN */
+    .auth-wrap { display:flex; align-items:center; gap:.5rem; }
+    .auth-btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.6rem 1.1rem; border-radius:9999px;
+      border:1px solid #e2e8f0; background:#fff; color:#334155; font-weight:600; font-size:.875rem; cursor:pointer; transition:background .2s, box-shadow .2s; }
+    .auth-btn:hover { background:#f8fafc; box-shadow:0 4px 14px rgba(0,0,0,.08); }
+    .auth-btn[disabled] { opacity:.6; cursor:wait; }
+    .auth-g { width:18px; height:18px; flex:none; }
+    .auth-avatar { width:34px; height:34px; border-radius:9999px; object-fit:cover; background:#e0e7ff; flex:none; }
+    .auth-name { font-weight:700; color:#1e1b4b; font-size:.875rem; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .auth-out { background:none; border:0; color:#64748b; font-size:.8rem; text-decoration:underline; cursor:pointer; padding:.25rem; }
+    .auth-out:hover { color:#4f46e5; }
+
     /* HEADER & DROPDOWN - 100% SOLID OPACITY */
     .sticky-header {
       position: sticky;
@@ -430,6 +442,7 @@
 
       <!-- DESKTOP CTA -->
       <div class="hidden md:flex items-center gap-3">
+        <div data-auth-slot></div>
         <a href="#book" data-book class="btn-gradient magnetic inline-flex px-6 py-2.5 rounded-full font-bold shadow-lg">
         Book Strategy Call
       </a>
@@ -451,6 +464,7 @@
         <a href="#compare" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Compare</a>
         <a href="#calculator" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Pricing Calculator</a>
         <a href="#contact" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Contact</a>
+        <div data-auth-slot class="px-1"></div>
         <a data-viber href="viber://chat?number=%2B639619679095" class="viber-btn text-center rounded-xl px-4 py-3 font-bold"><i class="fa-brands fa-viber mr-1"></i> Chat on Viber</a>
         <a href="#book" data-book class="mobile-link btn-gradient text-center text-white rounded-xl px-4 py-3 mt-1">Book Strategy Call</a>
       </nav>
@@ -1149,7 +1163,7 @@
               headers: {
                 'Content-Type': 'application/json',
                 'apikey': SUPABASE_KEY,
-                'Authorization': 'Bearer ' + SUPABASE_KEY,
+                'Authorization': 'Bearer ' + ((window.__404 && window.__404.token) || SUPABASE_KEY),
                 'Prefer': 'return=minimal'
               },
               body: JSON.stringify({ name: d.name, email: d.email, service: d.service, concern: d.concern })
@@ -1177,6 +1191,98 @@
       }
     });
     refresh();
+  })();
+  </script>
+
+  <!-- GOOGLE SIGN-IN (the Supabase library loads only when it is needed) -->
+  <script>
+  (() => {
+    const SB_URL = 'https://acxrobzulaswsubfoghg.supabase.co';
+    const SB_KEY = 'sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';
+    const STORE_KEY = 'sb-acxrobzulaswsubfoghg-auth-token';
+    const slots = [...document.querySelectorAll('[data-auth-slot]')];
+    window.__404 = { token: null, user: null };
+    let client = null, loading = null;
+
+    const loadLib = () => loading || (loading = new Promise((resolve, reject) => {
+      const sc = document.createElement('script');
+      sc.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+      sc.onload = () => { client = window.supabase.createClient(SB_URL, SB_KEY); resolve(client); };
+      sc.onerror = () => { loading = null; reject(new Error('Could not load sign-in')); };
+      document.head.appendChild(sc);
+    }));
+
+    const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const G = '<svg class="auth-g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.9 2.4 30.4 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
+
+    const render = user => {
+      let html;
+      if (user) {
+        const m = user.user_metadata || {};
+        const full = m.full_name || m.name || (user.email || '').split('@')[0] || 'Account';
+        const first = full.split(' ')[0];
+        const pic = m.avatar_url || m.picture || '';
+        const img = pic.startsWith('https://') ? '<img class="auth-avatar" referrerpolicy="no-referrer" alt="" src="' + esc(pic) + '">' : '';
+        html = '<div class="auth-wrap">' + img + '<span class="auth-name" title="' + esc(user.email || '') + '">' + esc(first) + '</span><button type="button" class="auth-out" data-auth-out>Sign out</button></div>';
+      } else {
+        html = '<button type="button" class="auth-btn" data-auth-in>' + G + 'Sign in with Google</button>';
+      }
+      slots.forEach(el => { el.innerHTML = html; });
+    };
+
+    const prefill = () => {
+      const u = window.__404.user; if (!u) return;
+      const m = u.user_metadata || {};
+      const set = (id, v) => { const f = document.getElementById(id); if (f && v && !f.value.trim()) { f.value = v; f.dispatchEvent(new Event('input', { bubbles: true })); } };
+      set('book-name', m.full_name || m.name || '');
+      set('book-email', u.email || '');
+    };
+
+    const apply = session => {
+      window.__404.token = session ? session.access_token : null;
+      window.__404.user = session ? session.user : null;
+      render(window.__404.user);
+      prefill();
+    };
+
+    document.addEventListener('click', async e => {
+      if (e.target.closest('[data-book]')) setTimeout(prefill, 80);
+
+      const inBtn = e.target.closest('[data-auth-in]');
+      if (inBtn) {
+        inBtn.disabled = true; inBtn.lastChild.textContent = 'Opening Google...';
+        try {
+          const c = await loadLib();
+          const { error } = await c.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: location.origin + location.pathname } });
+          if (error) throw error;
+        } catch (_) {
+          render(null);
+          alert('Google sign-in could not start. Please try again in a moment.');
+        }
+        return;
+      }
+      if (e.target.closest('[data-auth-out]')) {
+        try { const c = await loadLib(); await c.auth.signOut(); } catch (_) {}
+        apply(null);
+      }
+    });
+
+    render(null);
+
+    let hasSession = false;
+    try { hasSession = !!localStorage.getItem(STORE_KEY); } catch (_) {}
+    const back = /[?&]code=|access_token=|error_description=/.test(location.search + location.hash);
+    if (hasSession || back) {
+      loadLib().then(async c => {
+        c.auth.onAuthStateChange((_ev, session) => apply(session));
+        const { data } = await c.auth.getSession();
+        apply(data.session);
+        if (back) {
+          history.replaceState(null, '', location.origin + location.pathname);
+          if (!data.session) alert('Google sign-in did not complete. Please try again.');
+        }
+      }).catch(() => {});
+    }
   })();
   </script>
 </body>
