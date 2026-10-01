@@ -79,6 +79,33 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
 #toast.show{opacity:1;transform:translate(-50%,0)}
 #menu{display:none}
 @media(max-width:860px){.layout{grid-template-columns:1fr}aside{position:fixed;left:0;top:0;z-index:40;width:270px;transform:translateX(-100%);transition:.3s;background:#fff}aside.open{transform:none}#menu{display:inline-block}.in{min-width:0;flex:1}}
+/* start a call */
+#call{position:fixed;inset:0;z-index:70;background:rgba(18,15,50,.6);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:fd .25s}
+.cbox{position:relative;background:#fff;border-radius:24px;width:100%;max-width:540px;max-height:94vh;overflow-y:auto;padding:28px;box-shadow:0 30px 80px rgba(30,27,75,.35)}
+.cx{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:0;background:#f0ecff;font-size:20px;line-height:1;color:var(--ink)}
+.cbox h2{font-family:'Playfair Display',serif;font-size:28px;margin:0 40px 6px 0}
+.csub{color:var(--mut);font-size:14px;line-height:1.5;margin:0 0 18px}
+.f{margin-bottom:14px}
+.f>label,.f>legend{display:block;font-size:13px;font-weight:700;margin-bottom:6px;padding:0}
+fieldset.f{border:0;margin:0 0 14px;padding:0;min-width:0}
+.fi{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:11px 14px;font:inherit;font-size:15px;color:var(--ink)}
+.fi:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 4px var(--glow)}
+textarea.fi{resize:vertical;min-height:90px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.pill span{display:block;border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:var(--mut);transition:.2s}
+.pill input:checked+span{background:linear-gradient(135deg,var(--ac),#7c3aed);color:#fff;border-color:transparent;box-shadow:0 8px 20px var(--glow)}
+.pill input:focus-visible+span{outline:3px solid var(--ac);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hint{font-size:12px;color:var(--mut);margin:6px 0 0;line-height:1.4}
+.when{background:#f4f1ff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+.cerr{color:#be123c;font-size:13px;background:#fff1f2;border-radius:12px;padding:10px 14px;margin:0 0 12px}
+.cbox .btn{width:100%;padding:14px;font-size:15px}
+.cbox .btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
+.done{text-align:center;padding:10px 0}
+.done .ck{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:30px;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2))}
+@media(max-width:480px){.row2{grid-template-columns:1fr}.cbox{padding:22px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -94,7 +121,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
     <div id="cats"></div>
     <div class="lab">Quick links</div>
     <a class="nav" href="index.html#calculator" style="text-decoration:none">Get a quote</a>
-    <a class="nav" href="index.html#book" style="text-decoration:none">Book a strategy call</a>
+    <button class="nav" id="callNav" type="button">Start a call</button>
     <div class="me"><div class="av" id="av"></div><div><b id="nm"></b><button id="out" type="button">Sign out</button></div></div>
   </aside>
   <main>
@@ -108,6 +135,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
         <input class="in" id="q" type="search" placeholder="Search websites" aria-label="Search templates">
         <select class="sel" id="sort" aria-label="Sort"><option value="n">Sort: A to Z</option><option value="c">Sort: Category</option><option value="r">Sort: Random</option></select>
         <button class="btn" id="rand" type="button">Surprise me</button>
+        <button class="btn alt" id="callTop" type="button">Start a call</button>
       </div>
     </div>
     <div class="stats"><div class="stat"><b id="s1"></b>sample sites</div><div class="stat"><b id="s2"></b>categories</div><div class="stat"><b id="s3">0</b>saved by you</div></div>
@@ -133,6 +161,42 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
   </div>
   <div class="stage"><div class="frame" id="frame"><iframe id="pf" title="Template preview"></iframe></div></div>
 </div>
+<div id="call" class="hidden" role="dialog" aria-modal="true" aria-labelledby="call-t">
+  <div class="cbox">
+    <button class="cx" id="call-x" type="button" aria-label="Close">&times;</button>
+    <div id="call-wrap">
+      <h2 id="call-t">Start a call</h2>
+      <p class="csub">Tell us what you need and pick a time. We're available Monday to Sunday, at any time of day.</p>
+      <form id="call-form" novalidate>
+        <input type="text" name="_honey" id="c-honey" tabindex="-1" autocomplete="off" style="display:none">
+        <div class="f"><label for="c-name">Your name</label><input class="fi" id="c-name" type="text" autocomplete="name" placeholder="Juan Dela Cruz"></div>
+        <div class="f"><label for="c-email">Email address</label><input class="fi" id="c-email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
+        <fieldset class="f"><legend>What do you need?</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="svc" value="Web Development"><span>Web Development</span></label>
+            <label class="pill"><input type="radio" name="svc" value="SEO Optimization"><span>SEO Optimization</span></label>
+            <label class="pill"><input type="radio" name="svc" value="Web Design"><span>Web Design</span></label>
+          </div>
+        </fieldset>
+        <div class="f"><label for="c-concern">Your concern</label><textarea class="fi" id="c-concern" rows="3" placeholder="Tell us about your business and what you need."></textarea></div>
+        <div class="row2">
+          <div class="f"><label for="c-day">Day</label><input class="fi" id="c-day" type="date"></div>
+          <div class="f"><label for="c-time">Time (EST)</label><select class="fi" id="c-time"></select></div>
+        </div>
+        <p class="hint" style="margin:-6px 0 14px">All times are in EST (Eastern Time). We're available every day, Monday to Sunday, at any hour.</p>
+        <div class="when hidden" id="c-when"></div>
+        <p class="cerr hidden" id="c-err" role="alert"></p>
+        <button class="btn" id="c-send" type="submit">Send request</button>
+      </form>
+    </div>
+    <div id="call-done" class="done hidden">
+      <div class="ck">&#10003;</div>
+      <h2 style="margin:0 0 8px">Request sent</h2>
+      <p class="csub" id="c-sum" style="margin-bottom:20px"></p>
+      <button class="btn" id="c-close" type="button">Done</button>
+    </div>
+  </div>
+</div>
 <div id="toast" role="status"></div>
 
 <script>
@@ -141,12 +205,12 @@ const SB_URL='https://acxrobzulaswsubfoghg.supabase.co',SB_KEY='sb_publishable_3
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const home=()=>location.replace('index.html');
-let user=null;
+let user=null,sb=null;
 const sc=document.createElement('script');
 sc.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
 sc.onerror=()=>{$('boot').innerHTML='<div>Could not load sign-in. <a href="index.html">Back to site</a></div>'};
 sc.onload=async()=>{
-  const c=window.supabase.createClient(SB_URL,SB_KEY);
+  const c=window.supabase.createClient(SB_URL,SB_KEY);sb=c;
   const {data}=await c.auth.getSession();
   if(!data.session){home();return}
   if(location.search||location.hash)history.replaceState(null,'',location.pathname);
@@ -223,6 +287,7 @@ function start(){
  renderSide();renderRecent();render();
  $('boot').classList.add('hidden');$('app').classList.remove('hidden');requestAnimationFrame(fit);
  const n=store.get('pick-'+K,null);if(n)toast('Last pick: '+n);
+ try{if(sessionStorage.getItem('404-opencall')){sessionStorage.removeItem('404-opencall');setTimeout(()=>openCall(),400)}}catch(e){}
 }
 document.addEventListener('click',e=>{
  const c=e.target.closest('[data-cat]');if(c){setCat(c.dataset.cat);return}
@@ -239,7 +304,7 @@ $('rand').onclick=()=>openM(T[Math.floor(Math.random()*T.length)].n);
 $('menu').onclick=()=>$('side').classList.toggle('open');
 $('close').onclick=closeM;$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
 $('mfav').onclick=()=>toggleFav(curT.n);
-$('use').onclick=()=>{store.set('pick-'+K,curT.n);location.href='index.html#book'};
+$('use').onclick=()=>{store.set('pick-'+K,curT.n);const n=curT.n;closeM();openCall('I\'d like to use the "'+n+'" template.')};
 document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('frame').style.maxWidth=b.dataset.w;
 });
@@ -256,6 +321,80 @@ function autoScroll(fr,down){
 }
 document.addEventListener('mouseover',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,true)});
 document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,false)});
+
+/* ---------- Start a call ---------- */
+const MAIL='herart36@gmail.com';
+const SLOTS=[];for(let i=0;i<48;i++){const h=Math.floor(i/2),m=i%2?'30':'00';SLOTS.push({v:String(h).padStart(2,'0')+':'+m,t:(h%12||12)+':'+m+' '+(h<12?'AM':'PM')})}
+$('c-time').innerHTML='<option value="">Choose a time</option>'+SLOTS.map(s=>`<option value="${s.v}">${s.t}</option>`).join('');
+const etToday=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
+(()=>{const t=etToday(),[y,m,d]=t.split('-').map(Number);$('c-day').min=t;$('c-day').max=new Date(Date.UTC(y,m-1,d+90)).toISOString().slice(0,10)})();
+/* turn a day + time chosen in Eastern Time into a real moment (handles daylight saving) */
+function etToUtc(day,time){
+ const [y,mo,d]=day.split('-').map(Number),[h,mi]=time.split(':').map(Number),wall=Date.UTC(y,mo-1,d,h,mi);let u=wall;
+ const f=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hourCycle:'h23',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric'});
+ for(let i=0;i<3;i++){const p=Object.fromEntries(f.formatToParts(new Date(u)).map(x=>[x.type,x.value]));u+=wall-Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute)}
+ return u;
+}
+const dayLabel=day=>new Date(day+'T00:00:00Z').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:'UTC'});
+const timeLabel=v=>(SLOTS.find(s=>s.v===v)||{}).t||v;
+const phLabel=ms=>new Date(ms).toLocaleString('en-US',{timeZone:'Asia/Manila',weekday:'long',month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})+' (Philippine time)';
+let callSent=false;
+function showWhen(){
+ const day=$('c-day').value,time=$('c-time').value,w=$('c-when');
+ if(day&&time){w.textContent=dayLabel(day)+' at '+timeLabel(time)+' EST';w.classList.remove('hidden')}else w.classList.add('hidden');
+}
+function cerr(m){const e=$('c-err');e.textContent=m||'';e.classList.toggle('hidden',!m)}
+function openCall(note){
+ if(callSent){$('call-form').reset();callSent=false;$('call-wrap').classList.remove('hidden');$('call-done').classList.add('hidden')}
+ const m=user.user_metadata||{};
+ if(!$('c-name').value)$('c-name').value=m.full_name||m.name||'';
+ if(!$('c-email').value)$('c-email').value=user.email||'';
+ if(note&&!$('c-concern').value.trim())$('c-concern').value=note;
+ cerr('');showWhen();$('side').classList.remove('open');
+ $('call').classList.remove('hidden');document.body.style.overflow='hidden';
+ setTimeout(()=>(($('c-name').value?$('c-concern'):$('c-name'))).focus(),60);
+}
+function closeCall(){$('call').classList.add('hidden');if($('modal').classList.contains('hidden'))document.body.style.overflow=''}
+$('callNav').onclick=$('callTop').onclick=()=>openCall();
+$('call-x').onclick=$('c-close').onclick=closeCall;
+$('call').addEventListener('click',e=>{if(e.target===$('call'))closeCall()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('call').classList.contains('hidden'))closeCall()});
+$('c-day').onchange=$('c-time').onchange=showWhen;
+$('call-form').addEventListener('submit',async e=>{
+ e.preventDefault();
+ if($('c-honey').value)return;
+ const name=$('c-name').value.trim(),email=$('c-email').value.trim(),concern=$('c-concern').value.trim(),
+  svcEl=document.querySelector('input[name="svc"]:checked'),day=$('c-day').value,time=$('c-time').value;
+ if(name.length<2)return cerr('Please enter your name.');
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return cerr('Please enter a valid email address.');
+ if(!svcEl)return cerr('Please choose Web Development, SEO Optimization or Web Design.');
+ if(concern.length<10)return cerr('Tell us a bit more about your concern (at least 10 characters).');
+ if(!day)return cerr('Please choose a day.');
+ if(!time)return cerr('Please choose a time (EST).');
+ const utc=etToUtc(day,time);
+ if(utc<Date.now()+30*60000)return cerr('Please pick a time at least 30 minutes from now (EST).');
+ cerr('');
+ const svc=svcEl.value,when=dayLabel(day)+' at '+timeLabel(time)+' EST',ph=phLabel(utc),btn=$('c-send');
+ btn.disabled=true;btn.textContent='Sending...';
+ try{
+  let tok=SB_KEY;try{const {data}=await sb.auth.getSession();if(data.session)tok=data.session.access_token}catch(_){}
+  /* 1) save to your leads table (schedule is added to the concern text) */
+  const saveLead=fetch(SB_URL+'/rest/v1/leads',{method:'POST',
+   headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'},
+   body:JSON.stringify({name,email,service:svc,concern:'[Preferred time: '+when+' | '+ph+']\n\n'+concern})}).then(r=>r.ok).catch(()=>false);
+  /* 2) email it to your Gmail */
+  const sendMail=fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',
+   headers:{'Content-Type':'application/json','Accept':'application/json'},
+   body:JSON.stringify({name,email,service:svc,concern,preferred_day_and_time:when,philippine_time:ph,
+    _subject:'New call request: '+svc+' from '+name,_template:'table',_captcha:'false'})})
+   .then(async r=>{const j=await r.json().catch(()=>({}));return r.ok&&j.success!==false&&j.success!=='false'}).catch(()=>false);
+  const [saved,mailed]=await Promise.all([saveLead,sendMail]);
+  if(!saved&&!mailed)throw 0;
+  $('c-sum').textContent='Thanks, '+name+'. Your '+svc+' call request for '+when+' was sent. We\'ll confirm by email at '+email+'.';
+  $('call-wrap').classList.add('hidden');$('call-done').classList.remove('hidden');callSent=true;
+ }catch(_){cerr('We couldn\'t send your request. Please try again in a moment.')}
+ btn.disabled=false;btn.textContent='Send request';
+});
 </script>
 </body>
 </html>
