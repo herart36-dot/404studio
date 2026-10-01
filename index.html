@@ -109,6 +109,12 @@
     }
     @media (max-width: 1023px) {
       .blob { animation: none; filter: blur(30px); }
+      /* Phones: same soft pastel colors as desktop (no red/yellow stops) */
+      body {
+        background: linear-gradient(160deg, #FFDEE9 0%, #B5FFFC 25%, #E0C3FC 50%, #8EC5FC 75%, #FFDEE9 100%);
+        background-size: 100% 100%;
+        background-attachment: scroll;
+      }
     }
     .blob-1 { top: 10%; left: 5%; width: 300px; height: 300px; background: #ff9a9e; animation-delay: 0s; }
     .blob-2 { top: 50%; right: 5%; width: 350px; height: 350px; background: #a1c4fd; animation-delay: 2s; }
@@ -437,7 +443,6 @@
         <a href="#templates" class="hover:text-indigo-600 transition-colors">Templates</a>
         <a href="#compare" class="hover:text-indigo-600 transition-colors">Compare</a>
         <a href="#calculator" class="hover:text-indigo-600 transition-colors">Pricing Calculator</a>
-        <a href="#contact" class="hover:text-indigo-600 transition-colors">Contact</a>
       </nav>
 
       <!-- DESKTOP CTA -->
@@ -463,7 +468,6 @@
         <a href="#templates" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Templates</a>
         <a href="#compare" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Compare</a>
         <a href="#calculator" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Pricing Calculator</a>
-        <a href="#contact" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Contact</a>
         <div data-auth-slot class="px-1"></div>
         <a data-viber href="viber://chat?number=%2B639619679095" class="viber-btn text-center rounded-xl px-4 py-3 font-bold"><i class="fa-brands fa-viber mr-1"></i> Chat on Viber</a>
         <a href="#book" data-book class="mobile-link btn-gradient text-center text-white rounded-xl px-4 py-3 mt-1">Book Strategy Call</a>
