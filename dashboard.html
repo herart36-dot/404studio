@@ -200,6 +200,8 @@ const SITE_CSS=`.site{--bg:#fff;--ink:#111;--a:#4f46e5;--b:#ec4899;background:va
 .s-ed{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:70px 7%}.s-ed .s-h{font-size:76px}.s-ed .s-art{border-radius:20px;aspect-ratio:4/5}
 .s-ft{display:flex;justify-content:space-between;padding:30px 7%;border-top:1px solid color-mix(in srgb,var(--ink) 15%,transparent);font-size:14px;opacity:.7}
 @media(max-width:760px){.s-nav span{display:none}.s-h,.s-left .s-h,.s-ed .s-h{font-size:38px}.s-split,.s-ed{grid-template-columns:1fr;gap:24px}.s-feat{grid-template-columns:1fr}.s-shop,.s-bento{grid-template-columns:1fr 1fr}.s-bento .w{grid-column:span 2}.s-ban{padding:30px}.s-ban .s-h{font-size:32px}.s-center,.s-left{padding:50px 7%}.s-p{font-size:16px}}`;
+/* thumbnails live in the main page, so give them the desktop styles (phone rules stay inside the preview frame only) */
+const baseStyle=document.createElement('style');baseStyle.textContent=SITE_CSS.split('@media(max-width:760px)')[0];document.head.appendChild(baseStyle);
 const site=t=>{
  const cta=`<a class=s-btn>Get started</a><a class="s-btn o">Learn more</a>`;
  const hero={
