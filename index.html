@@ -383,6 +383,22 @@
     .book-field:focus{outline:none;border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.3)}
     .book-field.bad{border-color:#e11d48}
     .book-err{color:#be123c;font-size:12px;margin-top:4px;min-height:0}
+  
+    /* ---- Template gallery: sign-in gate ---- */
+    #tpl-vault{position:relative}
+    #tpl-vault .tpl-body{transition:filter .7s ease,opacity .7s ease}
+    body:not(.tpl-authed) #tpl-vault .tpl-body{filter:blur(10px) saturate(.85);opacity:.75;max-height:560px;overflow:hidden;user-select:none;pointer-events:none}
+    #tpl-gate{display:none;position:absolute;inset:0;z-index:5;justify-content:center;align-items:flex-start;padding-top:70px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(244,240,255,.85) 75%)}
+    body:not(.tpl-authed) #tpl-gate{display:flex}
+    #tpl-gate .gate-card{max-width:420px;width:100%;text-align:center;padding:32px 28px;border-radius:28px;background:rgba(255,255,255,.96);box-shadow:0 30px 80px rgba(79,70,229,.25);animation:gateIn .6s cubic-bezier(.2,.8,.2,1)}
+    @keyframes gateIn{from{opacity:0;transform:translateY(20px) scale(.97)}}
+    .gate-lock{width:60px;height:60px;border-radius:18px;margin:0 auto 16px;display:grid;place-items:center;color:#fff;font-size:24px;background:linear-gradient(135deg,#4f46e5,#ec4899);animation:lockPulse 2.4s ease-in-out infinite}
+    @keyframes lockPulse{50%{transform:scale(1.07) rotate(-4deg);box-shadow:0 0 0 12px rgba(79,70,229,.12)}}
+    #tpl-welcome{display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:760px;margin:0 auto 18px;padding:12px 18px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 8px 24px rgba(79,70,229,.12);animation:gateIn .5s ease}
+    body.tpl-authed #tpl-welcome{display:flex}
+    #tpl-search{border:1.5px solid #e2e8f0;border-radius:999px;padding:8px 16px;font-size:14px;min-width:200px;background:#fff}
+    #tpl-search:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 4px rgba(99,102,241,.15)}
+    @media (prefers-reduced-motion:reduce){.gate-lock,#tpl-gate .gate-card,#tpl-welcome{animation:none}}
   </style>
 </head>
 <body class="relative overflow-x-hidden">
@@ -583,9 +599,25 @@
       <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Find Your Look</h2>
       <p class="text-slate-600 mt-2">Real website designs, ready to make yours. Hover a card to scroll the page, click to explore it on desktop or mobile.</p>
     </div>
+    <div id="tpl-welcome" aria-live="polite">
+      <span class="font-bold text-slate-800"><i class="fa-solid fa-unlock text-emerald-500 mr-2"></i><span id="tpl-hello">Welcome</span>, every template is unlocked.</span>
+      <input id="tpl-search" type="search" placeholder="Search templates" aria-label="Search templates">
+    </div>
+    <div id="tpl-vault">
+      <div class="tpl-body">
     <div id="tpl-filters" class="flex flex-wrap justify-center gap-2 mb-3"></div>
     <p id="tpl-count" class="text-center text-sm text-slate-500 mb-8"></p>
     <div id="tpl-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+      <div id="tpl-gate">
+        <div class="gate-card">
+          <div class="gate-lock"><i class="fa-solid fa-lock"></i></div>
+          <h3 class="text-2xl font-extrabold text-slate-900">Sign in to see all templates</h3>
+          <p class="text-slate-600 text-sm mt-2 mb-5">Preview every design on desktop and mobile. It takes one click and it's free.</p>
+          <button type="button" data-auth-in class="auth-btn" style="margin:0 auto"><i class="fa-brands fa-google" style="margin-right:8px"></i>Sign in with Google</button>
+        </div>
+      </div>
+    </div>
     <p class="text-center text-xs text-slate-500 mt-6">Preview photography from Unsplash. Your site will use your own photos.</p>
   </section>
 
@@ -1228,6 +1260,11 @@
         html = '<button type="button" class="auth-btn" data-auth-in>' + G + 'Sign in with Google</button>';
       }
       slots.forEach(el => { el.innerHTML = html; });
+      document.body.classList.toggle('tpl-authed', !!user);
+      const vault = document.getElementById('tpl-vault');
+      if (vault) vault.inert = !user;
+      const hello = document.getElementById('tpl-hello');
+      if (hello && user) { const m = user.user_metadata || {}; hello.textContent = (m.full_name || m.name || (user.email || '').split('@')[0] || 'there').split(' ')[0]; }
     };
 
     const prefill = () => {
@@ -1266,6 +1303,21 @@
         apply(null);
       }
     });
+
+    const tSearch = document.getElementById('tpl-search');
+    if (tSearch) {
+      tSearch.addEventListener('input', () => {
+        const q = tSearch.value.trim().toLowerCase();
+        let n = 0;
+        document.querySelectorAll('#tpl-grid .tpl-card').forEach(c => {
+          const hit = !q || c.textContent.toLowerCase().includes(q);
+          c.style.display = hit ? '' : 'none'; if (hit) n++;
+        });
+        const cnt = document.getElementById('tpl-count');
+        if (cnt && q) cnt.textContent = n ? 'Showing ' + n + (n === 1 ? ' match' : ' matches') : 'No templates match that search';
+      });
+      document.getElementById('tpl-filters').addEventListener('click', () => { tSearch.value = ''; });
+    }
 
     render(null);
 
