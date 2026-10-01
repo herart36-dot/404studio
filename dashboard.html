@@ -160,12 +160,12 @@ sc.onload=async()=>{
 document.head.appendChild(sc);
 
 /* ---------- Your websites ----------
-   To add another sample site: put its .html file in the "sites" folder and add a line below.
+   To add another sample site: put its .html file next to dashboard.html and add a line below.
    Fields: n = name, c = category, f = file path, d = short description */
 const T=[
- {n:'Mayabang na si Mimiyuuuh?',c:'Blog',f:'sites/mimiyuuuh.html',d:'An opinion article about success, being relatable and escaping poverty online.'},
- {n:'W Fashion Gazette',c:'Magazine',f:'sites/fashion-gazette.html',d:'An independent fashion gazette covering beauty, street style, gowns and editorial culture.'},
- {n:'Hiblaya',c:'Fashion',f:'sites/hiblaya.html',d:'A home for Philippine fashion. Thread by thread, free to be.'}
+ {n:'Mayabang na si Mimiyuuuh?',c:'Blog',f:'sample-mimiyuuuh.html',d:'An opinion article about success, being relatable and escaping poverty online.'},
+ {n:'W Fashion Gazette',c:'Magazine',f:'sample-fashion-gazette.html',d:'An independent fashion gazette covering beauty, street style, gowns and editorial culture.'},
+ {n:'Hiblaya',c:'Fashion',f:'sample-hiblaya.html',d:'A home for Philippine fashion. Thread by thread, free to be.'}
 ];
 const CATS=[...new Set(T.map(t=>t.c))];
 
