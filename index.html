@@ -1073,6 +1073,10 @@
   </script>
   <script>
   (() => {
+    // ===== SUPABASE CONFIG: paste your two values here =====
+    const SUPABASE_URL = 'https://acxrobzulaswsubfoghg.supabase.co';        // e.g. https://xxxx.supabase.co
+    const SUPABASE_KEY = 'sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';    // sb_publishable_... or anon key. NEVER the secret/service_role key
+    const SUPABASE_READY = !SUPABASE_URL.startsWith('YOUR_') && !SUPABASE_KEY.startsWith('YOUR_');
     const q = x => document.querySelector(x);
     const modal = q('#book-modal'), form = q('#book-form'), send = q('#book-send'), hint = q('#book-hint'),
           err = q('#book-error'), wrap = q('#book-form-wrap'), done = q('#book-done');
@@ -1123,14 +1127,31 @@
       err.hidden = true; send.disabled = true; send.textContent = 'Sending...';
       const d = Object.fromEntries(fields.map(f => [f.name, f.value.trim()]));
       try {
-        const r = await fetch('https://formsubmit.co/ajax/herart36@gmail.com', {
+        // 1) Save the lead to Supabase (your CRM table)
+        const saveLead = SUPABASE_READY
+          ? fetch(SUPABASE_URL + '/rest/v1/leads', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_KEY,
+                'Authorization': 'Bearer ' + SUPABASE_KEY,
+                'Prefer': 'return=minimal'
+              },
+              body: JSON.stringify({ name: d.name, email: d.email, service: d.service, concern: d.concern })
+            }).then(r => r.ok)
+          : Promise.resolve(false);
+
+        // 2) Email notification (existing behaviour)
+        const sendEmail = fetch('https://formsubmit.co/ajax/herart36@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ name: d.name, email: d.email, service: d.service, concern: d.concern,
             _subject: 'New strategy call request from ' + d.name, _template: 'table', _captcha: 'false' })
-        });
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok || j.success === false || j.success === 'false') throw new Error('send failed');
+        }).then(async r => { const j = await r.json().catch(() => ({})); return r.ok && j.success !== false && j.success !== 'false'; })
+          .catch(() => false);
+
+        const [saved, emailed] = await Promise.all([saveLead.catch(() => false), sendEmail]);
+        if (!saved && !emailed) throw new Error('send failed');
         q('#book-done-name').textContent = d.name; q('#book-done-email').textContent = d.email;
         wrap.hidden = true; done.hidden = false; sent = true; q('#book-done-close').focus();
       } catch (_) {
