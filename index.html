@@ -449,7 +449,7 @@
       <div class="hidden md:flex items-center gap-3">
         <div data-auth-slot></div>
         <a href="#book" data-book class="btn-gradient magnetic inline-flex px-6 py-2.5 rounded-full font-bold shadow-lg">
-        Book Strategy Call
+        Sign in to book a call
       </a>
       </div>
 
@@ -470,7 +470,7 @@
         <a href="#calculator" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Pricing Calculator</a>
         <div data-auth-slot class="px-1"></div>
         <a data-viber href="viber://chat?number=%2B639619679095" class="viber-btn text-center rounded-xl px-4 py-3 font-bold"><i class="fa-brands fa-viber mr-1"></i> Chat on Viber</a>
-        <a href="#book" data-book class="mobile-link btn-gradient text-center text-white rounded-xl px-4 py-3 mt-1">Book Strategy Call</a>
+        <a href="#book" data-book class="mobile-link btn-gradient text-center text-white rounded-xl px-4 py-3 mt-1">Sign in to book a call</a>
       </nav>
     </div>
   </header>
@@ -629,7 +629,7 @@
     <p class="text-xs text-slate-500 text-center mt-4 max-w-2xl mx-auto"><i class="fa-solid fa-circle-check text-emerald-600"></i> Included &nbsp; <i class="fa-solid fa-circle-half-stroke text-amber-600"></i> Partly or with limits &nbsp; <i class="fa-solid fa-circle-xmark text-rose-600"></i> Not included. General view of typical do-it-yourself plans. Features and pricing vary and change often, so check each provider. Brand names belong to their owners.</p>
     <div class="flex flex-wrap justify-center gap-3 mt-6">
       <a data-viber href="viber://chat?number=%2B639619679095" class="viber-btn inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold shadow-lg"><i class="fa-brands fa-viber"></i> Message us on Viber</a>
-      <a href="#book" data-book class="btn-gradient px-7 py-3 rounded-full font-bold shadow-lg">Book Strategy Call</a>
+      <a href="#book" data-book class="btn-gradient px-7 py-3 rounded-full font-bold shadow-lg">Sign in to book a call</a>
     </div>
   </section>
 
@@ -723,7 +723,7 @@
       </div>
 
       <div id="book-form-wrap">
-        <h3 id="book-title" class="text-2xl font-extrabold text-slate-900 pr-10">Book a strategy call</h3>
+        <h3 id="book-title" class="text-2xl font-extrabold text-slate-900 pr-10">Book a call</h3>
         <p class="text-slate-600 text-sm mt-1 mb-5">Tell us what you need. Every field is required.</p>
 
         <form id="book-form" novalidate class="space-y-4">
@@ -1234,30 +1234,6 @@
       g.hidden = signed; w.hidden = !signed;
     };
 
-    let hadSession = false, resolved = false;
-    try { hadSession = !!localStorage.getItem(STORE_KEY); } catch (_) {}
-
-    /* One button: signed out = "Sign in to book a call" (goes straight to Google), signed in = opens the booking form */
-    const startGoogle = async () => {
-      try { sessionStorage.setItem('404-openbook', '1'); } catch (_) {}
-      try {
-        const c = await loadLib();
-        const { error } = await c.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: location.origin + location.pathname } });
-        if (error) throw error;
-      } catch (_) {
-        render(window.__404.user);
-        alert('Google sign-in could not start. Please try again in a moment.');
-      }
-    };
-    document.addEventListener('click', e => {
-      const b = e.target.closest('[data-book]');
-      if (!b || window.__404.user) return;
-      e.preventDefault(); e.stopImmediatePropagation();
-      if (hadSession && !resolved) return;
-      document.querySelectorAll('[data-book]').forEach(x => { x.textContent = 'Opening Google...'; });
-      startGoogle();
-    }, true);
-
     const render = user => {
       let html;
       if (user) {
@@ -1271,8 +1247,6 @@
         html = '';
       }
       slots.forEach(el => { el.innerHTML = html; });
-      const bookLabel = (user || (hadSession && !resolved)) ? 'Book Strategy Call' : 'Sign in to book a call';
-      document.querySelectorAll('[data-book]').forEach(b => { b.textContent = bookLabel; });
       gateBook();
     };
 
@@ -1285,13 +1259,11 @@
     };
 
     const apply = session => {
-      resolved = true;
       window.__404.token = session ? session.access_token : null;
       window.__404.user = session ? session.user : null;
       render(window.__404.user);
       prefill();
       try {
-        if (session && location.hash === '#book' && !window.__bookHash) { window.__bookHash = 1; sessionStorage.setItem('404-openbook', '1'); }
         if (session && sessionStorage.getItem('404-openbook')) {
           sessionStorage.removeItem('404-openbook');
           setTimeout(() => { const b = document.querySelector('[data-book]'); if (b) b.click(); }, 300);
