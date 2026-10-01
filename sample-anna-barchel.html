@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anna Barchel | Copywriter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fbffd6;--paper:#f4f7c9;--ink:#2a1f12;--brown:#4a3420;--mute:#6f6350;--line:rgba(42,31,18,.16);--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;line-height:1;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--brown);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+/* nav */
+nav.top{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:24px 48px;color:var(--cream);font-size:15px}
+nav.top .serif{font-size:26px}
+nav.top div{display:flex;gap:28px}nav.top div a{opacity:.8;transition:opacity .3s}nav.top div a:hover{opacity:1}
+@media(max-width:700px){nav.top{padding:20px 24px}nav.top div{display:none}}
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:#3b2a1a;color:var(--cream)}
+.hero .bg{position:absolute;inset:-6%;background:url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=1800") 80% 25%/cover no-repeat;filter:sepia(.45) saturate(.9) contrast(1.05);will-change:transform}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(42,26,12,.88) 0%,rgba(52,34,18,.55) 45%,rgba(60,40,20,.15) 100%),linear-gradient(0deg,rgba(30,18,8,.55),transparent 40%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.22;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero .in{position:relative;z-index:3;padding:120px 48px 100px;max-width:760px}
+.hero h1{font-size:clamp(56px,9vw,112px);margin-bottom:26px}
+.hero h1 span{display:block;overflow:hidden}.hero h1 span b{display:inline-block;font-weight:400;transform:translateY(105%);animation:up 1.2s var(--ease) forwards}
+.hero h1 span:nth-child(2) b{animation-delay:.14s}
+@keyframes up{to{transform:none}}
+.hero p{font-size:19px;max-width:30ch;opacity:0;animation:fade 1s .7s forwards}
+.pill{display:inline-flex;align-items:center;gap:12px;margin-top:60px;padding:15px 34px;border-radius:999px;background:var(--cream);color:var(--ink);font-weight:700;font-size:15px;opacity:0;animation:fade 1s .95s forwards;transition:transform .4s var(--ease),box-shadow .4s,background .3s}
+.pill:hover{transform:translateY(-4px);box-shadow:0 18px 40px -14px rgba(0,0,0,.7);background:#fff}
+.pill i{font-style:normal;transition:transform .4s var(--ease)}.pill:hover i{transform:translateY(4px)}
+@keyframes fade{to{opacity:1}}
+.cup{position:absolute;right:48px;bottom:36px;z-index:3;font-size:13px;opacity:.75}
+/* marquee */
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:22px 0;background:var(--paper)}
+.marq div{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite}
+.marq:hover div{animation-play-state:paused}
+.marq span{font-family:'Instrument Serif';font-size:30px;color:var(--mute);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* sections */
+section{padding:110px 0 0}
+.eyebrow{font-size:14px;color:var(--mute);margin-bottom:14px}
+h2{font-size:clamp(40px,6vw,72px);max-width:16ch}
+.sv{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.sv article{padding:38px 30px 38px 0;border-bottom:1px solid var(--line);position:relative;transition:padding .5s var(--ease)}
+.sv article+article{padding-left:30px;border-left:1px solid var(--line)}
+.sv h3{font-size:34px;margin-bottom:12px}.sv p{color:var(--mute);max-width:32ch}
+.sv ul{list-style:none;max-height:0;overflow:hidden;transition:max-height .6s var(--ease),margin .6s;margin-top:0}
+.sv article:hover ul,.sv article:focus-within ul{max-height:160px;margin-top:18px}
+.sv li{padding:6px 0;border-top:1px dashed var(--line);font-size:15px}
+.sv article::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--brown);transition:width .6s var(--ease)}
+.sv article:hover::after{width:100%}
+@media(max-width:800px){.sv{grid-template-columns:1fr}.sv article,.sv article+article{padding:30px 0;border-left:0}}
+/* before/after */
+.ba{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.card{background:var(--ink);color:var(--cream);border-radius:28px;padding:44px;min-height:290px;position:relative;overflow:hidden}
+.card small{opacity:.6;display:block;margin-bottom:18px;font-size:14px}
+.card q{font-family:'Instrument Serif';font-size:clamp(30px,4vw,46px);line-height:1.08;display:block;quotes:none;transition:opacity .35s,transform .5s var(--ease)}
+.card q.sw{opacity:0;transform:translateY(14px)}
+.card .stat{margin-top:26px;font-size:14px;opacity:.75}
+.tabs{display:flex;gap:8px;margin:28px 0}.tabs button{padding:10px 20px;border-radius:999px;border:1px solid var(--line);font-weight:500;transition:.3s}
+.tabs button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.picks{display:flex;gap:10px;flex-wrap:wrap}.picks button{padding:8px 16px;border-radius:12px;background:var(--paper);font-size:14px;transition:.3s}.picks button.on,.picks button:hover{background:var(--brown);color:var(--cream)}
+@media(max-width:800px){.ba{grid-template-columns:1fr;gap:30px}.card{padding:30px}}
+/* quotes */
+.qs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:50px}
+.qs figure{padding:36px;border-radius:26px;background:var(--paper);border:1px solid var(--line);transition:transform .5s var(--ease)}
+.qs figure:hover{transform:translateY(-6px) rotate(-.6deg)}
+.qs blockquote{font-family:'Instrument Serif';font-size:26px;line-height:1.2;margin-bottom:22px}
+.qs figcaption{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mute)}
+.qs img{width:46px;height:46px;border-radius:50%;object-fit:cover;filter:sepia(.2);background:var(--line)}
+@media(max-width:800px){.qs{grid-template-columns:1fr}}
+/* contact */
+.cta{margin:110px 0 0;background:var(--ink);color:var(--cream);padding:100px 0;text-align:center}
+.cta h2{max-width:none;margin:0 auto 14px}.cta p{opacity:.7;margin-bottom:32px}
+.form{display:flex;max-width:500px;margin:0 auto;padding:6px;border-radius:999px;background:rgba(251,255,214,.1);border:1px solid rgba(251,255,214,.25)}
+.form input{flex:1;min-width:0;background:none;border:0;color:var(--cream);padding:0 20px;font:inherit;outline:none}
+.form input::placeholder{color:rgba(251,255,214,.5)}
+.form button{padding:13px 28px;border-radius:999px;background:var(--cream);color:var(--ink);font-weight:700;transition:transform .3s var(--ease)}.form button:hover{transform:scale(1.05)}
+footer{background:var(--ink);color:rgba(251,255,214,.55);padding:0 0 36px;font-size:14px}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(251,255,214,.15);padding-top:26px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.rv.in{opacity:1;transform:none}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,120px);background:var(--cream);color:var(--ink);padding:14px 24px;border-radius:999px;font-weight:500;z-index:50;box-shadow:0 14px 40px -10px rgba(0,0,0,.5);transition:transform .6s var(--ease)}#toast.on{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero h1 span b{transform:none}.hero p,.pill{opacity:1}}
+</style>
+</head>
+<body>
+<nav class="top"><a href="#" class="serif">Anna Barchel</a><div><a href="#services">Services</a><a href="#work">Work</a><a href="#praise">Kind words</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero">
+  <div class="bg" id="bg" role="img" aria-label="Portrait of Anna Barchel"></div>
+  <div class="in">
+    <h1><span><b>Hi,</b></span><span><b>I'm Anna Barchel.</b></span></h1>
+    <p>Crafting clever copy that works harder than your morning coffee.</p>
+    <a href="#services" class="pill">Explore my services <i>↓</i></a>
+  </div>
+  <span class="cup">Copywriter · London &amp; remote</span>
+</header>
+
+<div class="marq" aria-hidden="true"><div id="mq"></div></div>
+
+<main class="wrap">
+  <section id="services">
+    <p class="eyebrow rv">What I write</p>
+    <h2 class="rv">Words that earn their keep.</h2>
+    <div class="sv rv">
+      <article tabindex="0"><h3>Websites</h3><p>Homepages and landing pages that explain fast and convert.</p><ul><li>Homepage rewrite</li><li>Landing pages</li><li>Product descriptions</li></ul></article>
+      <article tabindex="0"><h3>Email</h3><p>Welcome flows and launches your subscribers actually open.</p><ul><li>Welcome sequences</li><li>Launch campaigns</li><li>Weekly newsletters</li></ul></article>
+      <article tabindex="0"><h3>Brand voice</h3><p>A tone guide your whole team can write in, on any channel.</p><ul><li>Voice workshop</li><li>Tone guide</li><li>Naming and taglines</li></ul></article>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="ba">
+      <div>
+        <p class="eyebrow">Selected rewrites</p>
+        <h2>See the difference a line makes.</h2>
+        <div class="tabs" id="tabs"><button class="on" data-m="before">Before</button><button data-m="after">After</button></div>
+        <div class="picks" id="picks"></div>
+      </div>
+      <div class="card"><small id="lab">Before</small><q id="line"></q><div class="stat" id="stat"></div></div>
+    </div>
+  </section>
+
+  <section id="praise">
+    <p class="eyebrow rv">Kind words</p>
+    <h2 class="rv">Clients who came back for more.</h2>
+    <div class="qs">
+      <figure class="rv"><blockquote>“Our signup page went from polite to persuasive overnight. Conversions rose 38%.”</blockquote><figcaption><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&q=80&w=120&h=120" alt="">Priya Shah, Founder at Bloom &amp; Co</figcaption></figure>
+      <figure class="rv"><blockquote>“Anna found our voice in one workshop, and we still use the guide every day.”</blockquote><figcaption><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&q=80&w=120&h=120" alt="">Daniel Reyes, Marketing Lead at Northwind</figcaption></figure>
+    </div>
+  </section>
+</main>
+
+<section class="cta" id="contact"><div class="wrap rv"><h2>Let's talk copy.</h2><p>Tell me about your project and I'll reply within two working days.</p>
+  <form class="form" id="form"><input type="email" required placeholder="you@business.com" aria-label="Your email"><button>Send</button></form></div></section>
+<footer><div class="wrap"><span>© 2026 Anna Barchel</span><span>Made with a lot of coffee</span></div></footer>
+<div id="toast" role="status"></div>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+/* marquee */
+const cl=['Northwind','Bloom & Co','Halcyon','Fieldnotes','Marlow','Oatside','Paper Kite','Tidewater'];
+$('#mq').innerHTML=[...cl,...cl].map(c=>`<span>${c}</span>`).join('');
+/* hero parallax */
+const bg=$('#bg');addEventListener('scroll',()=>{if(scrollY<innerHeight)bg.style.transform=`translateY(${scrollY*.25}px) scale(${1+scrollY/6000})`},{passive:true});
+/* before / after */
+const D=[
+ {n:'Coffee shop',b:'We sell good coffee and pastries at fair prices.',a:'Your first sip will be the best part of your morning.',s:'+27% walk-in visits in 6 weeks'},
+ {n:'SaaS app',b:'Our platform provides powerful project management tools.',a:'Finally, a to-do list that does what you told it to.',s:'+38% free-trial signups'},
+ {n:'Skincare',b:'Our moisturiser is made with natural ingredients.',a:'Nine ingredients. You can pronounce all of them.',s:'+52% email click-through'}];
+let mode='before',cur=0;
+$('#picks').innerHTML=D.map((d,i)=>`<button data-i="${i}" class="${i?'':'on'}">${d.n}</button>`).join('');
+function show(){const q=$('#line');q.classList.add('sw');setTimeout(()=>{const d=D[cur];q.textContent=mode==='before'?d.b:d.a;$('#lab').textContent=mode==='before'?'Before':'After';$('#stat').textContent=mode==='after'?d.s:'';q.classList.remove('sw')},260)}
+$('#tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;$$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));show()};
+$('#picks').onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=+b.dataset.i;$$('#picks button').forEach(x=>x.classList.toggle('on',x===b));show()};
+$('#line').textContent=D[0].b;
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.15});$$('.rv').forEach(el=>io.observe(el));
+/* form */
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),3200)}
+$('#form').onsubmit=e=>{e.preventDefault();toast('Sent. I will reply within two working days.');e.target.reset()};
+addEventListener('error',e=>{if(e.target&&e.target.tagName==='IMG')e.target.style.visibility='hidden'},true);
+})();
+</script>
+</body>
+</html>
