@@ -385,10 +385,6 @@
     .btn-gradient:disabled{opacity:.45;cursor:not-allowed}
     .btn-gradient:disabled:hover{transform:none;box-shadow:none}
     .btn-gradient:disabled::after{display:none}
-    .book-field{width:100%;border:1px solid #cbd5e1;background:#fff;border-radius:12px;padding:12px 14px;font-size:16px;color:#0f172a;transition:border-color .2s,box-shadow .2s}
-    .book-field:focus{outline:none;border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.3)}
-    .book-field.bad{border-color:#e11d48}
-    .book-err{color:#be123c;font-size:12px;margin-top:4px;min-height:0}
   </style>
 </head>
 <body class="relative overflow-x-hidden">
@@ -709,69 +705,6 @@
 
   <a data-viber href="viber://chat?number=%2B639619679095" class="viber-fab" aria-label="Chat on Viber: +63 961 967 9095"><i class="fa-brands fa-viber"></i><span>Chat on Viber</span></a>
   <div id="viber-toast" class="viber-toast" role="status"></div>
-
-  <!-- BOOKING MODAL -->
-  <div id="book-modal" class="modal-back" aria-hidden="true">
-    <div class="glass-card rounded-3xl p-6 md:p-8 w-full max-w-lg max-h-[92vh] overflow-y-auto relative" style="background:rgba(255,255,255,.98)" role="dialog" aria-modal="true" aria-labelledby="book-title">
-      <button id="book-close" type="button" aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-pink-100 hover:text-pink-600 transition"><i class="fa-solid fa-xmark"></i></button>
-
-      <div id="book-gate" class="text-center py-6" hidden>
-        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-white text-2xl" style="background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899)"><i class="fa-solid fa-lock"></i></div>
-        <h3 class="text-2xl font-extrabold text-slate-900">Please sign in to book a call</h3>
-        <p class="text-slate-600 text-sm mt-2 mb-6">Sign in with Google so we can save your request and reply to the right email. It takes one click.</p>
-        <button type="button" data-auth-in data-return="book" class="auth-btn" style="margin:0 auto"><i class="fa-brands fa-google" style="margin-right:8px"></i>Sign in with Google</button>
-      </div>
-
-      <div id="book-form-wrap">
-        <h3 id="book-title" class="text-2xl font-extrabold text-slate-900 pr-10">Book a call</h3>
-        <p class="text-slate-600 text-sm mt-1 mb-5">Tell us what you need. Every field is required.</p>
-
-        <form id="book-form" novalidate class="space-y-4">
-          <div>
-            <label for="book-name" class="block text-sm font-semibold text-slate-700 mb-1">Your name</label>
-            <input id="book-name" name="name" type="text" autocomplete="name" data-req class="book-field" placeholder="Juan Dela Cruz">
-            <p class="book-err" data-err="name" role="alert"></p>
-          </div>
-          <div>
-            <label for="book-email" class="block text-sm font-semibold text-slate-700 mb-1">Email address</label>
-            <input id="book-email" name="email" type="email" autocomplete="email" inputmode="email" data-req class="book-field" placeholder="you@example.com">
-            <p class="book-err" data-err="email" role="alert"></p>
-          </div>
-          <div>
-            <label for="book-service" class="block text-sm font-semibold text-slate-700 mb-1">Service you'd like</label>
-            <select id="book-service" name="service" data-req class="book-field">
-              <option value="" selected disabled>Choose a service</option>
-              <option>Website Development</option>
-              <option>Website Management</option>
-              <option>Website Development + Management</option>
-              <option>Not sure yet, I need advice</option>
-            </select>
-            <p class="book-err" data-err="service" role="alert"></p>
-          </div>
-          <div>
-            <label for="book-concern" class="block text-sm font-semibold text-slate-700 mb-1">Your concern</label>
-            <textarea id="book-concern" name="concern" rows="4" data-req class="book-field" placeholder="Tell us about your business and what you need from your website."></textarea>
-            <p class="book-err" data-err="concern" role="alert"></p>
-          </div>
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-
-          <p id="book-error" class="text-sm text-rose-700 bg-rose-50 rounded-xl px-4 py-3" role="alert" hidden>We couldn't send your request. Please try again, or <a data-viber href="viber://chat?number=%2B639619679095" class="font-bold underline">message us on Viber</a>.</p>
-
-          <button id="book-send" type="submit" class="btn-gradient w-full px-8 py-3.5 rounded-full font-bold shadow-lg" disabled>Send request</button>
-          <p id="book-hint" class="text-xs text-slate-500 text-center">Complete every field to send.</p>
-        </form>
-      </div>
-
-      <div id="book-done" hidden>
-        <div class="text-center py-6">
-          <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mb-4"><i class="fa-solid fa-check"></i></div>
-          <h3 class="text-2xl font-extrabold text-slate-900">Request sent</h3>
-          <p class="text-slate-600 text-sm mt-2">Thanks, <span id="book-done-name"></span>. We'll reply to <b id="book-done-email"></b>.</p>
-          <button id="book-done-close" type="button" class="btn-gradient px-8 py-3 rounded-full font-bold shadow-lg mt-6">Done</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- INTERACTION SCRIPT -->
   <script>
@@ -1111,99 +1044,6 @@
     draw('GoDaddy');
   })();
   </script>
-  <script>
-  (() => {
-    // ===== SUPABASE CONFIG: paste your two values here =====
-    const SUPABASE_URL = 'https://acxrobzulaswsubfoghg.supabase.co';        // e.g. https://xxxx.supabase.co
-    const SUPABASE_KEY = 'sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';    // sb_publishable_... or anon key. NEVER the secret/service_role key
-    const SUPABASE_READY = !SUPABASE_URL.startsWith('YOUR_') && !SUPABASE_KEY.startsWith('YOUR_');
-    const q = x => document.querySelector(x);
-    const modal = q('#book-modal'), form = q('#book-form'), send = q('#book-send'), hint = q('#book-hint'),
-          err = q('#book-error'), wrap = q('#book-form-wrap'), done = q('#book-done');
-    const fields = [...form.querySelectorAll('[data-req]')];
-    const MSG = { name: 'Enter your name.', email: 'Enter a valid email address.', service: 'Choose a service.', concern: 'Tell us a bit more (at least 10 characters).' };
-    const ok = f => f.name === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim())
-                  : f.name === 'concern' ? f.value.trim().length >= 10
-                  : f.value.trim() !== '';
-    const show = f => {
-      const good = ok(f);
-      f.classList.toggle('bad', !good); f.setAttribute('aria-invalid', String(!good));
-      form.querySelector(`[data-err="${f.name}"]`).textContent = good ? '' : MSG[f.name];
-    };
-    const refresh = () => { const all = fields.every(ok); send.disabled = !all; hint.hidden = all; };
-    fields.forEach(f => {
-      f.addEventListener('input', () => { if (f.classList.contains('bad')) show(f); refresh(); });
-      f.addEventListener('change', () => { show(f); refresh(); });
-      f.addEventListener('blur', () => show(f));
-    });
-
-    let last = null, sent = false;
-    const reset = () => {
-      form.reset(); fields.forEach(f => { f.classList.remove('bad'); f.removeAttribute('aria-invalid'); form.querySelector(`[data-err="${f.name}"]`).textContent = ''; });
-      err.hidden = true; wrap.hidden = false; done.hidden = true; send.textContent = 'Send request'; refresh(); sent = false;
-    };
-    const open = () => {
-      if (sent) reset();
-      last = document.activeElement;
-      modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
-      setTimeout(() => (done.hidden ? q('#book-name') : q('#book-done-close')).focus(), 60);
-    };
-    const close = () => {
-      modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
-      if (last && last.focus) last.focus();
-    };
-    document.querySelectorAll('[data-book]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(); }));
-    q('#book-close').addEventListener('click', close);
-    q('#book-done-close').addEventListener('click', close);
-    modal.addEventListener('click', e => { if (e.target === modal) close(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      fields.forEach(show); refresh();
-      const bad = fields.find(f => !ok(f));
-      if (bad) { bad.focus(); return; }
-      if (form.elements._honey.value) return;
-      err.hidden = true; send.disabled = true; send.textContent = 'Sending...';
-      const d = Object.fromEntries(fields.map(f => [f.name, f.value.trim()]));
-      try {
-        // 1) Save the lead to Supabase (your CRM table)
-        const saveLead = SUPABASE_READY
-          ? fetch(SUPABASE_URL + '/rest/v1/leads', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'apikey': SUPABASE_KEY,
-                'Authorization': 'Bearer ' + ((window.__404 && window.__404.token) || SUPABASE_KEY),
-                'Prefer': 'return=minimal'
-              },
-              body: JSON.stringify({ name: d.name, email: d.email, service: d.service, concern: d.concern })
-            }).then(r => r.ok)
-          : Promise.resolve(false);
-
-        // 2) Email notification (existing behaviour)
-        const sendEmail = fetch('https://formsubmit.co/ajax/herart36@gmail.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ name: d.name, email: d.email, service: d.service, concern: d.concern,
-            _subject: 'New strategy call request from ' + d.name, _template: 'table', _captcha: 'false' })
-        }).then(async r => { const j = await r.json().catch(() => ({})); return r.ok && j.success !== false && j.success !== 'false'; })
-          .catch(() => false);
-
-        const saved = await saveLead.catch(() => false);
-        if (!saved) {
-          const emailed = await sendEmail;           // fallback if the database save failed
-          if (!emailed) throw new Error('send failed');
-        }                                            // otherwise the email keeps sending in the background
-        q('#book-done-name').textContent = d.name; q('#book-done-email').textContent = d.email;
-        wrap.hidden = true; done.hidden = false; sent = true; q('#book-done-close').focus();
-      } catch (_) {
-        err.hidden = false; send.textContent = 'Send request'; refresh();
-      }
-    });
-    refresh();
-  })();
-  </script>
 
   <!-- GOOGLE SIGN-IN (the Supabase library loads only when it is needed) -->
   <script>
@@ -1226,13 +1066,6 @@
     const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const G = '<svg class="auth-g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.9 2.4 30.4 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
 
-    const gateBook = () => {
-      const g = document.getElementById('book-gate'), w = document.getElementById('book-form-wrap'), d = document.getElementById('book-done');
-      if (!g || !w || !d) return;
-      if (!d.hidden) { g.hidden = true; return; }
-      const signed = !!window.__404.user;
-      g.hidden = signed; w.hidden = !signed;
-    };
 
     const render = user => {
       let html;
@@ -1247,45 +1080,32 @@
         html = '';
       }
       slots.forEach(el => { el.innerHTML = html; });
-      gateBook();
+      document.querySelectorAll('[data-book]').forEach(el => { el.textContent = user ? 'Go to dashboard' : 'Sign in to book a call'; });
     };
 
-    const prefill = () => {
-      const u = window.__404.user; if (!u) return;
-      const m = u.user_metadata || {};
-      const set = (id, v) => { const f = document.getElementById(id); if (f && v && !f.value.trim()) { f.value = v; f.dispatchEvent(new Event('input', { bubbles: true })); } };
-      set('book-name', m.full_name || m.name || '');
-      set('book-email', u.email || '');
-    };
 
     const apply = session => {
       window.__404.token = session ? session.access_token : null;
       window.__404.user = session ? session.user : null;
       render(window.__404.user);
-      prefill();
-      try {
-        if (session && sessionStorage.getItem('404-openbook')) {
-          sessionStorage.removeItem('404-openbook');
-          setTimeout(() => { const b = document.querySelector('[data-book]'); if (b) b.click(); }, 300);
-        }
-      } catch (_) {}
     };
 
     document.addEventListener('click', async e => {
-      if (e.target.closest('[data-book]')) { gateBook(); setTimeout(prefill, 80); }
-
-      const inBtn = e.target.closest('[data-auth-in]');
+      const bk = e.target.closest('[data-book]');
+      if (bk) {
+        e.preventDefault();
+        if (window.__404.user) { location.href = 'dashboard.html'; return; }
+      }
+      const inBtn = bk || e.target.closest('[data-auth-in]');
       if (inBtn) {
-        const fromBook = inBtn.dataset.return === 'book';
-        try { if (fromBook) sessionStorage.setItem('404-openbook', '1'); } catch (_) {}
-        inBtn.disabled = true; inBtn.lastChild.textContent = 'Opening Google...';
+        const orig = inBtn.innerHTML;
+        inBtn.style.pointerEvents = 'none'; inBtn.textContent = 'Opening Google...';
         try {
           const c = await loadLib();
-          const { error } = await c.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: fromBook ? location.origin + location.pathname : new URL('dashboard.html', location.href).href } });
+          const { error } = await c.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: new URL('dashboard.html', location.href).href } });
           if (error) throw error;
         } catch (_) {
-          render(null);
-          inBtn.disabled = false; inBtn.lastChild.textContent = 'Sign in with Google';
+          inBtn.style.pointerEvents = ''; inBtn.innerHTML = orig;
           alert('Google sign-in could not start. Please try again in a moment.');
         }
         return;
