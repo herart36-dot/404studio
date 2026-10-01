@@ -55,8 +55,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
 @keyframes in{from{opacity:0;transform:translateY(16px)}}
 .card:hover{transform:translateY(-8px) rotate(-.4deg);box-shadow:0 28px 60px var(--glow)}
 .thumb{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
-.thumb iframe{position:absolute;top:0;left:0;width:1000px;height:3200px;border:0;transform-origin:0 0;transform:scale(var(--k,.3)) translateY(0);transition:transform 6s cubic-bezier(.4,0,.2,1);pointer-events:none;background:#fff}
-.card:hover .thumb iframe{transform:scale(var(--k,.3)) translateY(var(--sc,0px))}
+.thumb iframe{position:absolute;top:0;left:0;width:1000px;height:625px;border:0;transform-origin:0 0;transform:scale(var(--k,.3));pointer-events:none;background:#fff}
 .info{display:flex;justify-content:space-between;align-items:center;padding:12px 6px 4px;gap:8px}
 .info b{display:block}.info span{font-size:12px;color:var(--mut)}
 .desc{font-size:12px;color:var(--mut);margin:6px 0 0;max-width:30ch;line-height:1.4}
@@ -162,7 +161,7 @@ document.head.appendChild(sc);
    To add another sample site: put its .html file next to dashboard.html and add a line below.
    Fields: n = name, c = category, f = file path, d = short description */
 const T=[
- {n:'Mayabang na si Mimiyuuuh?',c:'Blog',f:'sample-mimiyuuuh.html',d:'An opinion article about success, being relatable and escaping poverty online.'},
+ {n:'Okay, But Why?',c:'Blog',f:'sample-mimiyuuuh.html',d:'The deep dive journal into modern phenomena.'},
  {n:'W Fashion Gazette',c:'Magazine',f:'sample-fashion-gazette.html',d:'An independent fashion gazette covering beauty, street style, gowns and editorial culture.'},
  {n:'Hiblaya',c:'Fashion',f:'sample-hiblaya.html',d:'A home for Philippine fashion. Thread by thread, free to be.'}
 ];
@@ -175,7 +174,7 @@ let cat='All',term='',favs,recent,order=[...T.keys()],cur=0;
 const toast=m=>{const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2200)};
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 
-function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,s=th.firstElementChild;if(!k)return;s.style.setProperty('--k',k);s.style.setProperty('--sc',-Math.max(0,(3200-th.clientHeight/k))+'px')})}
+function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,f=th.firstElementChild;if(k)f.style.setProperty('--k',k)})}
 function list(){
  const q=term.toLowerCase();
  let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.d).toLowerCase().includes(q));
@@ -245,6 +244,18 @@ document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('frame').style.maxWidth=b.dataset.w;
 });
 window.addEventListener('resize',fit);
+/* hovering a card scrolls the site inside it (same-origin, so we can drive the page's own scroll) */
+const runs=new WeakMap();
+function autoScroll(fr,down){
+ const old=runs.get(fr);if(old)cancelAnimationFrame(old);
+ let w;try{w=fr.contentWindow;void w.document.documentElement}catch(e){return}
+ const tick=()=>{const max=w.document.documentElement.scrollHeight-w.innerHeight,y=w.scrollY+(down?2.4:-8);
+  if(down?y>=max:y<=0){w.scrollTo({top:down?max:0,behavior:'instant'});return}
+  w.scrollTo({top:y,behavior:'instant'});runs.set(fr,requestAnimationFrame(tick))};
+ runs.set(fr,requestAnimationFrame(tick));
+}
+document.addEventListener('mouseover',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,true)});
+document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,false)});
 </script>
 </body>
 </html>
