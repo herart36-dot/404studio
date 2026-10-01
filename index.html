@@ -1080,7 +1080,7 @@
         html = '';
       }
       slots.forEach(el => { el.innerHTML = html; });
-      document.querySelectorAll('[data-book]').forEach(el => { el.textContent = user ? 'Go to dashboard' : 'Sign in to book a call'; });
+      document.querySelectorAll('[data-book]').forEach(el => { el.textContent = user ? 'Start a call' : 'Sign in to book a call'; });
     };
 
 
@@ -1094,6 +1094,7 @@
       const bk = e.target.closest('[data-book]');
       if (bk) {
         e.preventDefault();
+        try { sessionStorage.setItem('404-opencall', '1'); } catch (_) {}
         if (window.__404.user) { location.href = 'dashboard.html'; return; }
       }
       const inBtn = bk || e.target.closest('[data-auth-in]');
