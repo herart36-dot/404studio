@@ -122,7 +122,7 @@
       "name": "Can I see designs before I decide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Browse the template gallery, pick the style closest to what you want, and we'll make it yours with your own photos and content."
+        "text": "Yes. Browse our portfolio to see real sample sites, pick the style closest to what you want, and we'll make it yours with your own photos and content."
       }
     }
   ]
@@ -531,7 +531,6 @@
                       </div>
         </div>
 
-        <a href="#templates" class="hover:text-indigo-600 transition-colors">Templates</a>
         <a href="#compare" class="hover:text-indigo-600 transition-colors">Compare</a>
         <a href="#calculator" class="hover:text-indigo-600 transition-colors">Pricing Calculator</a>
       </nav>
@@ -556,7 +555,6 @@
       <nav class="pt-4 pb-2 grid gap-2 font-semibold text-slate-700">
         <a href="portfolio.html" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Portfolio</a>
         <a href="#services" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Services & Categories</a>
-        <a href="#templates" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Templates</a>
         <a href="#compare" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Compare</a>
         <a href="#calculator" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Pricing Calculator</a>
         <div data-auth-slot class="px-1"></div>
@@ -671,41 +669,6 @@
   </section>
 
   <!-- CALCULATOR SECTION -->
-  <!-- TEMPLATES SHOWCASE -->
-  <section id="templates" class="relative z-10 py-16 px-6 max-w-7xl mx-auto reveal">
-    <div class="text-center mb-8">
-      <span class="inline-block px-4 py-1.5 rounded-full bg-white/90 text-purple-700 text-xs font-bold tracking-wide shadow-sm mb-3"><i class="fa-solid fa-swatchbook mr-1"></i> TEMPLATE GALLERY</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Find Your Look</h2>
-      <p class="text-slate-600 mt-2">Real website designs, ready to make yours. Hover a card to scroll the page, click to explore it on desktop or mobile.</p>
-    </div>
-    <div id="tpl-filters" class="flex flex-wrap justify-center gap-2 mb-3"></div>
-    <p id="tpl-count" class="text-center text-sm text-slate-500 mb-8"></p>
-    <div id="tpl-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    <p class="text-center text-xs text-slate-500 mt-6">Preview photography from Unsplash. Your site will use your own photos.</p>
-  </section>
-
-  <div id="tpl-modal" class="modal-back" aria-hidden="true">
-    <div class="glass-card rounded-3xl p-5 md:p-7 w-full max-w-3xl max-h-[92vh] overflow-y-auto relative" style="background:rgba(255,255,255,.97)">
-      <button id="tpl-close" type="button" aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-pink-100 hover:text-pink-600 transition"><i class="fa-solid fa-xmark"></i></button>
-      <div class="flex flex-wrap items-center gap-3 mb-1 pr-10">
-        <h3 id="tpl-title" class="text-2xl font-extrabold text-slate-900"></h3>
-        <span id="tpl-cat" class="text-xs font-bold px-3 py-1 rounded-full bg-purple-100 text-purple-700"></span>
-      </div>
-      <p id="tpl-desc" class="text-slate-600 text-sm mb-3"></p>
-      <div id="tpl-tags" class="flex flex-wrap gap-2 mb-4"></div>
-      <div class="flex justify-center gap-2 mb-4">
-        <button type="button" data-dev="100%" class="tpl-chip active"><i class="fa-solid fa-desktop mr-1"></i> Desktop</button>
-        <button type="button" data-dev="250px" class="tpl-chip"><i class="fa-solid fa-mobile-screen mr-1"></i> Mobile</button>
-      </div>
-      <div id="tpl-device" class="device" style="max-width:100%"></div>
-      <p class="text-center text-xs text-slate-400 mt-2">Hover the preview to scroll it</p>
-      <div class="flex flex-wrap justify-center gap-3 mt-4">
-        <a href="#contact" id="tpl-use" class="btn-gradient px-7 py-3 rounded-full font-bold shadow-lg">Use this style <i class="fa-solid fa-arrow-right ml-1"></i></a>
-        <a href="#calculator" class="bg-white text-slate-800 px-7 py-3 rounded-full font-bold border border-slate-200 hover:bg-slate-50 transition">Get a quote</a>
-      </div>
-    </div>
-  </div>
-
   <!-- COMPARISON -->
   <section id="compare" class="relative z-10 py-16 px-6 max-w-5xl mx-auto reveal">
     <div class="text-center mb-8">
@@ -822,7 +785,7 @@
       </details>
       <details class="faq-item">
         <summary>Can I see designs before I decide?</summary>
-        <p>Yes. Browse the template gallery above, pick the style closest to what you want, and we'll make it yours with your own photos and content.</p>
+        <p>Yes. Browse our <a href="portfolio.html" class="font-semibold text-indigo-600 hover:underline">portfolio</a> to see real sample sites, pick the style closest to what you want, and we'll make it yours with your own photos and content.</p>
       </details>
     </div>
   </section>
@@ -1033,108 +996,6 @@
       }
     });
   
-    // Template gallery
-    const TPL=[
-      {n:'Folio',c:'Portfolio',i:'fa-camera-retro',a:'#6366f1',b:'#a855f7',l:'grid',d:'A clean showcase for photographers, designers and creators.',t:['Image gallery','Case studies','Contact form']},
-      {n:'Bloom Café',c:'Food',i:'fa-mug-hot',a:'#f97316',b:'#ec4899',l:'split',d:'Warm, appetizing menus with reservations and delivery links.',t:['Online menu','Reservations','Google Maps']},
-      {n:'Cartly',c:'Store',i:'fa-bag-shopping',a:'#ec4899',b:'#8b5cf6',l:'grid',d:'A fast, mobile-first shop with cart, checkout and product filters.',t:['Product grid','Secure checkout','Inventory']},
-      {n:'Northwind',c:'Business',i:'fa-briefcase',a:'#0ea5e9',b:'#6366f1',l:'list',d:'A trustworthy corporate site for agencies, consultants and firms.',t:['Services','Team page','Lead capture']},
-      {n:'PulseFit',c:'Fitness',i:'fa-dumbbell',a:'#10b981',b:'#0ea5e9',l:'split',d:'High-energy pages for gyms and coaches with class booking.',t:['Class schedule','Memberships','Trainer bios']},
-      {n:'Haven Homes',c:'Property',i:'fa-house',a:'#f59e0b',b:'#ef4444',l:'list',d:'Property listings with search, galleries and inquiry forms.',t:['Listings','Filters','Inquiry form']}
-    ];
-    const im=(h,a,b,ic)=>`<div class="w-img" style="height:${h}px;background:linear-gradient(135deg,${a},${b})"><i class="fa-solid ${ic}"></i></div>`;
-    const cap=(h,a,b,ic,t,c)=>`<div class="w-cap">${im(h,a,b,ic)}<b>${t}</b><small>${c}</small></div>`;
-    const nav=(lg,ic,l,cta)=>`<div class="w-nav"><div class="lg"><i class="fa-solid ${ic}" style="color:var(--a)"></i>${lg}</div><div class="lk">${l.map(x=>`<span>${x}</span>`).join('')}</div><span class="w-btn sm">${cta}</span></div>`;
-    const ft=n=>`<div class="w-ft"><span>© 2026 ${n}</span><span>Instagram · Facebook · TikTok</span></div>`;
-    const row=(a,b)=>`<div class="w-row"><span>${a}</span><b>${b}</b></div>`;
-    const U=i=>`https://images.unsplash.com/photo-${i}?auto=format&fit=crop&w=640&q=65`;
-    const G=(a,b)=>`linear-gradient(135deg,${a},${b})`;
-    const ph=(h,i,g,x='')=>`<div class="w-ph" style="height:${h}px;background:url(${U(i)}) center/cover,${g};${x}"></div>`;
-    const pc=(h,i,g,t,c,extra='')=>`<div class="w-cap">${ph(h,i,g)}<b>${t}</b><small>${c}</small>${extra}</div>`;
-    const cover=(i,ov,inner)=>`<div class="w-cover" style="background:${ov},url(${U(i).replace('w=640','w=1000')}) center/cover">${inner}</div>`;
-    const hero=(tag,h,p,b1,b2,col='')=>`<div class="w-tag"${col?` style="color:${col}"`:''}>${tag}</div><h1 class="w-h1" style="margin-top:14px">${h}</h1><p class="w-p">${p}</p><span class="w-btn">${b1}</span>${b2?`<span class="w-btn o">${b2}</span>`:''}`;
-    const band=(h,p,b,c)=>`<div class="w-band"><h2 class="w-h2">${h}</h2><p style="opacity:.9;margin:10px 0 22px">${p}</p><span class="w-btn" style="background:#fff;color:${c};margin:0">${b}</span></div>`;
-    const SITES={
-      'Folio':{v:'--a:#a78bfa;--b:#f472b6;--bg:#0f0c1d;--fg:#fff',h:nav('Mira Santos','fa-circle-half-stroke',['Work','About','Journal'],'Hire me')
-        +`<div class="w-hero"><div>${hero('Portfolio 2026','Faces, places and stories worth keeping.','Photographer and art director capturing people and brands with a soft, cinematic eye.','View my work','About me')}</div><div class="w-stack">${ph(400,'1534528741775-53994a69daeb',G('#a78bfa','#f472b6'),'width:72%')}${ph(230,'1531746020798-e6953c6e8e04',G('#f472b6','#fb923c'),'position:absolute;right:0;bottom:-24px;width:46%;border:6px solid #0f0c1d')}</div></div>`
-        +`<div class="w-sec"><div class="w-tag">Selected work</div><h2 class="w-h2" style="margin-top:8px">Recent shoots</h2><div class="w-g3">${pc(260,'1529626455594-4ff0802cfb7e',G('#6366f1','#a855f7'),'Quiet Hours','Portrait · 2026')}${pc(260,'1506863530036-1efeddceb993',G('#444','#111'),'Monochrome','Editorial · 2026')}${pc(260,'1438761681033-6461ffad8d80',G('#f59e0b','#ef4444'),'Golden Light','Lifestyle · 2025')}${pc(260,'1544005313-94ddf0286df2',G('#22d3ee','#6366f1'),'Studio Session','Brand · 2025')}${pc(260,'1614204424926-196a80bf0be8',G('#a855f7','#ec4899'),'After Dark','Portrait · 2025')}${pc(260,'1500648767791-00dcc994a43e',G('#10b981','#0ea5e9'),'Field Notes','Documentary · 2025')}</div></div>`
-        +band("Let's create something people remember.",'Now booking shoots for Q4 2026.','Start a project','#7c3aed')+ft('Mira Santos')},
-      'Bloom Café':{s:1,v:'--a:#d9793a;--b:#b5482f;--bg:#fff8f0;--fg:#3b2a20',h:cover('1766767164066-d2f4571e75d1','linear-gradient(90deg,rgba(43,26,16,.88),rgba(43,26,16,.3))',nav('Bloom Café','fa-mug-hot',['Menu','Our story','Visit'],'Reserve')+`<div style="padding:60px 56px 120px;max-width:620px">${hero('Small-batch coffee · since 2018','Freshly brewed. Slowly savored.','Single-origin beans, warm pastries and a corner seat with your name on it.','See the menu','Book a table','#f3b27a')}</div>`)
-        +`<div class="w-sec"><div class="w-tag">Today's favorites</div><h2 class="w-h2" style="margin-top:8px">From our bar & oven</h2><div class="w-g3">${pc(220,'1475296204602-08d15839e95f',G('#d9793a','#b5482f'),'Iced Spanish Latte','Espresso, milk, sweet cream',`<b style="color:var(--a);margin-top:4px">₱165</b>`)}${pc(220,'1516036018940-b0159d2ab461',G('#d9793a','#b5482f'),'Flat White','Velvety microfoam, double shot',`<b style="color:var(--a);margin-top:4px">₱140</b>`)}${pc(220,'1521677633993-721dd3f95c10',G('#d9793a','#b5482f'),'House Drip','Rotating single origin',`<b style="color:var(--a);margin-top:4px">₱120</b>`)}</div></div>`
-        +`<div class="w-sec w-g2" style="align-items:center;padding-top:0;margin-top:0">${ph(280,'1522992319-0365e5f11656',G('#d9793a','#b5482f'))}<div><h2 class="w-h2">Slow mornings, good company.</h2><p class="w-p" style="margin:14px 0 18px!important">We roast in small batches and bake every morning. Come for the coffee, stay for the corner seat.</p>${row('Mon – Fri','7AM – 9PM')}${row('Sat – Sun','8AM – 10PM')}</div></div>`
-        +band('Save your favorite table','Walk-ins welcome · Reservations for groups of 4+','Reserve now','#b5482f')+ft('Bloom Café')},
-      'Cartly':{v:'--a:#ec4899;--b:#8b5cf6;--bg:#ffffff;--fg:#1e1b4b',h:`<div style="background:#1e1b4b;color:#fff;text-align:center;font-size:13px;padding:8px">Free shipping on orders over ₱1,500 · Use code SUMMER</div>`+nav('Cartly','fa-bag-shopping',['New','Women','Men','Sale'],'<i class="fa-solid fa-cart-shopping"></i> Cart (2)')
-        +`<div class="w-hero"><div>${hero('Summer drop','Up to 40% off the season\'s best.','Easy layers, soft colors and free returns on everything.','Shop the sale','')}</div>${ph(380,'1483985988355-763728e1935b',G('#ec4899','#8b5cf6'))}</div>`
-        +`<div class="w-chips"><span>All</span><span>Outerwear</span><span>Knitwear</span><span>Accessories</span><span>Sale</span></div>`
-        +`<div class="w-sec"><h2 class="w-h2">Bestsellers</h2><div class="w-g4">${[['Wren Trench Coat','₱3,290','1601762603339-fd61e28b698a'],['Cozy Knit Sweater','₱1,890','1574201635302-388dd92a4c3f'],['Riviera Sunglasses','₱890','1529139574466-a303027c1d8b'],['Sunny Tracksuit','₱2,490','1515886657613-9f3515b0c78f']].map(x=>pc(250,x[2],G('#ec4899','#8b5cf6'),x[0],'<span style="color:#f59e0b">★★★★★</span> <span style="opacity:.6">(128)</span>',`<b style="margin-top:2px">${x[1]}</b>`)).join('')}</div></div>`
-        +band('Get 10% off your first order','Join the list for drops, deals and styling tips.','Subscribe','#8b5cf6')+ft('Cartly')},
-      'Northwind':{v:'--a:#0ea5e9;--b:#4f46e5;--bg:#f8fafc;--fg:#0f172a',h:nav('Northwind','fa-compass',['Services','Case studies','Team','Insights'],'Book a call')
-        +`<div class="w-hero"><div>${hero('Brand & growth consultancy','Strategy that helps ambitious teams grow.','We turn market insight into clear plans, sharper brands and measurable revenue.','Get a free audit','Our approach')}</div>${ph(340,'1541746972996-4e0b0f43e02a',G('#0ea5e9','#4f46e5'))}</div>`
-        +`<div class="w-sec" style="padding-top:0"><div class="w-g4" style="margin-top:0">${[['250+','Clients served'],['98%','Retention rate'],['12 yrs','In business'],['40','Experts']].map(x=>`<div class="w-card" style="background:#fff;text-align:center"><h2 class="w-h2" style="color:var(--a)">${x[0]}</h2><small style="opacity:.6">${x[1]}</small></div>`).join('')}</div></div>`
-        +`<div class="w-sec"><h2 class="w-h2">What we do</h2><div class="w-g3">${[['fa-bullseye','Brand Strategy','Positioning, naming and messaging that sticks.'],['fa-bullhorn','Digital Marketing','Campaigns that bring in qualified leads.'],['fa-chart-pie','Analytics','Dashboards that turn data into decisions.']].map(x=>`<div class="w-card" style="background:#fff"><div class="w-ic"><i class="fa-solid ${x[0]}"></i></div><b>${x[1]}</b><small style="opacity:.65">${x[2]}</small></div>`).join('')}</div></div>`
-        +`<div class="w-sec" style="padding-top:0"><h2 class="w-h2">Inside our studio</h2><div class="w-g3">${ph(200,'1560264280-88b68371db39',G('#0ea5e9','#4f46e5'))}${ph(200,'1497366754035-f200968a6e72',G('#0ea5e9','#4f46e5'))}${ph(200,'1517048676732-d65bc937f952',G('#0ea5e9','#4f46e5'))}</div></div>`
-        +`<div class="w-band" style="background:#0f172a"><h2 class="w-h2">"They doubled our qualified leads in one quarter."</h2><p style="opacity:.7;margin-top:12px">Andrea Cruz, COO at Brightlane</p></div>`+ft('Northwind')},
-      'PulseFit':{v:'--a:#22e58a;--b:#0ea5e9;--bg:#0a0f0d;--fg:#fff',h:cover('1517836357463-d25dfeac3438','linear-gradient(90deg,rgba(4,10,8,.92),rgba(4,10,8,.4))',nav('PulseFit','fa-bolt',['Classes','Coaches','Pricing'],'Free trial')+`<div style="padding:60px 56px 120px;max-width:620px">${hero('Gym · Studio · Online','Train harder. Recover smarter.','Small-group classes, expert coaches and a community that keeps you showing up.','Start free week','View schedule')}</div>`)
-        +`<div class="w-sec"><h2 class="w-h2">This week's classes</h2><div style="margin-top:14px">${['Mon · 6:00 AM — HIIT Burn|Coach Ana|Book →','Tue · 7:00 AM — Power Yoga|Coach Leo|Book →','Wed · 6:30 PM — Strength Lab|Coach Mika|Book →','Thu · 6:00 AM — Spin & Sweat|Coach Jo|Full'].map(x=>{const q=x.split('|');return row(`${q[0]} <small style="opacity:.6">${q[1]}</small>`,`<span style="color:var(--a)">${q[2]}</span>`)}).join('')}</div></div>`
-        +`<div class="w-sec" style="padding-top:0"><div class="w-g3" style="margin-top:0">${pc(220,'1541534741688-6078c6bfb5c5',G('#22e58a','#0ea5e9'),'Strength Lab','Free weights & coaching')}${pc(220,'1554284126-aa88f22d8b74',G('#22e58a','#0ea5e9'),'Group Training','Small classes, big energy')}${pc(220,'1605296867304-46d5465a13f1',G('#22e58a','#0ea5e9'),'Open Gym','24/7 for members')}</div></div>`
-        +`<div class="w-sec" style="padding-top:0"><h2 class="w-h2">Membership</h2><div class="w-g3">${[['Starter','₱1,499','8 classes / month'],['Pro','₱2,499','Unlimited classes + recovery'],['Elite','₱3,999','Pro + 1:1 coaching']].map((x,k)=>`<div class="w-card" style="${k==1?'background:linear-gradient(135deg,var(--a),var(--b));color:#04140c':''}"><b>${x[0]}</b><h2 class="w-h2" style="margin:6px 0">${x[1]}<small style="font-size:14px;opacity:.7">/mo</small></h2><small>${x[2]}</small></div>`).join('')}</div></div>`+ft('PulseFit')},
-      'Haven Homes':{v:'--a:#f59e0b;--b:#ef4444;--bg:#fffaf5;--fg:#2d2418',h:cover('1600596542815-ffad4c1539a9','linear-gradient(180deg,rgba(30,20,10,.5),rgba(30,20,10,.62))',nav('Haven Homes','fa-house',['Buy','Rent','Sell','Agents'],'List a property')+`<div style="padding:50px 56px 120px;text-align:center"><div class="w-tag" style="color:#fcd34d">Trusted real estate</div><h1 class="w-h1" style="margin:14px auto 0;max-width:720px">Find a home that feels like yours.</h1><p class="w-p" style="margin:16px auto 28px!important">Browse verified listings and book a viewing in minutes.</p><div class="w-search" style="margin:0 auto"><span>📍 Location</span><span>🏠 Type</span><span>₱ Budget</span><b class="w-btn sm" style="margin:0">Search</b></div></div>`)
-        +`<div class="w-sec"><h2 class="w-h2">Featured listings</h2><div class="w-g3">${[['₱12.5M','Sunridge Villa','4 bd · 3 ba · 220 m²','1570129477492-45c003edd2be'],['₱18.9M','Poolside Residence','5 bd · 4 ba · 340 m²','1512917774080-9991f1c4c750'],['₱9.2M','Maple Townhouse','3 bd · 3 ba · 150 m²','1598228723793-52759bba239c']].map(x=>pc(210,x[3],G('#f59e0b','#ef4444'),x[1],x[2],`<b style="color:var(--a);margin-top:2px">${x[0]}</b>`)).join('')}</div></div>`
-        +`<div class="w-sec" style="padding-top:0"><h2 class="w-h2">Made for living</h2><div class="w-g2">${ph(230,'1583847268964-b28dc8f51f92',G('#f59e0b','#ef4444'))}${ph(230,'1554995207-c18c203602cb',G('#f59e0b','#ef4444'))}</div></div>`
-        +band('Ready to see it in person?','Talk to a Haven agent today.','Book a viewing','#ef4444')+ft('Haven Homes')}
-    };
-    const mock=(t,big)=>{const S=SITES[t.n];return `<div class="mock${big?' big':''}"><div class="mock-bar"><i></i><i></i><i></i><span>${t.n.toLowerCase().replace(/ /g,'')}.com</span></div><div class="mock-view"><div class="site-scale"><div class="site${S.s?' serif':''}" style="${S.v}">${S.h}</div></div></div></div>`};
-    const fitOne=v=>{
-      const w=v.clientWidth,wr=v.firstElementChild,st=wr.firstElementChild,dev=$('#tpl-device');
-      if(!w) return;
-      const dw=(dev&&dev.contains(v)&&dev.style.maxWidth!=='100%')?390:1000, sc=w/dw;
-      wr.style.width=dw+'px'; wr.style.transform=`scale(${sc})`;
-      const dist=Math.max(0,st.offsetHeight-v.clientHeight/sc);
-      st.style.setProperty('--sc',-dist+'px'); st.style.transitionDuration=Math.max(2.5,dist/180)+'s';
-    };
-    const tplRO=new ResizeObserver(es=>es.forEach(e=>fitOne(e.target)));
-    const fitSites=()=>{tplRO.disconnect();$$('.mock-view').forEach(v=>{fitOne(v);tplRO.observe(v)})};
-    const cats=['All',...new Set(TPL.map(t=>t.c))];
-    const tplFilters=$('#tpl-filters'), tplGrid=$('#tpl-grid'), tplModal=$('#tpl-modal');
-    function renderTpl(cat){
-      const list=TPL.filter(t=>cat==='All'||t.c===cat);
-      $('#tpl-count').textContent=`Showing ${list.length} ${list.length===1?'template':'templates'}${cat==='All'?'':' in '+cat}`;
-      tplGrid.innerHTML=list.map((t,k)=>`<article class="glass-card interactive-card tpl-card rounded-3xl p-4" style="animation-delay:${k*70}ms" data-n="${t.n}" tabindex="0">
-        ${mock(t)}
-        <div class="flex items-center justify-between mt-4 px-1">
-          <div><h3 class="font-extrabold text-slate-900">${t.n}</h3><p class="text-xs text-slate-500">${t.c}</p></div>
-          <span class="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md" style="background:linear-gradient(135deg,${t.a},${t.b})"><i class="fa-solid ${t.i}"></i></span>
-        </div></article>`).join('');
-      fitSites();
-      $$('.tpl-card').forEach(c=>{
-        c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
-        c.addEventListener('click',()=>openTpl(c.dataset.n));
-        c.addEventListener('keydown',e=>{if(e.key==='Enter')openTpl(c.dataset.n)});
-      });
-    }
-    tplFilters.innerHTML=cats.map((c,k)=>`<button type="button" class="tpl-chip${k?'':' active'}" data-cat="${c}">${c}</button>`).join('');
-    tplFilters.addEventListener('click',e=>{
-      const b=e.target.closest('[data-cat]'); if(!b) return;
-      $$('.tpl-chip',tplFilters).forEach(x=>x.classList.toggle('active',x===b)); renderTpl(b.dataset.cat);
-    });
-    function openTpl(n){
-      const t=TPL.find(x=>x.n===n);
-      $('#tpl-title').textContent=t.n; $('#tpl-cat').textContent=t.c; $('#tpl-desc').textContent=t.d;
-      $('#tpl-tags').innerHTML=t.t.map(x=>`<span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600"><i class="fa-solid fa-check text-emerald-500 mr-1"></i>${x}</span>`).join('');
-      $('#tpl-device').innerHTML=mock(t,true); $('#tpl-device').style.maxWidth='100%';
-      $$('[data-dev]',tplModal).forEach((b,k)=>b.classList.toggle('active',!k));
-      tplModal.classList.add('open'); fitSites(); tplModal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
-    }
-    const closeTpl=()=>{tplModal.classList.remove('open');tplModal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
-    $('#tpl-close').addEventListener('click',closeTpl);
-    tplModal.addEventListener('click',e=>{if(e.target===tplModal)closeTpl()});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTpl()});
-    $('#tpl-use').addEventListener('click',closeTpl);
-    $$('a[href^="#"]',tplModal).forEach(a=>a.addEventListener('click',closeTpl));
-    $$('[data-dev]',tplModal).forEach(b=>b.addEventListener('click',()=>{
-      $$('[data-dev]',tplModal).forEach(x=>x.classList.toggle('active',x===b)); $('#tpl-device').style.maxWidth=b.dataset.dev; setTimeout(fitSites,480);
-    }));
-    renderTpl('All');
   </script>
 
   <script>
