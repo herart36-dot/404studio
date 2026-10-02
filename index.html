@@ -826,6 +826,7 @@
           <label for="cf-msg" class="cf-label">Tell us about your business</label>
           <textarea id="cf-msg" name="message" rows="5" required class="cf-field" placeholder="What do you do, and what should the website help you with?"></textarea>
         </div>
+        <input type="text" id="cf-honey" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="flex flex-col sm:flex-row items-center gap-4">
           <button type="submit" class="btn-gradient px-8 py-3.5 rounded-full font-bold shadow-lg">Send message</button>
           <p id="cf-status" class="text-sm text-slate-600" role="status" aria-live="polite"></p>
@@ -1232,10 +1233,32 @@
         bad[0].focus();
         return;
       }
-      const subject = '404 Studio inquiry: ' + need;
-      const body = 'Name: ' + name + '\nEmail: ' + email + '\nNeed: ' + need + '\n\n' + msg;
-      status.textContent = 'Opening your email app with your message ready. If nothing opens, email ' + TO + ' directly.';
-      location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      if (document.getElementById('cf-honey').value) return; /* spam trap */
+      const SB_URL = 'https://acxrobzulaswsubfoghg.supabase.co';
+      const SB_KEY = 'sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';
+      const btn = form.querySelector('button[type="submit"]');
+      const label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...';
+      status.textContent = '';
+      /* Saves into the same "leads" table Orchid CRM reads. The need goes in front of the message. */
+      const lead = { name: name, email: email, service: 'Web Development', concern: '[Need: ' + need + ']\n\n' + msg };
+      const tok = (window.__404 && window.__404.token) || SB_KEY;
+      const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 12000);
+      fetch(SB_URL + '/rest/v1/leads', {
+        method: 'POST', signal: ctl.signal,
+        headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + tok, 'Prefer': 'return=minimal' },
+        body: JSON.stringify(lead)
+      }).then(r => {
+        if (!r.ok) throw new Error('save failed');
+        form.reset();
+        status.textContent = 'Thanks, ' + name + '! Your message was sent. We will reply to ' + email + '.';
+      }).catch(() => {
+        /* fallback so the message is never lost: open the email app like before */
+        const subject = '404 Studio inquiry: ' + need;
+        const body = 'Name: ' + name + '\nEmail: ' + email + '\nNeed: ' + need + '\n\n' + msg;
+        status.textContent = 'We could not send it automatically. Opening your email app with your message ready. If nothing opens, email ' + TO + ' directly.';
+        location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }).finally(() => { clearTimeout(timer); btn.disabled = false; btn.textContent = label; });
     });
   })();
   </script>
