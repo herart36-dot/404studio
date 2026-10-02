@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Dashboard | 404 Studio</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#4f46e5">
@@ -19,7 +19,7 @@ button{font:inherit;cursor:pointer;color:inherit}
 #boot{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:100;font-weight:700;color:var(--ac)}
 .spin{width:38px;height:38px;border:4px solid var(--line);border-top-color:var(--ac);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 12px}
 @keyframes sp{to{transform:rotate(360deg)}}
-.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh;min-height:100dvh}
 aside{position:sticky;top:0;height:100vh;padding:24px 18px;display:flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);border-right:1px solid var(--line);overflow-y:auto}
 .brand{font-weight:800;font-size:18px;display:flex;align-items:center;gap:10px;margin-bottom:18px;text-decoration:none;color:var(--ink)}
 .brand i{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
@@ -78,8 +78,6 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
 .frame iframe{width:100%;height:100%;border:0}
 #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:14px;font-weight:600;font-size:14px;opacity:0;transition:.3s;z-index:90;pointer-events:none}
 #toast.show{opacity:1;transform:translate(-50%,0)}
-#menu{display:none}
-@media(max-width:860px){.layout{grid-template-columns:1fr}aside{position:fixed;left:0;top:0;z-index:40;width:270px;transform:translateX(-100%);transition:.3s;background:#fff}aside.open{transform:none}#menu{display:inline-block}.in{min-width:0;flex:1}}
 /* start a call */
 #call{position:fixed;inset:0;z-index:70;background:rgba(18,15,50,.6);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:fd .25s}
 .cbox{position:relative;background:#fff;border-radius:24px;width:100%;max-width:540px;max-height:94vh;overflow-y:auto;padding:28px;box-shadow:0 30px 80px rgba(30,27,75,.35)}
@@ -108,6 +106,58 @@ textarea.fi{resize:vertical;min-height:90px}
 .done .ck{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:30px;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2))}
 @media(max-width:480px){.row2{grid-template-columns:1fr}.cbox{padding:22px}}
 @media (max-width:900px){aside,#modal,#call{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}aside{background:rgba(255,255,255,.96)}#modal{background:rgba(18,15,50,.9)}#call{background:rgba(18,15,50,.8)}}
+
+/* ===== Mobile & tablet ===== */
+.appbar,#scrim{display:none}
+@media (min-width:861px) and (max-width:1100px){
+ .layout{grid-template-columns:220px 1fr}
+ aside{padding:20px 12px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+ .in{min-width:180px}
+}
+@media (max-width:860px){
+ .layout{grid-template-columns:1fr}
+ /* touch drawer */
+ aside{position:fixed;left:0;top:0;bottom:0;height:100vh;height:100dvh;width:min(86vw,320px);z-index:50;transform:translateX(-102%);visibility:hidden;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),visibility 0s linear .28s;background:#fff;
+  padding:max(20px,env(safe-area-inset-top)) 16px max(20px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+  overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:12px 0 40px rgba(30,27,75,.18)}
+ aside.open{transform:none;visibility:visible;transition-delay:0s}
+ #scrim{display:block;position:fixed;inset:0;z-index:45;background:rgba(18,15,50,.5);opacity:0;pointer-events:none;transition:opacity .28s}
+ #scrim.on{opacity:1;pointer-events:auto}
+ body.nav-open{overflow:hidden}
+ /* sticky top bar with the menu button */
+ main{padding-left:max(clamp(18px,3.5vw,48px),env(safe-area-inset-left));padding-right:max(clamp(18px,3.5vw,48px),env(safe-area-inset-right))}
+ .appbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:30;
+  margin:-32px calc(-1 * clamp(18px,3.5vw,48px)) 18px;padding:max(10px,env(safe-area-inset-top)) clamp(14px,3.5vw,48px) 10px;
+  background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+ .appbar .brand{margin:0;flex:1;min-width:0}
+ .ab-btn{min-width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink);padding:0}
+ .ab-call{padding:0 16px;font-weight:700;font-size:14px}
+ /* controls, stats, cards */
+ .top{margin-bottom:18px}
+ .ctl{width:100%}
+ .in{flex:1 1 100%;min-width:0}.sel{flex:1 1 140px}.ctl .btn{flex:1 1 140px}
+ .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+ .stat{padding:10px 12px}.stat b{font-size:20px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+ /* preview modal */
+ #modal{padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}
+ .mbar{gap:8px}.mbar h3{order:-1;flex:1 1 100%;font-size:16px}
+}
+@media (max-width:600px){.seg{display:none}.mbar .sp{display:none}}
+@media (max-width:560px){
+ .grid{grid-template-columns:1fr}
+ .sub{font-size:14px}
+ .cbox{padding:22px;max-height:calc(100dvh - 24px)}
+ #toast{bottom:max(26px,calc(env(safe-area-inset-bottom) + 14px));max-width:calc(100% - 32px);text-align:center}
+}
+/* touch devices: no hover-only effects, bigger tap targets, no iOS zoom on inputs */
+@media (hover:none){.card:hover{transform:none;box-shadow:none}.nav:hover{transform:none}.btn:hover{transform:none;box-shadow:none}.heart:hover{transform:none}.card:active{transform:scale(.985)}}
+@media (pointer:coarse){
+ .nav{min-height:44px}.heart{width:44px;height:44px}.round,.btn,.chip{min-height:44px}.seg button{min-height:40px}
+ .cx{width:44px;height:44px}.pill span{padding:12px 16px}.in,.sel,.fi{min-height:44px;font-size:16px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -126,10 +176,15 @@ textarea.fi{resize:vertical;min-height:90px}
     <button class="nav" id="callNav" type="button">Start a call</button>
     <div class="me"><div class="av" id="av"></div><div><b id="nm"></b><button id="out" type="button">Sign out</button></div></div>
   </aside>
+  <div id="scrim"></div>
   <main>
+    <div class="appbar">
+      <button class="ab-btn" id="menu" type="button" aria-label="Open menu" aria-controls="side" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="brand" href="index.html"><i>404</i> 404 Studio</a>
+      <button class="ab-btn ab-call" id="callBar" type="button">Call</button>
+    </div>
     <div class="top">
       <div>
-        <button class="round" id="menu" type="button" style="color:var(--ink);border-color:var(--line);margin-bottom:12px">Menu</button>
         <h1 id="hello">Welcome</h1>
         <p class="sub">Explore real sample websites. Hover a card to scroll through the page, open one to use it live on desktop, tablet or phone, and save the ones you like.</p>
       </div>
@@ -267,7 +322,7 @@ function renderRecent(){
  $('recent').classList.toggle('hidden',!recent.length);
  $('chips').innerHTML=recent.map(n=>{const t=T.find(x=>x.n===n);return t?`<button class="chip" data-n="${esc(n)}" type="button"><i style="background:linear-gradient(135deg,#4f46e5,#ec4899)"></i>${esc(n)}</button>`:''}).join('');
 }
-function setCat(c){cat=c;renderSide();render();$('side').classList.remove('open')}
+function setCat(c){cat=c;renderSide();render();if(typeof setSide==='function')setSide(false)}
 function toggleFav(n){favs=favs.includes(n)?favs.filter(x=>x!==n):[...favs,n];store.set('fav-'+K,favs);toast(favs.includes(n)?'Saved to favorites':'Removed from favorites');render();renderSide();syncM()}
 
 function openM(n){
@@ -307,7 +362,23 @@ document.addEventListener('keydown',e=>{
 $('q').oninput=e=>{term=e.target.value.trim();render()};
 $('sort').onchange=e=>{if(e.target.value==='r')order=shuffle([...T.keys()]);render()};
 $('rand').onclick=()=>openM(T[Math.floor(Math.random()*T.length)].n);
-$('menu').onclick=()=>$('side').classList.toggle('open');
+/* mobile drawer: open/close, backdrop, Esc, swipe left, closes after a tap */
+var mq=matchMedia('(max-width:860px)'),side=$('side'),scrim=$('scrim'),menuBtn=$('menu'),sideOpen=false;
+function setSide(open){
+ if(!side||open===sideOpen)return;sideOpen=open;
+ side.classList.toggle('open',open);scrim.classList.toggle('on',open);document.body.classList.toggle('nav-open',open);
+ menuBtn.setAttribute('aria-expanded',open);menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+ if(open){const f=side.querySelector('.nav');if(f)f.focus()}else if(mq.matches)menuBtn.focus();
+}
+menuBtn.onclick=()=>setSide(!sideOpen);
+scrim.onclick=()=>setSide(false);
+$('callBar').onclick=()=>openCall();
+side.addEventListener('click',e=>{if(mq.matches&&e.target.closest('.nav,.brand'))setSide(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sideOpen)setSide(false)});
+mq.addEventListener('change',e=>{if(!e.matches)setSide(false)});
+var sx=0,sy=0;
+side.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+side.addEventListener('touchend',e=>{const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(dx<-60&&Math.abs(dy)<Math.abs(dx)*.6)setSide(false)},{passive:true});
 $('close').onclick=closeM;$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
 $('mfav').onclick=()=>toggleFav(curT.n);
 $('use').onclick=()=>{store.set('pick-'+K,curT.n);const n=curT.n;closeM();openCall('I\'d like to use the "'+n+'" template.')};
