@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#4f46e5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@500;700&family=DM+Serif+Display&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f4f1ff;--card:#fff;--ink:#1e1b4b;--mut:#6b6990;--line:#e4e0fa;--ac:#4f46e5;--ac2:#ec4899;--glow:rgba(79,70,229,.2)}
 *,*::before,*::after{box-sizing:border-box}
@@ -55,6 +55,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-he
 @keyframes in{from{opacity:0;transform:translateY(16px)}}
 .card:hover{transform:translateY(-8px) rotate(-.4deg);box-shadow:0 28px 60px var(--glow)}
 .thumb{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.thumb .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;background:#fff}
 .thumb iframe{position:absolute;top:0;left:0;width:1000px;height:625px;border:0;transform-origin:0 0;transform:scale(var(--k,.3));pointer-events:none;background:#fff}
 .info{display:flex;justify-content:space-between;align-items:center;padding:12px 6px 4px;gap:8px}
 .info b{display:block}.info span{font-size:12px;color:var(--mut)}
@@ -106,6 +107,7 @@ textarea.fi{resize:vertical;min-height:90px}
 .done{text-align:center;padding:10px 0}
 .done .ck{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:30px;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2))}
 @media(max-width:480px){.row2{grid-template-columns:1fr}.cbox{padding:22px}}
+@media (max-width:900px){aside,#modal,#call{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}aside{background:rgba(255,255,255,.96)}#modal{background:rgba(18,15,50,.9)}#call{background:rgba(18,15,50,.8)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -241,7 +243,8 @@ let cat='All',term='',favs,recent,order=[...T.keys()],cur=0;
 const toast=m=>{const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2200)};
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 
-function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,f=th.firstElementChild;if(k)f.style.setProperty('--k',k)})}
+function thumbFallback(img){var f=document.createElement('iframe');f.loading='lazy';f.tabIndex=-1;f.title='';f.src=img.dataset.f+'#thumb';img.replaceWith(f);if(typeof fit==='function')fit()}
+function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,f=th.querySelector('iframe');if(k&&f)f.style.setProperty('--k',k)})}
 function list(){
  const q=term.toLowerCase();
  let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.d).toLowerCase().includes(q));
@@ -251,7 +254,7 @@ function list(){
 }
 function render(){
  const L=list();
- $('grid').innerHTML=L.map((t,k)=>{const on=favs.includes(t.n);return `<article class="card" style="animation-delay:${Math.min(k,12)*40}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><iframe loading="lazy" tabindex="-1" title="" src="${esc(t.f)}"></iframe></div><div class="info"><div><b>${esc(t.n)}</b><span>${esc(t.c)}</span><p class="desc">${esc(t.d)}</p></div><button class="heart ${on?'on':''}" data-fav="${esc(t.n)}" aria-pressed="${on}" aria-label="Save ${esc(t.n)}">${on?'\u2665':'\u2661'}</button></div></article>`}).join('');
+ $('grid').innerHTML=L.map((t,k)=>{const on=favs.includes(t.n);return `<article class="card" style="animation-delay:${Math.min(k,12)*40}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><img class="shot" src="thumbs/${esc(t.f).replace(/^sample-|\.html$/g,'')}.webp" data-f="${esc(t.f)}" width="600" height="375" loading="lazy" decoding="async" alt="" onerror="thumbFallback(this)"></div><div class="info"><div><b>${esc(t.n)}</b><span>${esc(t.c)}</span><p class="desc">${esc(t.d)}</p></div><button class="heart ${on?'on':''}" data-fav="${esc(t.n)}" aria-pressed="${on}" aria-label="Save ${esc(t.n)}">${on?'\u2665':'\u2661'}</button></div></article>`}).join('');
  $('empty').classList.toggle('hidden',L.length>0);
  $('s3').textContent=favs.length;$('n-fav').textContent=favs.length;
  requestAnimationFrame(fit);
