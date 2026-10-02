@@ -48,6 +48,8 @@
     .topbar .logo { width: 36px; height: 36px; border-radius: 10px; margin: 0; font-size: .8rem; }
     .topbar h1 { font-size: 1.05rem; margin: 0; }
     .topbar .sp { flex: 1; }
+    .inbox { font-size: .8rem; font-weight: 600; color: var(--brand); background: var(--new-bg); padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+    @media (max-width: 860px) { .inbox { display: none; } }
     .who { color: var(--muted); font-size: .85rem; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 16px 20px 0; }
     .stat { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 12px 16px; text-align: left; cursor: pointer; }
@@ -56,8 +58,14 @@
     .stat[aria-pressed="true"] { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(99,102,241,.15); }
     .main { flex: 1; min-height: 0; display: grid; grid-template-columns: 380px 1fr; gap: 16px; padding: 16px 20px 20px; }
     .col { background: #fff; border: 1px solid var(--line); border-radius: 20px; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
-    .tools { padding: 12px; border-bottom: 1px solid var(--line); display: flex; gap: 8px; }
-    .tools input { flex: 1; min-width: 0; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: #f8fafc; }
+    .tools { padding: 12px; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+    .tools #q { width: 100%; padding: 9px 14px; border: 1px solid var(--line); border-radius: 999px; background: #f8fafc; }
+    .trow { display: flex; gap: 8px; align-items: center; }
+    .tools .mini { flex: 1; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; font-size: .88rem; }
+    .trow label { flex: 1; display: flex; flex-direction: column; font-size: .72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; gap: 3px; }
+    .trow.meta { justify-content: space-between; font-size: .8rem; color: var(--muted); }
+    .linkbtn { border: 0; background: none; color: var(--brand); font-weight: 700; cursor: pointer; padding: 0; }
+    .linkbtn:hover { text-decoration: underline; }
     .list { overflow-y: auto; flex: 1; }
     .row { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: #fff; padding: 14px 16px; cursor: pointer; }
     .row:hover { background: #f8fafc; }
@@ -131,6 +139,7 @@
     <header class="topbar">
       <div class="logo">404</div>
       <h1>Leads</h1>
+      <span class="inbox" title="Inbox name shown in the admin only">404studio@webdeveloper.com.ph</span>
       <div class="sp"></div>
       <span class="who" id="who"></span>
       <a class="btn btn-ghost" href="dashboard.html?view=client" style="text-decoration:none">Client view</a>
@@ -141,7 +150,28 @@
     <div class="stats" id="stats"></div>
     <div class="main">
       <section class="col list-col" aria-label="Leads">
-        <div class="tools"><input id="q" type="search" placeholder="Search name, email, service…" aria-label="Search leads"></div>
+        <div class="tools">
+          <input id="q" type="search" placeholder="Search name, email, service…" aria-label="Search leads">
+          <div class="trow">
+            <select id="range" class="mini" aria-label="Date range">
+              <option value="all">All time</option>
+              <option value="today">Today</option>
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="month">This month</option>
+              <option value="custom">Custom range…</option>
+            </select>
+            <select id="sort" class="mini" aria-label="Sort order">
+              <option value="new">Newest first</option>
+              <option value="old">Oldest first</option>
+            </select>
+          </div>
+          <div class="trow" id="custom" hidden>
+            <label>From <input type="date" id="from" class="mini"></label>
+            <label>To <input type="date" id="to" class="mini"></label>
+          </div>
+          <div class="trow meta"><span id="count"></span><button id="clear" class="linkbtn" type="button" hidden>Clear filters</button></div>
+        </div>
         <div class="list" id="list"></div>
       </section>
       <section class="col detail-col" aria-label="Lead details">
@@ -157,7 +187,7 @@
   const STATUSES = ['new', 'contacted', 'won', 'lost'];
   const $ = id => document.getElementById(id);
 
-  let sb = null, leads = [], filter = 'all', query = '', selectedId = null;
+  let sb = null, leads = [], filter = 'all', query = '', range = 'all', sortDir = 'new', fromDate = '', toDate = '', selectedId = null;
 
   // Small helper to build elements safely (lead data is always set as text, never as HTML)
   const h = (tag, attrs = {}, ...kids) => {
@@ -227,11 +257,29 @@
     render();
   }
 
-  const matches = l => {
-    if (filter !== 'all' && l.status !== filter) return false;
-    if (!query) return true;
-    return [l.name, l.email, l.service, l.concern].some(v => (v || '').toLowerCase().includes(query));
+  // Date range -> [from, to] (either can be null). Uses your local time.
+  function bounds() {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const back = n => { const d = new Date(today); d.setDate(d.getDate() - n); return d; };
+    switch (range) {
+      case 'today': return [today, null];
+      case '7': return [back(6), null];
+      case '30': return [back(29), null];
+      case 'month': return [new Date(today.getFullYear(), today.getMonth(), 1), null];
+      case 'custom': return [
+        fromDate ? new Date(fromDate + 'T00:00:00') : null,
+        toDate ? new Date(toDate + 'T23:59:59.999') : null
+      ];
+      default: return [null, null];
+    }
+  }
+  const inRange = l => {
+    const [lo, hi] = bounds(), t = new Date(l.created_at);
+    return (!lo || t >= lo) && (!hi || t <= hi);
   };
+  const textMatch = l => !query || [l.name, l.email, l.service, l.concern].some(v => (v || '').toLowerCase().includes(query));
+  // Leads matching the date range and search (before the status filter), used for the count cards
+  const base = () => leads.filter(l => inRange(l) && textMatch(l));
 
   function render() {
     renderStats(); renderList(); renderDetail();
@@ -239,7 +287,8 @@
   }
 
   function renderStats() {
-    const counts = Object.fromEntries(STATUSES.map(s => [s, leads.filter(l => l.status === s).length]));
+    const pool = base();
+    const counts = Object.fromEntries(STATUSES.map(s => [s, pool.filter(l => l.status === s).length]));
     // 4 cards: New, Contacted, Won, Lost. Click one to filter; click again to show all.
     $('stats').replaceChildren(...STATUSES.map(s =>
       h('button', {
@@ -250,7 +299,10 @@
   }
 
   function renderList() {
-    const rows = leads.filter(matches);
+    const rows = base().filter(l => filter === 'all' || l.status === filter)
+      .sort((a, b) => sortDir === 'old' ? new Date(a.created_at) - new Date(b.created_at) : new Date(b.created_at) - new Date(a.created_at));
+    $('count').textContent = 'Showing ' + rows.length + ' of ' + leads.length + (leads.length === 1 ? ' lead' : ' leads');
+    $('clear').hidden = !(range !== 'all' || query || filter !== 'all');
     if (!rows.length) {
       $('list').replaceChildren(h('div', { class: 'empty', text: leads.length ? 'No leads match your search or filter.' : 'No leads yet. New messages from your website will show up here.' }));
       return;
@@ -345,7 +397,17 @@
   $('btn-out').addEventListener('click', out);
   $('btn-denied-out').addEventListener('click', out);
   $('btn-refresh').addEventListener('click', loadLeads);
-  $('q').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); renderList(); });
+  const refresh = () => { renderStats(); renderList(); };
+  $('q').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); refresh(); });
+  $('range').addEventListener('change', e => { range = e.target.value; $('custom').hidden = range !== 'custom'; refresh(); });
+  $('sort').addEventListener('change', e => { sortDir = e.target.value; renderList(); });
+  $('from').addEventListener('change', e => { fromDate = e.target.value; refresh(); });
+  $('to').addEventListener('change', e => { toDate = e.target.value; refresh(); });
+  $('clear').addEventListener('click', () => {
+    query = ''; range = 'all'; filter = 'all'; fromDate = ''; toDate = '';
+    $('q').value = ''; $('range').value = 'all'; $('from').value = ''; $('to').value = ''; $('custom').hidden = true;
+    refresh();
+  });
   window.addEventListener('focus', () => { if (!$('v-app').hidden) loadLeads(); });
 
   init();
