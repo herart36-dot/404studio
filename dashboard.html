@@ -213,8 +213,11 @@ sc.onload=async()=>{
   const c=window.supabase.createClient(SB_URL,SB_KEY);sb=c;
   const {data}=await c.auth.getSession();
   if(!data.session){home();return}
+  const asClient=/[?&]view=client\b/.test(location.search);
   if(location.search||location.hash)history.replaceState(null,'',location.pathname);
   user=data.session.user;
+  /* Admins go straight to the CRM (add ?view=client to the URL to preview the client dashboard) */
+  if(!asClient){try{const {data:isAdmin}=await c.rpc('is_admin');if(isAdmin===true){location.replace('admin.html');return}}catch(_){}}
   c.auth.onAuthStateChange((ev,s)=>{if(ev==='SIGNED_OUT'||!s)home()});
   $('out').onclick=async()=>{await c.auth.signOut();home()};
   start();
