@@ -1,0 +1,14 @@
+<!-- Paste this block inside <head> of EACH sample-*.html file, right after <meta charset>.
+     When a sample is loaded inside a preview card (URL ends in #thumb) it turns off every
+     expensive effect. Opened normally, the page looks and behaves exactly as before. -->
+<script>if(location.hash==='#thumb')document.documentElement.classList.add('is-thumb')</script>
+<style>
+/* stop all motion and blur in previews */
+.is-thumb *,.is-thumb *::before,.is-thumb *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.is-thumb *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+/* decorative layers (names from sample-lumiere.html; add similar ones from the other samples) */
+.is-thumb .blobs,.is-thumb .blob,.is-thumb #dust,.is-thumb #cur-dot,.is-thumb #cur-ring,.is-thumb #progress,.is-thumb .marquee-track{display:none!important}
+.is-thumb body::after{display:none!important}   /* full-screen noise overlay */
+/* things that start invisible and rely on an animation to appear */
+.is-thumb .reveal,.is-thumb .fade,.is-thumb .hero .w,.is-thumb .card,.is-thumb .grid .card{opacity:1!important;transform:none!important}
+</style>
