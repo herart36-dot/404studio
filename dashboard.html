@@ -385,9 +385,11 @@ $('call-form').addEventListener('submit',async e=>{
  try{
   let tok=SB_KEY;try{const {data}=await sb.auth.getSession();if(data.session)tok=data.session.access_token}catch(_){}
   /* 1) save to your leads table (schedule is added to the concern text) */
-  const saveLead=fetch(SB_URL+'/rest/v1/leads',{method:'POST',
-   headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'},
-   body:JSON.stringify({name,email,service:svc,concern:'[Preferred time: '+when+' | '+ph+']\n\n'+concern})}).then(r=>r.ok).catch(()=>false);
+  const leadHeaders={'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'};
+  const leadBody=withAppt=>JSON.stringify(Object.assign({name,email,service:svc,concern:'[Preferred time: '+when+' | '+ph+']\n\n'+concern},withAppt?{appointment_at:new Date(utc).toISOString()}:{}));
+  const postLead=withAppt=>fetch(SB_URL+'/rest/v1/leads',{method:'POST',headers:leadHeaders,body:leadBody(withAppt)});
+  /* saves the call time as real appointment data; if that is not accepted, saves the lead without it */
+  const saveLead=postLead(true).then(r=>r.ok?true:postLead(false).then(r2=>r2.ok)).catch(()=>false);
   /* 2) email it to your Gmail */
   const sendMail=fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',
    headers:{'Content-Type':'application/json','Accept':'application/json'},
