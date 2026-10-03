@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bellaluz Salon | Hair, Nails &amp; Beauty in Metro Manila</title>
+<meta name="description" content="Haircut, color, keratin, nails and makeup by expert stylists across Metro Manila. Book online in minutes.">
+<meta name="theme-color" content="#14110f">
+<meta property="og:title" content="Bellaluz Salon | Hair, Nails &amp; Beauty"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--k:#14110f;--g:#b8923d;--g2:#e3c47a;--bl:#f8eee8;--w:#fff;--mut:#6f6760;--line:#e9dfd6}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{font:16px/1.6 Inter,system-ui,sans-serif;color:var(--k);background:var(--w);overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;line-height:1.1}
+a{color:inherit;text-decoration:none}button{font:inherit}
+:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+.wrap{max-width:1200px;margin:auto;padding:0 22px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:10px 16px;border-radius:99px;z-index:99}.skip:focus{left:12px}
+.bar{background:var(--k);color:#eadfce;text-align:center;font-size:.8rem;padding:8px 14px;letter-spacing:.04em}.bar b{color:var(--g2)}
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.logo{font:700 1.7rem 'Playfair Display',serif;letter-spacing:.02em}.logo i{font-style:normal;color:var(--g)}
+nav{display:flex;gap:28px;font-size:.84rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}nav a:hover{color:var(--g)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 30px;background:var(--k);color:#fff;border:1.5px solid var(--k);font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.btn:hover{background:var(--g);border-color:var(--g)}
+.btn.o{background:transparent;color:#fff;border-color:#fff}.btn.o:hover{background:#fff;color:var(--k)}
+.btn.g{background:var(--g);border-color:var(--g);color:#fff}.btn.g:hover{background:var(--k);border-color:var(--k)}.btn.sm{min-height:40px;padding:0 20px}
+.burger{display:none;width:46px;height:46px;border:0;background:none;font-size:1.6rem;cursor:pointer}
+
+/* Hero Slider */
+.hero{position:relative;height:min(86vh,720px);min-height:520px;background:var(--k);overflow:hidden;color:#fff}
+.sl{position:absolute;inset:0;opacity:0;transition:opacity 1s;background:var(--bg) center/cover no-repeat}
+.sl.on{opacity:1}
+.sl::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,15,.85) 0%,rgba(20,17,15,.4) 60%,rgba(20,17,15,.2) 100%)}
+.sl .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;max-width:1200px}
+.sl.on h1{animation:up .9s both}.sl.on p,.sl.on .cta{animation:up .9s .2s both}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.kick{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g2);margin-bottom:18px;font-weight:600}
+.sl h1{font-size:clamp(2.6rem,7vw,5.4rem);max-width:12ch}.sl h1 em{color:var(--g2);font-style:italic}
+.sl p{max-width:44ch;margin:20px 0 30px;color:#e8ded2;font-size:1.08rem}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.ctl{position:absolute;z-index:5;bottom:26px;left:0;right:0}.ctl .wrap{display:flex;align-items:center;gap:14px}
+.dots{display:flex;gap:8px}.dots button{width:34px;height:4px;border:0;background:rgba(255,255,255,.35);cursor:pointer;padding:0;position:relative}.dots button[aria-current=true]{background:var(--g2)}
+.dots button::after{content:"";position:absolute;inset:-14px 0}
+.pz{border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.3);color:#fff;border-radius:99px;min-height:36px;padding:0 14px;font-size:.78rem;cursor:pointer}
+
+/* Sections */
+section{padding:84px 0}
+.ey{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);font-weight:600;margin-bottom:12px}
+h2{font-size:clamp(2rem,4.5vw,3.2rem)}.lead{color:var(--mut);max-width:52ch;margin-top:12px}
+.ctr{text-align:center}.ctr .lead{margin-inline:auto}
+
+/* Photo Category Cards */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.cat{position:relative;aspect-ratio:3/4;display:flex;align-items:flex-end;padding:26px 20px;color:#fff;overflow:hidden;isolation:isolate;cursor:pointer;border:0;text-align:left;background:var(--k);border-radius:4px}
+.cat::before{content:"";position:absolute;inset:0;background:var(--bg) center/cover no-repeat;z-index:-2;transition:transform .6s cubic-bezier(.25,1,.5,1)}
+.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,15,0) 20%,rgba(20,17,15,0.85) 100%);z-index:-1;transition:opacity .3s}
+.cat:hover::before{transform:scale(1.08)}
+.cat:hover::after{opacity:.95}
+.cat h3{font-size:1.6rem;text-shadow:0 2px 4px rgba(0,0,0,0.3)}
+.cat small{display:block;opacity:.9;letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;margin-top:4px;color:var(--g2)}
+
+/* Services */
+.svs{background:var(--bl)}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:28px 0 22px;padding-bottom:4px}
+.tabs button{flex:none;min-height:44px;padding:0 22px;border:1.5px solid var(--k);background:transparent;font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--k);color:#fff}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sc{background:#fff;padding:26px;display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);transition:.3s;animation:in .45s both}
+.sc:hover{transform:translateY(-5px);box-shadow:0 22px 34px -24px rgba(20,17,15,.5)}
+.sc small{color:var(--g);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.7rem}.sc h3{font-size:1.3rem}.sc p{color:var(--mut);font-size:.9rem}
+.sf{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px}
+.pr{font:700 1.3rem 'Playfair Display',serif}.pr span{display:block;font:400 .75rem Inter;color:var(--mut)}
+.ad{min-height:42px;padding:0 18px;border:1.5px solid var(--k);background:transparent;font-weight:600;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.2s}
+.ad:hover,.ad[aria-pressed=true]{background:var(--k);color:#fff}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+
+/* Promos & Features */
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.pc{padding:34px 28px;background:var(--k);color:#fff;position:relative;overflow:hidden}.pc:nth-child(2){background:var(--g)}.pc:nth-child(3){background:#3a2a22}
+.pc b{display:block;font:700 3rem 'Playfair Display',serif;color:var(--g2)}.pc:nth-child(2) b{color:var(--k)}.pc h3{font-size:1.35rem;margin:6px 0}.pc p{font-size:.92rem;opacity:.9}.pc code{display:inline-block;margin-top:14px;border:1px dashed currentColor;padding:4px 12px;font-weight:600;letter-spacing:.1em}
+.ft{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--k);color:#fff}
+.ft .ph{min-height:480px;background:var(--bg) center/cover no-repeat}
+.ft .tx{padding:clamp(30px,6vw,80px);display:flex;flex-direction:column;justify-content:center;gap:14px}.ft h2{color:#fff}.ft p{color:#cfc6bb}
+.ul{list-style:none;padding:0;display:grid;gap:8px;color:#e7ddd0}.ul li::before{content:"✦ ";color:var(--g2)}
+
+/* Gifts, Branches & Booking */
+.gift{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.gift button{min-height:56px;min-width:130px;padding:0 24px;border:1.5px solid var(--k);background:#fff;font:700 1.15rem 'Playfair Display',serif;cursor:pointer}.gift button:hover{background:var(--k);color:#fff}
+.bk{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.pn{background:var(--bl);padding:32px}.pn h3{font-size:1.5rem;margin-bottom:8px}
+.fm{display:grid;gap:12px;margin-top:14px}.fm label{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);display:block;margin-bottom:4px}
+.fm input,.fm select{width:100%;min-height:50px;padding:0 14px;border:1.5px solid var(--line);background:#fff;font:16px Inter,sans-serif;color:var(--k)}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.slots{display:flex;flex-wrap:wrap;gap:8px}.slots button{min-height:44px;padding:0 14px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:.85rem}.slots button[aria-pressed=true]{background:var(--k);color:#fff;border-color:var(--k)}.slots button:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.sm{background:#fff;border:1px solid var(--line);padding:16px}.sm .l{display:flex;justify-content:space-between;font-size:.92rem;padding:4px 0;gap:10px}.sm .t{font-weight:700;border-top:1px solid var(--line);margin-top:6px;padding-top:10px;font-size:1.05rem}.sm button{border:0;background:none;color:var(--g);cursor:pointer;font-size:.8rem;text-decoration:underline}
+.map{width:100%;min-height:300px;border:0;margin-top:14px;filter:grayscale(.6)}
+.bt{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.bt button{flex:none;min-height:42px;padding:0 16px;border:1.5px solid var(--k);background:transparent;font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.bt button[aria-pressed=true]{background:var(--k);color:#fff}
+.done{display:none;background:#fff;border:1px solid var(--line);padding:22px;margin-top:14px}.done pre{white-space:pre-wrap;font:13px/1.5 Inter,sans-serif;background:var(--bl);padding:14px;margin:12px 0}.done .btn{width:100%;margin-top:8px}
+.rv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}.rv div{border:1px solid var(--line);padding:26px}.rv .st{color:var(--g);letter-spacing:3px;margin-bottom:10px}.rv small{display:block;margin-top:14px;color:var(--mut)}
+footer{background:var(--k);color:#c9bfb3;padding:60px 0 100px;font-size:.92rem}.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+footer h4{color:#fff;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;margin-bottom:12px}footer ul{list-style:none;padding:0;display:grid;gap:7px}footer .logo{color:#fff;display:block;margin-bottom:10px}
+.cp{border-top:1px solid #3a342f;margin-top:32px;padding-top:18px;font-size:.8rem}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translate(-50%,30px);background:var(--k);color:#fff;padding:12px 22px;opacity:0;pointer-events:none;transition:.3s;z-index:100;max-width:90vw;font-weight:600}.toast.show{opacity:1;transform:translate(-50%,0)}
+.dock{display:none}
+
+@media(max-width:980px){.cats{grid-template-columns:repeat(2,1fr)}.sg{grid-template-columns:repeat(2,1fr)}.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+ nav{display:none}.burger{display:block}.hd{height:64px}.logo{font-size:1.4rem}.hd>.btn{display:none}
+ nav.open{display:grid;position:absolute;top:100%;left:0;right:0;background:#fff;padding:10px 22px 22px;border-bottom:1px solid var(--line);gap:0}nav.open a{padding:16px 0;border-bottom:1px solid var(--line)}
+ .hero{height:auto;min-height:calc(100svh - 112px)}.sl h1{font-size:2.6rem}
+ section{padding:56px 0}.cats{gap:12px}.cat{aspect-ratio:1/1.15;padding:18px}.cat h3{font-size:1.3rem}
+ .sg,.pg,.rv,.bk,.ft{grid-template-columns:1fr}.ft .ph{min-height:300px}.fg{grid-template-columns:1fr}.r2{grid-template-columns:1fr}
+ .cta .btn{flex:1}.pn{padding:22px}
+ .dock{display:flex;position:fixed;z-index:60;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));gap:8px;padding:8px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 36px rgba(20,17,15,.3);border:1px solid var(--line)}.dock .btn{flex:1;padding:0 8px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#svc">Skip to services</a>
+<div class="bar">✦ New client? Get <b>15% off</b> any service with code <b>NEWGLOW</b></div>
+<header><div class="wrap hd">
+ <a class="logo" href="#top">Bella<i>luz</i></a>
+ <nav id="nv" aria-label="Main"><a href="#svc">Services</a><a href="#promos">Promos</a><a href="#about">About</a><a href="#gift">Gift cards</a><a href="#book">Branches</a></nav>
+ <a class="btn sm" href="#book">Book now</a><button class="burger" id="bg" aria-label="Menu" aria-expanded="false" aria-controls="nv">☰</button>
+</div></header>
+
+<main id="top">
+<section class="hero" style="padding:0" aria-roledescription="carousel" aria-label="Featured">
+ <div class="sl on" style="--bg:url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1600&q=80')"><div class="wrap"><p class="kick">Metro Manila · Since 2008</p><h1>Hair that <em>turns heads.</em></h1><p>Precision cuts, color and treatments by stylists trained in Manila and abroad.</p><div class="cta"><a class="btn g" href="#book">Book appointment</a><a class="btn o" href="#svc">View services</a></div></div></div>
+ <div class="sl" style="--bg:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80')"><div class="wrap"><p class="kick">Treatment of the month</p><h1>Silky, <em>healthy</em> shine.</h1><p>Keratin and reconstructive treatments that repair damage and last for months.</p><div class="cta"><a class="btn g" href="#svc" data-tab="Treatments">Shop treatments</a></div></div></div>
+ <div class="sl" style="--bg:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=80')"><div class="wrap"><p class="kick">Limited offer</p><h1>Mani + pedi, <em>from ₱1,199.</em></h1><p>Gel manicure with foot-spa pedicure, perfect for a pamper day with friends.</p><div class="cta"><a class="btn g" href="#svc" data-tab="Nails">See nail services</a></div></div></div>
+ <div class="ctl"><div class="wrap"><div class="dots" id="dots"></div><button class="pz" id="pz" aria-label="Pause slideshow">❚❚ Pause</button></div></div>
+</section>
+
+<section id="cats"><div class="wrap ctr"><p class="ey">What we do</p><h2>Everything for your best look</h2>
+ <div class="cats">
+  <button class="cat" data-tab="Hair" style="--bg:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80')"><div><h3>Hair</h3><small>Cut · Color · Style</small></div></button>
+  <button class="cat" data-tab="Treatments" style="--bg:url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80')"><div><h3>Treatments</h3><small>Keratin · Repair</small></div></button>
+  <button class="cat" data-tab="Nails" style="--bg:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=800&q=80')"><div><h3>Nails</h3><small>Mani · Pedi</small></div></button>
+  <button class="cat" data-tab="Makeup" style="--bg:url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80')"><div><h3>Make-up</h3><small>Events · Bridal</small></div></button>
+ </div></div></section>
+
+<section id="svc" class="svs"><div class="wrap"><p class="ey">Services &amp; prices</p><h2>Choose your service</h2><p class="lead">Add services to your booking and we'll total it up for you.</p>
+ <div class="tabs" id="tabs" role="group" aria-label="Categories"></div><div class="sg" id="sg"></div></div></section>
+
+<section id="promos"><div class="wrap ctr"><p class="ey">Promos</p><h2>Treat yourself for less</h2>
+ <div class="pg">
+  <div class="pc"><b>15%</b><h3>New client welcome</h3><p>Off your first service at any branch.</p><code>NEWGLOW</code></div>
+  <div class="pc"><b>2+1</b><h3>Barkada bonus</h3><p>Book three services together and the third is free.</p><code>BARKADA</code></div>
+  <div class="pc"><b>₱0</b><h3>Birthday treat</h3><p>Free blow-dry in your birthday month. Bring a valid ID.</p><code>BDAY</code></div>
+ </div></div></section>
+
+<section id="about" style="padding:0"><div class="ft">
+ <div class="ph" style="--bg:url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80')" role="img" aria-label="Stylist working in modern salon space"></div>
+ <div class="tx"><p class="ey" style="color:var(--g2)">About Bellaluz</p><h2>Beauty with a Filipino heart.</h2><p>For over 15 years our stylists have helped Manila look and feel its best, using premium products and a warm, no-pressure approach.</p>
+  <ul class="ul"><li>Licensed and continuously trained stylists</li><li>Premium Italian color and treatment lines</li><li>Sanitized tools for every guest</li><li>4 branches across Metro Manila</li></ul><a class="btn g" style="align-self:flex-start;margin-top:8px" href="#book">Find a branch</a></div>
+</div></section>
+
+<section id="gift"><div class="wrap ctr"><p class="ey">E-gift cards</p><h2>Give the gift of glow</h2><p class="lead">Send a Bellaluz e-gift card, valid at all branches for 12 months.</p>
+ <div class="gift" id="gift"></div></div></section>
+
+<section id="book" class="svs"><div class="wrap"><p class="ey">Branches &amp; booking</p><h2>Reserve your chair</h2>
+ <div class="bk">
+  <div class="pn"><h3 id="bn"></h3><p id="ba" style="color:var(--mut)"></p><div class="bt" id="bt" role="group" aria-label="Branches" style="margin-top:14px"></div><iframe class="map" id="mp" title="Branch map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   <p style="margin-top:12px;font-size:.9rem" id="bh"></p></div>
+  <div class="pn"><h3>Book an appointment</h3>
+   <div class="sm" id="sm" aria-live="polite"></div>
+   <form class="fm" id="fm" novalidate>
+    <div class="r2"><div><label for="f_d">Date</label><input id="f_d" type="date" required></div><div><label for="f_s">Stylist</label><select id="f_s"><option>Any available</option><option>Ate Rhea</option><option>Kuya Marc</option><option>Ms. Jenny</option></select></div></div>
+    <div><label>Time</label><div class="slots" id="sl"></div></div>
+    <div class="r2"><div><label for="f_n">Name</label><input id="f_n" autocomplete="name" required></div><div><label for="f_p">Mobile</label><input id="f_p" type="tel" inputmode="tel" placeholder="09XX XXX XXXX" autocomplete="tel" required></div></div>
+    <div><label for="f_c">Promo code</label><input id="f_c" placeholder="NEWGLOW"></div>
+    <button class="btn g" type="submit">Request appointment</button></form>
+   <div class="done" id="dn" role="status"></div></div>
+ </div></div></section>
+
+<section><div class="wrap ctr"><p class="ey">Reviews</p><h2>Loved by our guests</h2>
+ <div class="rv">
+  <div><div class="st">★★★★★</div><p>Best keratin in Manila. My hair has never been this smooth, and it lasted four months.</p><small>Camille R., Makati</small></div>
+  <div><div class="st">★★★★★</div><p>Online booking was so easy, and the stylist listened to exactly what I wanted.</p><small>Joanna M., BGC</small></div>
+  <div><div class="st">★★★★★</div><p>Went with my barkada for mani-pedi. Clean, relaxing and very fairly priced.</p><small>Trisha L., Quezon City</small></div>
+ </div></div></section>
+</main>
+
+<footer><div class="wrap"><div class="fg">
+ <div><a class="logo" href="#top">Bella<i>luz</i></a><p style="max-width:32ch">Hair, nails and beauty across Metro Manila. Sample website by 404 Studio. Photos from <a href="https://unsplash.com" target="_blank" rel="noopener" style="text-decoration:underline">Unsplash</a>.</p></div>
+ <div><h4>Services</h4><ul><li>Haircut &amp; style</li><li>Hair color</li><li>Treatments</li><li>Nails &amp; make-up</li></ul></div>
+ <div><h4>Visit</h4><ul><li>Makati</li><li>BGC</li><li>Quezon City</li><li>Sampaloc</li></ul></div>
+ <div><h4>Contact</h4><ul><li>(02) 8123 4567</li><li>hello@bellaluz.example</li><li>Open daily 10am to 8pm</li></ul></div>
+</div><div class="cp">© 2026 Bellaluz Salon. All rights reserved.</div></div></footer>
+<div class="dock"><a class="btn o" style="color:var(--k);border-color:var(--k)" href="#svc">Services</a><a class="btn g" href="#book">Book now · <span id="dc">0</span></a></div>
+<div class="toast" id="ts" role="status" aria-live="polite"></div>
+
+<script>
+const S=[["h1","Hair","Haircut & Blow-dry",350,45,"Consultation, precision cut and finish."],["h2","Hair","Hair Color (Full)",2499,150,"Premium color, one shade, root to tip."],["h3","Hair","Highlights / Balayage",3999,210,"Hand-painted dimension and toning."],["h4","Hair","Rebond",3499,180,"Straight, smooth, sleek hair."],["h5","Hair","Hair Spa",899,60,"Deep scalp and hair conditioning."],["h6","Hair","Event Hair Styling",799,60,"Updo or curls for your special day."],
+["t1","Treatments","Express Treatment",699,30,"Quick moisture boost for dull hair."],["t2","Treatments","Reconstructive Treatment",2499,90,"Repairs heat and color damage."],["t3","Treatments","Keratin Smoothing",3999,150,"Frizz-free shine for up to 4 months."],
+["n1","Nails","Gel Manicure",599,60,"Shaping, cuticle care and gel polish."],["n2","Nails","Foot-Spa Pedicure",699,75,"Soak, scrub, massage and polish."],["n3","Nails","Mani + Pedi Set",1199,120,"Gel manicure with foot-spa pedicure."],
+["m1","Makeup","Day Make-up",1299,45,"Fresh, natural look for any occasion."],["m2","Makeup","Glam / Evening",1999,60,"Full glam with lashes."],["m3","Makeup","Bridal Package",6500,180,"Trial, wedding day makeup and hair."]];
+const B=[["Makati","A. DSI Building, Cardona St., Poblacion, Makati City",14.5636,121.0287],["BGC","5th Ave., Bonifacio Global City, Taguig",14.5503,121.0503],["Quezon City","Tomas Morato Ave., Quezon City",14.6314,121.0345],["Sampaloc","University Tower 4, P. Noval St., Sampaloc, Manila",14.6061864,120.9898344]];
+const TABS=["All","Hair","Treatments","Nails","Makeup"],CODES={NEWGLOW:.15};
+const $=id=>document.getElementById(id),peso=n=>'₱'+n.toLocaleString('en-PH');
+let tab="All",pick=[],gifts=[],br=0,time='',info='';
+const hm=m=>m>=60?(Math.floor(m/60)+'h'+(m%60?' '+m%60+'m':'')):m+'m';
+function toast(m){const t=$('ts');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200)}
+function drawTabs(){$('tabs').innerHTML=TABS.map(t=>`<button aria-pressed="${t===tab}" data-t="${t}">${t}</button>`).join('')}
+function drawSvc(){$('sg').innerHTML=S.filter(s=>tab==="All"||s[1]===tab).map((s,n)=>`<article class="sc" style="animation-delay:${n*40}ms"><small>${s[1]}</small><h3>${s[2]}</h3><p>${s[5]}</p><div class="sf"><div class="pr">${peso(s[3])}<span>${hm(s[4])}</span></div><button class="ad" data-a="${s[0]}" aria-pressed="${pick.includes(s[0])}">${pick.includes(s[0])?'Added ✓':'Add'}</button></div></article>`).join('')}
+function totals(){const it=pick.map(id=>S.find(s=>s[0]===id)),g=gifts.reduce((a,b)=>a+b,0),sub=it.reduce((a,s)=>a+s[3],0)+g,mins=it.reduce((a,s)=>a+s[4],0),rate=CODES[$('f_c').value.trim().toUpperCase()]||0,disc=Math.round(it.reduce((a,s)=>a+s[3],0)*rate);return{it,g,sub,mins,rate,disc,t:sub-disc}}
+function drawSum(){const T=totals();$('dc').textContent=pick.length+gifts.length;
+ $('sm').innerHTML=(pick.length||gifts.length)?T.it.map(s=>`<div class="l"><span>${s[2]}</span><span>${peso(s[3])} <button data-r="${s[0]}" aria-label="Remove ${s[2]}">remove</button></span></div>`).join('')+gifts.map((g,i)=>`<div class="l"><span>E-gift card</span><span>${peso(g)} <button data-g="${i}" aria-label="Remove gift card">remove</button></span></div>`).join('')+(T.disc?`<div class="l" style="color:#15803d"><span>Promo (${Math.round(T.rate*100)}%)</span><span>−${peso(T.disc)}</span></div>`:'')+`<div class="l t"><span>Total${T.mins?' · '+hm(T.mins):''}</span><span>${peso(T.t)}</span></div>`:'<p style="color:var(--mut)">No services yet. Pick some from the list above.</p>'}
+function drawBr(){const b=B[br];$('bt').innerHTML=B.map((x,i)=>`<button aria-pressed="${i===br}" data-b="${i}">${x[0]}</button>`).join('');$('bn').textContent='Bellaluz '+b[0];$('ba').textContent=b[1];$('bh').textContent='Open daily, 10:00 AM to 8:00 PM';$('mp').src=`https://www.google.com/maps?q=${b[2]},${b[3]}&z=16&output=embed`}
+function drawSlots(){const d=$('f_d').value,now=new Date(),today=d===now.toISOString().slice(0,10),h=now.getHours();let html='';for(let x=10;x<=19;x++){const l=(x>12?x-12:x)+':00 '+(x>=12?'PM':'AM'),off=today&&x<=h;html+=`<button type="button" data-s="${l}" ${off?'disabled':''} aria-pressed="${time===l}">${l}</button>`}$('sl').innerHTML=html}$('tabs').onclick=e=>{const t=e.target.dataset.t;if(t){tab=t;drawTabs();drawSvc()}};
+function goTab(t){tab=t;drawTabs();drawSvc();$('svc').scrollIntoView({behavior:'smooth'})}
+document.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();goTab(el.dataset.tab)}));
+$('sg').onclick=e=>{const a=e.target.dataset.a;if(a){pick=pick.includes(a)?pick.filter(x=>x!==a):[...pick,a];drawSvc();drawSum();if(pick.includes(a))toast('Added to your booking')}};$('sm').onclick=e=>{if(e.target.dataset.r){pick=pick.filter(x=>x!==e.target.dataset.r);drawSvc()}if(e.target.dataset.g){gifts.splice(+e.target.dataset.g,1)}drawSum()};
+$('bt').onclick=e=>{const b=e.target.dataset.b;if(b!==undefined){br=+b;drawBr()}};$('sl').onclick=e=>{const s=e.target.dataset.s;if(s){time=s;drawSlots()}};
+$('f_d').onchange=()=>{time='';drawSlots()};$('f_c').oninput=drawSum;
+$('gift').innerHTML=[1000,2000,3000,5000].map(v=>`<button data-v="${v}">${peso(v)}</button>`).join('');
+$('gift').onclick=e=>{const v=e.target.dataset.v;if(v){gifts.push(+v);drawSum();toast('E-gift card added to your booking')}};
+$('fm').onsubmit=e=>{e.preventDefault();const T=totals(),n=$('f_n').value.trim(),p=$('f_p').value.replace(/[\s-]/g,''),d=$('f_d').value;
+ if(!pick.length&&!gifts.length)return toast('Please add at least one service');
+ if(pick.length&&(!d||!time))return toast('Please choose a date and time');
+ if(!n)return $('f_n').focus(),toast('Please enter your name');
+ if(!/^(09|\+639)\d{9}$/.test(p))return$('f_p').focus(),toast('Please enter a valid mobile number');
+ const id='BL-'+Math.floor(10000+Math.random()*89999);
+ info=`${id} · Bellaluz ${B[br][0]}\n${T.it.map(s=>s[2]+' ('+peso(s[3])+')').join('\n')}${T.g?'\nE-gift cards: '+peso(T.g):''}\n${pick.length?'When: '+d+', '+time+'\nStylist: '+$('f_s').value+'\n':''}Total: ${peso(T.t)}${T.disc?' (promo applied)':''}\nName: ${n}\nMobile: ${$('f_p').value}`;
+ const o=$('dn');o.style.display='block';o.innerHTML=`<b>Salamat, <span id="nm"></span>! Request ${id} is ready.</b><p style="color:var(--mut);font-size:.9rem;margin-top:4px">Send it to the branch to confirm your slot.</p><pre id="oi"></pre><a class="btn g" href="viber://forward?text=${encodeURIComponent(info)}">Send via Viber</a><button class="btn" type="button" id="cp">Copy details</button>`;
+ $('nm').textContent=n.split(' ')[0];$('oi').textContent=info;o.scrollIntoView({behavior:'smooth',block:'nearest'})};
+$('dn').onclick=e=>{if(e.target.id==='cp'){try{navigator.clipboard.writeText(info).then(()=>toast('Copied'))}catch(x){toast('Select the text to copy')}}};$('f_d').min=new Date().toISOString().slice(0,10);
+/* slider */
+const sl=[...document.querySelectorAll('.sl')];let cur=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,tm;
+$('dots').innerHTML=sl.map((_,i)=>`<button data-i="${i}" aria-label="Slide ${i+1}"></button>`).join('');
+function show(i){cur=(i+sl.length)%sl.length;sl.forEach((s,k)=>{s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur)});[...$('dots').children].forEach((d,k)=>d.setAttribute('aria-current',k===cur))}
+function run(){clearInterval(tm);if(!paused)tm=setInterval(()=>show(cur+1),6000);$('pz').textContent=paused?'▶ Play':'❚❚ Pause';$('pz').setAttribute('aria-label',paused?'Play slideshow':'Pause slideshow')}
+$('dots').onclick=e=>{if(e.target.dataset.i!==undefined){show(+e.target.dataset.i);run()}};$('pz').onclick=()=>{paused=!paused;run()};
+document.addEventListener('visibilitychange',()=>document.hidden?clearInterval(tm):run());
+const nv=$('nv'),bg=$('bg');bg.onclick=()=>{const o=nv.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};nv.onclick=e=>{if(e.target.tagName==='A'){nv.classList.remove('open');bg.textContent='☰'}};
+show(0);run();drawTabs();drawSvc();drawBr();drawSlots();drawSum();
+</script>
+</body>
+</html>
