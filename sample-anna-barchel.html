@@ -89,6 +89,22 @@ footer{background:var(--ink);color:rgba(251,255,214,.55);padding:0 0 36px;font-s
 #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,120px);background:var(--cream);color:var(--ink);padding:14px 24px;border-radius:999px;font-weight:500;z-index:50;box-shadow:0 14px 40px -10px rgba(0,0,0,.5);transition:transform .6s var(--ease)}#toast.on{transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero h1 span b{transform:none}.hero p,.pill{opacity:1}}
 </style>
+<style id="mobile-polish">
+@media(max-width:700px){
+ nav.top div{display:flex;gap:0}
+ nav.top div a{display:none}
+ nav.top div a[href="#contact"]{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:1px solid rgba(251,255,214,.55);border-radius:999px;opacity:1}
+ .hero .in{padding:110px 24px 96px}
+ .cup{left:24px;right:auto;bottom:22px}
+ .pill{margin-top:40px}
+ .wrap{padding:0 22px}
+ section{padding-top:72px}
+ .cta{margin-top:72px;padding:72px 0}
+ .card{padding:28px;min-height:240px}
+}
+@media(hover:none){.sv ul{max-height:none;margin-top:18px}}
+@media(pointer:coarse){nav.top .serif{display:inline-flex;align-items:center;min-height:44px}.tabs button,.picks button{min-height:44px}}
+</style>
 </head>
 <body>
 <nav class="top"><a href="#" class="serif">Anna Barchel</a><div><a href="#services">Services</a><a href="#work">Work</a><a href="#praise">Kind words</a><a href="#contact">Contact</a></div></nav>
