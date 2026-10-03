@@ -414,7 +414,7 @@ document.addEventListener('mouseover',e=>{const c=e.target.closest('.card');if(!
 document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,false)});
 
 /* ---------- Start a call ---------- */
-const MAIL='herart36@gmail.com';
+const MAIL='keandonato@404studio.click';
 const SLOTS=[];for(let i=0;i<48;i++){const h=Math.floor(i/2),m=i%2?'30':'00';SLOTS.push({v:String(h).padStart(2,'0')+':'+m,t:(h%12||12)+':'+m+' '+(h<12?'AM':'PM')})}
 $('c-time').innerHTML='<option value="">Choose a time</option>'+SLOTS.map(s=>`<option value="${s.v}">${s.t}</option>`).join('');
 const etToday=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
