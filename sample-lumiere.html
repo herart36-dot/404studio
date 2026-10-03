@@ -458,6 +458,19 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:95;opa
 .avatars:hover span{transform:translateY(-4px) scale(1.08)}
 .avatars:hover span:not(:first-child){margin-left:-4px}
   </style>
+<style id="mobile-polish">
+@media(max-width:560px){
+ header.top .wrap{padding:0 14px}
+ .top-grid{grid-template-columns:auto 1fr auto;gap:2px}
+ .top-grid .logo{justify-self:center;font-size:20px;letter-spacing:.08em}
+ .actions{gap:0}
+ .actions .icon-btn,#menu-btn{width:40px;height:40px}
+ .theme-pop{right:-4px;width:min(250px,calc(100vw - 28px))}
+}
+@media(max-width:380px){.top-grid .logo i{display:none}.top-grid .logo{font-size:18px}}
+@media(max-width:760px){.foot{gap:28px 20px}.foot>*{min-width:0}.foot>:first-child{grid-column:1/-1}.arch-back{inset:22px -4px -22px 4px}}
+@media(pointer:coarse){.foot a{display:inline-block;padding:8px 0}.qv{min-height:40px;padding-left:14px;padding-right:14px}}
+</style>
 </head>
 <body>
   <div id="progress"></div>
