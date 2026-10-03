@@ -19,7 +19,13 @@ body{background:radial-gradient(circle at 10% 0%,#f8f4ef 0,#eee9e3 38%,#e9e3dc 1
 .toast{background:#413a35}
 .quick-panel{position:fixed;right:24px;top:78px;width:310px;background:#fffdf9;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(60,48,39,.18);z-index:90;padding:14px;display:none;animation:modalIn .2s ease}.quick-panel.open{display:block}.quick-panel h4{margin:3px 0 10px;font-family:'Playfair Display';font-size:18px}.quick-item{display:flex;gap:10px;padding:10px;border-radius:10px;cursor:pointer}.quick-item:hover{background:#f4eee8}.quick-item b{font-size:11px}.quick-item small{display:block;color:var(--muted);margin-top:2px}.notification-dot{width:8px;height:8px;border-radius:50%;background:#ad7770;display:inline-block;margin-right:7px}
 @media(max-width:760px){.quick-panel{right:12px;left:12px;width:auto}}
-</style></head>
+</style><style id="mobile-polish">
+@media(max-width:780px){
+ small,label,time,th,.label,.eyebrow,.up,.stagehead,.count,.tag,.status,.ghost,.metric em,.metric strong,.bar span,.ph span{font-size:11px!important}
+}
+@media(pointer:coarse){.mobile{min-width:44px;min-height:44px}.ghost{min-height:36px}}
+</style>
+</head>
 <body>
 <div class="app">
 <aside class="side" id="side"><div class="brand"><div class="logo">L</div><div><b>Lumiere</b><small>Client intelligence</small></div></div>
