@@ -166,13 +166,13 @@ textarea.fi{resize:vertical;min-height:90px}
 
 <div class="layout hidden" id="app">
   <aside id="side">
-    <a class="brand" href="index.html"><i>404</i> 404 Studio</a>
+    <a class="brand" href="index.html?home"><i>404</i> 404 Studio</a>
     <button class="nav" data-cat="All" aria-current="true">Explore all <small id="n-All"></small></button>
     <button class="nav" data-cat="__fav">Favorites <small id="n-fav">0</small></button>
     <div class="lab">Categories</div>
     <div id="cats"></div>
     <div class="lab">Quick links</div>
-    <a class="nav" href="index.html#calculator" style="text-decoration:none">Get a quote</a>
+    <a class="nav" href="index.html?home#calculator" style="text-decoration:none">Get a quote</a>
     <button class="nav" id="callNav" type="button">Start a call</button>
     <div class="me"><div class="av" id="av"></div><div><b id="nm"></b><button id="out" type="button">Sign out</button></div></div>
   </aside>
@@ -180,7 +180,7 @@ textarea.fi{resize:vertical;min-height:90px}
   <main>
     <div class="appbar">
       <button class="ab-btn" id="menu" type="button" aria-label="Open menu" aria-controls="side" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a class="brand" href="index.html"><i>404</i> 404 Studio</a>
+      <a class="brand" href="index.html?home"><i>404</i> 404 Studio</a>
       <button class="ab-btn ab-call" id="callBar" type="button">Call</button>
     </div>
     <div class="top">
@@ -265,7 +265,7 @@ const home=()=>location.replace('index.html');
 let user=null,sb=null;
 const sc=document.createElement('script');
 sc.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
-sc.onerror=()=>{$('boot').innerHTML='<div>Could not load sign-in. <a href="index.html">Back to site</a></div>'};
+sc.onerror=()=>{$('boot').innerHTML='<div>Could not load sign-in. <a href="index.html?home">Back to site</a></div>'};
 sc.onload=async()=>{
   const c=window.supabase.createClient(SB_URL,SB_KEY);sb=c;
   const {data}=await c.auth.getSession();
