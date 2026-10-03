@@ -121,13 +121,20 @@ footer h4{color:#fff;letter-spacing:.14em;text-transform:uppercase;font-size:.78
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+<style id="mobile-polish">
+.bk>*{min-width:0}
+.bt{max-width:100%;-webkit-overflow-scrolling:touch}
+.dots button::after{inset:-20px 0}
+@media(max-width:760px){.map{min-height:240px}}
+@media(pointer:coarse){.logo{display:inline-flex;align-items:center;min-height:44px}.bt button{min-height:44px}}
+</style>
 </head>
 <body>
 <a class="skip" href="#svc">Skip to services</a>
 <div class="bar">✦ New client? Get <b>15% off</b> any service with code <b>NEWGLOW</b></div>
 <header><div class="wrap hd">
  <a class="logo" href="#top">Bella<i>luz</i></a>
- <nav id="nv" aria-label="Main"><a href="#svc">Services</a><a href="#promos">Promos</a><a href="#about">About</a><a href="#gift">Gift cards</a><a href="#book">Branches</a></nav>
+ <nav id="nv" aria-label="Main"><a href="#svc">Services</a><a href="#promos">Promos</a><a href="#about">About</a><a href="#giftcards">Gift cards</a><a href="#book">Branches</a></nav>
  <a class="btn sm" href="#book">Book now</a><button class="burger" id="bg" aria-label="Menu" aria-expanded="false" aria-controls="nv">☰</button>
 </div></header>
 
@@ -163,7 +170,7 @@ footer h4{color:#fff;letter-spacing:.14em;text-transform:uppercase;font-size:.78
   <ul class="ul"><li>Licensed and continuously trained stylists</li><li>Premium Italian color and treatment lines</li><li>Sanitized tools for every guest</li><li>4 branches across Metro Manila</li></ul><a class="btn g" style="align-self:flex-start;margin-top:8px" href="#book">Find a branch</a></div>
 </div></section>
 
-<section id="gift"><div class="wrap ctr"><p class="ey">E-gift cards</p><h2>Give the gift of glow</h2><p class="lead">Send a Bellaluz e-gift card, valid at all branches for 12 months.</p>
+<section id="giftcards"><div class="wrap ctr"><p class="ey">E-gift cards</p><h2>Give the gift of glow</h2><p class="lead">Send a Bellaluz e-gift card, valid at all branches for 12 months.</p>
  <div class="gift" id="gift"></div></div></section>
 
 <section id="book" class="svs"><div class="wrap"><p class="ey">Branches &amp; booking</p><h2>Reserve your chair</h2>
