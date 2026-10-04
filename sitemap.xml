@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://herart36-dot.github.io/404studio/</loc>
-    <lastmod>2026-09-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://404studio.click/</loc></url>
+  <url><loc>https://404studio.click/services.html</loc></url>
+  <url><loc>https://404studio.click/pricing.html</loc></url>
+  <url><loc>https://404studio.click/portfolio.html</loc></url>
+  <url><loc>https://404studio.click/about.html</loc></url>
+  <url><loc>https://404studio.click/contact.html</loc></url>
 </urlset>
