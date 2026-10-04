@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://herart36-dot.github.io/404studio/sitemap.xml
+Sitemap: https://404studio.click/sitemap.xml
