@@ -594,7 +594,6 @@
         Explore Services
       </a>
     </div>
-    <p class="mt-5 text-sm font-semibold text-slate-700">Already have a website? <a href="#speed-check" class="text-indigo-700 underline hover:text-indigo-900">Get a free speed &amp; SEO check</a></p>
   </section><section id="why-us" class="services relative z-10 py-16 px-6 max-w-7xl mx-auto reveal">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Why Choose 404 Studio for Custom Web Development?</h2>
@@ -655,48 +654,6 @@
           <li><span class="inline-flex w-6 h-6 rounded-full bg-indigo-600 text-white text-xs items-center justify-center mr-2">2</span>Review the design and request changes</li>
           <li><span class="inline-flex w-6 h-6 rounded-full bg-indigo-600 text-white text-xs items-center justify-center mr-2">3</span>Approve it, then pay the balance and launch</li>
         </ol>
-      </div>
-    </div>
-  </section>
-
-  <section id="speed-check" class="relative z-10 py-16 px-6 max-w-3xl mx-auto reveal">
-    <div class="glass-card rounded-3xl p-8 md:p-10 shadow-2xl">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Free website speed &amp; SEO check</h2>
-        <p class="text-slate-700 mt-3">Paste your current website address and get your mobile speed and SEO scores in under a minute.</p>
-      </div>
-      <form id="sc-form" class="mt-6 flex flex-col sm:flex-row gap-3" novalidate>
-        <label for="sc-url" class="sr-only">Your website address</label>
-        <input id="sc-url" type="text" inputmode="url" autocomplete="url" placeholder="yourbusiness.com" class="cf-field flex-1">
-        <button id="sc-btn" type="submit" class="btn-gradient px-7 py-3 rounded-full font-bold shadow-lg whitespace-nowrap">Check my site</button>
-      </form>
-      <p id="sc-status" class="mt-3 text-sm text-slate-600 text-center min-h-[1.25rem]" role="status" aria-live="polite"></p>
-
-      <div id="sc-result" class="hidden mt-6">
-        <div class="grid grid-cols-2 gap-4 text-center">
-          <div class="bg-white rounded-2xl p-4 border border-slate-200">
-            <svg viewBox="0 0 100 100" class="w-24 h-24 mx-auto" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#e2e8f0" stroke-width="9"/><circle id="sc-ring-perf" cx="50" cy="50" r="42" fill="none" stroke="#059669" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 264" transform="rotate(-90 50 50)"/><text id="sc-num-perf" x="50" y="58" text-anchor="middle" font-size="28" font-weight="800" fill="#1e1b4b">0</text></svg>
-            <p class="mt-2 font-bold text-slate-900">Mobile speed</p>
-            <p id="sc-note-perf" class="text-sm text-slate-600"></p>
-          </div>
-          <div class="bg-white rounded-2xl p-4 border border-slate-200">
-            <svg viewBox="0 0 100 100" class="w-24 h-24 mx-auto" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#e2e8f0" stroke-width="9"/><circle id="sc-ring-seo" cx="50" cy="50" r="42" fill="none" stroke="#059669" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 264" transform="rotate(-90 50 50)"/><text id="sc-num-seo" x="50" y="58" text-anchor="middle" font-size="28" font-weight="800" fill="#1e1b4b">0</text></svg>
-            <p class="mt-2 font-bold text-slate-900">SEO</p>
-            <p id="sc-note-seo" class="text-sm text-slate-600"></p>
-          </div>
-        </div>
-
-        <form id="sc-lead" class="mt-6 bg-indigo-50 border border-indigo-100 rounded-2xl p-5" novalidate>
-          <p class="font-extrabold text-slate-900">Want the full report?</p>
-          <p class="text-sm text-slate-700 mt-1">Enter your email and we'll send a full breakdown of what to fix, with no obligation.</p>
-          <div class="mt-3 flex flex-col sm:flex-row gap-3">
-            <label for="sc-email" class="sr-only">Your email</label>
-            <input id="sc-email" type="email" autocomplete="email" placeholder="you@example.com" class="cf-field flex-1">
-            <button id="sc-lead-btn" type="submit" class="btn-gradient px-6 py-3 rounded-full font-bold shadow-lg whitespace-nowrap">Email me the report</button>
-          </div>
-          <input type="text" id="sc-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <p id="sc-lead-status" class="mt-2 text-sm text-slate-700" role="status" aria-live="polite"></p>
-        </form>
       </div>
     </div>
   </section>
@@ -1055,98 +1012,6 @@
         }
       }).catch(() => { document.documentElement.style.visibility = ''; });
     }
-  })();
-  </script>
-
-  <script>
-  /* Free speed & SEO check: runs Google PageSpeed Insights on the visitor's URL, then offers the full report by email. */
-  (() => {
-    const form = document.getElementById('sc-form');
-    if (!form) return;
-    const $ = id => document.getElementById(id);
-    const urlIn = $('sc-url'), btn = $('sc-btn'), status = $('sc-status'), result = $('sc-result');
-    const lead = $('sc-lead'), emailIn = $('sc-email'), leadBtn = $('sc-lead-btn'), leadStatus = $('sc-lead-status');
-    const SB_URL = 'https://acxrobzulaswsubfoghg.supabase.co';
-    const SB_KEY = 'sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';
-    let last = null;
-
-    const normalize = raw => {
-      let v = raw.trim();
-      if (!v) return null;
-      if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
-      try { const u = new URL(v); return u.hostname.includes('.') ? u.href : null; } catch (_) { return null; }
-    };
-    const colour = n => n >= 90 ? '#059669' : n >= 50 ? '#d97706' : '#e11d48';
-    const show = (key, score, note) => {
-      const ring = $('sc-ring-' + key), C = 2 * Math.PI * 42;
-      ring.setAttribute('stroke', colour(score));
-      ring.setAttribute('stroke-dasharray', (C * score / 100) + ' ' + C);
-      $('sc-num-' + key).textContent = score;
-      $('sc-note-' + key).textContent = note;
-    };
-    const verdict = n => n >= 90 ? 'Great' : n >= 50 ? 'Needs work' : 'Needs attention';
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const target = normalize(urlIn.value);
-      if (!target) { status.textContent = 'Please enter a valid website address, like yourbusiness.com'; urlIn.focus(); return; }
-      result.classList.add('hidden');
-      btn.disabled = true; btn.textContent = 'Checking...';
-      status.textContent = 'Testing your site. This usually takes 15 to 40 seconds.';
-      const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 90000);
-      try {
-        const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&category=seo&url=' + encodeURIComponent(target);
-        const r = await fetch(api, { signal: ctl.signal });
-        const data = await r.json();
-        if (!r.ok || !data.lighthouseResult) {
-          const code = data && data.error && data.error.code;
-          throw new Error(code === 429 ? 'busy' : 'fail');
-        }
-        const lh = data.lighthouseResult, cats = lh.categories;
-        const perf = Math.round((cats.performance.score || 0) * 100);
-        const seo = Math.round((cats.seo.score || 0) * 100);
-        const lcp = lh.audits['largest-contentful-paint'] && lh.audits['largest-contentful-paint'].displayValue;
-        const failed = (cats.seo.auditRefs || []).filter(a => a.weight > 0 && lh.audits[a.id] && lh.audits[a.id].score === 0).length;
-        show('perf', perf, verdict(perf) + (lcp ? ' · main content loads in ' + lcp : ''));
-        show('seo', seo, verdict(seo) + (failed ? ' · ' + failed + ' SEO issue' + (failed > 1 ? 's' : '') + ' found' : ' · no major issues found'));
-        last = { url: target, perf: perf, seo: seo, lcp: lcp || 'n/a', failed: failed };
-        result.classList.remove('hidden');
-        status.textContent = 'Results for ' + target;
-        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } catch (err) {
-        status.textContent = err.message === 'busy'
-          ? 'The free checker is busy right now. Please try again in a minute.'
-          : 'We could not test that address. Check that it is spelled correctly and publicly reachable, then try again.';
-      } finally {
-        clearTimeout(timer); btn.disabled = false; btn.textContent = 'Check my site';
-      }
-    });
-
-    lead.addEventListener('submit', e => {
-      e.preventDefault();
-      const email = emailIn.value.trim();
-      if (!/^\S+@\S+\.\S+$/.test(email)) { leadStatus.textContent = 'Please enter a valid email address.'; emailIn.focus(); return; }
-      if ($('sc-honey').value || !last) return;
-      leadBtn.disabled = true; leadBtn.textContent = 'Sending...'; leadStatus.textContent = '';
-      const body = {
-        name: email.split('@')[0],
-        email: email,
-        service: 'Web Development',
-        concern: '[Speed & SEO check] Wants the full report.\nURL: ' + last.url + '\nMobile speed: ' + last.perf + '/100 (main content: ' + last.lcp + ')\nSEO: ' + last.seo + '/100 (' + last.failed + ' issues)'
-      };
-      const tok = (window.__404 && window.__404.token) || SB_KEY;
-      fetch(SB_URL + '/rest/v1/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + tok, 'Prefer': 'return=minimal' },
-        body: JSON.stringify(body)
-      }).then(r => {
-        if (!r.ok) throw new Error('save failed');
-        leadStatus.textContent = 'Thanks! We will email the full report to ' + email + '.';
-        emailIn.value = '';
-      }).catch(() => {
-        leadStatus.textContent = 'Something went wrong. Please try again, or message us from the Contact page.';
-      }).finally(() => { leadBtn.disabled = false; leadBtn.textContent = 'Email me the report'; });
-    });
   })();
   </script>
 
