@@ -150,7 +150,7 @@ footer{padding:40px 0 120px;color:var(--mut);font-size:14px}footer .big{font:400
 <section id="faq"><div class="w"><h2>Good <em>questions</em></h2><br><details><summary>How does REY.AI work?</summary><p>REY.AI is our pet care assistant. It answers common questions, points you to the right tool and helps you book. It does not diagnose, so your vet decides on health concerns.</p></details><details><summary>When is it an emergency?</summary><p>Trouble breathing, collapse, seizures, heavy bleeding, suspected poisoning or severe pain. Call us immediately.</p></details><details><summary>Do you see exotic pets?</summary><p>Yes, including rabbits, birds and small pets. Tell us the type when booking.</p></details></div></section></main>
 <footer><div class="w"><div class="big">Pawsitive</div>&copy; 2026 Pawsitive Vet Clinic (sample site). Information here is general guidance, not veterinary advice.</div></footer>
 <button id="fab" onclick="toggleChat()" aria-label="Chat with REY.AI"><span class="o">🤖</span>Ask REY.AI</button>
-<aside id="chat" class="glass" role="dialog" aria-label="REY.AI chat"><div class="ch"><div class="av">🤖</div><div><b>REY.AI</b><small>Pet care assistant</small></div><button id="spk" title="Read replies aloud" aria-pressed="false">🔇</button><button onclick="toggleChat()" aria-label="Close">✕</button></div><div id="msgs" aria-live="polite"></div><div class="qr" id="qr"></div><div class="disc">General info only. Not a diagnosis.</div><form class="cf" id="cf"><button type="button" id="mic" title="Speak">🎤</button><input id="ci" placeholder="Ask about your pet..." autocomplete="off"><button type="submit" aria-label="Send">➤</button></form></aside>
+<aside id="chat" class="glass" role="dialog" aria-label="REY.AI chat"><div class="ch"><div class="av">🤖</div><div><b>REY.AI</b><small>Pet care assistant</small></div><button id="spk" title="Read replies aloud" aria-pressed="false">🔇</button><button onclick="toggleChat()" aria-label="Close">✕</button></div><div id="msgs" aria-live="polite"></div><div class="qr" id="qr"></div><div class="disc">AI-generated general info. Not a diagnosis.</div><form class="cf" id="cf"><button type="button" id="mic" title="Speak">🎤</button><input id="ci" placeholder="Ask about your pet..." autocomplete="off"><button type="submit" aria-label="Send">➤</button></form></aside>
 <script>
 const $=q=>document.querySelector(q),PHONE="+63 900 000 0000";
 /* open now */
@@ -201,8 +201,29 @@ const I=[
 [/age|old is/,"Try the <b>Pet age calculator</b> in Pet tools for a rough human-years estimate.",[],"#tools"],
 [/hello|\bhi\b|\bhey\b|good (morning|afternoon)/,"Hello! 🐶 How can I help you and your pet today?",["Vaccine schedule","Clinic hours","Book a visit"]],
 [/thank/,"You're welcome! Give your pet a scratch from me. 🐾",[]]];
-function reply(q){const t=q.toLowerCase();for(const[r,a,c,go] of I)if(r.test(t)){say(a,c);if(go)setTimeout(()=>document.querySelector(go).scrollIntoView({behavior:"smooth"}),900);return}
+function rules(q){const t=q.toLowerCase();for(const[r,a,c,go] of I)if(r.test(t)){say(a,c);if(go)setTimeout(()=>document.querySelector(go).scrollIntoView({behavior:"smooth"}),900);return}
  say("I'm not sure about that one. For anything about your pet's health, our vets can help. Call "+PHONE+" or book a visit.",["Book a visit","Clinic hours"])}
+
+/* ===== REY.AI: real AI through the Supabase edge function "rey-ai" ===== */
+const SB_URL="https://acxrobzulaswsubfoghg.supabase.co",SB_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFjeHJvYnp1bGFzd3N1YmZvZ2hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4MzY4MjIsImV4cCI6MjEwNjQxMjgyMn0.kad58G56FP652s5o9t_Qvh6C_FTY3DArTfUC1GudIzQ";
+const hist=[],URGENT=/emergen|urgen|poison|toxic|swallow|ate (a|some|the)|bleed|seizure|breath|collaps|hit by|choking/,BOOKQ=/\b(book|appoint|schedul)/;
+const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])).replace(/\n/g,"<br>");
+async function reply(q){
+ const t=q.toLowerCase();
+ if(URGENT.test(t)||BOOKQ.test(t)){rules(q);hist.push({role:"user",text:q});return}   /* safety and booking stay rule-based */
+ hist.push({role:"user",text:q});
+ const ty=add('<div class="ty" style="padding:0"><i></i><i></i><i></i></div>',"b");
+ try{
+  const r=await fetch(SB_URL+"/functions/v1/rey-ai",{method:"POST",headers:{"Content-Type":"application/json",apikey:SB_ANON,Authorization:"Bearer "+SB_ANON},body:JSON.stringify({messages:hist.slice(-10)})});
+  if(!r.ok)throw new Error(r.status);
+  let a=String((await r.json()).reply||"").trim();if(!a)throw new Error("empty");
+  const book=/\[\[BOOK\]\]/.test(a);a=a.replace(/\[\[BOOK\]\]/g,"").trim();
+  hist.push({role:"assistant",text:a});ty.innerHTML=esc(a);msgs.scrollTop=msgs.scrollHeight;
+  if(speak&&window.speechSynthesis){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(a))}
+  $("#qr").innerHTML=(book?["Book a visit","Clinic hours"]:["Book a visit","Emergency help"]).map(x=>`<button>${x}</button>`).join("");
+  if(book)setTimeout(()=>document.querySelector("#book").scrollIntoView({behavior:"smooth"}),900);
+ }catch(e){ty.remove();rules(q)}   /* AI unavailable: fall back to built-in answers */
+}
 function send(q){q=q.trim();if(!q)return;add(q.replace(/[<>&]/g,""),"u");$("#qr").innerHTML="";reply(q)}
 $("#cf").onsubmit=e=>{e.preventDefault();send($("#ci").value);$("#ci").value=""};
 $("#qr").onclick=e=>{if(e.target.tagName==="BUTTON")send(e.target.textContent)};
