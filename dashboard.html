@@ -295,6 +295,7 @@ document.head.appendChild(sc);
    To add another sample site: put its .html file next to dashboard.html and add a line below.
    Fields: n = name, c = category, f = file path, d = short description */
 const T=[
+ {n:'Kinetic Physio',c:'Physical Therapy',f:'sample-kinetic-physio.html',top:1,d:'A modern physical therapy clinic site with services, process, team, patient stories, FAQ and an appointment request form that opens WhatsApp.'},
  {n:'Hiblaya',c:'Fashion',f:'sample-hiblaya.html',d:'A home for Philippine fashion. Thread by thread, free to be.'},
  {n:'Anna Barchel',c:'Portfolio',f:'sample-anna-barchel.html',d:'A copywriter portfolio with services, before and after rewrites and client praise.'},
  {n:'LUMIÈRE',c:'Online Store',f:'sample-lumiere.html',d:'Soft luxury goods for intentional living: textiles, fragrances and accessories.'},
@@ -319,6 +320,7 @@ function list(){
  let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.d).toLowerCase().includes(q));
  const s=$('sort').value;
  if(s==='n')L.sort((a,b)=>a.n.localeCompare(b.n));else if(s==='c')L.sort((a,b)=>a.c.localeCompare(b.c)||a.n.localeCompare(b.n));
+ L.sort((a,b)=>(b.top?1:0)-(a.top?1:0)); /* pinned items stay on top */
  return L;
 }
 function render(){
