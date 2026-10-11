@@ -246,6 +246,8 @@ textarea.fi{resize:vertical;min-height:90px}
             <label class="pill"><input type="radio" name="svc" value="Web Development"><span>Web Development</span></label>
             <label class="pill"><input type="radio" name="svc" value="SEO Optimization"><span>SEO Optimization</span></label>
             <label class="pill"><input type="radio" name="svc" value="Web Design"><span>Web Design</span></label>
+            <label class="pill"><input type="radio" name="svc" value="Email Management"><span>Email Management</span></label>
+            <label class="pill"><input type="radio" name="svc" value="Ads Manager"><span>Ads Manager</span></label>
           </div>
         </fieldset>
         <div class="f"><label for="c-concern">Your concern</label><textarea class="fi" id="c-concern" rows="3" placeholder="Tell us about your business and what you need."></textarea></div>
@@ -461,7 +463,7 @@ $('call-form').addEventListener('submit',async e=>{
   svcEl=document.querySelector('input[name="svc"]:checked'),day=$('c-day').value,time=$('c-time').value;
  if(name.length<2)return cerr('Please enter your name.');
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return cerr('Please enter a valid email address.');
- if(!svcEl)return cerr('Please choose Web Development, SEO Optimization or Web Design.');
+ if(!svcEl)return cerr('Please choose the service you need.');
  if(concern.length<10)return cerr('Tell us a bit more about your concern (at least 10 characters).');
  if(!day)return cerr('Please choose a day.');
  if(!time)return cerr('Please choose a time (EST).');
