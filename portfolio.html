@@ -2,391 +2,300 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio | 404 Studio</title>
-<meta name="description" content="See real website samples built by 404 Studio: blogs, stores, portfolios and more. Open any site to explore it on desktop, tablet or phone.">
-<link rel="canonical" href="https://404studio.click/portfolio.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>404 Studio Dashboard | Private Client &amp; Website Management</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="theme-color" content="#4f46e5">
-<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
-*{font-family:'Plus Jakarta Sans',sans-serif}
-html{scroll-behavior:smooth}
-body{background:linear-gradient(160deg,#FFDEE9 0%,#B5FFFC 25%,#E0C3FC 50%,#8EC5FC 75%,#FFDEE9 100%);min-height:100vh;color:#1e1b4b;overflow-x:hidden}
-@media(min-width:1024px){body{background:linear-gradient(-45deg,#FFDEE9,#B5FFFC,#E0C3FC,#8EC5FC,#FFDEE9);background-size:400% 400%}}
-@media(min-width:1024px) and (prefers-reduced-motion:no-preference){body{animation:bg 15s ease infinite}}
-@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-.sticky-header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.08)}
-.glass-card{background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.6);box-shadow:0 10px 30px rgba(0,0,0,.05)}
-.btn-gradient{background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);color:#fff;transition:color .3s ease,background-color .3s ease,border-color .3s ease,box-shadow .3s ease,transform .3s ease,opacity .3s ease;display:inline-block;text-align:center}
-.btn-gradient:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(168,85,247,.4)}
-.chip{padding:.55rem 1.1rem;border-radius:999px;font-weight:700;font-size:.875rem;background:rgba(255,255,255,.85);border:1px solid #e2e8f0;color:#475569;transition:color .25s,background-color .25s,border-color .25s,box-shadow .25s,transform .25s,opacity .25s;cursor:pointer}
-.chip:hover{transform:translateY(-2px);border-color:#a78bfa;color:#4f46e5}
-.chip.active{background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);color:#fff;border-color:transparent}
-.card{cursor:pointer;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;animation:in .5s both}
-.card:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(99,102,241,.22)}
-@keyframes in{from{opacity:0;transform:translateY(18px)}}
-.thumb{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;background:#fff}
+:root{--bg:#f4f1ff;--card:#fff;--ink:#1e1b4b;--mut:#6b6990;--line:#e4e0fa;--ac:#4f46e5;--ac2:#ec4899;--glow:rgba(79,70,229,.2)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:radial-gradient(900px 500px at 85% -10%,#e0d7ff,transparent),radial-gradient(700px 400px at -5% 30%,#ffe0f0,transparent),var(--bg);min-height:100vh}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hidden{display:none!important}
+#boot{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:100;font-weight:700;color:var(--ac)}
+.spin{width:38px;height:38px;border:4px solid var(--line);border-top-color:var(--ac);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 12px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh;min-height:100dvh}
+aside{position:sticky;top:0;height:100vh;padding:24px 18px;display:flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);border-right:1px solid var(--line);overflow-y:auto}
+.brand{font-weight:800;font-size:18px;display:flex;align-items:center;gap:10px;margin-bottom:18px;text-decoration:none;color:var(--ink)}
+.brand i{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px}
+.nav{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;background:transparent;text-align:left;padding:10px 14px;border-radius:12px;font-weight:600;font-size:14px;color:var(--mut);transition:.2s}
+.nav:hover{background:#f0ecff;color:var(--ink);transform:translateX(3px)}
+.nav[aria-current="true"]{background:linear-gradient(135deg,var(--ac),#7c3aed);color:#fff;box-shadow:0 8px 20px var(--glow)}
+.nav small{opacity:.7;font-size:12px}
+.lab{font-size:12px;color:var(--mut);font-weight:700;margin:16px 14px 4px}
+.me{margin-top:auto;padding:12px;border:1px solid var(--line);border-radius:16px;background:#fff;display:flex;align-items:center;gap:10px}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;display:grid;place-items:center;font-weight:800;flex:none;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.me b{display:block;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:130px}
+.me button{border:0;background:none;color:var(--mut);font-size:12px;text-decoration:underline;padding:0}
+main{padding:32px clamp(18px,3.5vw,48px) 80px;min-width:0}
+.top{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end;margin-bottom:26px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,50px);line-height:1.05;margin:0 0 8px}
+.sub{color:var(--mut);margin:0;max-width:52ch;line-height:1.55}
+.ctl{display:flex;gap:10px;flex-wrap:wrap}
+.in,.sel{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:11px 18px;font:inherit;font-size:14px;color:var(--ink)}
+.in{min-width:230px}.in:focus,.sel:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 4px var(--glow)}
+.btn{border:0;border-radius:999px;padding:11px 20px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--ac),#7c3aed);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px var(--glow)}
+.btn.alt{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 18px;font-size:13px;color:var(--mut)}
+.stat b{display:block;font-size:22px;color:var(--ink)}
+.recent{margin-bottom:28px}.recent h2{font-size:15px;margin:0 0 10px}
+.chips{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.chip{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
+.chip i{width:22px;height:22px;border-radius:50%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:12px;position:relative;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;animation:in .5s both}
+@keyframes in{from{opacity:0;transform:translateY(16px)}}
+.card:hover{transform:translateY(-8px) rotate(-.4deg);box-shadow:0 28px 60px var(--glow)}
+.thumb{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
 .thumb .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;background:#fff}
-.thumb iframe{position:absolute;top:0;left:0;width:1000px;height:625px;border:0;transform-origin:0 0;transform:scale(var(--k,.3));pointer-events:none;background:#fff;display:block}
-/* Keep previews stable while the page is being scrolled on phones. */
-@media(max-width:767px){html{scroll-behavior:auto}body{background:#f8f7ff} .sticky-header{padding-left:1rem;padding-right:1rem} .thumb{aspect-ratio:16/10;contain:layout paint;isolation:isolate} .card{animation:none;transition:box-shadow .2s ease} .card:hover{transform:none;box-shadow:0 10px 25px rgba(99,102,241,.12)} .modal{padding:8px;padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom))} .modal>div:first-child{gap:8px!important;max-height:34vh;overflow:auto;padding-bottom:4px} .modal .stage{min-height:0;flex:1} .modal .frame{width:100%;max-width:100%;border-radius:10px} #seg{display:flex;gap:4px} .seg button{padding:8px 10px;margin-right:0;font-size:12px} #open{padding:8px 10px;font-size:12px} #close{padding:8px 12px;font-size:12px} #mt{font-size:15px}}
-@media(hover:none),(pointer:coarse){.card:hover{transform:none}.btn-gradient:hover,.chip:hover{transform:none;box-shadow:none}}
-.modal{position:fixed;inset:0;z-index:100;background:rgba(30,27,75,.8);backdrop-filter:blur(8px);display:none;flex-direction:column;padding:14px}
-.modal.open{display:flex}
+.thumb iframe{position:absolute;top:0;left:0;width:1000px;height:625px;border:0;transform-origin:0 0;transform:scale(var(--k,.3));pointer-events:none;background:#fff}
+.info{display:flex;justify-content:space-between;align-items:center;padding:12px 6px 4px;gap:8px}
+.info b{display:block}.info span{font-size:12px;color:var(--mut)}
+.desc{font-size:12px;color:var(--mut);margin:6px 0 0;max-width:30ch;line-height:1.4}
+.heart{border:1px solid var(--line);background:#fff;width:38px;height:38px;border-radius:50%;font-size:18px;color:var(--mut);transition:.2s;flex:none}
+.heart:hover{transform:scale(1.15)}.heart.on{color:#e11d48;background:#fff1f2;border-color:#fecdd3}
+.empty{text-align:center;padding:70px 0;color:var(--mut)}
+/* modal */
+#modal{position:fixed;inset:0;z-index:60;background:rgba(18,15,50,.8);backdrop-filter:blur(8px);display:flex;flex-direction:column;padding:16px;animation:fd .25s}
+@keyframes fd{from{opacity:0}}
+.mbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:#fff;margin-bottom:12px}
+.mbar h3{margin:0;font-size:18px}.mbar .sp{flex:1}
+.seg{display:flex;background:rgba(255,255,255,.14);border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;color:#fff;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.round{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px}
+.round:hover{background:rgba(255,255,255,.15)}
 .stage{flex:1;min-height:0;display:flex;justify-content:center}
-.frame{height:100%;width:100%;max-width:1300px;background:#fff;border-radius:14px;overflow:hidden;transition:max-width .45s cubic-bezier(.16,1,.3,1)}
+.frame{height:100%;width:100%;max-width:1300px;background:#fff;border-radius:14px;overflow:hidden;transition:max-width .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .frame iframe{width:100%;height:100%;border:0}
-.seg button{border:0;background:rgba(255,255,255,.14);color:#fff;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-right:6px}
-.seg button.on{background:#fff;color:#1e1b4b}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:14px;font-weight:600;font-size:14px;opacity:0;transition:.3s;z-index:90;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+/* start a call */
+#call{position:fixed;inset:0;z-index:70;background:rgba(18,15,50,.6);backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px;animation:fd .25s}
+.cbox{position:relative;background:#fff;border-radius:24px;width:100%;max-width:540px;max-height:94vh;overflow-y:auto;padding:28px;box-shadow:0 30px 80px rgba(30,27,75,.35)}
+.cx{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:0;background:#f0ecff;font-size:20px;line-height:1;color:var(--ink)}
+.cbox h2{font-family:'Playfair Display',serif;font-size:28px;margin:0 40px 6px 0}
+.csub{color:var(--mut);font-size:14px;line-height:1.5;margin:0 0 18px}
+.f{margin-bottom:14px}
+.f>label,.f>legend{display:block;font-size:13px;font-weight:700;margin-bottom:6px;padding:0}
+fieldset.f{border:0;margin:0 0 14px;padding:0;min-width:0}
+.fi{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:11px 14px;font:inherit;font-size:15px;color:var(--ink)}
+.fi:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 4px var(--glow)}
+textarea.fi{resize:vertical;min-height:90px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.pill span{display:block;border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:var(--mut);transition:.2s}
+.pill input:checked+span{background:linear-gradient(135deg,var(--ac),#7c3aed);color:#fff;border-color:transparent;box-shadow:0 8px 20px var(--glow)}
+.pill input:focus-visible+span{outline:3px solid var(--ac);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hint{font-size:12px;color:var(--mut);margin:6px 0 0;line-height:1.4}
+.when{background:#f4f1ff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+.cerr{color:#be123c;font-size:13px;background:#fff1f2;border-radius:12px;padding:10px 14px;margin:0 0 12px}
+.cbox .btn{width:100%;padding:14px;font-size:15px}
+.cbox .btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
+.done{text-align:center;padding:10px 0}
+.done .ck{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:30px;color:#fff;background:linear-gradient(135deg,var(--ac),var(--ac2))}
+@media(max-width:480px){.row2{grid-template-columns:1fr}.cbox{padding:22px}}
+@media (max-width:900px){aside,#modal,#call{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}aside{background:rgba(255,255,255,.96)}#modal{background:rgba(18,15,50,.9)}#call{background:rgba(18,15,50,.8)}}
+
+/* ===== Mobile & tablet ===== */
+.appbar,#scrim{display:none}
+@media (min-width:861px) and (max-width:1100px){
+ .layout{grid-template-columns:220px 1fr}
+ aside{padding:20px 12px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+ .in{min-width:180px}
+}
+@media (max-width:860px){
+ .layout{grid-template-columns:1fr}
+ /* touch drawer */
+ aside{position:fixed;left:0;top:0;bottom:0;height:100vh;height:100dvh;width:min(86vw,320px);z-index:50;transform:translateX(-102%);visibility:hidden;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),visibility 0s linear .28s;background:#fff;
+  padding:max(20px,env(safe-area-inset-top)) 16px max(20px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+  overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:12px 0 40px rgba(30,27,75,.18)}
+ aside.open{transform:none;visibility:visible;transition-delay:0s}
+ #scrim{display:block;position:fixed;inset:0;z-index:45;background:rgba(18,15,50,.5);opacity:0;pointer-events:none;transition:opacity .28s}
+ #scrim.on{opacity:1;pointer-events:auto}
+ body.nav-open{overflow:hidden}
+ /* sticky top bar with the menu button */
+ main{padding-left:max(clamp(18px,3.5vw,48px),env(safe-area-inset-left));padding-right:max(clamp(18px,3.5vw,48px),env(safe-area-inset-right))}
+ .appbar{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:30;
+  margin:-32px calc(-1 * clamp(18px,3.5vw,48px)) 18px;padding:max(10px,env(safe-area-inset-top)) clamp(14px,3.5vw,48px) 10px;
+  background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+ .appbar .brand{margin:0;flex:1;min-width:0}
+ .ab-btn{min-width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--ink);padding:0}
+ .ab-call{padding:0 16px;font-weight:700;font-size:14px}
+ /* controls, stats, cards */
+ .top{margin-bottom:18px}
+ .ctl{width:100%}
+ .in{flex:1 1 100%;min-width:0}.sel{flex:1 1 140px}.ctl .btn{flex:1 1 140px}
+ .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+ .stat{padding:10px 12px}.stat b{font-size:20px}
+ .grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+ /* preview modal */
+ #modal{padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}
+ .mbar{gap:8px}.mbar h3{order:-1;flex:1 1 100%;font-size:16px}
+}
+@media (max-width:600px){.seg{display:none}.mbar .sp{display:none}}
+@media (max-width:560px){
+ .grid{grid-template-columns:1fr}
+ .sub{font-size:14px}
+ .cbox{padding:22px;max-height:calc(100dvh - 24px)}
+ #toast{bottom:max(26px,calc(env(safe-area-inset-bottom) + 14px));max-width:calc(100% - 32px);text-align:center}
+}
+/* touch devices: no hover-only effects, bigger tap targets, no iOS zoom on inputs */
+@media (hover:none){.card:hover{transform:none;box-shadow:none}.nav:hover{transform:none}.btn:hover{transform:none;box-shadow:none}.heart:hover{transform:none}.card:active{transform:scale(.985)}}
+@media (pointer:coarse){
+ .nav{min-height:44px}.heart{width:44px;height:44px}.round,.btn,.chip{min-height:44px}.seg button{min-height:40px}
+ .cx{width:44px;height:44px}.pill span{padding:12px 16px}.in,.sel,.fi{min-height:44px;font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <style id="mobile-polish">
 .tap{display:none}
 @media (hover:none){.hov{display:none}.tap{display:inline}}
-@media (max-width:640px){
- #filters{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:2px 2px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
- #filters::-webkit-scrollbar{display:none}
- #filters .chip{flex:none}
- #seg,.modal .flex-1{display:none}
- #mt{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-}
-@media (pointer:coarse){
- .chip{min-height:44px}
- #open,#close{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
- footer a{display:inline-block;padding:10px 4px}
-}
-</style>
-<style id="service-samples-css">
-.ss-wrap{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.06)}
-.ss-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #eef0f4;background:#f6f8fc;font-size:12px;color:#64748b}
-.ss-search{flex:1;background:#e9eef6;border-radius:999px;padding:7px 14px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ss-tabs{display:flex;border-bottom:1px solid #eef0f4;overflow-x:auto;scrollbar-width:none}
-.ss-tabs::-webkit-scrollbar{display:none}
-.ss-tab{flex:none;padding:10px 16px;font-size:13px;font-weight:700;color:#64748b;border-bottom:3px solid transparent;white-space:nowrap}
-.ss-tab.on{color:#4f46e5;border-bottom-color:#6366f1}
-.ss-tab b{font-size:11px;background:#16a34a;color:#fff;border-radius:999px;padding:1px 7px;margin-left:6px}
-.ss-row{display:grid;grid-template-columns:150px auto 1fr 64px;gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid #f1f3f7;font-size:13px;color:#475569}
-.ss-row.unread{background:#f5f7ff;font-weight:700;color:#1e1b4b}
-.ss-row .snd{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ss-row .sub{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;font-weight:400;color:#64748b}
-.ss-row .sub strong{color:inherit;font-weight:700;margin-right:6px}
-.ss-row .tm{text-align:right;font-size:12px;color:#94a3b8}
-.ss-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
-.t-cl{background:#e0e7ff;color:#4338ca}.t-in{background:#dcfce7;color:#15803d}.t-ld{background:#fce7f3;color:#be185d}.t-sc{background:#fef3c7;color:#b45309}.t-pr{background:#f1f5f9;color:#475569}
-.ss-bar-track{height:10px;border-radius:999px;background:#eef0f7;overflow:hidden}
-.ss-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899)}
-@media(max-width:640px){.ss-row{grid-template-columns:auto 1fr 52px}.ss-row .snd{display:none}}
-</style>
-<style id="email-samples-css">
-.es-tabs{display:inline-flex;gap:6px;background:rgba(255,255,255,.85);border:1px solid #e2e8f0;border-radius:999px;padding:4px;margin-bottom:12px}
-.es-t{border:0;background:transparent;border-radius:999px;padding:8px 18px;font-weight:700;font-size:14px;color:#475569;cursor:pointer;min-height:40px}
-.es-t.on{background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);color:#fff}
-.es-t:focus-visible{outline:3px solid #a78bfa;outline-offset:2px}
-.es-note{font-size:12px;color:#64748b;margin-top:8px}
-.es-do{margin-top:14px;background:rgba(255,255,255,.88);border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px}
-.es-do p{font-size:12px;font-weight:800;color:#334155;margin-bottom:8px}
-.es-do ul{display:grid;gap:6px;font-size:13px;color:#475569}
-.es-do li i{color:#4f46e5;margin-right:8px;width:14px;text-align:center}
-/* Gmail look */
-.gm{display:grid;grid-template-columns:150px 1fr;background:#f6f8fc;font-family:Arial,Helvetica,sans-serif}
-.gm-side{padding:12px 8px;font-size:13px;color:#444}
-.gm-comp{display:flex;align-items:center;gap:8px;background:#c2e7ff;color:#001d35;font-weight:700;border-radius:14px;padding:11px 14px;margin-bottom:10px}
-.gm-it{display:flex;justify-content:space-between;padding:6px 10px;border-radius:0 16px 16px 0;margin-right:6px}
-.gm-it.on{background:#d3e3fd;font-weight:700;color:#041e49}
-.gm-lb{display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:12.5px}
-.gm-lb i{font-size:11px}
-.gm-main{background:#fff;border-radius:14px 0 0 0;margin-top:8px;min-width:0}
-.gm-tabs{display:flex;border-bottom:1px solid #e8eaed;overflow-x:auto;scrollbar-width:none}
-.gm-tabs::-webkit-scrollbar{display:none}
-.gm-tab{flex:none;padding:10px 16px;font-size:13px;font-weight:600;color:#5f6368;border-bottom:3px solid transparent;white-space:nowrap}
-.gm-tab.on{color:#0b57d0;border-bottom-color:#0b57d0}
-.gm-tab b{font-size:10.5px;background:#188038;color:#fff;border-radius:999px;padding:1px 6px;margin-left:6px}
-.gm-row{display:grid;grid-template-columns:130px 1fr 58px;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px solid #f1f3f4;font-size:13px;color:#5f6368}
-.gm-row.u{font-weight:700;color:#202124;background:#f2f6fc}
-.gm-row .s{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
-.gm-row .s .c{font-size:11px;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:6px}
-.gm-row .s em{font-style:normal;font-weight:400;color:#5f6368}
-.gm-row .t{text-align:right;font-size:12px}
-.gm-dr{color:#d93025;font-weight:700}
-/* Outlook look */
-.ol{background:#faf9f8;font-family:'Segoe UI',system-ui,sans-serif}
-.ol-top{display:flex;align-items:center;gap:12px;background:#0f6cbd;color:#fff;padding:8px 14px;font-size:13px}
-.ol-top b{font-size:15px}
-.ol-sr{flex:1;background:rgba(255,255,255,.2);border-radius:6px;padding:6px 12px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ol-body{display:grid;grid-template-columns:150px 1fr}
-.ol-side{padding:10px 8px;font-size:13px;color:#323130;border-right:1px solid #edebe9;background:#f5f5f5}
-.ol-new{background:#0f6cbd;color:#fff;border-radius:6px;padding:8px 12px;font-weight:600;margin-bottom:10px;display:flex;gap:8px;align-items:center}
-.ol-f{display:flex;justify-content:space-between;padding:6px 10px;border-radius:4px}
-.ol-f.on{background:#e1e1e1;font-weight:700}
-.ol-h{font-size:11px;font-weight:700;color:#605e5c;margin:10px 10px 4px}
-.ol-main{background:#fff;min-width:0}
-.ol-tabs{display:flex;gap:18px;padding:10px 14px 0;border-bottom:1px solid #edebe9;font-size:13px;font-weight:600;color:#605e5c}
-.ol-tab{padding-bottom:8px;border-bottom:3px solid transparent}
-.ol-tab.on{color:#0f6cbd;border-bottom-color:#0f6cbd}
-.ol-row{display:grid;grid-template-columns:4px 1fr auto;gap:10px;padding:9px 14px 9px 10px;border-bottom:1px solid #f3f2f1;font-size:12.5px;color:#605e5c;align-items:start}
-.ol-row .bar{align-self:stretch;border-radius:2px}
-.ol-row.u .bar{background:#0f6cbd}
-.ol-row.u .snd{font-weight:700;color:#201f1e}
-.ol-row.u .sbj{color:#0f6cbd;font-weight:600}
-.ol-row .snd{color:#323130;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ol-row .sbj{color:#323130;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ol-row .pv{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ol-row .mid{min-width:0}
-.ol-row .rt{text-align:right;font-size:11.5px;white-space:nowrap}
-.ol-cat{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;border-radius:3px;padding:1px 6px;margin-right:4px}
-.ol-pin{color:#605e5c}
-.ol-flag{color:#c50f1f}
-@media(max-width:640px){
- .gm,.ol-body{grid-template-columns:1fr}
- .gm-side,.ol-side{display:none}
- .gm-main{border-radius:0;margin-top:0}
- .gm-row{grid-template-columns:1fr 52px}
- .gm-row .a{display:none}
+/* preview toolbar: 3 compact rows instead of a 5-row pile of buttons */
+@media (max-width:600px){
+ .mbar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+ .mbar h3{grid-column:1/3;grid-row:1;order:0;flex:none;margin:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center}
+ #close{grid-column:3;grid-row:1}
+ #prev{grid-column:1;grid-row:2}#next{grid-column:2;grid-row:2}#mfav{grid-column:3;grid-row:2}
+ #use{grid-column:1/-1;grid-row:3;padding:12px}
+ .mbar .round,.mbar .btn{min-height:44px;padding-left:8px;padding-right:8px;text-align:center}
 }
 </style>
 </head>
 <body>
+<div id="boot"><div><div class="spin"></div>Checking your sign-in...</div></div>
 
-<header class="sticky-header py-4 px-6 md:px-12">
-  <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-    <a href="/" aria-label="404 Studio home"><img src="logo.webp" width="455" height="96" alt="404 Studio logo" class="h-10 md:h-12 w-auto"></a>
-    <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-700">
-      <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
-      <a href="services.html" class="hover:text-indigo-600 transition-colors">Services</a>
-      <a href="portfolio.html" class="text-indigo-600">Portfolio</a>
-    </nav>
-    <div class="flex items-center gap-3">
-      <a href="/" class="md:hidden font-semibold text-slate-700 text-sm"><i class="fa-solid fa-arrow-left"></i> Home</a>
-      <a href="dashboard.html" data-book class="btn-gradient px-5 py-2.5 rounded-full font-bold shadow-lg text-sm md:text-base">Book a free call</a>
+<div class="layout hidden" id="app">
+  <aside id="side">
+    <a class="brand" href="index.html?home"><i>404</i> 404 Studio</a>
+    <button class="nav" data-cat="All" aria-current="true">Explore all <small id="n-All"></small></button>
+    <button class="nav" data-cat="__fav">Favorites <small id="n-fav">0</small></button>
+    <div class="lab">Categories</div>
+    <div id="cats"></div>
+    <div class="lab">Quick links</div>
+    <a class="nav" href="index.html?home#calculator" style="text-decoration:none">Get a quote</a>
+    <button class="nav" id="callNav" type="button">Start a call</button>
+    <div class="me"><div class="av" id="av"></div><div><b id="nm"></b><button id="out" type="button">Sign out</button></div></div>
+  </aside>
+  <div id="scrim"></div>
+  <main>
+    <div class="appbar">
+      <button class="ab-btn" id="menu" type="button" aria-label="Open menu" aria-controls="side" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="brand" href="index.html?home"><i>404</i> 404 Studio</a>
+      <button class="ab-btn ab-call" id="callBar" type="button">Call</button>
     </div>
-  </div>
-</header>
-
-<main>
-  <section class="py-14 px-6 text-center max-w-4xl mx-auto">
-    <span class="inline-block bg-white/80 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-900 shadow-sm border border-white mb-5"><i class="fa-solid fa-swatchbook mr-1"></i> PORTFOLIO</span>
-    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">Websites we've <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">built</span></h1>
-    <p class="text-lg text-slate-700 font-medium max-w-2xl mx-auto">Real sample sites, built from scratch. <span class="hov">Hover a card to scroll through it, or open one</span><span class="tap">Tap a card</span> to try it on desktop, tablet or phone. <a href="#service-samples" class="font-bold text-indigo-600 hover:text-purple-600">New: email and ads management samples</a>.</p>
-  </section>
-
-  <!-- ===== PROFILE & CREDIBILITY (EDIT the values marked EDIT) ===== -->
-  <section id="about" class="px-6 pb-14 max-w-5xl mx-auto">
-    <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl">
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-        <div class="shrink-0 w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 shadow-lg">
-          <img src="kean.webp" width="400" height="400" alt="Kean Carl Donato, Founder and Web Developer at 404 Studio" class="w-full h-full rounded-full object-cover bg-white" decoding="async">
-        </div>
-        <div class="text-center md:text-left flex-1">
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-1">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">Kean Carl Donato</h2>
-            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-2.5 py-1 rounded-full"><i class="fa-solid fa-circle-check"></i> Available for projects</span>
-          </div>
-          <p class="text-sm font-bold text-purple-700 mb-3">Founder &amp; Web Developer at 404 Studio &middot; Quezon City, Philippines</p>
-          <div id="bio">
-            <p class="text-slate-600 leading-relaxed">I specialize in designing and developing custom websites that bring together visual storytelling, thoughtful user experience, and functional web solutions. My work spans responsive website design, front-end development, interactive interfaces, content-driven platforms, portfolio websites, and e-commerce concepts. I focus on transforming ideas into polished digital experiences through careful attention to layout, typography, visual hierarchy, accessibility, and performance across desktop and mobile devices.</p>
-            <div id="bio-more" class="hidden">
-              <p class="text-slate-600 leading-relaxed mt-3">Beyond design and development, I work on the practical side of maintaining a website&mdash;from structuring content and refining user interactions to troubleshooting issues, improving responsiveness, and implementing updates. I believe a successful website should do more than look good; it should communicate clearly, function reliably, and give visitors a seamless experience.</p>
-              <p class="text-slate-600 leading-relaxed mt-3">Through 404 Studio, I aim to make thoughtful, professionally designed websites more accessible to small businesses, independent creators, entrepreneurs, and emerging brands. My approach combines creativity with problem-solving, building digital spaces that reflect each project's identity while remaining adaptable, intuitive, and purposeful.</p>
-              <p class="text-slate-800 font-semibold leading-relaxed mt-3">Open to freelance web development, web design, website improvement, and digital collaborations.</p>
-            </div>
-            <button id="bio-toggle" type="button" aria-expanded="false" aria-controls="bio-more" class="mt-2 text-sm font-bold text-indigo-600 hover:text-purple-600 transition"><span>See more</span> <i class="fa-solid fa-chevron-down text-xs ml-1"></i></button>
-          </div>
-          <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
-            <a href="mailto:keandonato@404studio.click" class="text-sm font-bold bg-white border border-slate-200 rounded-full px-4 py-2 hover:border-indigo-400 hover:text-indigo-600 transition"><i class="fa-solid fa-envelope mr-1"></i> Email me</a>
-            <a href="https://www.linkedin.com/in/kean-carl-donato-8178b43b9?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_ios" target="_blank" rel="noopener" class="text-sm font-bold bg-white border border-slate-200 rounded-full px-4 py-2 hover:border-indigo-400 hover:text-indigo-600 transition"><i class="fa-brands fa-linkedin mr-1"></i> LinkedIn</a>
-            <a href="https://www.facebook.com/kean.concepcion.12/" target="_blank" rel="noopener" class="text-sm font-bold bg-white border border-slate-200 rounded-full px-4 py-2 hover:border-indigo-400 hover:text-indigo-600 transition"><i class="fa-brands fa-facebook mr-1"></i> Facebook</a>
-          </div>
-        </div>
+    <div class="top">
+      <div>
+        <h1 id="hello">Welcome</h1>
+        <p class="sub">Explore real sample websites. <span class="hov">Hover a card to scroll through the page, open one</span><span class="tap">Tap a card</span> to use it live on desktop, tablet or phone, and save the ones you like.</p>
       </div>
-
-      <!-- Stats (sample count updates automatically) -->
-      <div class="grid grid-cols-2 gap-3 mt-8 max-w-md mx-auto md:mx-0">
-        <div class="bg-white/80 border border-slate-100 rounded-2xl p-4 text-center"><div id="stat-sites" class="text-3xl font-extrabold text-indigo-600">7</div><div class="text-xs font-semibold text-slate-500 mt-1">Sample sites built</div></div>
-        
-        
-        <div class="bg-white/80 border border-slate-100 rounded-2xl p-4 text-center"><div class="text-3xl font-extrabold text-indigo-600">100%</div><div class="text-xs font-semibold text-slate-500 mt-1">Mobile-friendly builds</div></div>
-      </div>
-
-      <!-- Skills / tools. EDIT freely -->
-      <div class="mt-6">
-        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 text-center md:text-left">Skills &amp; tools</p>
-        <div class="flex flex-wrap justify-center md:justify-start gap-2">
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">HTML &amp; CSS</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">JavaScript</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">Tailwind CSS</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">Supabase</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">Responsive design</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">SEO basics</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">Online stores</span>
-          <span class="text-xs font-bold bg-indigo-50 text-indigo-700 rounded-full px-3 py-1.5">Web apps &amp; dashboards</span>
-        </div>
+      <div class="ctl">
+        <input class="in" id="q" type="search" placeholder="Search websites" aria-label="Search templates">
+        <select class="sel" id="sort" aria-label="Sort"><option value="n">Sort: A to Z</option><option value="c">Sort: Category</option><option value="r">Sort: Random</option></select>
+        <button class="btn" id="rand" type="button">Surprise me</button>
+        <button class="btn alt" id="callTop" type="button">Start a call</button>
       </div>
     </div>
-  </section>
-
-  <section class="px-6 pb-16 max-w-7xl mx-auto">
-    <div id="filters" class="flex flex-wrap justify-center gap-2 mb-3"></div>
-    <p id="count" class="text-center text-sm text-slate-500 mb-8"></p>
-    <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-  </section>
-
-  <!-- ===== SERVICE SAMPLES: EMAIL + ADS ===== -->
-  <section id="service-samples" class="px-6 pb-16 max-w-6xl mx-auto scroll-mt-24">
-    <div class="text-center mb-8">
-      <span class="inline-block bg-white/80 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-900 shadow-sm border border-white mb-4"><i class="fa-solid fa-inbox mr-1"></i> NEW SERVICES</span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">Email Management and Ads Manager</h2>
-      <p class="text-slate-700 max-w-2xl mx-auto">Samples of how we organize the work. Names, messages and figures are made up for illustration.</p>
-    </div>
-
-    <div class="grid lg:grid-cols-5 gap-6 items-start">
-      <div class="lg:col-span-3">
-        <h3 class="font-extrabold text-slate-900 mb-1">Email Management samples</h3>
-        <p class="text-sm text-slate-600 mb-3">We work in the email app you already use. Switch between Gmail and Outlook to see how an organized inbox looks in each.</p>
-
-        <div class="es-tabs" role="tablist" aria-label="Email app">
-          <button type="button" class="es-t on" role="tab" id="tab-gm" aria-selected="true" aria-controls="pane-gm"><i class="fa-brands fa-google mr-1"></i> Gmail</button>
-          <button type="button" class="es-t" role="tab" id="tab-ol" aria-selected="false" aria-controls="pane-ol" tabindex="-1"><i class="fa-brands fa-microsoft mr-1"></i> Outlook</button>
-        </div>
-
-        <div id="pane-gm" role="tabpanel" aria-labelledby="tab-gm">
-          <div class="ss-wrap" role="img" aria-label="Sample Gmail inbox with labels for Clients, Invoices, Leads, Security and Promos, and a saved reply draft">
-            <div class="ss-bar"><i class="fa-solid fa-envelope text-red-500"></i><span class="font-bold text-slate-700">Gmail</span><span class="ss-search">Search mail</span></div>
-            <div class="gm">
-              <div class="gm-side">
-                <div class="gm-comp"><i class="fa-solid fa-pen"></i> Compose</div>
-                <div class="gm-it on"><span>Inbox</span><span>12</span></div>
-                <div class="gm-it"><span>Starred</span></div>
-                <div class="gm-it"><span>Sent</span></div>
-                <div class="gm-it"><span>Drafts</span><span>3</span></div>
-                <div class="gm-lb" style="margin-top:8px;font-weight:700">Labels</div>
-                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#4338ca"></i> Clients</div>
-                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#15803d"></i> Invoices</div>
-                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#be185d"></i> Leads</div>
-                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#b45309"></i> Security</div>
-                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#64748b"></i> Promos</div>
-              </div>
-              <div class="gm-main">
-                <div class="gm-tabs"><span class="gm-tab on">Primary</span><span class="gm-tab">Promotions<b>3 new</b></span><span class="gm-tab">Social</span><span class="gm-tab">Updates<b style="background:#b06000">5 new</b></span></div>
-                <div class="gm-row u"><span class="a s">Lopez Bakery</span><span class="s"><span class="c t-cl">Clients</span><strong>Re: Friday delivery</strong> <em>&ndash; Can we move it to the afternoon? Thanks!</em></span><span class="t">7:17 PM</span></div><div class="gm-row u"><span class="a s">Billing</span><span class="s"><span class="c t-in">Invoices</span><strong>Invoice #1042 paid</strong> <em>&ndash; Payment received. Receipt attached.</em></span><span class="t">6:51 PM</span></div><div class="gm-row u"><span class="a s">Website form</span><span class="s"><span class="c t-ld">Leads</span><strong>New quote request</strong> <em>&ndash; Hi, I would like a quote for a 5-page website.</em></span><span class="t">6:20 PM</span></div><div class="gm-row"><span class="a s">Reyes Dental</span><span class="s"><span class="c t-cl">Clients</span><strong>Re: Appointment reminders</strong> <em>&ndash; Yes, please go ahead with the text version.</em></span><span class="t">3:42 PM</span></div><div class="gm-row"><span class="a s"><span class="gm-dr">Draft</span></span><span class="s"><span class="c t-cl">Clients</span><strong>Reply to Lopez Bakery</strong> <em>&ndash; Hi Ana, afternoon works. We will deliver at 2 PM...</em></span><span class="t">3:30 PM</span></div><div class="gm-row"><span class="a s">Account Security</span><span class="s"><span class="c t-sc">Security</span><strong>Sign-in alert</strong> <em>&ndash; Sorted to Updates, out of the main inbox.</em></span><span class="t">12:29 PM</span></div><div class="gm-row"><span class="a s">Store Newsletter</span><span class="s"><span class="c t-pr">Promos</span><strong>Weekly deals</strong> <em>&ndash; Sorted to Promotions automatically.</em></span><span class="t">10:59 AM</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="es-do">
-            <p>What we set up in Gmail</p>
-            <ul>
-              <li><i class="fa-solid fa-tags"></i>Labels and filters that sort clients, invoices and leads automatically</li>
-              <li><i class="fa-solid fa-file-lines"></i>Saved reply templates and a clean signature</li>
-              <li><i class="fa-solid fa-clock"></i>Scheduled sends and out-of-office replies</li>
-              <li><i class="fa-solid fa-box-archive"></i>Old threads archived so the inbox stays short</li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="pane-ol" role="tabpanel" aria-labelledby="tab-ol" hidden>
-          <div class="ss-wrap" role="img" aria-label="Sample Outlook inbox with categories, pinned and flagged messages, and client folders">
-            <div class="ol">
-              <div class="ol-top"><b>Outlook</b><span class="ol-sr">Search</span></div>
-              <div class="ol-body">
-                <div class="ol-side">
-                  <div class="ol-new"><i class="fa-solid fa-envelope"></i> New mail</div>
-                  <div class="ol-f on"><span>Inbox</span><span>8</span></div>
-                  <div class="ol-f"><span>Drafts</span><span>3</span></div>
-                  <div class="ol-f"><span>Sent Items</span></div>
-                  <div class="ol-h">Folders</div>
-                  <div class="ol-f"><span>Clients</span></div>
-                  <div class="ol-f"><span>Invoices</span></div>
-                  <div class="ol-f"><span>Leads</span></div>
-                  <div class="ol-f"><span>Newsletters</span></div>
-                </div>
-                <div class="ol-main">
-                  <div class="ol-tabs"><span class="ol-tab on">Focused</span><span class="ol-tab">Other</span></div>
-                  <div class="ol-row"><span class="bar"></span><div class="mid"><div class="snd">Reyes Dental</div><div class="sbj">Contract renewal: please review</div><div class="pv"><span class="ol-cat" style="background:#0f6cbd">Clients</span>Attached is the renewal for next year. Let me know if...</div></div><div class="rt">Mon<br><i class="fa-solid fa-thumbtack ol-pin" title="Pinned"></i> </div></div><div class="ol-row u"><span class="bar"></span><div class="mid"><div class="snd">Lopez Bakery</div><div class="sbj">Re: Friday delivery</div><div class="pv"><span class="ol-cat" style="background:#0f6cbd">Clients</span>Can we move it to the afternoon? Thanks!</div></div><div class="rt">7:17 PM<br><i class="fa-solid fa-flag ol-flag" title="Follow up"></i></div></div><div class="ol-row u"><span class="bar"></span><div class="mid"><div class="snd">Accounts Payable</div><div class="sbj">Invoice #1042 paid</div><div class="pv"><span class="ol-cat" style="background:#107c10">Invoices</span>Payment received. Receipt attached.</div></div><div class="rt">6:51 PM<br></div></div><div class="ol-row u"><span class="bar"></span><div class="mid"><div class="snd">Website form</div><div class="sbj">New quote request</div><div class="pv"><span class="ol-cat" style="background:#8764b8">Leads</span>Hi, I would like a quote for a 5-page website.</div></div><div class="rt">6:20 PM<br></div></div><div class="ol-row"><span class="bar"></span><div class="mid"><div class="snd">Supplier Co.</div><div class="sbj">Updated delivery schedule</div><div class="pv"><span class="ol-cat" style="background:#0f6cbd">Clients</span>Attached is the schedule for next week.</div></div><div class="rt">11:10 AM<br></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="es-do">
-            <p>What we set up in Outlook</p>
-            <ul>
-              <li><i class="fa-solid fa-list-check"></i>Rules that move newsletters and receipts into folders</li>
-              <li><i class="fa-solid fa-palette"></i>Color categories for clients, invoices and leads</li>
-              <li><i class="fa-solid fa-thumbtack"></i>Pins and follow-up flags so nothing important is missed</li>
-              <li><i class="fa-solid fa-file-lines"></i>Reply templates and a consistent signature</li>
-            </ul>
-          </div>
-        </div>
-        <p class="es-note">Sample only. Names, messages and times are made up.</p>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h3 class="font-extrabold text-slate-900 mb-1">Ads Manager sample</h3>
-        <p class="text-sm text-slate-600 mb-3">A simple weekly report: where the budget went and what we changed.</p>
-        <div class="glass-card rounded-2xl p-5" role="img" aria-label="Sample weekly ads report with four campaigns and budget used">
-          <p class="text-xs font-bold text-slate-500 mb-4">Sample weekly report</p>
-          <div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Lunch promo, Facebook</span><span class="text-slate-500 font-semibold">82% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:82%"></div></div><p class="text-xs text-slate-500 mt-1">Learning phase over, scaling budget</p></div><div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Weekend booking, Instagram</span><span class="text-slate-500 font-semibold">64% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:64%"></div></div><p class="text-xs text-slate-500 mt-1">Best cost per message this week</p></div><div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Local search, Google</span><span class="text-slate-500 font-semibold">47% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:47%"></div></div><p class="text-xs text-slate-500 mt-1">New keywords added, 2 paused</p></div><div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Retargeting, website visitors</span><span class="text-slate-500 font-semibold">31% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:31%"></div></div><p class="text-xs text-slate-500 mt-1">Testing a new image</p></div>
-        </div>
-        <ul class="text-sm text-slate-600 mt-4 space-y-2">
-          <li><i class="fa-solid fa-bullseye text-pink-600 mr-2"></i>Facebook, Instagram and Google campaigns</li>
-          <li><i class="fa-solid fa-coins text-pink-600 mr-2"></i>Ad spend is paid by you directly to the platform</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="text-center mt-8">
-      <a href="dashboard.html" data-book class="btn-gradient px-8 py-3.5 rounded-full font-bold shadow-lg">Book a free call</a>
-    </div>
-  </section>
-
-  <!-- ===== TRUST POINTS ===== -->
-  <section class="px-6 pb-16 max-w-6xl mx-auto">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-white/80 rounded-2xl p-4 flex items-start gap-3"><i class="fa-solid fa-code text-indigo-600 mt-1"></i><div><p class="font-extrabold text-sm text-slate-900">Built from scratch</p><p class="text-xs text-slate-500">No templates, fully custom.</p></div></div>
-      <div class="bg-white/80 rounded-2xl p-4 flex items-start gap-3"><i class="fa-solid fa-mobile-screen text-purple-600 mt-1"></i><div><p class="font-extrabold text-sm text-slate-900">Mobile-first</p><p class="text-xs text-slate-500">Looks right on every screen.</p></div></div>
-      <div class="bg-white/80 rounded-2xl p-4 flex items-start gap-3"><i class="fa-solid fa-gauge-high text-pink-600 mt-1"></i><div><p class="font-extrabold text-sm text-slate-900">Fast &amp; SEO-ready</p><p class="text-xs text-slate-500">Lightweight pages that rank.</p></div></div>
-      <div class="bg-white/80 rounded-2xl p-4 flex items-start gap-3"><i class="fa-solid fa-screwdriver-wrench text-indigo-600 mt-1"></i><div><p class="font-extrabold text-sm text-slate-900">Ongoing support</p><p class="text-xs text-slate-500">Hosting, updates and fixes.</p></div></div>
-    </div>
-  </section>
-
-  <section class="px-6 pb-16 max-w-4xl mx-auto">
-    <div class="glass-card rounded-3xl p-8 md:p-12 text-center shadow-2xl">
-      <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Want a site like these?</h2>
-      <p class="text-slate-600 mb-6">Tell us about your business. We'll build it from scratch and keep it running.</p>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a href="dashboard.html" data-book class="btn-gradient px-8 py-3.5 rounded-full font-bold shadow-lg">Book a free call</a>
-      </div>
-      <p class="text-xs text-slate-500 mt-4">You'll sign in with Google to book. It takes a few seconds.</p>
-    </div>
-  </section>
-</main>
-
-<footer class="bg-white/90 border-t border-slate-200 py-8 px-6 text-center text-slate-600 text-sm">
-  <p>Custom Website Development &amp; Management.</p>
-  <p class="mt-2"><a href="mailto:keandonato@404studio.click" class="font-semibold hover:text-indigo-600">keandonato@404studio.click</a> &middot; <a href="/" class="font-semibold hover:text-indigo-600">Back to home</a></p>
-  <p class="text-xs text-slate-400 mt-3">&copy; 2026 404 Studio. All rights reserved.</p>
-</footer>
-
-<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
-  <div class="flex flex-wrap items-center gap-3 text-white mb-3">
-    <h3 id="mt" class="font-bold text-lg"></h3>
-    <div class="flex-1"></div>
-    <div class="seg" id="seg">
-      <button type="button" data-w="1300px" class="on">Desktop</button>
-      <button type="button" data-w="768px">Tablet</button>
-      <button type="button" data-w="390px">Phone</button>
-    </div>
-    <a id="open" href="#" target="_blank" rel="noopener" class="border border-white/30 rounded-full px-4 py-2 text-sm font-semibold hover:bg-white/15">Open full site <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
-    <button id="close" type="button" class="bg-white text-slate-800 rounded-full px-4 py-2 text-sm font-bold">Close</button>
-  </div>
-  <div class="stage"><div class="frame" id="frame"><iframe id="pf" title="Site preview"></iframe></div></div>
+    <div class="stats"><div class="stat"><b id="s1"></b>sample sites</div><div class="stat"><b id="s2"></b>categories</div><div class="stat"><b id="s3">0</b>saved by you</div></div>
+    <div class="recent hidden" id="recent"><h2>Recently viewed</h2><div class="chips" id="chips"></div></div>
+    <div class="grid" id="grid"></div>
+    <p class="empty hidden" id="empty">Nothing here yet. Clear the search, or tap the heart on a website to save it.</p>
+  </main>
 </div>
 
+<div id="modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="mbar">
+    <button class="round" id="prev" type="button" aria-label="Previous site">Prev</button>
+    <button class="round" id="next" type="button" aria-label="Next site">Next</button>
+    <h3 id="mt"></h3><div class="sp"></div>
+    <div class="seg" role="group" aria-label="Device">
+      <button data-w="1300px" aria-pressed="true" type="button">Desktop</button>
+      <button data-w="768px" aria-pressed="false" type="button">Tablet</button>
+      <button data-w="390px" aria-pressed="false" type="button">Phone</button>
+    </div>
+    <button class="round" id="mfav" type="button">Save</button>
+    <button class="btn" id="use" type="button">Use this template</button>
+    <button class="round" id="close" type="button">Close</button>
+  </div>
+  <div class="stage"><div class="frame" id="frame"><iframe id="pf" title="Template preview"></iframe></div></div>
+</div>
+<div id="call" class="hidden" role="dialog" aria-modal="true" aria-labelledby="call-t">
+  <div class="cbox">
+    <button class="cx" id="call-x" type="button" aria-label="Close">&times;</button>
+    <div id="call-wrap">
+      <h2 id="call-t">Start a call</h2>
+      <p class="csub">Tell us what you need and pick a time. We're available Monday to Sunday, at any time of day.</p>
+      <form id="call-form" novalidate>
+        <input type="text" name="_honey" id="c-honey" tabindex="-1" autocomplete="off" style="display:none">
+        <div class="f"><label for="c-name">Your name</label><input class="fi" id="c-name" type="text" autocomplete="name" placeholder="Juan Dela Cruz"></div>
+        <div class="f"><label for="c-email">Email address</label><input class="fi" id="c-email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com"></div>
+        <fieldset class="f"><legend>What do you need?</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="svc" value="Web Development"><span>Web Development</span></label>
+            <label class="pill"><input type="radio" name="svc" value="SEO Optimization"><span>SEO Optimization</span></label>
+            <label class="pill"><input type="radio" name="svc" value="Web Design"><span>Web Design</span></label>
+            <label class="pill"><input type="radio" name="svc" value="Email Management"><span>Email Management</span></label>
+            <label class="pill"><input type="radio" name="svc" value="Ads Manager"><span>Ads Manager</span></label>
+          </div>
+        </fieldset>
+        <div class="f"><label for="c-concern">Your concern</label><textarea class="fi" id="c-concern" rows="3" placeholder="Tell us about your business and what you need."></textarea></div>
+        <div class="row2">
+          <div class="f"><label for="c-day">Day</label><input class="fi" id="c-day" type="date"></div>
+          <div class="f"><label for="c-time">Time (EST)</label><select class="fi" id="c-time"></select></div>
+        </div>
+        <p class="hint" style="margin:-6px 0 14px">All times are in EST (Eastern Time). We're available every day, Monday to Sunday, at any hour.</p>
+        <div class="when hidden" id="c-when"></div>
+        <p class="cerr hidden" id="c-err" role="alert"></p>
+        <button class="btn" id="c-send" type="submit">Send request</button>
+      </form>
+    </div>
+    <div id="call-done" class="done hidden">
+      <div class="ck">&#10003;</div>
+      <h2 style="margin:0 0 8px">Request sent</h2>
+      <p class="csub" id="c-sum" style="margin-bottom:20px"></p>
+      <button class="btn" id="c-close" type="button">Done</button>
+    </div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
 <script>
+/* ---------- Auth guard (same Supabase project as the main site) ---------- */
+const SB_URL='https://acxrobzulaswsubfoghg.supabase.co',SB_KEY='sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const home=()=>location.replace('index.html');
+let user=null,sb=null;
+const sc=document.createElement('script');
+sc.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+sc.onerror=()=>{$('boot').innerHTML='<div>Could not load sign-in. <a href="index.html?home">Back to site</a></div>'};
+sc.onload=async()=>{
+  const c=window.supabase.createClient(SB_URL,SB_KEY);sb=c;
+  const {data}=await c.auth.getSession();
+  if(!data.session){home();return}
+  if(location.search||location.hash)history.replaceState(null,'',location.pathname);
+  user=data.session.user;
+  c.auth.onAuthStateChange((ev,s)=>{if(ev==='SIGNED_OUT'||!s)home()});
+  $('out').onclick=async()=>{await c.auth.signOut();home()};
+  start();
+};
+document.head.appendChild(sc);
+
+/* ---------- Your websites ----------
+   To add another sample site: put its .html file next to dashboard.html and add a line below.
+   Fields: n = name, c = category, f = file path, d = short description */
 const T=[
  {n:'Pawsitive Vet',c:'Veterinary',f:'pawsitive.html',top:1,d:'A calm, modern vet clinic with REY.AI, a talking pet care assistant, plus pet age, food safety, urgency and vaccine tools and online booking.'},
  {n:'Kinetic Physio',c:'Physical Therapy',f:'sample-kinetic-physio.html',top:1,d:'A modern physical therapy clinic site with services, process, team, patient stories, FAQ and an appointment request form that opens WhatsApp.'},
@@ -398,87 +307,192 @@ const T=[
  {n:'Hartwell & Vale',c:'Law Firm',f:'sample-lawfirm.html',d:'A law partners site with practice areas, attorney profiles, FAQ and a free consultation request form.'},
  {n:'Bellaluz Salon',c:'Salon',f:'sample-bellaluz.html',d:'A hair, nails and beauty salon with a promo slideshow, priced service menu, e-gift cards, branch map and online booking.'}
 ];
-const $=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let cat='All';
-const cats=['All',...new Set(T.map(t=>t.c))];
-$('filters').innerHTML=cats.map((c,i)=>`<button type="button" class="chip${i?'':' active'}" data-cat="${esc(c)}">${esc(c)}</button>`).join('');
+const CATS=[...new Set(T.map(t=>t.c))];
+
+/* ---------- App state ---------- */
+let K='x';
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let cat='All',term='',favs,recent,order=[...T.keys()],cur=0;
+const toast=m=>{const e=$('toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2200)};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
 function thumbFallback(img){var f=document.createElement('iframe');f.loading='lazy';f.tabIndex=-1;f.title='';f.src=img.dataset.f+'#thumb';img.replaceWith(f);if(typeof fit==='function')fit()}
-function fit(){document.querySelectorAll('.thumb').forEach(th=>{const iframe=th.querySelector('iframe');if(!iframe)return;const k=th.clientWidth/1000;if(k)iframe.style.setProperty('--k',k)})}
-let fitFrame=0;window.addEventListener('resize',()=>{cancelAnimationFrame(fitFrame);fitFrame=requestAnimationFrame(fit)},{passive:true});
-if('ResizeObserver' in window){const gridObserver=new ResizeObserver(()=>fit());gridObserver.observe($('grid'));}
+function fit(){document.querySelectorAll('.thumb').forEach(th=>{const k=th.clientWidth/1000,f=th.querySelector('iframe');if(k&&f)f.style.setProperty('--k',k)})}
+function list(){
+ const q=term.toLowerCase();
+ let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.d).toLowerCase().includes(q));
+ const s=$('sort').value;
+ if(s==='n')L.sort((a,b)=>a.n.localeCompare(b.n));else if(s==='c')L.sort((a,b)=>a.c.localeCompare(b.c)||a.n.localeCompare(b.n));
+ L.sort((a,b)=>(b.top?1:0)-(a.top?1:0)); /* pinned items stay on top */
+ return L;
+}
 function render(){
-  const L=T.filter(t=>cat==='All'||t.c===cat);
-  $('count').textContent=`Showing ${L.length} ${L.length===1?'site':'sites'}${cat==='All'?'':' in '+cat}`;
-  $('grid').innerHTML=L.map((t,k)=>`<article class="glass-card card rounded-3xl p-4" style="animation-delay:${k*70}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><img class="shot" src="thumbs/${esc(t.f).replace(/^sample-|\.html$/g,'')}.webp" data-f="${esc(t.f)}" width="600" height="375" loading="lazy" decoding="async" alt="" onerror="thumbFallback(this)"></div><div class="mt-4 px-1"><h3 class="font-extrabold text-slate-900">${esc(t.n)}</h3><p class="text-xs font-bold text-purple-700 mb-1">${esc(t.c)}</p><p class="text-sm text-slate-600 leading-snug">${esc(t.d)}</p></div></article>`).join('');
-  requestAnimationFrame(fit);
+ const L=list();
+ $('grid').innerHTML=L.map((t,k)=>{const on=favs.includes(t.n);return `<article class="card" style="animation-delay:${Math.min(k,12)*40}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><img class="shot" src="thumbs/${esc(t.f).replace(/^sample-|\.html$/g,'')}.webp" data-f="${esc(t.f)}" width="600" height="375" loading="lazy" decoding="async" alt="" onerror="thumbFallback(this)"></div><div class="info"><div><b>${esc(t.n)}</b><span>${esc(t.c)}</span><p class="desc">${esc(t.d)}</p></div><button class="heart ${on?'on':''}" data-fav="${esc(t.n)}" aria-pressed="${on}" aria-label="Save ${esc(t.n)}">${on?'\u2665':'\u2661'}</button></div></article>`}).join('');
+ $('empty').classList.toggle('hidden',L.length>0);
+ $('s3').textContent=favs.length;$('n-fav').textContent=favs.length;
+ requestAnimationFrame(fit);
 }
-$('filters').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;cat=b.dataset.cat;document.querySelectorAll('#filters .chip').forEach(x=>x.classList.toggle('active',x===b));render()});
-// Resize handling is throttled above to avoid repeated layout work while scrolling/resizing.
+function renderSide(){
+ $('cats').innerHTML=CATS.map(c=>`<button class="nav" data-cat="${c}" aria-current="${c===cat}">${c}<small>${T.filter(t=>t.c===c).length}</small></button>`).join('');
+ document.querySelectorAll('aside [data-cat]').forEach(b=>b.setAttribute('aria-current',b.dataset.cat===cat));
+}
+function renderRecent(){
+ $('recent').classList.toggle('hidden',!recent.length);
+ $('chips').innerHTML=recent.map(n=>{const t=T.find(x=>x.n===n);return t?`<button class="chip" data-n="${esc(n)}" type="button"><i style="background:linear-gradient(135deg,#4f46e5,#ec4899)"></i>${esc(n)}</button>`:''}).join('');
+}
+function setCat(c){cat=c;renderSide();render();if(typeof setSide==='function')setSide(false)}
+function toggleFav(n){favs=favs.includes(n)?favs.filter(x=>x!==n):[...favs,n];store.set('fav-'+K,favs);toast(favs.includes(n)?'Saved to favorites':'Removed from favorites');render();renderSide();syncM()}
 
-function openM(n){const t=T.find(x=>x.n===n);if(!t)return;$('mt').textContent=t.n+' · '+t.c;$('pf').src=t.f;$('open').href=t.f;$('modal').classList.add('open');document.body.dataset.modalScroll=document.body.style.overflow;document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';$('close').focus()}
-function closeM(){$('modal').classList.remove('open');$('pf').src='about:blank';document.body.style.overflow=document.body.dataset.modalScroll||'';document.documentElement.style.overflow=''}
-$('grid').addEventListener('click',e=>{const c=e.target.closest('.card');if(c)openM(c.dataset.n)});
-$('grid').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.classList.contains('card'))openM(e.target.dataset.n)});
-$('close').onclick=closeM;
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
-$('seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x===b));$('frame').style.maxWidth=b.dataset.w});
+function openM(n){
+ const L=list();cur=Math.max(0,L.findIndex(t=>t.n===n));loadM(L[cur]||T.find(t=>t.n===n));
+ $('modal').classList.remove('hidden');document.body.style.overflow='hidden';$('close').focus();
+}
+let curT;
+function loadM(t){
+ curT=t;$('mt').textContent=t.n+' \u00b7 '+t.c;$('pf').src=t.f;syncM();
+ recent=[t.n,...recent.filter(x=>x!==t.n)].slice(0,6);store.set('rec-'+K,recent);renderRecent();
+}
+function syncM(){if(!curT)return;const on=favs.includes(curT.n);$('mfav').textContent=on?'Saved':'Save'}
+function step(d){const L=list();if(!L.length)return;cur=(cur+d+L.length)%L.length;loadM(L[cur])}
+function closeM(){$('modal').classList.add('hidden');$('pf').src='about:blank';document.body.style.overflow=''}
 
-/* Auto-scroll previews only on desktop devices with a real hover pointer. Touch scrolling must remain natural on mobile. */
-const canHover=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+function start(){
+ K=user.id;favs=store.get('fav-'+K,[]);recent=store.get('rec-'+K,[]);
+ const m=user.user_metadata||{},full=m.full_name||m.name||(user.email||'').split('@')[0]||'there',first=full.split(' ')[0];
+ const pic=m.avatar_url||m.picture||'';
+ $('av').innerHTML=pic.startsWith('https://')?`<img referrerpolicy="no-referrer" alt="" src="${esc(pic)}">`:esc(first[0].toUpperCase());
+ $('nm').textContent=full;$('hello').textContent='Welcome, '+first+'.';
+ $('s1').textContent=T.length;$('s2').textContent=CATS.length;$('n-All').textContent=T.length;
+ renderSide();renderRecent();render();
+ $('boot').classList.add('hidden');$('app').classList.remove('hidden');requestAnimationFrame(fit);
+ const n=store.get('pick-'+K,null);if(n)toast('Last pick: '+n);
+ try{if(sessionStorage.getItem('404-opencall')){sessionStorage.removeItem('404-opencall');setTimeout(()=>openCall(),400)}}catch(e){}
+}
+document.addEventListener('click',e=>{
+ const c=e.target.closest('[data-cat]');if(c){setCat(c.dataset.cat);return}
+ const f=e.target.closest('[data-fav]');if(f){toggleFav(f.dataset.fav);return}
+ const o=e.target.closest('.card,.chip');if(o&&o.dataset.n)openM(o.dataset.n);
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Enter'&&e.target.classList.contains('card'))openM(e.target.dataset.n);
+ if(!$('modal').classList.contains('hidden')){if(e.key==='Escape')closeM();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)}
+});
+$('q').oninput=e=>{term=e.target.value.trim();render()};
+$('sort').onchange=e=>{if(e.target.value==='r')order=shuffle([...T.keys()]);render()};
+$('rand').onclick=()=>openM(T[Math.floor(Math.random()*T.length)].n);
+/* mobile drawer: open/close, backdrop, Esc, swipe left, closes after a tap */
+var mq=matchMedia('(max-width:860px)'),side=$('side'),scrim=$('scrim'),menuBtn=$('menu'),sideOpen=false;
+function setSide(open){
+ if(!side||open===sideOpen)return;sideOpen=open;
+ side.classList.toggle('open',open);scrim.classList.toggle('on',open);document.body.classList.toggle('nav-open',open);
+ menuBtn.setAttribute('aria-expanded',open);menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+ if(open){const f=side.querySelector('.nav');if(f)f.focus()}else if(mq.matches)menuBtn.focus();
+}
+menuBtn.onclick=()=>setSide(!sideOpen);
+scrim.onclick=()=>setSide(false);
+$('callBar').onclick=()=>openCall();
+side.addEventListener('click',e=>{if(mq.matches&&e.target.closest('.nav,.brand'))setSide(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sideOpen)setSide(false)});
+mq.addEventListener('change',e=>{if(!e.matches)setSide(false)});
+var sx=0,sy=0;
+side.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+side.addEventListener('touchend',e=>{const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(dx<-60&&Math.abs(dy)<Math.abs(dx)*.6)setSide(false)},{passive:true});
+$('close').onclick=closeM;$('prev').onclick=()=>step(-1);$('next').onclick=()=>step(1);
+$('mfav').onclick=()=>toggleFav(curT.n);
+$('use').onclick=()=>{store.set('pick-'+K,curT.n);const n=curT.n;closeM();openCall('I\'d like to use the "'+n+'" template.')};
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('frame').style.maxWidth=b.dataset.w;
+});
+window.addEventListener('resize',fit);
+/* hovering a card scrolls the site inside it (same-origin, so we can drive the page's own scroll) */
 const runs=new WeakMap();
-function auto(fr,down){
-  if(!canHover)return;
-  const old=runs.get(fr);if(old)cancelAnimationFrame(old);
-  let w,doc;try{w=fr.contentWindow;doc=w.document;void doc.documentElement}catch(e){return}
-  const tick=()=>{let max,y;try{max=Math.max(0,doc.documentElement.scrollHeight-w.innerHeight);y=w.scrollY+(down?2.4:-8)}catch(e){return}
-    if(down?y>=max:y<=0){try{w.scrollTo({top:down?max:0,behavior:'instant'})}catch(e){}return}
-    try{w.scrollTo({top:y,behavior:'instant'});runs.set(fr,requestAnimationFrame(tick))}catch(e){return}};
-  runs.set(fr,requestAnimationFrame(tick));
+function autoScroll(fr,down){
+ const old=runs.get(fr);if(old)cancelAnimationFrame(old);
+ let w;try{w=fr.contentWindow;void w.document.documentElement}catch(e){return}
+ const tick=()=>{const max=w.document.documentElement.scrollHeight-w.innerHeight,y=w.scrollY+(down?2.4:-8);
+  if(down?y>=max:y<=0){w.scrollTo({top:down?max:0,behavior:'instant'});return}
+  w.scrollTo({top:y,behavior:'instant'});runs.set(fr,requestAnimationFrame(tick))};
+ runs.set(fr,requestAnimationFrame(tick));
 }
-if(canHover){['mouseover','mouseout'].forEach(ev=>document.addEventListener(ev,e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)auto(f,ev==='mouseover')}));}
-render();
-$('stat-sites').textContent=T.length;
-$('bio-toggle').addEventListener('click',()=>{const m=$('bio-more'),open=m.classList.toggle('hidden')===false;$('bio-toggle').setAttribute('aria-expanded',open);$('bio-toggle').querySelector('span').textContent=open?'See less':'See more';$('bio-toggle').querySelector('i').style.transform=open?'rotate(180deg)':''});
+document.addEventListener('mouseover',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,true)});
+document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,false)});
 
-/* Booking needs a Google sign-in, then goes to the dashboard */
-const SB_URL='https://acxrobzulaswsubfoghg.supabase.co',SB_KEY='sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';
-document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',async e=>{
-  e.preventDefault();
-  const orig=b.textContent;b.style.pointerEvents='none';b.textContent='Opening Google...';
-  try{sessionStorage.setItem('404-opencall','1')}catch(_){}
-  try{
-    if(!window.supabase)await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';s.onload=ok;s.onerror=no;document.head.appendChild(s)});
-    const c=window.supabase.createClient(SB_URL,SB_KEY);
-    const {data}=await c.auth.getSession();
-    if(data.session){location.href='dashboard.html';return}
-    const {error}=await c.auth.signInWithOAuth({provider:'google',options:{redirectTo:new URL('dashboard.html',location.href).href}});
-    if(error)throw error;
-  }catch(_){b.style.pointerEvents='';b.textContent=orig;alert('Google sign-in could not start. Please try again in a moment.')}
-}));
-</script>
-<script>
-(function(){
-  var t={gm:document.getElementById('tab-gm'),ol:document.getElementById('tab-ol')},
-      pn={gm:document.getElementById('pane-gm'),ol:document.getElementById('pane-ol')};
-  if(!t.gm||!t.ol)return;
-  function show(k){
-    ['gm','ol'].forEach(function(x){
-      var on=x===k;
-      t[x].classList.toggle('on',on);
-      t[x].setAttribute('aria-selected',on?'true':'false');
-      t[x].tabIndex=on?0:-1;
-      pn[x].hidden=!on;
-    });
-  }
-  t.gm.addEventListener('click',function(){show('gm')});
-  t.ol.addEventListener('click',function(){show('ol')});
-  [t.gm,t.ol].forEach(function(b){
-    b.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var k=b===t.gm?'ol':'gm';show(k);t[k].focus();}
-    });
-  });
-})();
+/* ---------- Start a call ---------- */
+const MAIL='keandonato@404studio.click';
+const SLOTS=[];for(let i=0;i<48;i++){const h=Math.floor(i/2),m=i%2?'30':'00';SLOTS.push({v:String(h).padStart(2,'0')+':'+m,t:(h%12||12)+':'+m+' '+(h<12?'AM':'PM')})}
+$('c-time').innerHTML='<option value="">Choose a time</option>'+SLOTS.map(s=>`<option value="${s.v}">${s.t}</option>`).join('');
+const etToday=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
+(()=>{const t=etToday(),[y,m,d]=t.split('-').map(Number);$('c-day').min=t;$('c-day').max=new Date(Date.UTC(y,m-1,d+90)).toISOString().slice(0,10)})();
+/* turn a day + time chosen in Eastern Time into a real moment (handles daylight saving) */
+function etToUtc(day,time){
+ const [y,mo,d]=day.split('-').map(Number),[h,mi]=time.split(':').map(Number),wall=Date.UTC(y,mo-1,d,h,mi);let u=wall;
+ const f=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hourCycle:'h23',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric'});
+ for(let i=0;i<3;i++){const p=Object.fromEntries(f.formatToParts(new Date(u)).map(x=>[x.type,x.value]));u+=wall-Date.UTC(+p.year,+p.month-1,+p.day,+p.hour,+p.minute)}
+ return u;
+}
+const dayLabel=day=>new Date(day+'T00:00:00Z').toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:'UTC'});
+const timeLabel=v=>(SLOTS.find(s=>s.v===v)||{}).t||v;
+const phLabel=ms=>new Date(ms).toLocaleString('en-US',{timeZone:'Asia/Manila',weekday:'long',month:'long',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})+' (Philippine time)';
+let callSent=false;
+function showWhen(){
+ const day=$('c-day').value,time=$('c-time').value,w=$('c-when');
+ if(day&&time){w.textContent=dayLabel(day)+' at '+timeLabel(time)+' EST';w.classList.remove('hidden')}else w.classList.add('hidden');
+}
+function cerr(m){const e=$('c-err');e.textContent=m||'';e.classList.toggle('hidden',!m)}
+function openCall(note){
+ if(callSent){$('call-form').reset();callSent=false;$('call-wrap').classList.remove('hidden');$('call-done').classList.add('hidden')}
+ const m=user.user_metadata||{};
+ if(!$('c-name').value)$('c-name').value=m.full_name||m.name||'';
+ if(!$('c-email').value)$('c-email').value=user.email||'';
+ if(note&&!$('c-concern').value.trim())$('c-concern').value=note;
+ cerr('');showWhen();$('side').classList.remove('open');
+ $('call').classList.remove('hidden');document.body.style.overflow='hidden';
+ setTimeout(()=>(($('c-name').value?$('c-concern'):$('c-name'))).focus(),60);
+}
+function closeCall(){$('call').classList.add('hidden');if($('modal').classList.contains('hidden'))document.body.style.overflow=''}
+$('callNav').onclick=$('callTop').onclick=()=>openCall();
+$('call-x').onclick=$('c-close').onclick=closeCall;
+$('call').addEventListener('click',e=>{if(e.target===$('call'))closeCall()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('call').classList.contains('hidden'))closeCall()});
+$('c-day').onchange=$('c-time').onchange=showWhen;
+$('call-form').addEventListener('submit',async e=>{
+ e.preventDefault();
+ if($('c-honey').value)return;
+ const name=$('c-name').value.trim(),email=$('c-email').value.trim(),concern=$('c-concern').value.trim(),
+  svcEl=document.querySelector('input[name="svc"]:checked'),day=$('c-day').value,time=$('c-time').value;
+ if(name.length<2)return cerr('Please enter your name.');
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return cerr('Please enter a valid email address.');
+ if(!svcEl)return cerr('Please choose the service you need.');
+ if(concern.length<10)return cerr('Tell us a bit more about your concern (at least 10 characters).');
+ if(!day)return cerr('Please choose a day.');
+ if(!time)return cerr('Please choose a time (EST).');
+ const utc=etToUtc(day,time);
+ if(utc<Date.now()+30*60000)return cerr('Please pick a time at least 30 minutes from now (EST).');
+ cerr('');
+ const svc=svcEl.value,when=dayLabel(day)+' at '+timeLabel(time)+' EST',ph=phLabel(utc),btn=$('c-send');
+ btn.disabled=true;btn.textContent='Sending...';
+ try{
+  let tok=SB_KEY;try{const {data}=await sb.auth.getSession();if(data.session)tok=data.session.access_token}catch(_){}
+  /* 1) save to your leads table (schedule is added to the concern text) */
+  const leadHeaders={'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'};
+  const leadBody=withAppt=>JSON.stringify(Object.assign({name,email,service:svc,concern:'[Preferred time: '+when+' | '+ph+']\n\n'+concern},withAppt?{appointment_at:new Date(utc).toISOString()}:{}));
+  const postLead=withAppt=>fetch(SB_URL+'/rest/v1/leads',{method:'POST',headers:leadHeaders,body:leadBody(withAppt)});
+  /* saves the call time as real appointment data; if that is not accepted, saves the lead without it */
+  const saveLead=postLead(true).then(r=>r.ok?true:postLead(false).then(r2=>r2.ok)).catch(()=>false);
+  /* 2) email it to your Gmail */
+  const sendMail=fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',
+   headers:{'Content-Type':'application/json','Accept':'application/json'},
+   body:JSON.stringify({name,email,service:svc,concern,preferred_day_and_time:when,philippine_time:ph,
+    _subject:'New call request: '+svc+' from '+name,_template:'table',_captcha:'false'})})
+   .then(async r=>{const j=await r.json().catch(()=>({}));return r.ok&&j.success!==false&&j.success!=='false'}).catch(()=>false);
+  const [saved,mailed]=await Promise.all([saveLead,sendMail]);
+  if(!saved&&!mailed)throw 0;
+  $('c-sum').textContent='Thanks, '+name+'. Your '+svc+' call request for '+when+' was sent. We\'ll confirm by email at '+email+'.';
+  $('call-wrap').classList.add('hidden');$('call-done').classList.remove('hidden');callSent=true;
+ }catch(_){cerr('We couldn\'t send your request. Please try again in a moment.')}
+ btn.disabled=false;btn.textContent='Send request';
+});
 </script>
 </body>
 </html>
