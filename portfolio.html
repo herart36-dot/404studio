@@ -62,6 +62,94 @@ body{background:linear-gradient(160deg,#FFDEE9 0%,#B5FFFC 25%,#E0C3FC 50%,#8EC5F
  footer a{display:inline-block;padding:10px 4px}
 }
 </style>
+<style id="service-samples-css">
+.ss-wrap{background:#fff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.ss-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #eef0f4;background:#f6f8fc;font-size:12px;color:#64748b}
+.ss-search{flex:1;background:#e9eef6;border-radius:999px;padding:7px 14px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ss-tabs{display:flex;border-bottom:1px solid #eef0f4;overflow-x:auto;scrollbar-width:none}
+.ss-tabs::-webkit-scrollbar{display:none}
+.ss-tab{flex:none;padding:10px 16px;font-size:13px;font-weight:700;color:#64748b;border-bottom:3px solid transparent;white-space:nowrap}
+.ss-tab.on{color:#4f46e5;border-bottom-color:#6366f1}
+.ss-tab b{font-size:11px;background:#16a34a;color:#fff;border-radius:999px;padding:1px 7px;margin-left:6px}
+.ss-row{display:grid;grid-template-columns:150px auto 1fr 64px;gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid #f1f3f7;font-size:13px;color:#475569}
+.ss-row.unread{background:#f5f7ff;font-weight:700;color:#1e1b4b}
+.ss-row .snd{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ss-row .sub{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;font-weight:400;color:#64748b}
+.ss-row .sub strong{color:inherit;font-weight:700;margin-right:6px}
+.ss-row .tm{text-align:right;font-size:12px;color:#94a3b8}
+.ss-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.t-cl{background:#e0e7ff;color:#4338ca}.t-in{background:#dcfce7;color:#15803d}.t-ld{background:#fce7f3;color:#be185d}.t-sc{background:#fef3c7;color:#b45309}.t-pr{background:#f1f5f9;color:#475569}
+.ss-bar-track{height:10px;border-radius:999px;background:#eef0f7;overflow:hidden}
+.ss-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899)}
+@media(max-width:640px){.ss-row{grid-template-columns:auto 1fr 52px}.ss-row .snd{display:none}}
+</style>
+<style id="email-samples-css">
+.es-tabs{display:inline-flex;gap:6px;background:rgba(255,255,255,.85);border:1px solid #e2e8f0;border-radius:999px;padding:4px;margin-bottom:12px}
+.es-t{border:0;background:transparent;border-radius:999px;padding:8px 18px;font-weight:700;font-size:14px;color:#475569;cursor:pointer;min-height:40px}
+.es-t.on{background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);color:#fff}
+.es-t:focus-visible{outline:3px solid #a78bfa;outline-offset:2px}
+.es-note{font-size:12px;color:#64748b;margin-top:8px}
+.es-do{margin-top:14px;background:rgba(255,255,255,.88);border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px}
+.es-do p{font-size:12px;font-weight:800;color:#334155;margin-bottom:8px}
+.es-do ul{display:grid;gap:6px;font-size:13px;color:#475569}
+.es-do li i{color:#4f46e5;margin-right:8px;width:14px;text-align:center}
+/* Gmail look */
+.gm{display:grid;grid-template-columns:150px 1fr;background:#f6f8fc;font-family:Arial,Helvetica,sans-serif}
+.gm-side{padding:12px 8px;font-size:13px;color:#444}
+.gm-comp{display:flex;align-items:center;gap:8px;background:#c2e7ff;color:#001d35;font-weight:700;border-radius:14px;padding:11px 14px;margin-bottom:10px}
+.gm-it{display:flex;justify-content:space-between;padding:6px 10px;border-radius:0 16px 16px 0;margin-right:6px}
+.gm-it.on{background:#d3e3fd;font-weight:700;color:#041e49}
+.gm-lb{display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:12.5px}
+.gm-lb i{font-size:11px}
+.gm-main{background:#fff;border-radius:14px 0 0 0;margin-top:8px;min-width:0}
+.gm-tabs{display:flex;border-bottom:1px solid #e8eaed;overflow-x:auto;scrollbar-width:none}
+.gm-tabs::-webkit-scrollbar{display:none}
+.gm-tab{flex:none;padding:10px 16px;font-size:13px;font-weight:600;color:#5f6368;border-bottom:3px solid transparent;white-space:nowrap}
+.gm-tab.on{color:#0b57d0;border-bottom-color:#0b57d0}
+.gm-tab b{font-size:10.5px;background:#188038;color:#fff;border-radius:999px;padding:1px 6px;margin-left:6px}
+.gm-row{display:grid;grid-template-columns:130px 1fr 58px;gap:10px;align-items:center;padding:8px 14px;border-bottom:1px solid #f1f3f4;font-size:13px;color:#5f6368}
+.gm-row.u{font-weight:700;color:#202124;background:#f2f6fc}
+.gm-row .s{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.gm-row .s .c{font-size:11px;font-weight:700;padding:1px 7px;border-radius:5px;margin-right:6px}
+.gm-row .s em{font-style:normal;font-weight:400;color:#5f6368}
+.gm-row .t{text-align:right;font-size:12px}
+.gm-dr{color:#d93025;font-weight:700}
+/* Outlook look */
+.ol{background:#faf9f8;font-family:'Segoe UI',system-ui,sans-serif}
+.ol-top{display:flex;align-items:center;gap:12px;background:#0f6cbd;color:#fff;padding:8px 14px;font-size:13px}
+.ol-top b{font-size:15px}
+.ol-sr{flex:1;background:rgba(255,255,255,.2);border-radius:6px;padding:6px 12px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ol-body{display:grid;grid-template-columns:150px 1fr}
+.ol-side{padding:10px 8px;font-size:13px;color:#323130;border-right:1px solid #edebe9;background:#f5f5f5}
+.ol-new{background:#0f6cbd;color:#fff;border-radius:6px;padding:8px 12px;font-weight:600;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.ol-f{display:flex;justify-content:space-between;padding:6px 10px;border-radius:4px}
+.ol-f.on{background:#e1e1e1;font-weight:700}
+.ol-h{font-size:11px;font-weight:700;color:#605e5c;margin:10px 10px 4px}
+.ol-main{background:#fff;min-width:0}
+.ol-tabs{display:flex;gap:18px;padding:10px 14px 0;border-bottom:1px solid #edebe9;font-size:13px;font-weight:600;color:#605e5c}
+.ol-tab{padding-bottom:8px;border-bottom:3px solid transparent}
+.ol-tab.on{color:#0f6cbd;border-bottom-color:#0f6cbd}
+.ol-row{display:grid;grid-template-columns:4px 1fr auto;gap:10px;padding:9px 14px 9px 10px;border-bottom:1px solid #f3f2f1;font-size:12.5px;color:#605e5c;align-items:start}
+.ol-row .bar{align-self:stretch;border-radius:2px}
+.ol-row.u .bar{background:#0f6cbd}
+.ol-row.u .snd{font-weight:700;color:#201f1e}
+.ol-row.u .sbj{color:#0f6cbd;font-weight:600}
+.ol-row .snd{color:#323130;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ol-row .sbj{color:#323130;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ol-row .pv{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ol-row .mid{min-width:0}
+.ol-row .rt{text-align:right;font-size:11.5px;white-space:nowrap}
+.ol-cat{display:inline-block;font-size:10.5px;font-weight:700;color:#fff;border-radius:3px;padding:1px 6px;margin-right:4px}
+.ol-pin{color:#605e5c}
+.ol-flag{color:#c50f1f}
+@media(max-width:640px){
+ .gm,.ol-body{grid-template-columns:1fr}
+ .gm-side,.ol-side{display:none}
+ .gm-main{border-radius:0;margin-top:0}
+ .gm-row{grid-template-columns:1fr 52px}
+ .gm-row .a{display:none}
+}
+</style>
 </head>
 <body>
 
@@ -84,7 +172,7 @@ body{background:linear-gradient(160deg,#FFDEE9 0%,#B5FFFC 25%,#E0C3FC 50%,#8EC5F
   <section class="py-14 px-6 text-center max-w-4xl mx-auto">
     <span class="inline-block bg-white/80 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-900 shadow-sm border border-white mb-5"><i class="fa-solid fa-swatchbook mr-1"></i> PORTFOLIO</span>
     <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">Websites we've <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">built</span></h1>
-    <p class="text-lg text-slate-700 font-medium max-w-2xl mx-auto">Real sample sites, built from scratch. <span class="hov">Hover a card to scroll through it, or open one</span><span class="tap">Tap a card</span> to try it on desktop, tablet or phone.</p>
+    <p class="text-lg text-slate-700 font-medium max-w-2xl mx-auto">Real sample sites, built from scratch. <span class="hov">Hover a card to scroll through it, or open one</span><span class="tap">Tap a card</span> to try it on desktop, tablet or phone. <a href="#service-samples" class="font-bold text-indigo-600 hover:text-purple-600">New: email and ads management samples</a>.</p>
   </section>
 
   <!-- ===== PROFILE & CREDIBILITY (EDIT the values marked EDIT) ===== -->
@@ -146,6 +234,113 @@ body{background:linear-gradient(160deg,#FFDEE9 0%,#B5FFFC 25%,#E0C3FC 50%,#8EC5F
     <div id="filters" class="flex flex-wrap justify-center gap-2 mb-3"></div>
     <p id="count" class="text-center text-sm text-slate-500 mb-8"></p>
     <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- ===== SERVICE SAMPLES: EMAIL + ADS ===== -->
+  <section id="service-samples" class="px-6 pb-16 max-w-6xl mx-auto scroll-mt-24">
+    <div class="text-center mb-8">
+      <span class="inline-block bg-white/80 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-900 shadow-sm border border-white mb-4"><i class="fa-solid fa-inbox mr-1"></i> NEW SERVICES</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">Email Management and Ads Manager</h2>
+      <p class="text-slate-700 max-w-2xl mx-auto">Samples of how we organize the work. Names, messages and figures are made up for illustration.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6 items-start">
+      <div class="lg:col-span-3">
+        <h3 class="font-extrabold text-slate-900 mb-1">Email Management samples</h3>
+        <p class="text-sm text-slate-600 mb-3">We work in the email app you already use. Switch between Gmail and Outlook to see how an organized inbox looks in each.</p>
+
+        <div class="es-tabs" role="tablist" aria-label="Email app">
+          <button type="button" class="es-t on" role="tab" id="tab-gm" aria-selected="true" aria-controls="pane-gm"><i class="fa-brands fa-google mr-1"></i> Gmail</button>
+          <button type="button" class="es-t" role="tab" id="tab-ol" aria-selected="false" aria-controls="pane-ol" tabindex="-1"><i class="fa-brands fa-microsoft mr-1"></i> Outlook</button>
+        </div>
+
+        <div id="pane-gm" role="tabpanel" aria-labelledby="tab-gm">
+          <div class="ss-wrap" role="img" aria-label="Sample Gmail inbox with labels for Clients, Invoices, Leads, Security and Promos, and a saved reply draft">
+            <div class="ss-bar"><i class="fa-solid fa-envelope text-red-500"></i><span class="font-bold text-slate-700">Gmail</span><span class="ss-search">Search mail</span></div>
+            <div class="gm">
+              <div class="gm-side">
+                <div class="gm-comp"><i class="fa-solid fa-pen"></i> Compose</div>
+                <div class="gm-it on"><span>Inbox</span><span>12</span></div>
+                <div class="gm-it"><span>Starred</span></div>
+                <div class="gm-it"><span>Sent</span></div>
+                <div class="gm-it"><span>Drafts</span><span>3</span></div>
+                <div class="gm-lb" style="margin-top:8px;font-weight:700">Labels</div>
+                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#4338ca"></i> Clients</div>
+                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#15803d"></i> Invoices</div>
+                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#be185d"></i> Leads</div>
+                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#b45309"></i> Security</div>
+                <div class="gm-lb"><i class="fa-solid fa-square" style="color:#64748b"></i> Promos</div>
+              </div>
+              <div class="gm-main">
+                <div class="gm-tabs"><span class="gm-tab on">Primary</span><span class="gm-tab">Promotions<b>3 new</b></span><span class="gm-tab">Social</span><span class="gm-tab">Updates<b style="background:#b06000">5 new</b></span></div>
+                <div class="gm-row u"><span class="a s">Lopez Bakery</span><span class="s"><span class="c t-cl">Clients</span><strong>Re: Friday delivery</strong> <em>&ndash; Can we move it to the afternoon? Thanks!</em></span><span class="t">7:17 PM</span></div><div class="gm-row u"><span class="a s">Billing</span><span class="s"><span class="c t-in">Invoices</span><strong>Invoice #1042 paid</strong> <em>&ndash; Payment received. Receipt attached.</em></span><span class="t">6:51 PM</span></div><div class="gm-row u"><span class="a s">Website form</span><span class="s"><span class="c t-ld">Leads</span><strong>New quote request</strong> <em>&ndash; Hi, I would like a quote for a 5-page website.</em></span><span class="t">6:20 PM</span></div><div class="gm-row"><span class="a s">Reyes Dental</span><span class="s"><span class="c t-cl">Clients</span><strong>Re: Appointment reminders</strong> <em>&ndash; Yes, please go ahead with the text version.</em></span><span class="t">3:42 PM</span></div><div class="gm-row"><span class="a s"><span class="gm-dr">Draft</span></span><span class="s"><span class="c t-cl">Clients</span><strong>Reply to Lopez Bakery</strong> <em>&ndash; Hi Ana, afternoon works. We will deliver at 2 PM...</em></span><span class="t">3:30 PM</span></div><div class="gm-row"><span class="a s">Account Security</span><span class="s"><span class="c t-sc">Security</span><strong>Sign-in alert</strong> <em>&ndash; Sorted to Updates, out of the main inbox.</em></span><span class="t">12:29 PM</span></div><div class="gm-row"><span class="a s">Store Newsletter</span><span class="s"><span class="c t-pr">Promos</span><strong>Weekly deals</strong> <em>&ndash; Sorted to Promotions automatically.</em></span><span class="t">10:59 AM</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="es-do">
+            <p>What we set up in Gmail</p>
+            <ul>
+              <li><i class="fa-solid fa-tags"></i>Labels and filters that sort clients, invoices and leads automatically</li>
+              <li><i class="fa-solid fa-file-lines"></i>Saved reply templates and a clean signature</li>
+              <li><i class="fa-solid fa-clock"></i>Scheduled sends and out-of-office replies</li>
+              <li><i class="fa-solid fa-box-archive"></i>Old threads archived so the inbox stays short</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="pane-ol" role="tabpanel" aria-labelledby="tab-ol" hidden>
+          <div class="ss-wrap" role="img" aria-label="Sample Outlook inbox with categories, pinned and flagged messages, and client folders">
+            <div class="ol">
+              <div class="ol-top"><b>Outlook</b><span class="ol-sr">Search</span></div>
+              <div class="ol-body">
+                <div class="ol-side">
+                  <div class="ol-new"><i class="fa-solid fa-envelope"></i> New mail</div>
+                  <div class="ol-f on"><span>Inbox</span><span>8</span></div>
+                  <div class="ol-f"><span>Drafts</span><span>3</span></div>
+                  <div class="ol-f"><span>Sent Items</span></div>
+                  <div class="ol-h">Folders</div>
+                  <div class="ol-f"><span>Clients</span></div>
+                  <div class="ol-f"><span>Invoices</span></div>
+                  <div class="ol-f"><span>Leads</span></div>
+                  <div class="ol-f"><span>Newsletters</span></div>
+                </div>
+                <div class="ol-main">
+                  <div class="ol-tabs"><span class="ol-tab on">Focused</span><span class="ol-tab">Other</span></div>
+                  <div class="ol-row"><span class="bar"></span><div class="mid"><div class="snd">Reyes Dental</div><div class="sbj">Contract renewal: please review</div><div class="pv"><span class="ol-cat" style="background:#0f6cbd">Clients</span>Attached is the renewal for next year. Let me know if...</div></div><div class="rt">Mon<br><i class="fa-solid fa-thumbtack ol-pin" title="Pinned"></i> </div></div><div class="ol-row u"><span class="bar"></span><div class="mid"><div class="snd">Lopez Bakery</div><div class="sbj">Re: Friday delivery</div><div class="pv"><span class="ol-cat" style="background:#0f6cbd">Clients</span>Can we move it to the afternoon? Thanks!</div></div><div class="rt">7:17 PM<br><i class="fa-solid fa-flag ol-flag" title="Follow up"></i></div></div><div class="ol-row u"><span class="bar"></span><div class="mid"><div class="snd">Accounts Payable</div><div class="sbj">Invoice #1042 paid</div><div class="pv"><span class="ol-cat" style="background:#107c10">Invoices</span>Payment received. Receipt attached.</div></div><div class="rt">6:51 PM<br></div></div><div class="ol-row u"><span class="bar"></span><div class="mid"><div class="snd">Website form</div><div class="sbj">New quote request</div><div class="pv"><span class="ol-cat" style="background:#8764b8">Leads</span>Hi, I would like a quote for a 5-page website.</div></div><div class="rt">6:20 PM<br></div></div><div class="ol-row"><span class="bar"></span><div class="mid"><div class="snd">Supplier Co.</div><div class="sbj">Updated delivery schedule</div><div class="pv"><span class="ol-cat" style="background:#0f6cbd">Clients</span>Attached is the schedule for next week.</div></div><div class="rt">11:10 AM<br></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="es-do">
+            <p>What we set up in Outlook</p>
+            <ul>
+              <li><i class="fa-solid fa-list-check"></i>Rules that move newsletters and receipts into folders</li>
+              <li><i class="fa-solid fa-palette"></i>Color categories for clients, invoices and leads</li>
+              <li><i class="fa-solid fa-thumbtack"></i>Pins and follow-up flags so nothing important is missed</li>
+              <li><i class="fa-solid fa-file-lines"></i>Reply templates and a consistent signature</li>
+            </ul>
+          </div>
+        </div>
+        <p class="es-note">Sample only. Names, messages and times are made up.</p>
+      </div>
+
+      <div class="lg:col-span-2">
+        <h3 class="font-extrabold text-slate-900 mb-1">Ads Manager sample</h3>
+        <p class="text-sm text-slate-600 mb-3">A simple weekly report: where the budget went and what we changed.</p>
+        <div class="glass-card rounded-2xl p-5" role="img" aria-label="Sample weekly ads report with four campaigns and budget used">
+          <p class="text-xs font-bold text-slate-500 mb-4">Sample weekly report</p>
+          <div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Lunch promo, Facebook</span><span class="text-slate-500 font-semibold">82% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:82%"></div></div><p class="text-xs text-slate-500 mt-1">Learning phase over, scaling budget</p></div><div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Weekend booking, Instagram</span><span class="text-slate-500 font-semibold">64% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:64%"></div></div><p class="text-xs text-slate-500 mt-1">Best cost per message this week</p></div><div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Local search, Google</span><span class="text-slate-500 font-semibold">47% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:47%"></div></div><p class="text-xs text-slate-500 mt-1">New keywords added, 2 paused</p></div><div class="mb-4"><div class="flex justify-between text-sm font-bold text-slate-800 mb-1"><span>Retargeting, website visitors</span><span class="text-slate-500 font-semibold">31% of weekly budget used</span></div><div class="ss-bar-track"><div class="ss-bar-fill" style="width:31%"></div></div><p class="text-xs text-slate-500 mt-1">Testing a new image</p></div>
+        </div>
+        <ul class="text-sm text-slate-600 mt-4 space-y-2">
+          <li><i class="fa-solid fa-bullseye text-pink-600 mr-2"></i>Facebook, Instagram and Google campaigns</li>
+          <li><i class="fa-solid fa-coins text-pink-600 mr-2"></i>Ad spend is paid by you directly to the platform</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="dashboard.html" data-book class="btn-gradient px-8 py-3.5 rounded-full font-bold shadow-lg">Book a free call</a>
+    </div>
   </section>
 
   <!-- ===== TRUST POINTS ===== -->
@@ -261,6 +456,29 @@ document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',a
     if(error)throw error;
   }catch(_){b.style.pointerEvents='';b.textContent=orig;alert('Google sign-in could not start. Please try again in a moment.')}
 }));
+</script>
+<script>
+(function(){
+  var t={gm:document.getElementById('tab-gm'),ol:document.getElementById('tab-ol')},
+      pn={gm:document.getElementById('pane-gm'),ol:document.getElementById('pane-ol')};
+  if(!t.gm||!t.ol)return;
+  function show(k){
+    ['gm','ol'].forEach(function(x){
+      var on=x===k;
+      t[x].classList.toggle('on',on);
+      t[x].setAttribute('aria-selected',on?'true':'false');
+      t[x].tabIndex=on?0:-1;
+      pn[x].hidden=!on;
+    });
+  }
+  t.gm.addEventListener('click',function(){show('gm')});
+  t.ol.addEventListener('click',function(){show('ol')});
+  [t.gm,t.ol].forEach(function(b){
+    b.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var k=b===t.gm?'ol':'gm';show(k);t[k].focus();}
+    });
+  });
+})();
 </script>
 </body>
 </html>
