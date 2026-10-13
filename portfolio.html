@@ -3,9 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio | 404 Studio</title>
-<meta name="description" content="See real website samples built by 404 Studio: blogs, stores, portfolios and more. Open any site to explore it on desktop, tablet or phone.">
+<title>Website Portfolio: Salon, Clinic &amp; Cafe Samples | 404 Studio</title>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://404studio.click/portfolio.html">
+<meta name="description" content="Browse real sample websites by 404 Studio for a salon, physical therapy clinic, vet, cafe, law firm and online store. Preview each on desktop, tablet or phone.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://404studio.click/portfolio.html">
+  <meta property="og:site_name" content="404 Studio">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Website Portfolio: Salon, Clinic &amp; Cafe Samples | 404 Studio">
+  <meta property="og:description" content="Browse real sample websites by 404 Studio for a salon, physical therapy clinic, vet, cafe, law firm and online store. Preview each on desktop, tablet or phone.">
+  <meta property="og:image" content="https://404studio.click/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="404 Studio website portfolio with sample sites for local businesses">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Website Portfolio: Salon, Clinic &amp; Cafe Samples | 404 Studio">
+  <meta name="twitter:description" content="Browse real sample websites by 404 Studio for a salon, physical therapy clinic, vet, cafe, law firm and online store. Preview each on desktop, tablet or phone.">
+  <meta name="twitter:image" content="https://404studio.click/og-image.png">
+  <meta name="twitter:image:alt" content="404 Studio website portfolio with sample sites for local businesses">
+
 <meta name="theme-color" content="#4f46e5">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -226,6 +243,41 @@ body{background:linear-gradient(160deg,#FFDEE9 0%,#B5FFFC 25%,#E0C3FC 50%,#8EC5F
  .o-tr .b:nth-child(-n+2){display:none}.o-top .o-brand{flex:1}
 }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "@id": "https://404studio.click/portfolio.html#webpage",
+   "url": "https://404studio.click/portfolio.html",
+   "name": "Website Portfolio: Salon, Clinic & Cafe Samples | 404 Studio",
+   "description": "Browse real sample websites by 404 Studio for a salon, physical therapy clinic, vet, cafe, law firm and online store. Preview each on desktop, tablet or phone.",
+   "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://404studio.click/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://404studio.click/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Portfolio",
+     "item": "https://404studio.click/portfolio.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -247,7 +299,7 @@ body{background:linear-gradient(160deg,#FFDEE9 0%,#B5FFFC 25%,#E0C3FC 50%,#8EC5F
 <main>
   <section class="py-14 px-6 text-center max-w-4xl mx-auto">
     <span class="inline-block bg-white/80 px-4 py-1.5 rounded-full text-xs font-bold text-indigo-900 shadow-sm border border-white mb-5"><i class="fa-solid fa-swatchbook mr-1"></i> PORTFOLIO</span>
-    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">Websites we've <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">built</span></h1>
+    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">Website samples for local <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">businesses</span></h1>
     <p class="text-lg text-slate-700 font-medium max-w-2xl mx-auto">Real sample sites, built from scratch. <span class="hov">Hover a card to scroll through it, or open one</span><span class="tap">Tap a card</span> to try it on desktop, tablet or phone. <a href="#service-samples" class="font-bold text-indigo-600 hover:text-purple-600">New: email and ads management samples</a>.</p>
   </section>
 
@@ -518,7 +570,7 @@ if('ResizeObserver' in window){const gridObserver=new ResizeObserver(()=>fit());
 function render(){
   const L=T.filter(t=>cat==='All'||t.c===cat);
   $('count').textContent=`Showing ${L.length} ${L.length===1?'site':'sites'}${cat==='All'?'':' in '+cat}`;
-  $('grid').innerHTML=L.map((t,k)=>`<article class="glass-card card rounded-3xl p-4" style="animation-delay:${k*70}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><img class="shot" src="thumbs/${esc(t.f).replace(/^sample-|\.html$/g,'')}.webp" data-f="${esc(t.f)}" width="600" height="375" loading="lazy" decoding="async" alt="" onerror="thumbFallback(this)"></div><div class="mt-4 px-1"><h3 class="font-extrabold text-slate-900">${esc(t.n)}</h3><p class="text-xs font-bold text-purple-700 mb-1">${esc(t.c)}</p><p class="text-sm text-slate-600 leading-snug">${esc(t.d)}</p></div></article>`).join('');
+  $('grid').innerHTML=L.map((t,k)=>`<article class="glass-card card rounded-3xl p-4" style="animation-delay:${k*70}ms" data-n="${esc(t.n)}" tabindex="0" aria-label="Open ${esc(t.n)}"><div class="thumb"><img class="shot" src="thumbs/${esc(t.f).replace(/^sample-|\.html$/g,'')}.webp" data-f="${esc(t.f)}" width="600" height="375" loading="lazy" decoding="async" alt="${esc(t.n)} website sample, ${esc(t.c)}" onerror="thumbFallback(this)"></div><div class="mt-4 px-1"><h3 class="font-extrabold text-slate-900">${esc(t.n)}</h3><p class="text-xs font-bold text-purple-700 mb-1">${esc(t.c)}</p><p class="text-sm text-slate-600 leading-snug">${esc(t.d)}</p></div></article>`).join('');
   requestAnimationFrame(fit);
 }
 $('filters').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;cat=b.dataset.cat;document.querySelectorAll('#filters .chip').forEach(x=>x.classList.toggle('active',x===b));render()});
