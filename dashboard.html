@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>404 Studio Dashboard | Private Client &amp; Website Management</title>
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<title>Dashboard | 404 Studio</title>
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#4f46e5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,32 +160,19 @@ textarea.fi{resize:vertical;min-height:90px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-<style id="mobile-polish">
-.tap{display:none}
-@media (hover:none){.hov{display:none}.tap{display:inline}}
-/* preview toolbar: 3 compact rows instead of a 5-row pile of buttons */
-@media (max-width:600px){
- .mbar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
- .mbar h3{grid-column:1/3;grid-row:1;order:0;flex:none;margin:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center}
- #close{grid-column:3;grid-row:1}
- #prev{grid-column:1;grid-row:2}#next{grid-column:2;grid-row:2}#mfav{grid-column:3;grid-row:2}
- #use{grid-column:1/-1;grid-row:3;padding:12px}
- .mbar .round,.mbar .btn{min-height:44px;padding-left:8px;padding-right:8px;text-align:center}
-}
-</style>
 </head>
 <body>
 <div id="boot"><div><div class="spin"></div>Checking your sign-in...</div></div>
 
 <div class="layout hidden" id="app">
   <aside id="side">
-    <a class="brand" href="index.html?home"><i>404</i> 404 Studio</a>
+    <a class="brand" href="index.html"><i>404</i> 404 Studio</a>
     <button class="nav" data-cat="All" aria-current="true">Explore all <small id="n-All"></small></button>
     <button class="nav" data-cat="__fav">Favorites <small id="n-fav">0</small></button>
     <div class="lab">Categories</div>
     <div id="cats"></div>
     <div class="lab">Quick links</div>
-    <a class="nav" href="index.html?home#calculator" style="text-decoration:none">Get a quote</a>
+    <a class="nav" href="index.html#calculator" style="text-decoration:none">Get a quote</a>
     <button class="nav" id="callNav" type="button">Start a call</button>
     <div class="me"><div class="av" id="av"></div><div><b id="nm"></b><button id="out" type="button">Sign out</button></div></div>
   </aside>
@@ -193,13 +180,13 @@ textarea.fi{resize:vertical;min-height:90px}
   <main>
     <div class="appbar">
       <button class="ab-btn" id="menu" type="button" aria-label="Open menu" aria-controls="side" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a class="brand" href="index.html?home"><i>404</i> 404 Studio</a>
+      <a class="brand" href="index.html"><i>404</i> 404 Studio</a>
       <button class="ab-btn ab-call" id="callBar" type="button">Call</button>
     </div>
     <div class="top">
       <div>
         <h1 id="hello">Welcome</h1>
-        <p class="sub">Explore real sample websites. <span class="hov">Hover a card to scroll through the page, open one</span><span class="tap">Tap a card</span> to use it live on desktop, tablet or phone, and save the ones you like.</p>
+        <p class="sub">Explore real sample websites. Hover a card to scroll through the page, open one to use it live on desktop, tablet or phone, and save the ones you like.</p>
       </div>
       <div class="ctl">
         <input class="in" id="q" type="search" placeholder="Search websites" aria-label="Search templates">
@@ -278,7 +265,7 @@ const home=()=>location.replace('index.html');
 let user=null,sb=null;
 const sc=document.createElement('script');
 sc.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
-sc.onerror=()=>{$('boot').innerHTML='<div>Could not load sign-in. <a href="index.html?home">Back to site</a></div>'};
+sc.onerror=()=>{$('boot').innerHTML='<div>Could not load sign-in. <a href="index.html">Back to site</a></div>'};
 sc.onload=async()=>{
   const c=window.supabase.createClient(SB_URL,SB_KEY);sb=c;
   const {data}=await c.auth.getSession();
@@ -295,15 +282,13 @@ document.head.appendChild(sc);
    To add another sample site: put its .html file next to dashboard.html and add a line below.
    Fields: n = name, c = category, f = file path, d = short description */
 const T=[
- {n:'Pawsitive Vet',c:'Veterinary',f:'pawsitive.html',top:1,d:'A calm, modern vet clinic with REY.AI, a talking pet care assistant, plus pet age, food safety, urgency and vaccine tools and online booking.'},
- {n:'Kinetic Physio',c:'Physical Therapy',f:'sample-kinetic-physio.html',top:1,d:'A modern physical therapy clinic site with services, process, team, patient stories, FAQ and an appointment request form that opens WhatsApp.'},
+ {n:'Okay, But Why?',c:'Blog',f:'sample-mimiyuuuh.html',d:'The deep dive journal into modern phenomena.'},
+ {n:'W Fashion Gazette',c:'Magazine',f:'sample-fashion-gazette.html',d:'An independent fashion gazette covering beauty, street style, gowns and editorial culture.'},
  {n:'Hiblaya',c:'Fashion',f:'sample-hiblaya.html',d:'A home for Philippine fashion. Thread by thread, free to be.'},
  {n:'Anna Barchel',c:'Portfolio',f:'sample-anna-barchel.html',d:'A copywriter portfolio with services, before and after rewrites and client praise.'},
  {n:'LUMIÈRE',c:'Online Store',f:'sample-lumiere.html',d:'Soft luxury goods for intentional living: textiles, fragrances and accessories.'},
  {n:'LUMIÈRE CRM',c:'Web App',f:'sample-lumiere-crm.html',d:'A client relationship dashboard with a sales pipeline, activity feed, revenue chart and lead management.'},
- {n:'Kape Noval',c:'Cafe',f:'sample-kape-noval.html',d:'A homegrown Sampaloc coffee shop with a full-screen video hero, live menu search and a working cart.'},
- {n:'Hartwell & Vale',c:'Law Firm',f:'sample-lawfirm.html',d:'A law partners site with practice areas, attorney profiles, FAQ and a free consultation request form.'},
- {n:'Bellaluz Salon',c:'Salon',f:'sample-bellaluz.html',d:'A hair, nails and beauty salon with a promo slideshow, priced service menu, e-gift cards, branch map and online booking.'}
+ {n:'Kape Noval',c:'Cafe',f:'sample-kape-noval.html',d:'A homegrown Sampaloc coffee shop with a full-screen video hero, live menu search and a working cart.'}
 ];
 const CATS=[...new Set(T.map(t=>t.c))];
 
@@ -321,7 +306,6 @@ function list(){
  let L=order.map(i=>T[i]).filter(t=>(cat==='All'||(cat==='__fav'?favs.includes(t.n):t.c===cat))&&(t.n+' '+t.c+' '+t.d).toLowerCase().includes(q));
  const s=$('sort').value;
  if(s==='n')L.sort((a,b)=>a.n.localeCompare(b.n));else if(s==='c')L.sort((a,b)=>a.c.localeCompare(b.c)||a.n.localeCompare(b.n));
- L.sort((a,b)=>(b.top?1:0)-(a.top?1:0)); /* pinned items stay on top */
  return L;
 }
 function render(){
@@ -417,7 +401,7 @@ document.addEventListener('mouseover',e=>{const c=e.target.closest('.card');if(!
 document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(!c||c.contains(e.relatedTarget))return;const f=c.querySelector('.thumb iframe');if(f)autoScroll(f,false)});
 
 /* ---------- Start a call ---------- */
-const MAIL='keandonato@404studio.click';
+const MAIL='herart36@gmail.com';
 const SLOTS=[];for(let i=0;i<48;i++){const h=Math.floor(i/2),m=i%2?'30':'00';SLOTS.push({v:String(h).padStart(2,'0')+':'+m,t:(h%12||12)+':'+m+' '+(h<12?'AM':'PM')})}
 $('c-time').innerHTML='<option value="">Choose a time</option>'+SLOTS.map(s=>`<option value="${s.v}">${s.t}</option>`).join('');
 const etToday=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
