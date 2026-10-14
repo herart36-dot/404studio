@@ -422,7 +422,7 @@ document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(!c
 const MAIL='keandonato@404studio.click';
 const SLOTS=[];for(let i=0;i<48;i++){const h=Math.floor(i/2),m=i%2?'30':'00';SLOTS.push({v:String(h).padStart(2,'0')+':'+m,t:(h%12||12)+':'+m+' '+(h<12?'AM':'PM')})}
 $('c-time').innerHTML='<option value="">Choose a time</option>'+SLOTS.map(s=>`<option value="${s.v}">${s.t}</option>`).join('');
-const etToday=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York'}).format(new Date());
+const etToday=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).map(x=>[x.type,x.value]));return p.year+'-'+p.month+'-'+p.day};
 (()=>{const t=etToday(),[y,m,d]=t.split('-').map(Number);$('c-day').min=t;$('c-day').max=new Date(Date.UTC(y,m-1,d+90)).toISOString().slice(0,10)})();
 /* turn a day + time chosen in Eastern Time into a real moment (handles daylight saving) */
 function etToUtc(day,time){
@@ -468,29 +468,34 @@ $('call-form').addEventListener('submit',async e=>{
  if(!day)return cerr('Please choose a day.');
  if(!time)return cerr('Please choose a time (EST).');
  const utc=etToUtc(day,time);
+ if(!Number.isFinite(utc))return cerr('That day or time could not be read. Please choose them again.');
  if(utc<Date.now()+30*60000)return cerr('Please pick a time at least 30 minutes from now (EST).');
  cerr('');
  const svc=svcEl.value,when=dayLabel(day)+' at '+timeLabel(time)+' EST',ph=phLabel(utc),btn=$('c-send');
  btn.disabled=true;btn.textContent='Sending...';
+ const why={db:'',mail:''};
+ const timed=(url,opt,ms)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),ms||15000);return fetch(url,Object.assign({signal:c.signal},opt)).finally(()=>clearTimeout(t))};
+ const reason=e=>e&&e.name==='AbortError'?'timed out':'could not reach the server ('+String(e&&e.message||e).slice(0,50)+')';
  try{
-  let tok=SB_KEY;try{const {data}=await sb.auth.getSession();if(data.session)tok=data.session.access_token}catch(_){}
+  /* sign-in token (never wait more than 4s for it) */
+  let tok='';try{const {data}=await Promise.race([sb.auth.getSession(),new Promise((_,no)=>setTimeout(()=>no(new Error('session timeout')),4000))]);if(data&&data.session)tok=data.session.access_token}catch(_){}
   /* 1) save to your leads table (schedule is added to the concern text) */
-  const leadHeaders={'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+tok,'Prefer':'return=minimal'};
+  const leadHeaders={'Content-Type':'application/json','apikey':SB_KEY,'Prefer':'return=minimal'};if(tok)leadHeaders['Authorization']='Bearer '+tok;
   const leadBody=withAppt=>JSON.stringify(Object.assign({name,email,service:svc,concern:'[Preferred time: '+when+' | '+ph+']\n\n'+concern},withAppt?{appointment_at:new Date(utc).toISOString()}:{}));
-  const postLead=withAppt=>fetch(SB_URL+'/rest/v1/leads',{method:'POST',headers:leadHeaders,body:leadBody(withAppt)});
+  const dbPost=async withAppt=>{const r=await timed(SB_URL+'/rest/v1/leads',{method:'POST',headers:leadHeaders,body:leadBody(withAppt)});if(r.ok)return true;let m='';try{const j=await r.json();m=j.message||j.error||''}catch(_){}why.db='HTTP '+r.status+(m?' '+String(m).slice(0,80):'');return false};
   /* saves the call time as real appointment data; if that is not accepted, saves the lead without it */
-  const saveLead=postLead(true).then(r=>r.ok?true:postLead(false).then(r2=>r2.ok)).catch(()=>false);
+  const saveLead=dbPost(true).then(ok=>ok?true:dbPost(false)).catch(e=>{why.db=reason(e);return false});
   /* 2) email it to your Gmail */
-  const sendMail=fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',
+  const sendMail=timed('https://formsubmit.co/ajax/'+MAIL,{method:'POST',
    headers:{'Content-Type':'application/json','Accept':'application/json'},
    body:JSON.stringify({name,email,service:svc,concern,preferred_day_and_time:when,philippine_time:ph,
     _subject:'New call request: '+svc+' from '+name,_template:'table',_captcha:'false'})})
-   .then(async r=>{const j=await r.json().catch(()=>({}));return r.ok&&j.success!==false&&j.success!=='false'}).catch(()=>false);
+   .then(async r=>{const j=await r.json().catch(()=>({}));const ok=r.ok&&j.success!==false&&j.success!=='false';if(!ok)why.mail='HTTP '+r.status+(j.message?' '+String(j.message).slice(0,80):'');return ok}).catch(e=>{why.mail=reason(e);return false});
   const [saved,mailed]=await Promise.all([saveLead,sendMail]);
-  if(!saved&&!mailed)throw 0;
+  if(!saved&&!mailed){console.error('Call request failed',why);throw why}
   $('c-sum').textContent='Thanks, '+name+'. Your '+svc+' call request for '+when+' was sent. We\'ll confirm by email at '+email+'.';
   $('call-wrap').classList.add('hidden');$('call-done').classList.remove('hidden');callSent=true;
- }catch(_){cerr('We couldn\'t send your request. Please try again in a moment.')}
+ }catch(w){cerr('We couldn\'t send your request. Please try again, or email '+MAIL+' directly.'+(w&&typeof w==='object'&&'db' in w?' (Details: saving – '+(w.db||'no response')+'; email – '+(w.mail||'no response')+')':''))}
  btn.disabled=false;btn.textContent='Send request';
 });
 </script>
