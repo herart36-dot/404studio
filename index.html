@@ -31,6 +31,34 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "ProfessionalService",
+    "name": "404 Studio",
+    "url": "https://404studio.click/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Tarhata Marzon",
+    "jobTitle": "Owner",
+    "worksFor": {
+      "@type": "HairSalon",
+      "name": "TMM Clippers Salon",
+      "url": "https://tmmclipperssalon.vercel.app/"
+    }
+  },
+  "reviewBody": "The design is gorgeous. My logo fits right into the site, and the whole look is so kikay, just like my salon. The AI assistant is the best part: it's like my salon is open at every hour.",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": 5,
+    "bestRating": 5,
+    "worstRating": 1
+  }
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "404 Studio",
   "url": "https://404studio.click/",
@@ -710,6 +738,72 @@ body.bk-lock{overflow:hidden}
       </div>
 
     </div>
+  </section>
+<section id="testimonial" class="relative z-10 pt-16 pb-12 px-6 max-w-2xl mx-auto reveal" aria-labelledby="testimonial-title">
+    <style>
+      .tm-card{position:relative;text-align:center;padding:4.25rem 1.5rem 2rem;border-radius:1.75rem}
+      @media(min-width:640px){.tm-card{padding:4.5rem 3rem 2.5rem}}
+      .tm-avatar{position:absolute;top:-3.25rem;left:50%;transform:translateX(-50%);width:6.5rem;height:6.5rem;border-radius:9999px;object-fit:cover;border:4px solid #fff;box-shadow:0 10px 30px rgba(79,70,229,.25)}
+      .tm-rating{display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.1rem}
+      .tm-stars{display:inline-flex;gap:.2rem}
+      .tm-star{width:1.9rem;height:1.9rem;fill:#f59e0b;transition:transform .2s ease}
+      .tm-star:hover{transform:scale(1.25) rotate(-8deg)}
+      .tm-score{font-weight:800;color:#1e1b4b;font-size:.95rem}
+      .tm-js .tm-star{fill:#d1d5db}
+      .tm-js.is-in .tm-star{animation:tmFill .55s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(var(--i)*130ms)}
+      @keyframes tmFill{0%{fill:#d1d5db;transform:scale(.7)}60%{transform:scale(1.3)}100%{fill:#f59e0b;transform:scale(1)}}
+      .tm-quote{font-size:1.2rem;line-height:1.75;font-weight:500;color:#1e1b4b;margin:0 auto;max-width:34rem}
+      @media(min-width:640px){.tm-quote{font-size:1.35rem}}
+      .tm-quote::before{content:"\201C";display:block;font-family:'Playfair Display',serif;font-size:4rem;line-height:.6;color:#a78bfa;margin-bottom:.4rem}
+      .tm-hl{background:linear-gradient(transparent 100%,transparent 0);background-size:100% 0;background-repeat:no-repeat;background-position:0 88%;padding:0 .1em;border-radius:.2em;transition:background-size .45s ease}
+      .tm-hl.on{background-image:linear-gradient(rgba(250,204,21,.6),rgba(250,204,21,.6));background-size:100% 62%}
+      .tm-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.5rem}
+      .tm-chip{border:1.5px solid #c7d2fe;background:#fff;color:#4338ca;font-weight:700;font-size:.85rem;padding:.45rem .95rem;border-radius:9999px;cursor:pointer;transition:all .2s ease}
+      .tm-chip:hover{border-color:#6366f1;transform:translateY(-1px)}
+      .tm-chip:focus-visible{outline:3px solid rgba(99,102,241,.45);outline-offset:2px}
+      .tm-chip[aria-pressed="true"]{background:#4f46e5;border-color:#4f46e5;color:#fff}
+      .tm-hint{font-size:.75rem;color:#64748b;margin-top:.6rem}
+      .tm-who{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(100,116,139,.25)}
+      @media(prefers-reduced-motion:reduce){.tm-js.is-in .tm-star{animation:none;fill:#f59e0b}.tm-star,.tm-hl,.tm-chip{transition:none}}
+    </style>
+    <h2 id="testimonial-title" class="sr-only">What our clients say</h2>
+    <figure class="glass-card tm-card mt-12" id="tm-card">
+      <img src="tarhata-marzon-tmm-clippers.webp" width="480" height="480" loading="lazy" decoding="async"
+           alt="Tarhata Marzon, owner of TMM Clippers Salon in Taguig and General Trias, Cavite" class="tm-avatar">
+      <div class="tm-rating">
+        <span class="tm-stars" role="img" aria-label="Rated 5 out of 5 stars"><svg class="tm-star" style="--i:0" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.93-4.78 4.62 1.17 6.6L12 17.6l-5.89 3.15 1.17-6.6L2.5 9.53l6.56-.93L12 2.5z"/></svg><svg class="tm-star" style="--i:1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.93-4.78 4.62 1.17 6.6L12 17.6l-5.89 3.15 1.17-6.6L2.5 9.53l6.56-.93L12 2.5z"/></svg><svg class="tm-star" style="--i:2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.93-4.78 4.62 1.17 6.6L12 17.6l-5.89 3.15 1.17-6.6L2.5 9.53l6.56-.93L12 2.5z"/></svg><svg class="tm-star" style="--i:3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.93-4.78 4.62 1.17 6.6L12 17.6l-5.89 3.15 1.17-6.6L2.5 9.53l6.56-.93L12 2.5z"/></svg><svg class="tm-star" style="--i:4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.93-4.78 4.62 1.17 6.6L12 17.6l-5.89 3.15 1.17-6.6L2.5 9.53l6.56-.93L12 2.5z"/></svg></span>
+        <span class="tm-score">5.0 / 5</span>
+      </div>
+      <blockquote class="tm-quote">
+        <p>The design is <span class="tm-hl" data-k="design">gorgeous</span>. <span class="tm-hl" data-k="logo">My logo fits right into the site</span>, and the whole look is so kikay, just like my salon. <span class="tm-hl" data-k="ai">The AI assistant is the best part: it&rsquo;s like my salon is open at every hour.</span>&rdquo;</p>
+      </blockquote>
+      <div class="tm-chips" role="group" aria-label="Highlight what she loved">
+        <button type="button" class="tm-chip" data-k="design" aria-pressed="false">Design</button>
+        <button type="button" class="tm-chip" data-k="logo" aria-pressed="false">Her logo</button>
+        <button type="button" class="tm-chip" data-k="ai" aria-pressed="false">AI assistant</button>
+      </div>
+      <p class="tm-hint">Tap a topic to see what she loved.</p>
+      <figcaption class="tm-who">
+        <strong class="block text-slate-900 text-lg">Tarhata Marzon</strong>
+        <span class="text-sm text-slate-600">Owner, <a href="https://tmmclipperssalon.vercel.app/" rel="noopener" class="font-bold text-indigo-600 hover:text-purple-600 underline">TMM Clippers Salon</a> &middot; Taguig &amp; General Trias, Cavite</span>
+      </figcaption>
+    </figure>
+    <script>
+      (function(){
+        var card=document.getElementById('tm-card'); if(!card) return;
+        var chips=card.querySelectorAll('.tm-chip'), marks=card.querySelectorAll('.tm-hl');
+        chips.forEach(function(c){c.addEventListener('click',function(){
+          var on=c.getAttribute('aria-pressed')!=='true';
+          c.setAttribute('aria-pressed',on?'true':'false');
+          marks.forEach(function(m){if(m.dataset.k===c.dataset.k)m.classList.toggle('on',on);});
+        });});
+        card.classList.add('tm-js');
+        if('IntersectionObserver' in window){
+          var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){card.classList.add('is-in');io.disconnect();}},{threshold:.35});
+          io.observe(card);
+        } else {card.classList.add('is-in');}
+      })();
+    </script>
   </section>
 <section id="faq" class="relative z-10 py-16 px-6 max-w-3xl mx-auto reveal">
     <div class="text-center mb-8">
