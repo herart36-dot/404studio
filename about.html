@@ -90,18 +90,6 @@
       100% { transform: translateY(-40px) rotate(15deg) scale(1.1); }
     }
 
-    /* GOOGLE SIGN-IN */
-    .auth-wrap { display:flex; align-items:center; gap:.5rem; }
-    .auth-btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.6rem 1.1rem; border-radius:9999px;
-      border:1px solid #e2e8f0; background:#fff; color:#334155; font-weight:600; font-size:.875rem; cursor:pointer; transition:background .2s, box-shadow .2s; }
-    .auth-btn:hover { background:#f8fafc; box-shadow:0 4px 14px rgba(0,0,0,.08); }
-    .auth-btn[disabled] { opacity:.6; cursor:wait; }
-    .auth-g { width:18px; height:18px; flex:none; }
-    .auth-avatar { width:34px; height:34px; border-radius:9999px; object-fit:cover; background:#e0e7ff; flex:none; }
-    .auth-name { font-weight:700; color:#1e1b4b; font-size:.875rem; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .auth-out { background:none; border:0; color:#64748b; font-size:.8rem; text-decoration:underline; cursor:pointer; padding:.25rem; }
-    .auth-out:hover { color:#4f46e5; }
-
     /* HEADER & DROPDOWN - 100% SOLID OPACITY */
     .sticky-header {
       position: sticky;
@@ -453,6 +441,47 @@
  ]
 }
 </script>
+<style id="booking-modal-css">
+/* ===== BOOK A CALL MODAL ===== */
+.bk-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(30,27,75,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.bk-overlay[hidden]{display:none}
+.bk-overlay *,.bk-overlay *::before,.bk-overlay *::after{box-sizing:border-box}
+.bk-input{min-width:0;max-width:100%}
+.bk-modal{position:relative;width:100%;max-width:520px;max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);overflow-y:auto;background:#fff;border-radius:1.5rem;padding:1.75rem;box-shadow:0 30px 80px rgba(30,27,75,.35);color:#1e1b4b}
+.bk-close{position:absolute;top:.75rem;right:.75rem;width:2.5rem;height:2.5rem;border-radius:9999px;border:0;background:#f1f5f9;color:#475569;font-size:1.5rem;line-height:1;cursor:pointer}
+.bk-close:hover{background:#e0e7ff;color:#4f46e5}
+.bk-modal h2{font-size:1.5rem;font-weight:800;margin:0 2.5rem .25rem 0;color:#1e1b4b}
+.bk-sub{color:#475569;font-size:.95rem;margin:0 0 1.25rem;line-height:1.55}
+.bk-field{margin-bottom:1rem}
+.bk-label{display:block;font-size:.85rem;font-weight:700;color:#334155;margin-bottom:.4rem}
+.bk-label small{font-weight:500;color:#64748b}
+.bk-input{width:100%;padding:.7rem .9rem;border-radius:.85rem;background:#fff;border:1px solid #cbd5e1;color:#1e1b4b;font:inherit;font-size:1rem}
+.bk-input:focus{outline:3px solid rgba(99,102,241,.35);border-color:#6366f1}
+.bk-input.bk-bad,.bk-opts.bk-bad{border-color:#e11d48;outline:2px solid rgba(225,29,72,.25)}
+textarea.bk-input{resize:vertical;min-height:4.5rem}
+.bk-hint{font-size:.78rem;color:#64748b;margin:.35rem 0 0;line-height:1.45}
+.bk-opts{display:grid;gap:.5rem;border:0;padding:0;margin:0 0 1rem;border-radius:.9rem}
+.bk-opts legend{padding:0;margin-bottom:.4rem}
+.bk-opt{position:relative;display:block;cursor:pointer}
+.bk-opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.bk-opt span.bk-card{display:flex;align-items:center;gap:.75rem;padding:.7rem .9rem;border:1.5px solid #cbd5e1;border-radius:.9rem;background:#fff;transition:border-color .15s,background-color .15s}
+.bk-opt:hover span.bk-card{border-color:#a5b4fc}
+.bk-opt input:checked + span.bk-card{border-color:#6366f1;background:#eef2ff;box-shadow:0 0 0 3px rgba(99,102,241,.18)}
+.bk-opt input:focus-visible + span.bk-card{outline:3px solid #6366f1;outline-offset:2px}
+.bk-ic{flex:none;width:2.25rem;height:2.25rem;border-radius:.7rem;display:flex;align-items:center;justify-content:center;background:#e0e7ff;color:#4f46e5}
+.bk-opt b{display:block;font-size:.95rem;color:#1e1b4b}
+.bk-opt em{display:block;font-style:normal;font-size:.8rem;color:#64748b}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media (max-width:420px){.bk-row{grid-template-columns:1fr}}
+.bk-status{min-height:1.25rem;margin:0 0 .75rem;font-size:.875rem;font-weight:600;color:#be123c}
+.bk-submit{width:100%;padding:.85rem 1.25rem;border-radius:9999px;border:0;font-weight:800;font-size:1rem;cursor:pointer}
+.bk-hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.bk-done{text-align:center;padding:.5rem 0}
+.bk-check{width:4rem;height:4rem;margin:0 auto 1rem;border-radius:9999px;background:#d1fae5;color:#059669;display:flex;align-items:center;justify-content:center;font-size:1.75rem}
+.bk-sum{margin:1.25rem 0;padding:1rem;border-radius:1rem;background:#f8fafc;border:1px solid #e2e8f0;text-align:left;font-size:.9rem;color:#334155;line-height:1.7}
+.bk-sum b{color:#1e1b4b}
+body.bk-lock{overflow:hidden}
+</style>
 </head>
 <body class="relative overflow-x-hidden">
   <div class="page-progress" id="page-progress"></div>
@@ -478,7 +507,6 @@
 
       <!-- DESKTOP CTA -->
       <div class="hidden md:flex items-center gap-3">
-        <div data-auth-slot></div>
         <a href="#book" data-book class="btn-gradient magnetic inline-flex px-6 py-2.5 rounded-full font-bold shadow-lg">
         Book a free call
       </a>
@@ -494,7 +522,6 @@
     <!-- MOBILE NAV -->
     <div id="mobile-menu" class="mobile-menu md:hidden max-w-7xl mx-auto">
       <nav class="pt-4 pb-2 grid gap-2 font-semibold text-slate-700" aria-label="Mobile"><a href="/" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Home</a><a href="services.html" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Services</a><a href="portfolio.html" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Portfolio</a><a href="about.html" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50 bg-indigo-50 nav-cur">About</a><a href="contact.html" class="mobile-link rounded-xl px-4 py-3 hover:bg-indigo-50">Contact</a>
-        <div data-auth-slot class="px-1"></div>
         <a data-viber href="viber://chat?number=%2B639619679095" class="viber-btn text-center rounded-xl px-4 py-3 font-bold"><i class="fa-brands fa-viber mr-1"></i> Chat on Viber</a>
         <a href="#book" data-book class="mobile-link btn-gradient text-center text-white rounded-xl px-4 py-3 mt-1">Book a free call</a>
       </nav>
@@ -767,94 +794,160 @@
   })();
   </script>
 
-  <!-- GOOGLE SIGN-IN (the Supabase library loads only when it is needed) -->
+  <!-- BOOK A CALL (form saves to the leads table; the confirmation email is sent by the server) -->
   <script>
   (() => {
     const SB_URL = 'https://acxrobzulaswsubfoghg.supabase.co';
     const SB_KEY = 'sb_publishable_3Ehkqe8QtPVJQoh4FCZIVg_m2f8SOTD';
-    const STORE_KEY = 'sb-acxrobzulaswsubfoghg-auth-token';
-    const slots = [...document.querySelectorAll('[data-auth-slot]')];
-    window.__404 = { token: null, user: null };
-    let client = null, loading = null;
-
-    const loadLib = () => loading || (loading = new Promise((resolve, reject) => {
-      const sc = document.createElement('script');
-      sc.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
-      sc.onload = () => { client = window.supabase.createClient(SB_URL, SB_KEY); resolve(client); };
-      sc.onerror = () => { loading = null; reject(new Error('Could not load sign-in')); };
-      document.head.appendChild(sc);
-    }));
-
+    const TZ = 'Asia/Manila';
+    const SERVICES = [
+      { v: 'Email Management', icon: 'fa-envelope', d: 'Inbox cleanup, filters and reply drafts' },
+      { v: 'SEO Management & Auditing', icon: 'fa-magnifying-glass-chart', d: 'Site audits, fixes and ongoing SEO' },
+      { v: 'Web Development & Design', icon: 'fa-laptop-code', d: 'Custom websites built from scratch' }
+    ];
     const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const G = '<svg class="auth-g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.9 2.4 30.4 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
 
+    /* time slots: 9:00 AM to 6:00 PM every 30 minutes, Philippine Time */
+    const slots = [];
+    for (let h = 9; h <= 18; h++) for (const m of [0, 30]) {
+      if (h === 18 && m === 30) continue;
+      const hh = String(h).padStart(2, '0'), mm = String(m).padStart(2, '0');
+      slots.push({ v: hh + ':' + mm, t: ((h + 11) % 12 + 1) + ':' + mm + ' ' + (h < 12 ? 'AM' : 'PM') });
+    }
+    const todayPH = (add = 0) => new Date(Date.now() + add * 864e5).toLocaleDateString('en-CA', { timeZone: TZ });
+    const niceWhen = iso => new Date(iso).toLocaleString('en-US', { timeZone: TZ, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }) + ' (Philippine Time)';
 
-    const render = user => {
-      let html;
-      if (user) {
-        const m = user.user_metadata || {};
-        const full = m.full_name || m.name || (user.email || '').split('@')[0] || 'Account';
-        const first = full.split(' ')[0];
-        const pic = m.avatar_url || m.picture || '';
-        const img = pic.startsWith('https://') ? '<img class="auth-avatar" referrerpolicy="no-referrer" alt="" src="' + esc(pic) + '">' : '';
-        html = '<div class="auth-wrap">' + img + '<a class="auth-out" href="dashboard.html" style="font-weight:700;color:#4f46e5;text-decoration:none">Dashboard</a><span class="auth-name" title="' + esc(user.email || '') + '">' + esc(first) + '</span><button type="button" class="auth-out" data-auth-out>Sign out</button></div>';
-      } else {
-        html = '';
-      }
-      slots.forEach(el => { el.innerHTML = html; });
-      document.querySelectorAll('[data-book]').forEach(el => { el.textContent = user ? 'Start a call' : 'Book a free call'; });
+    const root = document.createElement('div');
+    root.className = 'bk-overlay'; root.hidden = true; root.id = 'bk-overlay';
+    root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-labelledby', 'bk-title');
+    root.innerHTML =
+      '<div class="bk-modal">' +
+        '<button type="button" class="bk-close" aria-label="Close" data-bk-close>&times;</button>' +
+        '<div id="bk-formview">' +
+          '<h2 id="bk-title">Book a free call</h2>' +
+          '<p class="bk-sub">Tell us what you need and when you are free. No sign-in needed. We will email you a confirmation.</p>' +
+          '<form id="bk-form" novalidate>' +
+            '<div class="bk-field"><label class="bk-label" for="bk-name">Your name</label><input class="bk-input" id="bk-name" name="name" type="text" autocomplete="name" maxlength="120"></div>' +
+            '<div class="bk-field"><label class="bk-label" for="bk-email">Your email</label><input class="bk-input" id="bk-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200"><p class="bk-hint">Please use your correct email. Your confirmation will be sent here.</p></div>' +
+            '<div class="bk-field"><label class="bk-label" for="bk-email2">Confirm your email</label><input class="bk-input" id="bk-email2" name="email2" type="email" autocomplete="off" inputmode="email" maxlength="200"></div>' +
+            '<fieldset class="bk-opts" id="bk-opts"><legend class="bk-label">What do you want to inquire about?</legend>' +
+              SERVICES.map((s, i) =>
+                '<label class="bk-opt"><input type="radio" name="service" value="' + esc(s.v) + '"' + '>' +
+                '<span class="bk-card"><span class="bk-ic"><i class="fa-solid ' + s.icon + '" aria-hidden="true"></i></span><span><b>' + esc(s.v) + '</b><em>' + esc(s.d) + '</em></span></span></label>'
+              ).join('') +
+            '</fieldset>' +
+            '<div class="bk-row">' +
+              '<div class="bk-field"><label class="bk-label" for="bk-date">Date of call</label><input class="bk-input" id="bk-date" name="date" type="date"></div>' +
+              '<div class="bk-field"><label class="bk-label" for="bk-time">Time</label><select class="bk-input" id="bk-time" name="time"><option value="">Select a time</option>' +
+                slots.map(s => '<option value="' + s.v + '">' + s.t + '</option>').join('') + '</select></div>' +
+            '</div>' +
+            '<p class="bk-hint" style="margin:-.4rem 0 1rem">All times are in Philippine Time (UTC+8).</p>' +
+            '<div class="bk-field"><label class="bk-label" for="bk-notes">Anything we should know? <small>(optional)</small></label><textarea class="bk-input" id="bk-notes" name="notes" maxlength="1000" rows="3"></textarea></div>' +
+            '<input class="bk-hp" type="text" id="bk-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+            '<p class="bk-status" id="bk-status" role="alert" aria-live="polite"></p>' +
+            '<button type="submit" class="btn-gradient bk-submit" id="bk-submit">Book my call</button>' +
+          '</form>' +
+        '</div>' +
+        '<div id="bk-doneview" class="bk-done" hidden></div>' +
+      '</div>';
+    document.body.appendChild(root);
+
+    const $ = id => document.getElementById(id);
+    const form = $('bk-form'), status = $('bk-status'), submit = $('bk-submit');
+    const dateEl = $('bk-date');
+    let lastFocus = null;
+
+    const setDateRange = () => { dateEl.min = todayPH(); dateEl.max = todayPH(90); };
+
+    const open = () => {
+      lastFocus = document.activeElement;
+      $('bk-formview').hidden = false; $('bk-doneview').hidden = true;
+      status.textContent = '';
+      setDateRange();
+      root.hidden = false; document.body.classList.add('bk-lock');
+      setTimeout(() => $('bk-name').focus(), 30);
+    };
+    const close = () => {
+      root.hidden = true; document.body.classList.remove('bk-lock');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+      if (location.hash === '#book') history.replaceState(null, '', location.pathname + location.search);
     };
 
-
-    const apply = session => {
-      window.__404.token = session ? session.access_token : null;
-      window.__404.user = session ? session.user : null;
-      render(window.__404.user);
-    };
-
-    document.addEventListener('click', async e => {
-      const bk = e.target.closest('[data-book]');
-      if (bk) {
-        e.preventDefault();
-        try { sessionStorage.setItem('404-opencall', '1'); } catch (_) {}
-        if (window.__404.user) { location.href = 'dashboard.html'; return; }
-      }
-      const inBtn = bk || e.target.closest('[data-auth-in]');
-      if (inBtn) {
-        const orig = inBtn.innerHTML;
-        inBtn.style.pointerEvents = 'none'; inBtn.textContent = 'Opening Google...';
-        try {
-          const c = await loadLib();
-          const { error } = await c.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: new URL('dashboard.html', location.href).href } });
-          if (error) throw error;
-        } catch (_) {
-          inBtn.style.pointerEvents = ''; inBtn.innerHTML = orig;
-          alert('Google sign-in could not start. Please try again in a moment.');
-        }
-        return;
-      }
-      if (e.target.closest('[data-auth-out]')) {
-        try { const c = await loadLib(); await c.auth.signOut(); } catch (_) {}
-        apply(null);
+    document.addEventListener('click', e => {
+      const b = e.target.closest('[data-book]');
+      if (b) { e.preventDefault(); open(); return; }
+      if (e.target.closest('[data-bk-close]') || e.target === root) close();
+    });
+    document.addEventListener('keydown', e => {
+      if (root.hidden) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Tab') {
+        const f = [...root.querySelectorAll('button:not([disabled]),input:not([tabindex="-1"]):not([type=hidden]),select,textarea,a[href]')].filter(el => el.offsetParent !== null);
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
+    if (location.hash === '#book') open();
 
-    render(null);
+    form.addEventListener('input', e => { status.textContent = ''; e.target.classList && e.target.classList.remove('bk-bad'); if (e.target.name === 'service') $('bk-opts').classList.remove('bk-bad'); });
 
-    let hasSession = false;
-    try { hasSession = !!localStorage.getItem(STORE_KEY); } catch (_) {}
-    const back = /[?&]code=|access_token=|error_description=/.test(location.search + location.hash);
-    if (hasSession || back) {
-      loadLib().then(async c => {
-        c.auth.onAuthStateChange((_ev, session) => apply(session));
-        const { data } = await c.auth.getSession();
-        apply(data.session);
-        if (back) {
-          history.replaceState(null, '', location.origin + location.pathname);
-          if (!data.session) alert('Google sign-in did not complete. Please try again.');
-        }
-      }).catch(() => {});
-    }
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if ($('bk-hp').value) return; /* spam trap */
+      const name = $('bk-name').value.trim();
+      const email = $('bk-email').value.trim();
+      const email2 = $('bk-email2').value.trim();
+      const svc = form.querySelector('input[name="service"]:checked');
+      const date = dateEl.value, time = $('bk-time').value;
+      const notes = $('bk-notes').value.trim();
+
+      const fail = (msg, el) => { status.textContent = msg; if (el) { el.classList.add('bk-bad'); (el.matches('fieldset') ? el.querySelector('input') : el).focus(); } };
+      const emailOk = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email);
+      form.querySelectorAll('.bk-bad').forEach(n => n.classList.remove('bk-bad'));
+      status.textContent = '';
+      if (!name) return fail('Please enter your name.', $('bk-name'));
+      if (!emailOk) return fail('Please enter a valid email address.', $('bk-email'));
+      if (email.toLowerCase() !== email2.toLowerCase()) return fail('The two email addresses do not match. Please check them.', $('bk-email2'));
+      if (!svc) return fail('Please choose what you want to inquire about.', $('bk-opts'));
+      if (!date) return fail('Please choose a date for the call.', dateEl);
+      if (!time) return fail('Please choose a time for the call.', $('bk-time'));
+      const iso = date + 'T' + time + ':00+08:00';
+      if (isNaN(new Date(iso).getTime()) || new Date(iso).getTime() < Date.now() + 15 * 60000) return fail('That time has already passed. Please pick a later date or time.', dateEl);
+
+      const service = svc.value;
+      const when = niceWhen(iso);
+      const concern = 'Free call booking request.\nService: ' + service + '\nRequested time: ' + when + (notes ? '\nNotes: ' + notes : '');
+      const lead = { name, email, service, concern, appointment_at: iso, source: 'Booking form', source_detail: service, source_url: location.href.slice(0, 500) };
+
+      const label = submit.textContent;
+      submit.disabled = true; submit.textContent = 'Booking...';
+      const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 15000);
+      try {
+        const r = await fetch(SB_URL + '/rest/v1/leads', {
+          method: 'POST', signal: ctl.signal,
+          headers: { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Prefer': 'return=minimal' },
+          body: JSON.stringify(lead)
+        });
+        if (!r.ok) throw new Error('save failed');
+        form.reset();
+        $('bk-formview').hidden = true;
+        const d = $('bk-doneview');
+        d.innerHTML =
+          '<div class="bk-check"><i class="fa-solid fa-check" aria-hidden="true"></i></div>' +
+          '<h2 style="margin:0 0 .25rem">You are booked, ' + esc(name.split(' ')[0]) + '!</h2>' +
+          '<p class="bk-sub" style="margin:0">We sent a confirmation to <b>' + esc(email) + '</b>. If you do not see it in a few minutes, please check your spam folder.</p>' +
+          '<div class="bk-sum"><b>Service:</b> ' + esc(service) + '<br><b>When:</b> ' + esc(when) + '</div>' +
+          '<button type="button" class="btn-gradient bk-submit" data-bk-close>Done</button>';
+        d.hidden = false;
+        d.querySelector('button').focus();
+      } catch (_) {
+        status.innerHTML = 'Sorry, we could not save your booking. Please try again, or message us on <a href="viber://chat?number=%2B639619679095" style="text-decoration:underline">Viber</a>.';
+      } finally {
+        clearTimeout(timer); submit.disabled = false; submit.textContent = label;
+      }
+    });
   })();
   </script>
 
@@ -888,7 +981,7 @@
       status.textContent = '';
       /* Saves into the same "leads" table Orchid CRM reads. The need goes in front of the message. */
       const lead = { name: name, email: email, service: 'Web Development', concern: '[Need: ' + need + ']\n\n' + msg };
-      const tok = (window.__404 && window.__404.token) || SB_KEY;
+      const tok = SB_KEY;
       const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 12000);
       fetch(SB_URL + '/rest/v1/leads', {
         method: 'POST', signal: ctl.signal,
