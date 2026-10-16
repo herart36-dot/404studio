@@ -209,6 +209,30 @@ footer a{margin-right:18px}
 #wipe.go i{animation:wp .8s cubic-bezier(.7,0,.2,1)}
 #wipe.go i:nth-child(2){animation-delay:.06s}#wipe.go i:nth-child(3){animation-delay:.12s}#wipe.go i:nth-child(4){animation-delay:.18s}
 @keyframes wp{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* tools page */
+.tin{max-width:62ch;margin:0 0 30px;color:var(--mute)}
+.tcnt{font:500 12px ui-monospace,Menlo,Consolas,monospace;color:var(--mute);letter-spacing:.06em;margin:0 0 20px}
+.tg{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(285px,1fr))}
+.tl{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px;background:var(--card);border:2px solid var(--ink);overflow:hidden;transition:transform .2s ease-out,box-shadow .3s}
+.tl:before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--px,50%) var(--py,50%),rgba(168,85,247,.3),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.tl:hover:before{opacity:1}
+.tl:hover{box-shadow:7px 7px 0 var(--c3);transform:translate(-2px,-2px)}
+.tl[hidden]{display:none}
+.tl>*{position:relative}
+.lg{width:64px;height:64px;display:grid;place-items:center;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);color:#fff;font:800 24px/1 var(--hd);letter-spacing:-.06em;margin-bottom:6px;transition:transform .4s,border-radius .4s}
+.tl:hover .lg{transform:rotate(-8deg);border-radius:50%}
+.lg[data-c="Design"]{background:var(--g)}
+.lg[data-c="Build"]{background:linear-gradient(140deg,#4f46e5,#ec4899)}
+.lg[data-c="Motion"]{background:linear-gradient(140deg,#ec4899,#a855f7)}
+.lg[data-c="Shop"]{background:linear-gradient(140deg,#a855f7,#4f46e5)}
+.lg[data-c="Launch"]{background:var(--ink);color:var(--bg)}
+.tl small{font:500 12px ui-monospace,Menlo,Consolas,monospace;color:var(--mute);letter-spacing:.08em;text-transform:uppercase}
+.tl h3{font:800 clamp(26px,2.8vw,34px)/1 var(--hd);letter-spacing:-.045em;margin:0}
+.tl .hk{margin:0;font:700 17px/1.3 var(--bd)}
+.tl .us{margin:0;color:var(--mute);font-size:15px}
+.tl .us b{display:block;margin-bottom:2px;font:500 11px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.tcta{margin-top:56px}
 </style>
 </head>
 <body>
@@ -223,7 +247,7 @@ footer a{margin-right:18px}
 <div class="hud" aria-hidden="true"><span><i class="live"></i>Online</span><span id="clk"></span><span id="pgl"></span><span id="cnt"></span><span>Quezon City, PH</span></div>
 <nav id="menu" aria-label="Main menu">
   <button class="pill" id="mc" type="button">Close</button>
-  <a href="#home">Home</a><a href="#work">Work</a><a href="#samples">Samples</a><a href="#reviews">Reviews</a><a href="#me">Me</a><a href="#contact">Contact</a>
+  <a href="#home">Home</a><a href="#work">Work</a><a href="#samples">Samples</a><a href="#tools">Tools</a><a href="#reviews">Reviews</a><a href="#me">Me</a><a href="#contact">Contact</a>
   <button class="srch" id="jk" type="button">Search pages and samples (Ctrl K)</button>
 </nav>
 <main id="top">
@@ -239,6 +263,7 @@ footer a{margin-right:18px}
     <div class="ll">
       <a href="#work">Work <span>+</span></a>
       <a href="#samples">Samples <span>+</span></a>
+      <a href="#tools">Tools <span>+</span></a>
       <a href="#reviews">Reviews <span>+</span></a>
       <a href="#me">Me <span>+</span></a>
       <a href="#contact">Contact <span>+</span></a>
@@ -272,6 +297,15 @@ footer a{margin-right:18px}
   <section data-page="samples">
     <h2><span class="o">Sample</span><span class="in">works</span></h2>
     <div class="cards" id="cards"></div>
+  </section>
+  <section data-page="tools">
+    <h2><span class="o">The</span><span class="in">toolkit.</span></h2>
+    <p class="lead">Behind every site that moves is a stack that works.</p>
+    <p class="tin">We use the same professional tools trusted by top studios and product teams. Your site is designed with precision, built to load fast, animated with taste and launched on infrastructure that scales. Here is every tool in the kit, and what it does for you.</p>
+    <div class="flt" id="tf" role="group" aria-label="Filter tools by stage"><button class="chip on" data-f="All" type="button">All</button><button class="chip" data-f="Design" type="button">Design</button><button class="chip" data-f="Build" type="button">Build</button><button class="chip" data-f="Motion" type="button">Motion</button><button class="chip" data-f="Shop" type="button">Shop and content</button><button class="chip" data-f="Launch" type="button">Launch</button></div>
+    <p class="tcnt" id="tc" aria-live="polite"></p>
+    <div class="tg" id="tg"></div>
+    <div class="ct tcta"><p class="lead">Want this stack working for your business?</p><a class="big" href="#contact">Let's build it</a></div>
   </section>
   <section data-page="reviews">
     <h2><span class="o">What</span><span class="in">clients say</span></h2>
@@ -400,7 +434,7 @@ $("#vd").onclick=function(){fr.classList.remove("ph");$("#vd").classList.add("on
 $("#vp").onclick=function(){fr.classList.add("ph");$("#vp").classList.add("on");$("#vd").classList.remove("on")};
 addEventListener("keydown",function(e){if(e.key==="Escape"&&vw.classList.contains("on"))vc()});
 /* pages */
-var PG=["home","work","samples","reviews","me","contact"],TT={home:"404 Studio | Websites that move",work:"TMM Clippers Salon case study | 404 Studio",samples:"Sample works | 404 Studio",reviews:"Reviews | 404 Studio",me:"Kean Carl Donato | 404 Studio",contact:"Contact | 404 Studio"},nx=$("#nx");
+var PG=["home","work","samples","tools","reviews","me","contact"],TT={home:"404 Studio | Websites that move",work:"TMM Clippers Salon case study | 404 Studio",samples:"Sample works | 404 Studio",tools:"Our toolkit | 404 Studio",reviews:"Reviews | 404 Studio",me:"Kean Carl Donato | 404 Studio",contact:"Contact | 404 Studio"},nx=$("#nx");
 function route(){var k=(location.hash||"#home").slice(1);if(k==="about")k="me";if(PG.indexOf(k)<0)k="home";
 document.querySelectorAll("[data-page]").forEach(function(e){e.classList.toggle("on",e.dataset.page===k)});
 document.querySelectorAll("#menu a,#hm").forEach(function(a){if(a.getAttribute("href")==="#"+k)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
@@ -424,7 +458,7 @@ c.addEventListener("pointermove",function(e){var b=c.getBoundingClientRect(),px=
 c.addEventListener("pointerleave",function(){c.style.transform=""})});
 /* quick jump */
 var pal=$("#pal"),pi=$("#pi"),pl=$("#pl"),sel=0,list=[],lastF=null;
-var ALL=[["Home","Page","#home"],["Work","Page","#work"],["Sample works","Page","#samples"],["Reviews","Page","#reviews"],["Me and contact info","Page","#me"],["Contact","Page","#contact"]].map(function(a){return{t:a[0],s:a[1],h:a[2]}}).concat(SM.map(function(s,n){return{t:plain(s.n),s:s.c+(s.v?" (preview here)":" (opens live)"),v:s.v,x:n,u:BASE+s.f}}));
+var ALL=[["Home","Page","#home"],["Work","Page","#work"],["Sample works","Page","#samples"],["Tools and toolkit","Page","#tools"],["Reviews","Page","#reviews"],["Me and contact info","Page","#me"],["Contact","Page","#contact"]].map(function(a){return{t:a[0],s:a[1],h:a[2]}}).concat(SM.map(function(s,n){return{t:plain(s.n),s:s.c+(s.v?" (preview here)":" (opens live)"),v:s.v,x:n,u:BASE+s.f}}));
 function rl(){var q=pi.value.toLowerCase();list=ALL.filter(function(i){return(i.t+" "+i.s).toLowerCase().indexOf(q)>-1});sel=Math.min(sel,Math.max(list.length-1,0));
 pl.innerHTML=list.length?list.map(function(i,n){return'<li'+(n===sel?' class="sel"':'')+' data-n="'+n+'">'+i.t.replace(/&/g,"&amp;")+'<span>'+i.s+'</span></li>'}).join(""):"<li>No match. Try a different word.</li>"}
 function po(){tog(false);lastF=document.activeElement;pal.classList.add("on");pi.value="";sel=0;rl();pi.focus()}
@@ -456,6 +490,21 @@ document.querySelectorAll(".card").forEach(function(c){c.dataset.cur="View"});
 if(!still&&matchMedia("(hover:hover) and (pointer:fine)").matches){document.querySelectorAll(".hb .pill,.fab,.mark").forEach(function(el){
 el.addEventListener("pointermove",function(e){var r=el.getBoundingClientRect();el.style.transform="translate("+(e.clientX-r.left-r.width/2)*.28+"px,"+(e.clientY-r.top-r.height/2)*.4+"px)"});
 el.addEventListener("pointerleave",function(){el.style.transform=""})})}
+})();
+</script>
+<script>
+(function(){
+var T=[["Design", "Fg", "Figma", "Where the whole site is designed before a single line of code.", "Layouts, reusable components, colour and type systems, and clickable prototypes. You approve the look and flow up front, so changes are cheap and surprises are rare."], ["Design", "Ai", "Adobe Illustrator", "Razor-sharp vector art that never blurs, at any size.", "Logos, icons and custom shapes that stay crisp from a phone screen to a billboard, exported as lightweight SVG."], ["Design", "Ps", "Photoshop", "Retouching and texture work that makes visuals feel finished.", "Photo cleanup, mockups, backgrounds and surface textures, so every image looks polished and on-brand."], ["Design", "Sp", "Spline", "3D you can touch, right in the browser.", "Interactive 3D scenes, like floating objects or product models, that react to the cursor and add depth without heavy video."], ["Design", "Bl", "Blender", "The 3D studio behind soft, clay-like looks.", "Modelling and rendering realistic 3D objects, which become images, loops or animations for hero sections and product shots."], ["Design", "Ff", "Adobe Firefly", "Concept art in minutes, not days.", "Fast mood boards, backgrounds and visual ideas, so we can explore directions with you before committing to a design."], ["Build", "VS", "VS Code", "The workshop where every line gets written.", "The code editor with live previews, linting and Git built in, keeping the code clean, consistent and quick to ship."], ["Build", "Nx", "Next.js", "Full-scale sites that load instantly and rank well.", "A React framework for fast, SEO-friendly sites and web apps, with rendering, routing and APIs in one place."], ["Build", "As", "Astro", "Ships almost no JavaScript, so pages fly.", "Content-focused sites like salons, portfolios and blogs that score high on speed, because only what is needed gets loaded."], ["Build", "Re", "React", "Interfaces that respond the moment people tap.", "Component-based UIs for booking forms, carts and dashboards that stay smooth as your site grows."], ["Build", "Tw", "Tailwind CSS", "Design consistency, built into every class.", "A utility-first styling system that keeps spacing, colour and responsive layouts uniform, and speeds up the build."], ["Build", "TS", "TypeScript", "Catches the bugs before your customers do.", "Typed JavaScript that flags mistakes while writing, making larger sites safer to change and easier to maintain."], ["Build", "Vt", "Vite", "Instant previews, lightning-fast builds.", "The build tool that reloads changes in milliseconds and bundles optimized code for production."], ["Motion", "Gs", "GSAP", "The industry standard for animation that feels expensive.", "Scroll-triggered reveals, timelines and precise easing that make a site feel alive and premium."], ["Motion", "Fm", "Framer Motion", "Smooth, physical motion for React.", "Page transitions, hover effects and drag gestures with natural spring physics, built into the components themselves."], ["Motion", "Ln", "Lenis", "Buttery smooth scrolling on every device.", "Replaces jerky default scrolling with a fluid glide, so long pages and scroll animations feel effortless."], ["Motion", "3J", "Three.js", "Real 3D in the browser, no plugins.", "WebGL scenes, particles and interactive objects that turn a flat page into an experience."], ["Motion", "Rv", "Rive and Lottie", "Tiny animated illustrations that react to users.", "Lightweight animated icons, mascots and micro-interactions that stay sharp and load fast."], ["Shop", "Sh", "Shopify", "Run a real store without reinventing the wheel.", "Products, inventory, checkout and orders, using ready themes or the headless Hydrogen framework for a fully custom storefront."], ["Shop", "St", "Stripe", "Get paid anywhere, securely.", "Cards, wallets and local payment methods with secure checkout, so customers pay with confidence and the money lands reliably."], ["Shop", "Sn", "Sanity", "A friendly dashboard so you can edit your own site.", "A headless CMS where owners update prices, photos and posts without touching code or waiting on a developer."], ["Shop", "Md", "Medusa", "Open-source commerce with no lock-in.", "A flexible backend for custom shop logic, like bundles, regional pricing and special workflows, that you fully own."], ["Launch", "Vc", "Vercel", "Push the code, and the site is live worldwide.", "Hosting with automatic deploys, a preview link for every change and a global network that keeps pages fast."], ["Launch", "Nl", "Netlify", "Simple, reliable hosting for static sites.", "One-click deploys, forms, free SSL and previews, ideal for portfolios and small-business sites."], ["Launch", "Cf", "Cloudflare", "Fast, protected and always on.", "DNS, CDN, DDoS protection and Pages hosting, keeping your site quick and safe through attacks and traffic spikes."], ["Launch", "Gh", "GitHub", "Every change tracked, nothing ever lost.", "Version control and collaboration, so your project is backed up, reviewable and easy to roll back."], ["Launch", "Lh", "Lighthouse", "The scorecard that keeps us honest.", "Audits speed, accessibility, SEO and best practices, so the site is tested and tuned before launch."], ["Launch", "Sq", "Squoosh and sharp", "Big images made tiny, with no visible loss.", "Converts photos to WebP or AVIF and compresses them, so galleries look crisp but load quickly on mobile data."]];
+var tg=document.getElementById("tg"),tc=document.getElementById("tc"),tf=document.getElementById("tf");
+function esc(x){return x.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+var LB={Design:"Design",Build:"Build",Motion:"Motion",Shop:"Shop and content",Launch:"Launch"};
+tg.innerHTML=T.map(function(t){return '<article class="tl" data-g="'+t[0]+'"><div class="lg" data-c="'+t[0]+'" aria-hidden="true">'+esc(t[1])+'</div><small>'+LB[t[0]]+'</small><h3>'+esc(t[2])+'</h3><p class="hk">'+esc(t[3])+'</p><p class="us"><b>What it is used for</b>'+esc(t[4])+'</p></article>'}).join("");
+function cnt(n){tc.textContent=n+(n===1?" tool":" tools")+" in the kit"}
+cnt(T.length);
+tf.addEventListener("click",function(e){var b=e.target.closest("button[data-f]");if(!b)return;
+tf.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b)});
+var f=b.dataset.f,n=0;tg.querySelectorAll(".tl").forEach(function(c){var show=f==="All"||c.dataset.g===f;c.hidden=!show;if(show)n++});cnt(n)});
+tg.querySelectorAll(".tl").forEach(function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--px",(e.clientX-r.left)/r.width*100+"%");c.style.setProperty("--py",(e.clientY-r.top)/r.height*100+"%")})});
 })();
 </script>
 </body>
