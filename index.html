@@ -86,6 +86,26 @@
    "email": "keandonato@404studio.click"
   },
   {
+   "@type": "SoftwareApplication",
+   "@id": "https://404studio.click/orchid#app",
+   "name": "Orchid CRM",
+   "url": "https://404studio.click/orchid",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "description": "A calm, web-based CRM that keeps every inquiry, client and task in one place.",
+   "offers": {
+    "@type": "Offer",
+    "price": "8",
+    "priceCurrency": "USD"
+   },
+   "author": {
+    "@id": "https://404studio.click/#kean"
+   },
+   "publisher": {
+    "@id": "https://404studio.click/#studio"
+   }
+  },
+  {
    "@type": "ItemList",
    "name": "Website samples by Kean Carl Donato",
    "itemListElement": [
@@ -206,9 +226,6 @@ a{color:inherit}
 #load i{display:block;height:8px;background:rgba(255,255,255,.2)}
 #load i:after{content:"";display:block;height:100%;background:var(--g);transform-origin:left;animation:fill 1.3s ease forwards}
 @keyframes fill{from{transform:scaleX(0)}}
-#cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:95;transition:width .25s,height .25s,margin .25s;display:none}
-#cur.big{width:84px;height:84px;margin:-42px 0 0 -42px}
-@media (hover:hover) and (pointer:fine){#cur{display:grid;place-items:center;font:800 13px/1 var(--bd);color:#000}}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,3vw,40px);mix-blend-mode:normal;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(8px)}
 .mark{font:800 clamp(19px,4.8vw,30px)/1 var(--hd);text-decoration:none;letter-spacing:-.05em;white-space:nowrap}
 .mark i{display:inline-block;font-style:normal;font-size:1.45em;line-height:.5;background:linear-gradient(110deg,#4f46e5,#a855f7,#ec4899,#4f46e5);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;transform-origin:50% 80%;animation:dotj 1.7s ease-in-out infinite,dotc 3s linear infinite}
@@ -414,10 +431,23 @@ footer a{margin-right:18px}
 .tl .us b{display:block;margin-bottom:2px;font:500 11px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 .tcta{margin-top:56px}
 </style>
+<style id="orchid-pages">
+.orc .lm{color:var(--mute);font-size:15px;margin:0 0 26px}
+.orc .lead{font:500 clamp(20px,2.4vw,26px)/1.45 var(--bd);max-width:40em;margin:0 0 28px}
+.orc h3{font:800 clamp(24px,3vw,36px)/1.08 var(--hd);letter-spacing:-.035em;margin:52px 0 12px;padding-top:20px;border-top:2px solid var(--ink)}
+.orc h4{font:800 clamp(19px,2.1vw,24px)/1.1 var(--hd);letter-spacing:-.03em;margin:24px 0 8px}
+.orc p{margin:0 0 16px;max-width:46em}.orc ul{margin:0 0 18px;padding-left:1.2em;max-width:46em}.orc li{margin:0 0 8px}
+.orc code{font:500 .9em ui-monospace,Menlo,Consolas,monospace;background:var(--card);border:1px solid var(--line);padding:1px 5px}
+.orc .cards{margin:26px 0 8px}.orc .card{min-height:0}.orc .card:hover{transform:translate(-2px,-2px)}
+.orc table{border-collapse:collapse;width:100%;max-width:46em;margin:0 0 18px;font-size:16px}.orc th,.orc td{border:2px solid var(--ink);padding:10px 12px;text-align:left;vertical-align:top}.orc th{background:var(--card)}
+.orc .note{border:2px solid var(--ink);background:var(--card);padding:18px 20px;margin:20px 0;max-width:46em}.orc .note p{margin:0}
+.orc .acts{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 0}
+.orc a.go{display:inline-block;text-decoration:none;font:800 17px var(--bd);color:var(--bg);background:var(--ink);border:2px solid var(--ink);padding:13px 26px;transition:transform .2s,box-shadow .2s}
+.orc a.go:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--c3)}.orc a.go.alt{background:transparent;color:var(--ink)}
+</style>
 </head>
 <body>
 <div id="load" role="status"><div><p>Materializing shapes...</p><i></i></div></div>
-<div id="cur" aria-hidden="true"></div>
 <div class="pbar" id="pbar"></div><div class="gbg" id="gbg" aria-hidden="true"></div>
 <div id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <header>
@@ -427,7 +457,7 @@ footer a{margin-right:18px}
 <div class="hud" aria-hidden="true"><span><i class="live"></i>Online</span><span id="clk"></span><span id="pgl"></span><span id="cnt"></span><span>Quezon City, PH</span></div>
 <nav id="menu" aria-label="Main menu">
   <button class="pill" id="mc" type="button">Close</button>
-  <a href="/">Home</a><a href="/work">Work</a><a href="/samples">Samples</a><a href="/tools">Tools</a><a href="/reviews">Reviews</a><a href="/me">Me</a><a href="/contact">Contact</a>
+  <a href="/">Home</a><a href="/work">Work</a><a href="/samples">Samples</a><a href="/tools">Tools</a><a href="/reviews">Reviews</a><a href="/me">Me</a><a href="/contact">Contact</a><a href="/orchid">Orchid</a>
   <button class="srch" id="jk" type="button">Search pages and samples (Ctrl K)</button>
 </nav>
 <main id="top">
@@ -447,6 +477,7 @@ footer a{margin-right:18px}
       <a href="/reviews">Reviews <span>+</span></a>
       <a href="/me">Me <span>+</span></a>
       <a href="/contact">Contact <span>+</span></a>
+      <a href="/orchid">Orchid CRM <span>+</span></a>
     </div>
   </section>
   <section data-page="work">
@@ -527,9 +558,199 @@ footer a{margin-right:18px}
       <a href="https://www.facebook.com/kean.concepcion.12/" target="_blank" rel="noopener">Facebook <span>+</span></a>
     </div>
   </section>
+  <section class="orc" data-page="orchid">
+    <h2><span class="o">Orchid</span><span class="in">CRM.</span></h2>
+<p class="lm">By Kean Carl Donato · 404 Studio · Quezon City, Philippines</p>
+<p class="lead">Orchid is a calm, web-based CRM (customer relationship manager) that keeps every inquiry, client and task for a small team in one place, so nobody waits too long for a reply and nothing gets forgotten.</p>
+<p>It is built for small teams, studios, shops and service businesses that answer customer inquiries every day. Orchid CRM works in the browser on a computer or a phone, and costs $8 a month with no per-seat charges. You can cancel any time.</p>
+<div class="acts"><a class="go" href="/privacy">Privacy policy</a><a class="go alt" href="/terms">Terms of service</a><a class="go alt" href="mailto:keandonato@404studio.click">Contact</a></div>
+
+<h3>What Orchid does</h3>
+<div class="cards">
+  <div class="card"><small>INQUIRIES</small><h4>Nobody waits unseen</h4><p>Every new inquiry shows a live waiting timer. A going-cold alert appears when a conversation has been quiet for five days or more.</p></div>
+  <div class="card"><small>CLIENTS AND CASES</small><h4>One record per client</h4><p>Keep each client’s details, tasks and cases together. Cases are routed to the right person with service-level (SLA) tracking, and every client has a team chat log.</p></div>
+  <div class="card"><small>TASKS</small><h4>Follow-ups that get done</h4><p>Assign tasks with due dates and priorities, see what is due soon, and let the team work from the same list.</p></div>
+  <div class="card"><small>ASSISTANT AND AUTOMATIONS</small><h4>Less repeat work</h4><p>An AI assistant drafts replies and suggestions for you to review, and simple rules can create a task, send an email or add a calendar event when something happens.</p></div>
+</div>
+
+<h3>How Orchid uses your Google account</h3>
+<p>Orchid works with a Google account in three optional ways. You choose which to use, and each can be switched off at any time.</p>
+<table>
+  <tr><th>Feature</th><th>What Orchid can do</th><th>When it applies</th></tr>
+  <tr><td><b>Sign in with Google</b></td><td>Read your name, email address and profile picture to sign you in to your Orchid account.</td><td>Only when you choose “Continue with Google”.</td></tr>
+  <tr><td><b>Google Calendar</b></td><td>Show events from your calendar inside Orchid, and add or change events you ask Orchid to create (for example a follow-up call).</td><td>Only after you press Connect on the Calendar tab.</td></tr>
+  <tr><td><b>Gmail</b></td><td>Send emails you write from your own Gmail address, and bring replies to those emails into the matching client’s message log.</td><td>Only after you connect your Google account for email.</td></tr>
+</table>
+<p>Orchid does not sell your Google data, does not use it for advertising, and does not use it to train AI models. The details are in the <a href="/privacy">Privacy Policy</a>. To remove Orchid’s access at any time, disconnect inside Orchid or visit your <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account permissions</a> page.</p>
+
+<h3>Meet the developer</h3>
+<div class="prof">
+  <div class="idc" aria-hidden="true"><div class="idh"><span>404studio.click</span><span>Developer</span></div><div class="idp">KD</div><div class="idn">Kean Carl Donato</div><div class="idr">Founder, 404 Studio</div><div class="ida"><i class="live"></i>Builder of Orchid CRM</div></div>
+  <div>
+    <h4>Kean Carl Donato</h4>
+    <p class="role">Founder and web developer at 404 Studio, Quezon City, Philippines</p>
+    <p class="bio">Hi, I’m Kean. I design and build custom websites and web apps: responsive design, front-end development, interactive interfaces and e-commerce concepts. I designed and built Orchid to help small teams answer inquiries faster and follow up better, and I run it myself, so a question about Orchid or about your data goes straight to the person who made it.</p>
+    <div class="crows">
+      <div class="crow"><span>Email</span><a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a><button class="cp" data-c="keandonato@404studio.click" type="button">Copy</button></div>
+      <div class="crow"><span>Viber</span><a href="viber://chat?number=%2B639619679095">+63 961 967 9095</a><button class="cp" data-c="+63 961 967 9095" type="button">Copy</button></div>
+      <div class="crow"><span>Based in</span><b>Quezon City, Philippines</b><i></i></div>
+      <div class="crow"><span>Website</span><b>404studio.click</b><button class="cp" data-c="404studio.click" type="button">Copy</button></div>
+    </div>
+    <h4>Find me online</h4>
+    <div class="ll">
+      <a href="https://www.linkedin.com/in/kean-carl-donato-8178b43b9" target="_blank" rel="noopener">LinkedIn <span>+</span></a>
+      <a href="https://www.facebook.com/kean.concepcion.12/" target="_blank" rel="noopener">Facebook <span>+</span></a>
+      <a href="/me">About me <span>+</span></a>
+      <a href="/samples">My other work <span>+</span></a>
+    </div>
+  </div>
+</div>
+
+<h3>Questions about Orchid or your data</h3>
+<p>Write to <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a> for help, access requests or to have your data deleted. Orchid is operated by Kean Carl Donato (404 Studio), Quezon City, Philippines.</p>
+<div class="acts"><a class="go" href="/privacy">Privacy policy</a><a class="go alt" href="/terms">Terms of service</a><a class="go alt" href="/contact">Contact page</a></div>
+  </section>
+  <section class="orc" data-page="privacy">
+    <h2><span class="o">Privacy</span><span class="in">policy.</span></h2>
+<p class="lm">Last updated: October 18, 2026</p>
+<p class="lead">This policy explains what information Orchid collects, how it is used, and the choices you have. It covers Orchid CRM and the pages on 404studio.click that describe it.</p>
+
+<h3>1. Who we are</h3>
+<p>Orchid is built and operated by Kean Carl Donato (404 Studio), Quezon City, Philippines. In this policy “Orchid”, “we” and “us” mean that operator. You can reach us at <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a>.</p>
+
+<h3>2. Information we collect</h3>
+<ul>
+  <li><b>Account details.</b> Your email address, your name if you give it, and your password. Passwords are handled by our authentication provider and stored in a protected (hashed) form. If you set a security question to reset a forgotten password, only a scrambled (hashed) version of your answer is stored.</li>
+  <li><b>Work you put in Orchid.</b> Inquiries, clients, tasks, cases, notes, messages and similar records that you or your team add, or that arrive through an inquiry form.</li>
+  <li><b>Inquiry form messages.</b> If you send us an inquiry, we receive the name, email address and message you type.</li>
+  <li><b>Google information</b>, only if you use Google features. See section 3.</li>
+  <li><b>Payment.</b> Card or wallet details are entered on the payment provider’s secure page. Orchid does not see or store them.</li>
+  <li><b>Technical data.</b> Our hosting and infrastructure providers may log basic technical data such as IP address, browser type and time of request.</li>
+</ul>
+
+<h3>3. Google user data</h3>
+<p>Orchid offers three optional Google features. We ask only for the access each one needs.</p>
+<h4>Sign in with Google</h4>
+<p>If you choose “Continue with Google”, Google shares your name, email address and profile picture with us (the standard <code>openid</code>, <code>email</code> and <code>profile</code> permissions). We use them to create and recognise your Orchid account.</p>
+<h4>Google Calendar</h4>
+<p>If you connect Google Calendar, Orchid can see and edit events on your calendars (the <code>calendar.events</code> permission). We use this only to show your events inside Orchid, and to create or update events that you ask for, such as a follow-up call with a client. The short-lived Google access token is kept in your browser session.</p>
+<h4>Gmail</h4>
+<p>If you connect your Google account for email, Orchid uses that connection to send emails that you write from your own Gmail address, and to bring replies to those emails into the matching client’s message log. The connection credential is stored securely on our server so that sending and syncing keep working until you disconnect.</p>
+<h4>How we handle Google data</h4>
+<ul>
+  <li>We use Google user data only to provide and improve the user-facing features described above.</li>
+  <li>We do not sell Google user data, and we do not use it for advertising, including retargeting or interest-based ads.</li>
+  <li>We do not use Google user data to develop, improve or train generalized artificial intelligence or machine learning models.</li>
+  <li>We do not allow people to read your Google data unless you give permission for a specific item, it is needed for security or to follow the law, or the data is combined and anonymised for internal operations.</li>
+  <li>We do not transfer Google user data to others except to provide the features you use, to comply with law, or as part of a merger or sale of the service with notice to you.</li>
+</ul>
+<div class="note"><p>Orchid’s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p></div>
+
+<h3>4. How we use information</h3>
+<ul>
+  <li>To run Orchid: sign you in, show your records, send the emails you ask us to send, and create the tasks and events you ask for.</li>
+  <li>To keep Orchid secure, prevent misuse and fix problems.</li>
+  <li>To answer your questions and inquiries.</li>
+  <li>To manage your subscription.</li>
+</ul>
+
+<h3>5. AI assistance</h3>
+<p>Orchid includes an AI assistant and drafting tools. When you use them, the text you submit and the record details needed for that request are sent to an AI service provider that works for us, to produce a suggestion for you. Suggestions are shown to you to review. Nothing is sent to anyone automatically. As stated in section 3, we do not use Google user data to train generalized AI or machine learning models.</p>
+
+<h3>6. Who we share information with</h3>
+<p>We do not sell personal information. We share it only with:</p>
+<ul>
+  <li><b>Service providers</b> that help us run Orchid: our database, authentication and server-function host (Supabase), our AI service provider, and our payment provider. They may process information only to provide their service to us.</li>
+  <li><b>Your workspace.</b> Records in Orchid are visible to the members of your team that your admin has approved.</li>
+  <li><b>Authorities or others</b> when the law requires it, or to protect the rights and safety of users and the service.</li>
+</ul>
+
+<h3>7. Storage, security and retention</h3>
+<p>Information is stored with our hosting provider, which may process it in countries outside the Philippines. Data is sent over encrypted (HTTPS) connections, and access to records is limited to approved members. No online service is perfectly secure, so we cannot guarantee absolute security.</p>
+<p>We keep your information while your account is active and as long as needed to provide Orchid. When you ask us to delete your account or data, we delete or anonymise it within a reasonable time, unless we must keep something to meet legal duties.</p>
+
+<h3>8. Your choices and rights</h3>
+<ul>
+  <li><b>Disconnect Google.</b> You can disconnect Calendar or Gmail inside Orchid at any time. You can also remove Orchid’s access from your <a href="https://myaccount.google.com/permissions" rel="noopener">Google Account permissions</a> page.</li>
+  <li><b>Access, correct or delete.</b> Email <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a> to see, correct or delete your personal information, or to delete your account.</li>
+  <li><b>Philippine privacy law.</b> We aim to handle personal information in line with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173). You may object to processing, ask for a copy of your data, and complain to the National Privacy Commission.</li>
+</ul>
+
+<h3>9. Cookies, browser storage and third parties</h3>
+<p>Orchid keeps your sign-in session and a few settings in your browser’s storage so you stay signed in. Orchid does not run advertising or analytics trackers. Our pages load fonts, images and code libraries from third-party hosts (for example Google Fonts and content delivery networks), which may receive your IP address when your browser fetches them.</p>
+
+<h3>10. Children</h3>
+<p>Orchid is made for businesses and is not directed to children. We do not knowingly collect information from children. If you believe a child has given us information, contact us and we will delete it.</p>
+
+<h3>11. Changes to this policy</h3>
+<p>We may update this policy. When we make an important change we will update the date above and, where appropriate, tell you inside Orchid or by email.</p>
+
+<h3>12. Contact</h3>
+<p>Questions or requests about privacy: <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a>, Kean Carl Donato (404 Studio), Quezon City, Philippines.</p>
+<div class="acts"><a class="go alt" href="/terms">Terms of service</a><a class="go alt" href="/orchid">What is Orchid?</a></div>
+  </section>
+  <section class="orc" data-page="terms">
+    <h2><span class="o">Terms of</span><span class="in">service.</span></h2>
+<p class="lm">Last updated: October 18, 2026</p>
+<p class="lead">These terms are the agreement between you and Orchid when you use Orchid CRM. Please read them. By creating an account or using Orchid, you agree to them.</p>
+
+<h3>1. The service</h3>
+<p>Orchid is a web-based CRM for managing inquiries, clients, tasks and cases, with optional Google Calendar and Gmail connections, an AI assistant and automations. It is built and operated by Kean Carl Donato (404 Studio), Quezon City, Philippines.</p>
+
+<h3>2. Accounts and approved members</h3>
+<ul>
+  <li>Only people your workspace admin has added can log in. Use the email address your admin added.</li>
+  <li>Keep your password and security answer private, and tell us if you think your account was used without your permission.</li>
+  <li>You are responsible for what happens under your account. Admins are responsible for who they add and what access they give.</li>
+  <li>You must give accurate information and be old enough to enter a binding agreement in your country.</li>
+</ul>
+
+<h3>3. Your data</h3>
+<p>You own the information you put into Orchid. You give us permission to store and process it only to run Orchid for you, as described in the <a href="/privacy">Privacy Policy</a>. You are responsible for having the right to enter your clients’ and contacts’ information, and for following the privacy and marketing laws that apply to you.</p>
+
+<h3>4. Google and other connections</h3>
+<p>If you connect Google Calendar or Gmail, you allow Orchid to act on your behalf in the ways described in the Privacy Policy. Your use of Google services is also subject to Google’s own terms. You can disconnect at any time inside Orchid or from your Google Account permissions page. Some features will stop working if you disconnect.</p>
+
+<h3>5. AI suggestions</h3>
+<p>AI features create suggestions that may be wrong or incomplete. Review every suggestion before you use or send it. You are responsible for the messages you send and the actions you confirm.</p>
+
+<h3>6. Acceptable use</h3>
+<p>Do not use Orchid to:</p>
+<ul>
+  <li>break the law or infringe anyone’s rights;</li>
+  <li>send spam or unwanted bulk messages, or deceive people;</li>
+  <li>attempt to access accounts or data that are not yours, or disrupt or probe the security of the service;</li>
+  <li>upload malicious code, or misuse Google services through Orchid in a way that breaks Google’s terms.</li>
+</ul>
+
+<h3>7. Subscription and payment</h3>
+<p>Orchid CRM is offered for a monthly fee, shown on our site (currently $8 a month, with no per-seat charges). Fees are billed monthly through our payment provider. You can cancel at any time and the cancellation takes effect at the end of the period you have paid for. We may change prices with notice before the change applies to you.</p>
+
+<h3>8. Availability and changes</h3>
+<p>We work to keep Orchid available, but it may be unavailable at times for maintenance or reasons outside our control. We may improve, change or remove features. If we make a change that significantly reduces what you paid for, we will tell you.</p>
+
+<h3>9. Ending your use</h3>
+<p>You can stop using Orchid and ask us to delete your account at any time. We may suspend or end access if you break these terms or put the service or other users at risk. After an account ends, we handle your data as described in the Privacy Policy.</p>
+
+<h3>10. Disclaimers</h3>
+<p>Orchid is provided “as is” and “as available”. To the extent the law allows, we do not promise that it will be uninterrupted, error-free or fit for a particular purpose.</p>
+
+<h3>11. Limits of liability</h3>
+<p>To the extent the law allows, we are not liable for indirect or consequential losses, lost profits or lost data, and our total liability for any claim relating to Orchid is limited to the amount you paid us in the three months before the claim. Nothing in these terms limits liability that cannot be limited by law.</p>
+
+<h3>12. Changes to these terms</h3>
+<p>We may update these terms. When we make an important change we will update the date above and, where appropriate, notify you. If you keep using Orchid after a change takes effect, you accept the updated terms.</p>
+
+<h3>13. Governing law</h3>
+<p>These terms are governed by the laws of the Republic of the Philippines.</p>
+
+<h3>14. Contact</h3>
+<p>Questions about these terms: <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a>, Kean Carl Donato (404 Studio), Quezon City, Philippines.</p>
+<div class="acts"><a class="go alt" href="/privacy">Privacy policy</a><a class="go alt" href="/orchid">What is Orchid?</a></div>
+  </section>
   <section class="nxs"><a class="next" id="nx" href="/work"><small>Next page</small><strong>Work</strong></a></section>
 </main>
-<footer>© Kean Carl Donato · 404 Studio. Designed and built in Quezon City, Philippines.<br><a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a><a href="viber://chat?number=%2B639619679095">Viber</a><a href="/me">About me</a></footer>
+<footer>© Kean Carl Donato · 404 Studio. Designed and built in Quezon City, Philippines.<br><a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a><a href="viber://chat?number=%2B639619679095">Viber</a><a href="/me">About me</a><a href="/orchid">Orchid</a><a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a></footer>
 <div id="vw" role="dialog" aria-modal="true" aria-label="TMM Clippers Salon sample site">
   <div class="vb"><strong id="vtl">TMM Clippers Salon sample</strong><button class="pill on" id="vd" type="button">Desktop</button><button class="pill" id="vp" type="button">Phone</button><button class="pill" id="vx" type="button">Close</button></div>
   <div class="vn"><iframe id="fr" title="TMM Clippers Salon sample website"></iframe></div>
@@ -563,12 +784,6 @@ var G="#%&@*+=?";
 m.querySelectorAll("a").forEach(function(a){var t=a.textContent,n=0,id;a.onclick=function(){tog(false)};
 a.onmouseenter=function(){if(still)return;clearInterval(id);n=0;id=setInterval(function(){a.textContent=t.split("").map(function(c,i){return i<n?c:G[Math.floor(Math.random()*G.length)]}).join("");if(++n>t.length){clearInterval(id);a.textContent=t}},45)}});
 addEventListener("keydown",function(e){if(e.key==="Escape")tog(false)});
-/* cursor blob */
-var cu=$("#cur"),cx=0,cy=0,tx=0,ty=0;
-if(matchMedia("(hover:hover) and (pointer:fine)").matches){
-addEventListener("pointermove",function(e){tx=e.clientX;ty=e.clientY});
-(function f(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cu.style.transform="translate("+cx+"px,"+cy+"px)";requestAnimationFrame(f)})();
-document.addEventListener("pointerover",function(e){cu.classList.toggle("big",!!e.target.closest("a,button"));var t=e.target.closest("[data-cur]");cu.textContent=t?t.dataset.cur:""})}
 /* hero shapes + headline drift */
 var hero=$(".hero"),cv=$("#cv"),x=cv.getContext("2d"),W,H,dpr,P=[],mx=-999,my=-999,C=["#4f46e5","#a855f7","#ec4899"],ls=document.querySelectorAll("h1 .l");
 function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
@@ -618,10 +833,10 @@ $("#vd").onclick=function(){fr.classList.remove("ph");$("#vd").classList.add("on
 $("#vp").onclick=function(){fr.classList.add("ph");$("#vp").classList.add("on");$("#vd").classList.remove("on")};
 addEventListener("keydown",function(e){if(e.key==="Escape"&&vw.classList.contains("on"))vc()});
 /* pages and clean URLs: /samples, /samples/pillowpop ... (hash links when opened as a local file) */
-var PG=["home","work","samples","tools","reviews","me","contact"],TT={"home": "Kean Carl Donato | Web Developer Portfolio, Philippines", "work": "TMM Clippers Salon Case Study | Kean Carl Donato", "samples": "Website Samples and Projects | Kean Carl Donato", "tools": "Web Design and Development Toolkit | Kean Carl Donato", "reviews": "Client Reviews | Kean Carl Donato", "me": "About Kean Carl Donato | Web Developer, Quezon City", "contact": "Contact Kean Carl Donato | Web Developer, Philippines"},DS={"home": "Portfolio of Kean Carl Donato, a web developer and designer in Quezon City, Philippines. See custom website samples, a salon case study and my toolkit.", "work": "Case study: a two-branch salon website with a priced menu, service gallery and online booking chat, designed and built by Kean Carl Donato in the Philippines.", "samples": "Browse website samples by Kean Carl Donato: salon, online shop, real estate and art gallery concept sites you can preview live, each built mobile-first.", "tools": "The design, build, motion and launch tools Kean Carl Donato uses to make fast, accessible, animated websites, and what each one does for a project.", "reviews": "What clients say about working with Kean Carl Donato, a freelance web developer and designer in Quezon City, Philippines.", "me": "Meet Kean Carl Donato, a web developer and designer in Quezon City, Philippines, building responsive, interactive websites for small businesses and creators.", "contact": "Contact Kean Carl Donato for a custom website. Reach him by email or Viber, or on LinkedIn and Facebook. Based in Quezon City, Philippines."},nx=$("#nx");
+var PG=["home","work","samples","tools","reviews","me","contact"],PX=["orchid","privacy","terms"],TT={"orchid": "Orchid CRM by Kean Carl Donato | Inquiries, clients and tasks | 404 Studio", "privacy": "Privacy Policy | Orchid CRM by 404 Studio", "terms": "Terms of Service | Orchid CRM by 404 Studio", "home": "Kean Carl Donato | Web Developer Portfolio, Philippines", "work": "TMM Clippers Salon Case Study | Kean Carl Donato", "samples": "Website Samples and Projects | Kean Carl Donato", "tools": "Web Design and Development Toolkit | Kean Carl Donato", "reviews": "Client Reviews | Kean Carl Donato", "me": "About Kean Carl Donato | Web Developer, Quezon City", "contact": "Contact Kean Carl Donato | Web Developer, Philippines"},DS={"orchid": "Orchid CRM keeps every inquiry, client and task in one place. Built by Kean Carl Donato of 404 Studio, Quezon City. Google sign-in, Calendar and Gmail are optional.", "privacy": "How Orchid CRM collects, uses and protects information, including Google user data from sign-in, Google Calendar and Gmail, and how to disconnect or delete it.", "terms": "The terms for using Orchid CRM: accounts, your data, Google connections, AI suggestions, acceptable use, subscription and liability.", "home": "Portfolio of Kean Carl Donato, a web developer and designer in Quezon City, Philippines. See custom website samples, a salon case study and my toolkit.", "work": "Case study: a two-branch salon website with a priced menu, service gallery and online booking chat, designed and built by Kean Carl Donato in the Philippines.", "samples": "Browse website samples by Kean Carl Donato: salon, online shop, real estate and art gallery concept sites you can preview live, each built mobile-first.", "tools": "The design, build, motion and launch tools Kean Carl Donato uses to make fast, accessible, animated websites, and what each one does for a project.", "reviews": "What clients say about working with Kean Carl Donato, a freelance web developer and designer in Quezon City, Philippines.", "me": "Meet Kean Carl Donato, a web developer and designer in Quezon City, Philippines, building responsive, interactive websites for small businesses and creators.", "contact": "Contact Kean Carl Donato for a custom website. Reach him by email or Viber, or on LinkedIn and Facebook. Based in Quezon City, Philippines."},nx=$("#nx");
 var PATHM=/^https?:$/.test(location.protocol),shownK="",wp=$("#wipe"),wt;
 function pth(k,s){return PATHM?"/"+(k==="home"?"":k)+(s?"/"+s:""):"#"+k+(s?"/"+s:"")}
-function rt(p){var k=p[0]||"home",s=p[1]||"",i=-1;if(k==="about")k="me";if(PG.indexOf(k)<0){k="home";s=""}
+function rt(p){var k=p[0]||"home",s=p[1]||"",i=-1;if(k==="about")k="me";if(PG.indexOf(k)<0&&PX.indexOf(k)<0){k="home";s=""}
 if(k==="samples"&&s)SM.forEach(function(m,n){if(m.u===s)i=n});
 return{k:k,i:i,u:pth(k,i>-1?SM[i].u:"")}}
 function parse(){return rt((PATHM?location.pathname.replace(/\/index\.html$/,"/"):location.hash.replace(/^#\/?/,"")).split("/").filter(Boolean))}
@@ -672,7 +887,7 @@ try{history.replaceState(null,"",r.u+q)}catch(e){}})();
 route();
 /* quick jump */
 var pal=$("#pal"),pi=$("#pi"),pl=$("#pl"),sel=0,list=[],lastF=null;
-var ALL=[["Home","Page","home"],["Work","Page","work"],["Sample works","Page","samples"],["Tools and toolkit","Page","tools"],["Reviews","Page","reviews"],["Me and contact info","Page","me"],["Contact","Page","contact"]].map(function(a){return{t:a[0],s:a[1],p:pth(a[2])}}).concat(SM.map(function(s,n){return{t:plain(s.n),s:s.c+(s.v?" (preview here)":" (opens live)"),v:s.v,x:n,u:BASE+s.f}}));
+var ALL=[["Home","Page","home"],["Work","Page","work"],["Sample works","Page","samples"],["Tools and toolkit","Page","tools"],["Reviews","Page","reviews"],["Me and contact info","Page","me"],["Contact","Page","contact"],["Orchid CRM","Page","orchid"],["Privacy policy","Page","privacy"],["Terms of service","Page","terms"]].map(function(a){return{t:a[0],s:a[1],p:pth(a[2])}}).concat(SM.map(function(s,n){return{t:plain(s.n),s:s.c+(s.v?" (preview here)":" (opens live)"),v:s.v,x:n,u:BASE+s.f}}));
 function rl(){var q=pi.value.toLowerCase();list=ALL.filter(function(i){return(i.t+" "+i.s).toLowerCase().indexOf(q)>-1});sel=Math.min(sel,Math.max(list.length-1,0));
 pl.innerHTML=list.length?list.map(function(i,n){return'<li'+(n===sel?' class="sel"':'')+' data-n="'+n+'">'+i.t.replace(/&/g,"&amp;")+'<span>'+i.s+'</span></li>'}).join(""):"<li>No match. Try a different word.</li>"}
 function po(){tog(false);lastF=document.activeElement;pal.classList.add("on");pi.value="";sel=0;rl();pi.focus()}
@@ -698,9 +913,7 @@ try{navigator.clipboard.writeText(t).then(done,function(){fb(t,done)})}catch(e){
 var idc=$("#idc");
 idc.addEventListener("pointermove",function(e){var r=idc.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;idc.style.setProperty("--sx",(1-px)*100+"%");if(!still)idc.style.transform="perspective(800px) rotateX("+(.5-py)*12+"deg) rotateY("+(px-.5)*12+"deg)"});
 idc.addEventListener("pointerleave",function(){idc.style.transform=""});
-/* cursor labels + magnetic buttons */
-$("#ov").dataset.cur="Open";$("#hm").dataset.cur="Back";$("#mb").dataset.cur="Menu";$(".mark").dataset.cur="Home";
-document.querySelectorAll(".card").forEach(function(c){c.dataset.cur="View"});
+/* magnetic buttons */
 if(!still&&matchMedia("(hover:hover) and (pointer:fine)").matches){document.querySelectorAll(".hb .pill,.fab,.mark").forEach(function(el){
 el.addEventListener("pointermove",function(e){var r=el.getBoundingClientRect();el.style.transform="translate("+(e.clientX-r.left-r.width/2)*.28+"px,"+(e.clientY-r.top-r.height/2)*.4+"px)"});
 el.addEventListener("pointerleave",function(){el.style.transform=""})})}
