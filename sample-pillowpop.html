@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,6 +15,7 @@
   --noise:.08;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1530;--ink:#f5ecff;--muted:#b3a6cf;--card:#2a2045;--hi:rgba(255,255,255,.12);--lo:rgba(0,0,0,.4);--shadow:rgba(0,0,0,.5);--m1:#d0709f;--m2:#6f63d6;--m3:#3fae95;--m4:#c9b84a;--m5:#3aa9c0;--noise:.07}}
 :root[data-theme="dark"]{--bg:#1c1530;--ink:#f5ecff;--muted:#b3a6cf;--card:#2a2045;--hi:rgba(255,255,255,.12);--lo:rgba(0,0,0,.4);--shadow:rgba(0,0,0,.5);--m1:#d0709f;--m2:#6f63d6;--m3:#3fae95;--m4:#c9b84a;--m5:#3aa9c0;--noise:.07}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
@@ -299,7 +300,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('button,a');if(!t
   if(d.d){const x=cart[d.d];x.q+=+d.v;if(x.q<1)cart.splice(d.d,1);drawCart()}
   if(t.id=='qa'){add(sel.i,sel.k,sel.s);close('qv');open('dr')}
   if(t.id=='co'){if(cart.length){cart=[];drawCart();close('dr');toast('Order placed! Thank you 💖')}else toast('Add something first')}
-  if(t.id=='theme'){const r=document.documentElement,dk=r.dataset.theme=='dark';r.dataset.theme=dk?'light':'dark'}
+  if(t.id=='theme'){const r=document.documentElement,dk=r.dataset.theme?r.dataset.theme=='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=dk?'light':'dark'}
   if(e.target.closest('.blob,.big'))squish(e.target.closest('.blob,.big'))});
 $('#cf').onsubmit=e=>{e.preventDefault();e.target.reset();toast('Message sent. Talk soon!')};
 /* squish lab */
