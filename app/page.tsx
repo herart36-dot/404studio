@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import HomeHero from '@/components/HomeHero'
 import TLink from '@/components/TLink'
 import { pageMeta } from '@/lib/meta'
-import { WORK_CASES } from '@/lib/work-cases'
 
 export const metadata: Metadata = {
   ...pageMeta('home', '/', {
@@ -54,14 +53,6 @@ export default function HomePage() {
               I am based in the Philippines and work remotely with clients worldwide.
             </p>
           </section>
-        </div>
-        <h2 className="home-work-title">Work and sample projects</h2>
-        <div className="work-case-list">
-          {WORK_CASES.map((project) => (
-            <TLink key={project.slug} href={`/work/${project.slug}`}>
-              {project.name} <span>{project.isSample ? 'Sample project' : 'Case study'}</span>
-            </TLink>
-          ))}
         </div>
         <div className="ll">
             <TLink href="/work">Work <span>+</span></TLink>
