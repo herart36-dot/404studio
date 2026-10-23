@@ -8,8 +8,7 @@ export const metadata: Metadata = pageMeta('orchid', '/orchid')
 export default function OrchidPage() {
   return (
     <section className="orc on" data-page="orchid">
-      <h2><span className="o">Orchid</span><span className="in">CRM.</span></h2>
-      <p className="lm">By Kean Carl Donato · 404 Studio · Quezon City, Philippines</p>
+      <h1 className="sr-only">Orchid CRM</h1>
       <p className="lead">Orchid is a calm, web-based CRM (customer relationship manager) that keeps every inquiry, client and task for a small team in one place, so nobody waits too long for a reply and nothing gets forgotten.</p>
       <p>It is built for small teams, studios, shops and service businesses that answer customer inquiries every day. Orchid CRM works in the browser on a computer or a phone, and costs $8 a month with no per-seat charges. You can cancel any time.</p>
       <div className="acts"><TLink className="go" href="/privacy">Privacy policy</TLink><TLink className="go alt" href="/terms">Terms of service</TLink><a className="go alt" href="mailto:keandonato@404studio.click">Contact</a></div>
