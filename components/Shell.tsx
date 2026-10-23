@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import { usePathname, useRouter } from 'next/navigation'
 import TLink from './TLink'
 import { ShellContext } from './shell-context'
-import { EXTRA_PAGES, JUMP_PAGES, PAGES, SAMPLES } from '@/lib/data'
+import { JUMP_PAGES, PAGES, SAMPLES } from '@/lib/data'
 
 const GLYPHS = '#%&@*+=?'
 const MENU: { label: string; href: string; key: string }[] = [
@@ -15,7 +15,6 @@ const MENU: { label: string; href: string; key: string }[] = [
   { label: 'Reviews', href: '/reviews', key: 'reviews' },
   { label: 'Me', href: '/me', key: 'me' },
   { label: 'Contact', href: '/contact', key: 'contact' },
-  { label: 'Orchid', href: '/orchid', key: 'orchid' },
 ]
 
 const reduced = () => matchMedia('(prefers-reduced-motion:reduce)').matches
@@ -26,7 +25,7 @@ function routeKey(pathname: string) {
   const [first = '', slug = ''] = pathname.split('/').filter(Boolean)
   let key = first || 'home'
   if (key === 'about') key = 'me'
-  const known = (PAGES as readonly string[]).includes(key) || (EXTRA_PAGES as readonly string[]).includes(key)
+  const known = (PAGES as readonly string[]).includes(key)
   if (!known) key = 'home'
   return { key, slug: key === 'samples' ? slug : '' }
 }
@@ -373,10 +372,6 @@ export default function Shell({ children }: { children: ReactNode }) {
         <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a>
         <a href="viber://chat?number=%2B639619679095">Viber</a>
         <TLink href="/me">About me</TLink>
-        <TLink href="/orchid">Orchid</TLink>
-        <TLink href="/privacy">Privacy policy</TLink>
-        <TLink href="/terms">Terms of service</TLink>
-        <TLink href="/data-deletion">Data deletion</TLink>
       </footer>
 
       <div

@@ -979,7 +979,6 @@ body.bk-lock{overflow:hidden}
       const label = btn.textContent;
       btn.disabled = true; btn.textContent = 'Sending...';
       status.textContent = '';
-      /* Saves into the same "leads" table Orchid CRM reads. The need goes in front of the message. */
       const lead = { name: name, email: email, service: 'Web Development', concern: '[Need: ' + need + ']\n\n' + msg };
       const tok = SB_KEY;
       const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 12000);

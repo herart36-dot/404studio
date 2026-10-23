@@ -29,7 +29,6 @@ export default function HomePage() {
             <TLink href="/reviews">Reviews <span>+</span></TLink>
             <TLink href="/me">Me <span>+</span></TLink>
             <TLink href="/contact">Contact <span>+</span></TLink>
-            <TLink href="/orchid">Orchid CRM <span>+</span></TLink>
           </div>
       </section>
     </>

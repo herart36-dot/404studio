@@ -18,7 +18,6 @@ app/
   globals.css           the original site CSS, unchanged apart from the font variables
   page.tsx              /            home (canvas hero + links)
   work/ samples/ tools/ reviews/ me/ contact/
-  orchid/ privacy/ terms/ data-deletion/
   samples/[slug]/       /samples/<slug>  gallery + full-screen device preview
   sitemap.ts robots.ts  replace sitemap.xml / robots.txt
 components/

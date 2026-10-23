@@ -410,15 +410,8 @@ export const LOGOS: Record<string, { g?: string; d?: string; s?: string }> = {
 
 /** Top-level pages in menu order (also the "Next page" cycle). */
 export const PAGES = ["home","work","samples","tools","reviews","me","contact"] as const
-export const EXTRA_PAGES = ["orchid","privacy","terms","data-deletion"] as const
-
-export type PageKey = (typeof PAGES)[number] | (typeof EXTRA_PAGES)[number]
 
 export const TITLES: Record<string, string> = {
-  "orchid": "Orchid CRM by Kean Carl Donato | Inquiries, clients and tasks | 404 Studio",
-  "privacy": "Privacy Policy | Orchid CRM by 404 Studio",
-  "terms": "Terms of Service | Orchid CRM by 404 Studio",
-  "data-deletion": "Data Deletion Instructions | Orchid CRM by 404 Studio",
   "home": "Kean Carl Donato | Web Developer Portfolio, Philippines",
   "work": "TMM Clippers Salon Case Study | Kean Carl Donato",
   "samples": "Website Samples and Projects | Kean Carl Donato",
@@ -429,10 +422,6 @@ export const TITLES: Record<string, string> = {
 }
 
 export const DESCRIPTIONS: Record<string, string> = {
-  "orchid": "Orchid CRM keeps every inquiry, client and task in one place. Built by Kean Carl Donato of 404 Studio, Quezon City. Google sign-in, Calendar and Gmail are optional.",
-  "privacy": "How Orchid CRM collects, uses and protects information, including Google user data from sign-in, Google Calendar and Gmail, and how to disconnect or delete it.",
-  "terms": "The terms for using Orchid CRM: accounts, your data, Google connections, AI suggestions, acceptable use, subscription and liability.",
-  "data-deletion": "How to ask Orchid CRM to delete your personal information, including data from Google and Facebook (Meta), what is deleted, and how long it takes.",
   "home": "Portfolio of Kean Carl Donato, a web developer and designer in Quezon City, Philippines. See custom website samples, a salon case study and my toolkit.",
   "work": "Case study: a two-branch salon website with a priced menu, service gallery and online booking chat, designed and built by Kean Carl Donato in the Philippines.",
   "samples": "Browse website samples by Kean Carl Donato: salon, online shop, real estate and art gallery concept sites you can preview live, each built mobile-first.",
@@ -450,8 +439,4 @@ export const JUMP_PAGES: { title: string; path: string }[] = [
   { title: 'Reviews', path: '/reviews' },
   { title: 'Me and contact info', path: '/me' },
   { title: 'Contact', path: '/contact' },
-  { title: 'Orchid CRM', path: '/orchid' },
-  { title: 'Privacy policy', path: '/privacy' },
-  { title: 'Terms of service', path: '/terms' },
-  { title: 'Data deletion', path: '/data-deletion' },
 ]

@@ -60,26 +60,6 @@
    "email": "keandonato@404studio.click"
   },
   {
-   "@type": "SoftwareApplication",
-   "@id": "https://404studio.click/orchid#app",
-   "name": "Orchid CRM",
-   "url": "https://404studio.click/orchid",
-   "applicationCategory": "BusinessApplication",
-   "operatingSystem": "Web",
-   "description": "A calm, web-based CRM that keeps every inquiry, client and task in one place.",
-   "offers": {
-    "@type": "Offer",
-    "price": "8",
-    "priceCurrency": "USD"
-   },
-   "author": {
-    "@id": "https://404studio.click/#kean"
-   },
-   "publisher": {
-    "@id": "https://404studio.click/#studio"
-   }
-  },
-  {
    "@type": "ItemList",
    "name": "Website samples by Kean Carl Donato",
    "itemListElement": [
