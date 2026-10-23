@@ -114,6 +114,9 @@ h2 .o{display:block}h2 .in{display:block;margin-left:clamp(0px,9vw,150px)}
 .home-info-index{display:block;margin-bottom:30px;color:var(--c2);font:600 12px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em}
 .home-info-grid h2{font:800 clamp(27px,3vw,40px)/1.05 var(--hd);letter-spacing:-.04em;margin:0 0 15px}
 .home-info-grid p{max-width:62ch;margin:0;color:var(--mute);font-size:clamp(15px,1.25vw,17px);line-height:1.65}
+.home-info-list{max-width:62ch;margin:0 0 14px;padding-left:1.2em;color:var(--mute);font-size:clamp(15px,1.25vw,17px);line-height:1.55}
+.home-info-list li+li{margin-top:8px}
+.home-info-list strong{color:var(--ink)}
 .home-info-section .ll{position:relative;margin-top:clamp(44px,7vw,78px)}
 .home-info-section.motion-ready .home-info-card:not(.is-visible){opacity:0;transform:translateY(26px)}
 .home-info-card.is-visible{opacity:1;transform:translateY(0);transition-delay:calc(var(--card-order,0) * 110ms)}
@@ -138,7 +141,59 @@ h2 .o{display:block}h2 .in{display:block;margin-left:clamp(0px,9vw,150px)}
 .next small{color:var(--mute)}
 .next strong{display:block;font:800 clamp(44px,11vw,170px)/.9 var(--hd);letter-spacing:-.055em;-webkit-text-stroke:2px var(--ink);color:transparent;transition:color .3s,transform .4s}
 .next:hover strong{color:var(--c3);-webkit-text-stroke:0;transform:translateX(18px) skewX(-6deg)}
-.ct a.big{font:800 clamp(24px,6.2vw,84px)/1 var(--hd);letter-spacing:-.045em;text-decoration:none;border-bottom:6px solid var(--c3);word-break:break-word}
+.email-address{max-width:100%;text-align:left}
+.email-address-card{display:block;width:100%;max-width:640px;margin:clamp(40px,7vw,88px) 0 0;padding:clamp(18px,3vw,28px);border:2px solid var(--ink);border-radius:0;background:var(--bg);box-shadow:6px 6px 0 var(--c3)}
+.email-address-row{display:flex;align-items:center;gap:20px}
+.email-address-text{display:flex;min-width:0;flex-direction:column;align-items:flex-start}
+.email-address-label{color:var(--mute);font:600 12px/1.2 var(--bd);letter-spacing:.12em;text-transform:uppercase}
+.email-address-link{color:var(--ink);font:700 clamp(18px,2.6vw,30px)/1.25 var(--bd);text-decoration:none;text-decoration-line:underline;text-decoration-color:var(--c1);text-decoration-thickness:1px;text-underline-offset:4px;white-space:nowrap;overflow-wrap:normal;word-break:keep-all}
+.email-address-location{margin-top:4px;color:var(--mute);font:400 13px/1.4 var(--bd)}
+.email-copy-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:8px 14px;border:2px solid var(--ink);border-radius:0;background:transparent;color:var(--ink);font:600 15px/1.2 var(--bd);cursor:pointer}
+.email-copy-button-card{width:72px;height:72px;min-width:72px;min-height:72px;padding:0;background:var(--c1);color:var(--bg)}
+.email-copy-button:focus-visible,.email-open-link:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+.email-copy-icon{width:40px;height:40px;overflow:visible;color:currentColor}
+.email-copy-button-pill .email-copy-icon{width:18px;height:18px}
+.email-copy-body,.email-copy-letter,.email-copy-flap,.email-copy-check{stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.email-copy-letter{fill:var(--c1)}
+.email-copy-flap{fill:var(--c1)}
+.email-copy-check,.email-copy-sparks{opacity:0}
+.email-copy-sparks circle:nth-child(3n+1){fill:var(--c1)}
+.email-copy-sparks circle:nth-child(3n+2){fill:var(--c2)}
+.email-copy-sparks circle:nth-child(3n){fill:var(--c3)}
+.email-copy-button-label{white-space:nowrap}
+.email-address-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.email-copy-button-pill,.email-open-link{min-height:44px}
+.email-copy-status{color:var(--mute);font:500 12px/1.3 var(--bd)}
+.email-address-footer{display:inline-flex;align-items:center;gap:8px;vertical-align:middle}
+.email-address-footer .email-address-link{font:inherit;text-decoration:none;white-space:normal}
+.email-address-footer .email-copy-button{width:36px;height:36px;min-height:36px;padding:4px;border:0;background:transparent;color:var(--mute)}
+.email-address-footer .email-copy-icon{width:24px;height:24px}
+.email-address-footer .email-copy-button:hover{box-shadow:none}
+.email-address-footer .email-copy-button .email-copy-button-label{display:none}
+@media(max-width:479px){.email-address-row{flex-direction:column;align-items:flex-start;gap:14px}.email-address-card .email-copy-button-card{width:60px;height:60px;min-width:60px;min-height:60px}.email-address-card .email-address-link{white-space:normal}.email-address-card .email-address-text{max-width:100%}.email-address-actions{gap:8px}}
+@media (prefers-reduced-motion:no-preference){
+  .email-address-card{animation:email-card-enter .4s ease-out;transition:transform .2s ease,box-shadow .2s ease}
+  .email-address-card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--c3)}
+  .email-copy-button{transition:transform .2s ease}
+  .email-copy-button:active{transform:scale(.94)}
+  .email-copy-button-card .email-copy-float{animation:email-float 3s ease-in-out infinite}
+  .email-copy-art{transform-origin:24px 30px;transition:transform .25s ease}
+  .email-copy-flap{transform-origin:24px 14px;transition:transform .25s ease}
+  .email-copy-letter{transform:translateY(0);transition:transform .25s ease}
+  .email-copy-button-card:hover .email-copy-art,.email-copy-button-card:focus-visible .email-copy-art{transform:rotate(-6deg)}
+  .email-copy-button-card:hover .email-copy-flap,.email-copy-button-card:focus-visible .email-copy-flap{transform:rotateX(45deg)}
+  .email-copy-button-card:hover .email-copy-letter,.email-copy-button-card:focus-visible .email-copy-letter{transform:translateY(-7px)}
+  .email-copy-button.is-copied .email-copy-float{animation:none}
+  .email-copy-button.is-copied .email-copy-letter{animation:email-letter-fly .45s ease-out both}
+  .email-copy-button.is-copied .email-copy-flap{transform:rotateX(0)}
+  .email-copy-button.is-copied .email-copy-check{animation:email-check-pop .45s cubic-bezier(.2,1.5,.5,1) both}
+  .email-copy-button.is-copied .email-copy-sparks{animation:email-spark-burst .45s ease-out both}
+  @keyframes email-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  @keyframes email-letter-fly{to{transform:translateY(-16px);opacity:0}}
+  @keyframes email-check-pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+  @keyframes email-spark-burst{0%{transform:scale(.2);opacity:0}35%{opacity:1}100%{transform:scale(1.9);opacity:0}}
+  @keyframes email-card-enter{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+}
 footer{padding:28px clamp(16px,3vw,40px) 44px;color:var(--mute);border-top:2px solid var(--ink)}
 #vw{position:fixed;inset:0;z-index:70;background:var(--bg);display:none;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
 #vw.on{display:flex}

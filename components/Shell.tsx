@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import TLink from './TLink'
+import EmailAddress from './EmailAddress'
 import { ShellContext } from './shell-context'
 import { JUMP_PAGES, PAGES, SAMPLES } from '@/lib/data'
 
@@ -369,7 +370,7 @@ export default function Shell({ children }: { children: ReactNode }) {
       <footer>
         © Kean Carl Donato · 404 Studio. Based in the Philippines, working remotely with clients worldwide.
         <br />
-        <a href="mailto:keandonato69@gmail.com">keandonato69@gmail.com</a>
+        <EmailAddress className="footer-email" variant="footer" />
         <a href="viber://chat?number=%2B639619679095">Viber</a>
         <TLink href="/me">About me</TLink>
         <TLink href="/work">Work</TLink>

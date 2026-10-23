@@ -7,26 +7,51 @@ import HomeInfoBackground from '@/components/HomeInfoBackground'
 const INFO_CARDS = [
   {
     title: 'Who I help',
-    copy: (
+    content: (
       <>
-        I work with small businesses such as salons, barbershops, restaurants and shops. A website can help customers
-        understand what you offer, find useful information and take a next step. I&apos;m Kean Carl Donato, owner and
-        developer at 404 Studio, based in the Philippines.
+        <p>
+          I work with small businesses that need to be found and trusted online: salons, barbershops, restaurants and
+          local shops. Most don&apos;t need a huge platform. They need a clear website that shows what they offer,
+          answers the questions customers keep asking, and makes the next step obvious, whether that&apos;s booking,
+          ordering or sending a message. I&apos;m Kean Carl Donato, owner and developer at 404 Studio, based in the
+          Philippines.
+        </p>
       </>
     ),
   },
   {
     title: 'What I build',
-    copy: (
+    content: (
       <>
-        I build business websites, online stores, booking and lead-capture forms, and client dashboards. Projects are
-        scoped around the business and the tasks customers need to complete.
+        <ul className="home-info-list">
+          <li>
+            <strong>Business websites:</strong> fast, mobile-friendly pages for your services, hours, location and
+            contact details.
+          </li>
+          <li>
+            <strong>Online stores:</strong> product pages and a simple way for customers to order.
+          </li>
+          <li>
+            <strong>Booking and lead-capture forms:</strong> so appointments and enquiries reach you instead of getting
+            lost.
+          </li>
+          <li>
+            <strong>Client dashboards:</strong> a private place to see bookings, enquiries or customer details.
+          </li>
+        </ul>
+        <p>Each project is scoped around your business and the tasks your customers need to complete.</p>
       </>
     ),
   },
   {
     title: 'Working remotely',
-    copy: <>I am based in the Philippines and work remotely with clients worldwide.</>,
+    content: (
+      <p>
+        I&apos;m based in the Philippines and work remotely with clients worldwide, so you don&apos;t need to be in the
+        same city or time zone. Everything happens online, from the first conversation to launch. You can reach me at{' '}
+        <a href="mailto:keandonato69@gmail.com">keandonato69@gmail.com</a>.
+      </p>
+    ),
   },
 ]
 
@@ -83,7 +108,7 @@ export default function HomeInfoSection() {
                 0{index + 1}
               </span>
               <h2>{card.title}</h2>
-              <p>{card.copy}</p>
+              <div className="home-info-card-copy">{card.content}</div>
             </article>
           ))}
         </div>
