@@ -1,0 +1,179 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://404studio.click/#site",
+   "url": "https://404studio.click/",
+   "name": "Kean Carl Donato | Web Developer Portfolio",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://404studio.click/#kean"
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://404studio.click/#kean",
+   "name": "Kean Carl Donato",
+   "jobTitle": "Web Developer and Designer",
+   "url": "https://404studio.click/me",
+   "email": "keandonato@404studio.click",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Quezon City",
+    "addressCountry": "PH"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/in/kean-carl-donato-8178b43b9",
+    "https://www.facebook.com/kean.concepcion.12/"
+   ],
+   "knowsAbout": [
+    "Web development",
+    "Web design",
+    "UX and UI design",
+    "Responsive design",
+    "Front-end development",
+    "E-commerce websites"
+   ],
+   "worksFor": {
+    "@id": "https://404studio.click/#studio"
+   }
+  },
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://404studio.click/#studio",
+   "name": "404 Studio",
+   "url": "https://404studio.click/",
+   "description": "Portfolio of Kean Carl Donato, a web developer and designer in Quezon City, Philippines. See custom website samples, a salon case study and my toolkit.",
+   "founder": {
+    "@id": "https://404studio.click/#kean"
+   },
+   "areaServed": {
+    "@type": "Country",
+    "name": "Philippines"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Quezon City",
+    "addressCountry": "PH"
+   },
+   "email": "keandonato@404studio.click"
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://404studio.click/orchid#app",
+   "name": "Orchid CRM",
+   "url": "https://404studio.click/orchid",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "description": "A calm, web-based CRM that keeps every inquiry, client and task in one place.",
+   "offers": {
+    "@type": "Offer",
+    "price": "8",
+    "priceCurrency": "USD"
+   },
+   "author": {
+    "@id": "https://404studio.click/#kean"
+   },
+   "publisher": {
+    "@id": "https://404studio.click/#studio"
+   }
+  },
+  {
+   "@type": "ItemList",
+   "name": "Website samples by Kean Carl Donato",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "TMM Clippers Salon case study",
+      "url": "https://404studio.click/work",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "TMM Clippers Salon sample website",
+      "url": "https://404studio.click/samples/tmm-clippers",
+      "description": "Two branches, a service gallery, a priced menu and online booking.",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "Pillowpop sample website",
+      "url": "https://404studio.click/samples/pillowpop",
+      "description": "A soft, clay-style online shop with a product grid, a working cart and an interactive squish lab.",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "Maison Lumi sample website",
+      "url": "https://404studio.click/samples/maison-lumi",
+      "description": "A refined hair and colour studio with a service menu, a price estimator and online appointment requests.",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "Haven & Oak Realty sample website",
+      "url": "https://404studio.click/samples/haven-oak",
+      "description": "A real estate site with searchable homes, saved favourites, a mortgage calculator and a home match quiz.",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 6,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "Rootwell Soil sample website",
+      "url": "https://404studio.click/samples/rootwell",
+      "description": "An organic soil brand with nine pages, a working cart, a pallet estimator, a searchable FAQ and a store locator.",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 7,
+     "item": {
+      "@type": "CreativeWork",
+      "name": "Hiatus sample website",
+      "url": "https://404studio.click/samples/hiatus",
+      "description": "An immersive art gallery with a 3D walk-the-room hall, individual painting pages and enquiry links.",
+      "creator": {
+       "@id": "https://404studio.click/#kean"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}
