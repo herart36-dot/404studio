@@ -13,13 +13,13 @@ export default function MePage() {
             <IdCard />
             <div>
               <h3>Kean Carl Donato</h3>
-              <p className="role">Founder and web developer at 404 Studio, Quezon City, Philippines</p>
+              <p className="role">Owner and developer at 404 Studio, based in the Philippines and working remotely worldwide</p>
               <span className="avail">Available for projects</span>
               <p className="bio">I design and build custom websites that bring together visual storytelling, thoughtful user experience and functional web solutions: responsive design, front-end development, interactive interfaces, portfolio sites and e-commerce concepts. Through 404 Studio, I make professionally designed websites more accessible to small businesses, independent creators and emerging brands.</p>
               <div className="crows">
-                <div className="crow"><span>Email</span><a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a><CopyButton text="keandonato@404studio.click" /></div>
+                <div className="crow"><span>Email</span><a href="mailto:keandonato69@gmail.com">keandonato69@gmail.com</a><CopyButton text="keandonato69@gmail.com" /></div>
                 <div className="crow"><span>Viber</span><a href="viber://chat?number=%2B639619679095">+63 961 967 9095</a><CopyButton text="+63 961 967 9095" /></div>
-                <div className="crow"><span>Based in</span><b>Quezon City, Philippines</b><i></i></div>
+                <div className="crow"><span>Based in</span><b>Philippines</b><i></i></div>
                 <div className="crow"><span>Website</span><b>404studio.click</b><CopyButton text="404studio.click" /></div>
               </div>
               <div className="ll">

@@ -22,7 +22,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLES.home,
+  title: {
+    default: TITLES.home,
+    template: '%s | 404 Studio',
+  },
   description: DESCRIPTIONS.home,
   authors: [{ name: 'Kean Carl Donato' }],
   robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
@@ -30,7 +33,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    siteName: 'Kean Carl Donato | 404 Studio',
+    siteName: '404 Studio',
     locale: 'en_PH',
     url: SITE_URL + '/',
     title: TITLES.home,
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Kean Carl Donato, web developer portfolio at 404studio.click',
+        alt: '404 Studio web developer portfolio',
       },
     ],
   },

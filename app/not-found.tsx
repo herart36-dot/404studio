@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
 import TLink from '@/components/TLink'
+import { pageMeta } from '@/lib/meta'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Page not found | Kean Carl Donato' },
+  ...pageMeta('contact', '/404', {
+    title: 'Page not found',
+    description: 'The requested page could not be found on 404 Studio.',
+  }),
   robots: { index: false },
 }
 

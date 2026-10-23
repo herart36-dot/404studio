@@ -412,23 +412,23 @@ export const LOGOS: Record<string, { g?: string; d?: string; s?: string }> = {
 export const PAGES = ["home","work","samples","tools","reviews","me","contact"] as const
 
 export const TITLES: Record<string, string> = {
-  "home": "Kean Carl Donato | Web Developer Portfolio, Philippines",
-  "work": "TMM Clippers Salon Case Study | Kean Carl Donato",
-  "samples": "Website Samples and Projects | Kean Carl Donato",
-  "tools": "Web Design and Development Toolkit | Kean Carl Donato",
-  "reviews": "Client Reviews | Kean Carl Donato",
-  "me": "About Kean Carl Donato | Web Developer, Quezon City",
-  "contact": "Contact Kean Carl Donato | Web Developer, Philippines"
+  "home": "404 Studio | Web Developer for Small Businesses Worldwide",
+  "work": "Selected Work and Sample Projects",
+  "samples": "Website Samples",
+  "tools": "Tools and Toolkit",
+  "reviews": "Client Reviews",
+  "me": "About Kean Carl Donato",
+  "contact": "Contact 404 Studio"
 }
 
 export const DESCRIPTIONS: Record<string, string> = {
-  "home": "Portfolio of Kean Carl Donato, a web developer and designer in Quezon City, Philippines. See custom website samples, a salon case study and my toolkit.",
-  "work": "Case study: a two-branch salon website with a priced menu, service gallery and online booking chat, designed and built by Kean Carl Donato in the Philippines.",
-  "samples": "Browse website samples by Kean Carl Donato: salon, online shop, real estate and art gallery concept sites you can preview live, each built mobile-first.",
-  "tools": "The design, build, motion and launch tools Kean Carl Donato uses to make fast, accessible, animated websites, and what each one does for a project.",
-  "reviews": "What clients say about working with Kean Carl Donato, a freelance web developer and designer in Quezon City, Philippines.",
-  "me": "Meet Kean Carl Donato, a web developer and designer in Quezon City, Philippines, building responsive, interactive websites for small businesses and creators.",
-  "contact": "Contact Kean Carl Donato for a custom website. Reach him by email or Viber, or on LinkedIn and Facebook. Based in Quezon City, Philippines."
+  "home": "404 Studio builds business websites, online stores, booking and lead-capture forms, and client dashboards for small businesses worldwide.",
+  "work": "Browse website case studies and clearly labeled sample projects by Kean Carl Donato of 404 Studio.",
+  "samples": "Browse interactive sample websites for businesses and creative projects.",
+  "tools": "A selection of tools used to design, build and launch websites.",
+  "reviews": "Read client reviews of 404 Studio website projects.",
+  "me": "About Kean Carl Donato, owner and developer at 404 Studio in the Philippines.",
+  "contact": "Contact Kean Carl Donato at 404 Studio about a business website, online store, booking form or client dashboard."
 }
 
 export const JUMP_PAGES: { title: string; path: string }[] = [

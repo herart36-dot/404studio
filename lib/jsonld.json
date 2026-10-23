@@ -5,7 +5,7 @@
    "@type": "WebSite",
    "@id": "https://404studio.click/#site",
    "url": "https://404studio.click/",
-   "name": "Kean Carl Donato | Web Developer Portfolio",
+   "name": "404 Studio",
    "inLanguage": "en",
    "publisher": {
     "@id": "https://404studio.click/#kean"
@@ -15,14 +15,9 @@
    "@type": "Person",
    "@id": "https://404studio.click/#kean",
    "name": "Kean Carl Donato",
-   "jobTitle": "Web Developer and Designer",
+   "jobTitle": "Owner and Developer",
    "url": "https://404studio.click/me",
-   "email": "keandonato@404studio.click",
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Quezon City",
-    "addressCountry": "PH"
-   },
+   "email": "keandonato69@gmail.com",
    "sameAs": [
     "https://www.linkedin.com/in/kean-carl-donato-8178b43b9",
     "https://www.facebook.com/kean.concepcion.12/"
@@ -44,20 +39,18 @@
    "@id": "https://404studio.click/#studio",
    "name": "404 Studio",
    "url": "https://404studio.click/",
-   "description": "Portfolio of Kean Carl Donato, a web developer and designer in Quezon City, Philippines. See custom website samples, a salon case study and my toolkit.",
+   "description": "404 Studio builds business websites, online stores, booking and lead-capture forms, and client dashboards for small businesses worldwide.",
    "founder": {
     "@id": "https://404studio.click/#kean"
    },
-   "areaServed": {
-    "@type": "Country",
-    "name": "Philippines"
-   },
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Quezon City",
-    "addressCountry": "PH"
-   },
-   "email": "keandonato@404studio.click"
+   "areaServed": "Worldwide",
+   "serviceType": [
+    "Business websites",
+    "Online stores",
+    "Booking and lead-capture forms",
+    "Client dashboards"
+   ],
+   "email": "keandonato69@gmail.com"
   },
   {
    "@type": "ItemList",

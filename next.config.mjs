@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  outputFileTracingIncludes: {
+    '/work/[slug]/preview': ['./legacy/sample-*.html'],
+  },
   async redirects() {
     return [
       // the old SPA treated /about as /me

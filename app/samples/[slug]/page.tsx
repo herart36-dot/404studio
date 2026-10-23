@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params
   const s = SAMPLES.find((x) => x.slug === slug)
   if (!s) return {}
-  return pageMeta('samples', `/samples/${s.slug}`, {
+  return pageMeta('samples', `/work/${s.slug}`, {
     title: `${s.name}: sample website by Kean Carl Donato`,
     description: `${s.description} A sample website by Kean Carl Donato, web developer in the Philippines.`,
   })

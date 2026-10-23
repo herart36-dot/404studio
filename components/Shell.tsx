@@ -335,7 +335,7 @@ export default function Shell({ children }: { children: ReactNode }) {
         <span id="clk">{clock}</span>
         <span id="pgl">{'Now at /' + key + (slug ? '/' + slug : '')}</span>
         <span id="cnt">{SAMPLES.length + (SAMPLES.length === 1 ? ' sample site' : ' sample sites')}</span>
-        <span>Quezon City, PH</span>
+        <span>Philippines · Remote worldwide</span>
       </div>
 
       <nav id="menu" className={menuOpen ? 'on' : undefined} aria-label="Main menu">
@@ -367,11 +367,12 @@ export default function Shell({ children }: { children: ReactNode }) {
       </main>
 
       <footer>
-        © Kean Carl Donato · 404 Studio. Designed and built in Quezon City, Philippines.
+        © Kean Carl Donato · 404 Studio. Based in the Philippines, working remotely with clients worldwide.
         <br />
-        <a href="mailto:keandonato@404studio.click">keandonato@404studio.click</a>
+        <a href="mailto:keandonato69@gmail.com">keandonato69@gmail.com</a>
         <a href="viber://chat?number=%2B639619679095">Viber</a>
         <TLink href="/me">About me</TLink>
+        <TLink href="/work">Work</TLink>
       </footer>
 
       <div

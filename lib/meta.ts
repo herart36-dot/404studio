@@ -5,7 +5,7 @@ const OG_IMAGE = {
   url: '/og-image.png',
   width: 1200,
   height: 630,
-  alt: 'Kean Carl Donato, web developer portfolio at 404studio.click',
+  alt: '404 Studio web developer portfolio',
 }
 
 /** Full per-page metadata (title, description, canonical, Open Graph, Twitter). */
@@ -17,12 +17,12 @@ export function pageMeta(
   const title = override?.title ?? TITLES[key]
   const description = override?.description ?? DESCRIPTIONS[key]
   return {
-    title: { absolute: title },
+    title,
     description,
     alternates: { canonical: path },
     openGraph: {
       type: 'website',
-      siteName: 'Kean Carl Donato | 404 Studio',
+      siteName: '404 Studio',
       locale: 'en_PH',
       url: SITE_URL + path,
       title,
