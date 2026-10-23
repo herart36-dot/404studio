@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Instrument_Sans, Syne } from 'next/font/google'
 import Shell from '@/components/Shell'
+import FloatingQuote from '@/components/FloatingQuote'
 import jsonLd from '@/lib/jsonld.json'
 import { DESCRIPTIONS, SITE_URL, TITLES } from '@/lib/data'
 import './globals.css'
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Shell>{children}</Shell>
+        <FloatingQuote />
       </body>
     </html>
   )
