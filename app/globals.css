@@ -323,3 +323,114 @@ footer a{margin-right:18px}
 .orc .acts{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 0}
 .orc a.go{display:inline-block;text-decoration:none;font:800 17px var(--bd);color:var(--bg);background:var(--ink);border:2px solid var(--ink);padding:13px 26px;transition:transform .2s,box-shadow .2s}
 .orc a.go:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--c3)}.orc a.go.alt{background:transparent;color:var(--ink)}
+/* email card redesign */
+.email-address-card{
+  max-width:760px;
+  background:var(--g);
+  color:#fff;
+  border:2px solid var(--ink);
+  box-shadow:10px 10px 0 var(--ink);
+  padding:clamp(24px,4vw,40px);
+}
+.email-address-card:hover{box-shadow:14px 14px 0 var(--ink)}
+
+.email-address-card .email-copy-button-card{
+  background:#fff;
+  color:#14113a;
+  border:2px solid #14113a;
+  width:64px;height:64px;min-width:64px;min-height:64px;
+}
+.email-address-card .email-address-label{
+  color:rgba(255,255,255,.85);
+  font-size:13px;
+  letter-spacing:.18em;
+}
+.email-address-card .email-address-link{
+  color:#fff;
+  font:800 clamp(24px,4.6vw,46px)/1.05 var(--hd);
+  letter-spacing:-.04em;
+  text-decoration:none;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.email-address-card .email-address-link:hover{
+  text-decoration:underline;
+  text-decoration-thickness:3px;
+  text-underline-offset:6px;
+  text-decoration-skip-ink:none;
+}
+.email-address-card .email-address-location{
+  color:rgba(255,255,255,.9);
+  font-size:15px;
+  margin-top:8px;
+}
+.email-address-card .email-address-actions{
+  border-top:2px solid rgba(255,255,255,.4);
+  margin-top:24px;
+  padding-top:22px;
+}
+.email-address-card .email-copy-button-pill{
+  background:#fff;
+  color:#14113a;
+  border:2px solid #14113a;
+  box-shadow:4px 4px 0 #14113a;
+}
+.email-address-card .email-open-link{
+  background:transparent;
+  color:#fff;
+  border:2px solid #fff;
+}
+.email-address-card .email-copy-button-pill:hover,
+.email-address-card .email-open-link:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:6px 6px 0 #14113a;
+}
+.email-address-card .email-copy-status{color:#fff}
+.ec{position:relative;max-width:880px;margin:clamp(40px,7vw,88px) 0 0;padding:clamp(24px,4vw,52px);background:var(--card);border:2px solid var(--ink);box-shadow:12px 12px 0 var(--c3);transform:rotate(-.8deg);overflow:hidden}
+.ec-bg{position:absolute;right:-2%;bottom:-18%;font:800 clamp(110px,22vw,260px)/.8 var(--hd);letter-spacing:-.06em;color:transparent;-webkit-text-stroke:2px var(--ink);opacity:.14;pointer-events:none;user-select:none}
+.ec>*{position:relative}
+.ec-label{display:flex;align-items:center;margin:0 0 14px;font:600 13px var(--bd);letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.ec-mail{display:inline-block;overflow:hidden;padding:.05em .02em .12em;font:800 clamp(22px,5.2vw,58px)/1.05 var(--hd);letter-spacing:-.045em;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+.ec-char{display:inline-block;transition:transform .25s,color .25s}
+.ec-char.at{color:var(--c3)}
+.ec-mail:hover .ec-char{color:var(--c2)}
+.ec-mail:hover .ec-char.at{color:var(--c3)}
+.ec-char:hover{transform:translateY(-.12em) skewX(-10deg)}
+.ec-loc{margin:10px 0 0;color:var(--mute);font-size:16px}
+.ec-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.ec-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:12px 26px;font:800 17px var(--bd);text-decoration:none;cursor:pointer;border:2px solid var(--ink);transition:background .2s,color .2s,box-shadow .2s}
+.ec-primary{background:var(--ink);color:var(--bg);box-shadow:5px 5px 0 var(--c2)}
+.ec-primary:hover{background:var(--c3);color:#fff;box-shadow:7px 7px 0 var(--ink)}
+.ec-ghost{background:transparent;color:var(--ink)}
+.ec-ghost:hover{background:var(--ink);color:var(--bg)}
+.ec-spark{position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;pointer-events:none}
+/* email size fix */
+.ec-mail{
+  white-space:nowrap;
+  font-size:clamp(14px,4.2vw,40px);
+}
+@media(max-width:600px){
+  .ec-mail{font-size:clamp(14px,4.4vw,24px)}
+}
+.ec{transform:none}
+.ec-mail{overflow:visible}
+/* email card sizing fix */
+.ec{container-type:inline-size;padding:clamp(24px,4vw,48px)}
+.ec-mail{font-size:clamp(14px,5cqw,52px)}
+.ec-bg{
+  top:6%;bottom:auto;right:4%;
+  font-size:clamp(60px,14cqw,150px);
+  line-height:.9;
+}
+.ec-label{margin-top:clamp(40px,9cqw,90px)}
+/* bold email row */
+.ec{background:none;border:0;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);box-shadow:none;transform:none;max-width:none;overflow:visible;padding:clamp(28px,5vw,56px) 0}
+.ec-bg{display:none}
+.ec-label{margin-top:0}
+.ec-mail{display:block;white-space:normal;overflow:visible;font-size:clamp(30px,8vw,110px);line-height:.95;letter-spacing:-.05em}
+.ec-line{display:block}
+.ec-line:nth-child(2) .ec-char{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.ec-line:nth-child(2) .ec-char.at{-webkit-text-stroke:2px var(--c3)}
+.ec-mail:hover .ec-line .ec-char{color:var(--c3);-webkit-text-stroke:0}
+.ec-loc{margin-top:18px}

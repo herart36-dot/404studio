@@ -1,29 +1,22 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
 
 const EMAIL = 'keandonato69@gmail.com'
 
 function legacyCopy() {
-  let textarea: HTMLTextAreaElement | undefined
-
   try {
-    textarea = document.createElement('textarea')
-    textarea.value = EMAIL
-    textarea.setAttribute('readonly', '')
-    textarea.setAttribute('aria-hidden', 'true')
-    textarea.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0'
-    document.body.appendChild(textarea)
-    textarea.select()
-    return document.execCommand('copy')
+    const t = document.createElement('textarea')
+    t.value = EMAIL
+    t.style.cssText = 'position:fixed;left:-9999px;opacity:0'
+    document.body.appendChild(t)
+    t.select()
+    const ok = document.execCommand('copy')
+    t.remove()
+    return ok
   } catch {
     return false
-  } finally {
-    try {
-      textarea?.remove()
-    } catch {
-      return false
-    }
   }
 }
 
@@ -36,97 +29,79 @@ export default function EmailAddress({
 }) {
   const [status, setStatus] = useState<'copied' | 'failed' | null>(null)
   const timer = useRef<number | undefined>(undefined)
+  const root = useRef<HTMLDivElement>(null)
 
   useEffect(() => () => window.clearTimeout(timer.current), [])
 
+  useEffect(() => {
+    if (variant !== 'card' || !root.current) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.ec-char', { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.02, duration: 0.5, ease: 'power3.out' })
+      gsap.fromTo('.ec-fade', { y: 20, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.5, ease: 'power3.out' })
+    }, root)
+    return () => ctx.revert()
+  }, [variant])
+
   const copyEmail = async () => {
-    let copied = false
-
+    let ok = false
     try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(EMAIL)
-        copied = true
-      } else {
-        copied = legacyCopy()
-      }
+      await navigator.clipboard.writeText(EMAIL)
+      ok = true
     } catch {
-      copied = legacyCopy()
+      ok = legacyCopy()
     }
-
-    setStatus(copied ? 'copied' : 'failed')
+    setStatus(ok ? 'copied' : 'failed')
     window.clearTimeout(timer.current)
     timer.current = window.setTimeout(() => setStatus(null), 2000)
   }
-
-  const copyButton = (labelText: string, extraClass = '') => (
-      <button
-        className={`email-copy-button${status === 'copied' ? ' is-copied' : ''} ${extraClass}`.trim()}
-        type="button"
-        aria-label="Copy email address"
-        onClick={copyEmail}
-      >
-        <svg className="email-copy-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <g className="email-copy-float">
-            <g className="email-copy-art">
-              <rect className="email-copy-body" x="5" y="13" width="38" height="27" rx="1" />
-              <path className="email-copy-letter" d="M13 30V12h22v18" />
-              <path className="email-copy-flap" d="m5.5 14 18.5 15L42.5 14" />
-            </g>
-            <path className="email-copy-check" d="m14 25 7 7 14-15" />
-            <g className="email-copy-sparks">
-              <circle cx="7" cy="8" r="1.5" />
-              <circle cx="24" cy="4" r="1.5" />
-              <circle cx="41" cy="8" r="1.5" />
-              <circle cx="4" cy="27" r="1.5" />
-              <circle cx="44" cy="29" r="1.5" />
-            </g>
-          </g>
-        </svg>
-        {labelText && (
-          <span className="email-copy-button-label" aria-live="polite">
-            {status === 'copied' ? 'Copied!' : labelText}
-          </span>
-        )}
-      </button>
-  )
 
   if (variant === 'footer') {
     return (
       <span className={`email-address email-address-footer ${className}`.trim()}>
         <a className="email-address-link" href={`mailto:${EMAIL}`}>
-          keandonato69@gmail.com
+          {EMAIL}
         </a>
-        {copyButton('', 'email-copy-button-footer')}
-        <span className="sr-only" aria-live="polite">
-          {status === 'copied' ? 'Copied!' : status === 'failed' ? 'Copy failed, select the text instead' : ''}
-        </span>
+        <button
+          className="email-copy-button email-copy-button-footer"
+          type="button"
+          aria-label="Copy email address"
+          onClick={copyEmail}
+        >
+          {status === 'copied' ? '✓' : 'Copy'}
+        </button>
       </span>
     )
   }
 
   return (
-    <div className={`email-address email-address-card ${className}`.trim()}>
-      <div className="email-address-row">
-        {copyButton('', 'email-copy-button-card')}
-        <div className="email-address-text">
-          <span className="email-address-label">EMAIL ME</span>
-          <a className="email-address-link" href={`mailto:${EMAIL}`}>
-            keandonato69<wbr />@gmail.com
-          </a>
-          <span className="email-address-location">
-            Based in the Philippines · working with clients worldwide
+    <div className={`ec ${className}`.trim()} ref={root}>
+      <p className="ec-label ec-fade">
+        <i className="live" /> Email me
+      </p>
+      <a className="ec-mail" href={`mailto:${EMAIL}`} aria-label={EMAIL}>
+        {EMAIL.split('@').map((part, p) => (
+          <span key={p} className="ec-line" aria-hidden="true">
+            {(p === 1 ? '@' + part : part).split('').map((c, i) => (
+              <span key={i} className={c === '@' ? 'ec-char at' : 'ec-char'}>
+                {c}
+              </span>
+            ))}
           </span>
-        </div>
-      </div>
-      <div className="email-address-actions">
-        {copyButton('Copy email', 'pill email-copy-button-pill')}
-        <a className="pill email-open-link" href={`mailto:${EMAIL}`}>
+        ))}
+      </a>
+      <p className="ec-loc ec-fade">Based in the Philippines · working with clients worldwide</p>
+      <div className="ec-actions ec-fade">
+        <button type="button" className="ec-btn ec-primary" onClick={copyEmail}>
+          {status === 'copied' ? 'Copied ✓' : 'Copy email'}
+        </button>
+        <a className="ec-btn ec-ghost" href={`mailto:${EMAIL}`}>
           Open mail app
         </a>
-        <span className="email-copy-status" aria-live="polite">
-          {status === 'failed' ? 'Copy failed, select the text instead' : ''}
-        </span>
       </div>
+      <span className="sr-only" role="status" aria-live="polite">
+        {status === 'copied' ? 'Email copied' : status === 'failed' ? 'Copy failed' : ''}
+      </span>
     </div>
   )
 }
