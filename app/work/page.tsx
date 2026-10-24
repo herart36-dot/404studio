@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import OpenSampleBadge from '@/components/OpenSampleBadge'
 import WorkScreens from '@/components/WorkScreens'
-import TLink from '@/components/TLink'
-import { WORK_CASES } from '@/lib/work-cases'
 import { pageMeta } from '@/lib/meta'
 
 export const metadata: Metadata = pageMeta('work', '/work')
@@ -11,16 +9,8 @@ export default function WorkPage() {
   return (
     <>
       <section className="work-index on" data-page="work">
-        <h1>Website project breakdowns</h1>
-        <p className="lead">Explore project briefs, build details and the features included in each website project.</p>
-        <p>For interactive demonstrations, <TLink href="/samples">browse the website samples</TLink>.</p>
-        <div className="work-case-list">
-          {WORK_CASES.map((project) => (
-            <TLink key={project.slug} href={`/work/${project.slug}`}>
-              {project.name} <span>{project.isSample ? 'Sample project' : 'Case study'}</span>
-            </TLink>
-          ))}
-        </div>
+        <h1>Work and sample projects</h1>
+        <p className="lead">Selected business websites, online stores and interface samples by 404 Studio.</p>
       </section>
       <section className="on" data-page="work">
         <div className="wh">

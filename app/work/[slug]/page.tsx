@@ -95,8 +95,6 @@ export default async function WorkCasePage({ params }: { params: Promise<Params>
       )}
       <p className="work-case-back">
         <TLink href="/work">Back to Work</TLink>
-        {' · '}
-        <TLink href="/contact">Contact 404 Studio</TLink>
       </p>
     </section>
   )

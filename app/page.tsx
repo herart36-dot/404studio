@@ -45,17 +45,6 @@ export default function HomePage() {
       </div>
       <HomeInfoSection />
       <section className="on" data-page="home">
-        <h2>Services</h2>
-        <p className="lead">Websites and online tools shaped around the needs of local businesses.</p>
-        <div className="ll">
-          <TLink href="/services/website-for-salons">Websites for salons <span>+</span></TLink>
-          <TLink href="/services/booking-system-for-barbershops">Booking systems for barbershops <span>+</span></TLink>
-          <TLink href="/services/website-for-restaurants">Websites for restaurants <span>+</span></TLink>
-          <TLink href="/services/online-store-for-small-shops">Online stores for small shops <span>+</span></TLink>
-        </div>
-        <TLink className="pill" href="/services">Explore all services</TLink>
-      </section>
-      <section className="on" data-page="home">
         <div className="ll">
           <TLink href="/work">Work <span>+</span></TLink>
           <TLink href="/samples">Samples <span>+</span></TLink>

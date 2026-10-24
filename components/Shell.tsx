@@ -375,7 +375,6 @@ export default function Shell({ children }: { children: ReactNode }) {
         <a href="viber://chat?number=%2B639619679095">Viber</a>
         <TLink href="/me">About me</TLink>
         <TLink href="/work">Work</TLink>
-        <TLink className="pill" href="/contact">Contact 404 Studio</TLink>
       </footer>
 
       <div

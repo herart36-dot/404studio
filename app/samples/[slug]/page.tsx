@@ -43,9 +43,10 @@ export default async function SamplePage({ params }: { params: Promise<Params> }
     <>
       <JsonLd data={breadcrumb} />
       <section className="on" data-page="samples">
-        <h1 className="page-title">{sample.name} sample website</h1>
-        <p className="lead">{sample.description}</p>
-        <h2 className="sr-only">More interactive sample sites</h2>
+        <h1 className="page-title">
+          <span className="o">Sample</span>
+          <span className="in">works</span>
+        </h1>
         <SampleCards />
       </section>
       <SampleViewer sample={sample} />
