@@ -10,6 +10,7 @@ export type Sample = {
   slug: string
   note: string
   description: string
+  seoDescription: string
 }
 
 export type Tool = { group: string; mono: string; name: string; hook: string; usage: string }
@@ -22,7 +23,8 @@ export const SAMPLES: Sample[] = [
     "file": "sample-tmmclippers.html",
     "slug": "tmm-clippers",
     "note": "Sample site. Bookings made here are a demo and are not sent to the salon.",
-    "description": "Two branches, a service gallery, a priced menu and online booking."
+    "description": "Two branches, a service gallery, a priced menu and online booking.",
+    "seoDescription": "TMM Clippers is a salon website sample for salon owners, featuring services, a gallery, branch details and appointment requests."
   },
   {
     "name": "Pillowpop",
@@ -31,7 +33,8 @@ export const SAMPLES: Sample[] = [
     "file": "sample-pillowpop.html",
     "slug": "pillowpop",
     "note": "Sample site. Pillowpop is a concept brand and nothing here can be ordered.",
-    "description": "A soft, clay-style online shop with a product grid, a working cart and an interactive squish lab."
+    "description": "A soft, clay-style online shop with a product grid, a working cart and an interactive squish lab.",
+    "seoDescription": "Pillowpop is an online shop sample for small shop owners, featuring product browsing, a cart and an interactive squish lab."
   },
   {
     "name": "Maison Lumi",
@@ -40,7 +43,8 @@ export const SAMPLES: Sample[] = [
     "file": "sample-maisonlumi.html",
     "slug": "maison-lumi",
     "note": "Sample site. Maison Lumi is a concept salon and appointment requests here are a demo.",
-    "description": "A refined hair and colour studio with a service menu, a price estimator and online appointment requests."
+    "description": "A refined hair and colour studio with a service menu, a price estimator and online appointment requests.",
+    "seoDescription": "Maison Lumi is a salon website sample for salon owners, featuring a service menu, price estimator and appointment requests."
   },
   {
     "name": "Haven & Oak Realty",
@@ -49,7 +53,8 @@ export const SAMPLES: Sample[] = [
     "file": "sample-havenoak.html",
     "slug": "haven-oak",
     "note": "Sample site. Haven & Oak is a concept agency and every listing, agent and price here is fictional.",
-    "description": "A real estate site with searchable homes, saved favourites, a mortgage calculator and a home match quiz."
+    "description": "A real estate site with searchable homes, saved favourites, a mortgage calculator and a home match quiz.",
+    "seoDescription": "Haven & Oak is a real estate website sample for agencies, featuring home search, saved listings and property browsing tools."
   },
   {
     "name": "Rootwell Soil",
@@ -58,7 +63,8 @@ export const SAMPLES: Sample[] = [
     "file": "sample-rootwell.html",
     "slug": "rootwell",
     "note": "Sample site. Rootwell is a concept soil brand; the cart, forms and stores here are demos and nothing can be ordered.",
-    "description": "An organic soil brand with nine pages, a working cart, a pallet estimator, a searchable FAQ and a store locator."
+    "description": "An organic soil brand with nine pages, a working cart, a pallet estimator, a searchable FAQ and a store locator.",
+    "seoDescription": "Rootwell is an online shop sample for small shop owners, featuring soil products, a cart, a pallet estimator and store locator."
   },
   {
     "name": "Hiatus",
@@ -67,7 +73,8 @@ export const SAMPLES: Sample[] = [
     "file": "sample-hiatus.html",
     "slug": "hiatus",
     "note": "Sample site. Hiatus is a concept gallery and the paintings, artist and enquiries here are fictional.",
-    "description": "An immersive art gallery with a 3D walk-the-room hall, individual painting pages and enquiry links."
+    "description": "An immersive art gallery with a 3D walk-the-room hall, individual painting pages and enquiry links.",
+    "seoDescription": "Hiatus is an art gallery website sample for gallery owners, featuring a walk-through gallery, artwork pages and enquiry links."
   }
 ]
 
@@ -412,29 +419,30 @@ export const LOGOS: Record<string, { g?: string; d?: string; s?: string }> = {
 export const PAGES = ["home","work","samples","tools","reviews","me","contact"] as const
 
 export const TITLES: Record<string, string> = {
-  "home": "404 Studio | Web Developer for Small Businesses Worldwide",
-  "work": "Selected Work and Sample Projects",
-  "samples": "Website Samples",
-  "tools": "Tools and Toolkit",
-  "reviews": "Client Reviews",
+  "home": "Websites for Small Businesses",
+  "work": "Website Project Breakdowns",
+  "samples": "Interactive Website Samples",
+  "tools": "Web Design and Development Tools",
+  "reviews": "Client Feedback",
   "me": "About Kean Carl Donato",
-  "contact": "Contact 404 Studio"
+  "contact": "Contact a Web Developer"
 }
 
 export const DESCRIPTIONS: Record<string, string> = {
-  "home": "404 Studio builds business websites, online stores, booking and lead-capture forms, and client dashboards for small businesses worldwide.",
-  "work": "Browse website case studies and clearly labeled sample projects by Kean Carl Donato of 404 Studio.",
-  "samples": "Browse interactive sample websites for businesses and creative projects.",
-  "tools": "A selection of tools used to design, build and launch websites.",
-  "reviews": "Read client reviews of 404 Studio website projects.",
-  "me": "About Kean Carl Donato, owner and developer at 404 Studio in the Philippines.",
-  "contact": "Contact Kean Carl Donato at 404 Studio about a business website, online store, booking form or client dashboard."
+  "home": "404 Studio builds clear business websites, online stores, booking forms and client dashboards for small businesses in the Philippines and worldwide.",
+  "work": "Review project briefs, features and build details for sample websites created for small businesses and creative projects.",
+  "samples": "Browse interactive website samples for salon owners, shop owners and creative businesses considering a custom website.",
+  "tools": "See the design, development and launch tools Kean Carl Donato uses when building websites for small businesses.",
+  "reviews": "Read feedback from a 404 Studio client about a salon website, its design and appointment features.",
+  "me": "Meet Kean Carl Donato, owner and developer at 404 Studio in the Philippines, working remotely with clients worldwide.",
+  "contact": "Contact 404 Studio to discuss a business website, online store, booking system or client dashboard for your small business."
 }
 
 export const JUMP_PAGES: { title: string; path: string }[] = [
   { title: 'Home', path: '/' },
   { title: 'Work', path: '/work' },
   { title: 'Sample works', path: '/samples' },
+  { title: 'Services', path: '/services' },
   { title: 'Tools and toolkit', path: '/tools' },
   { title: 'Reviews', path: '/reviews' },
   { title: 'Me and contact info', path: '/me' },

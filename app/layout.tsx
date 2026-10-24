@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { Instrument_Sans, Syne } from 'next/font/google'
 import Shell from '@/components/Shell'
 import FloatingQuote from '@/components/FloatingQuote'
-import jsonLd from '@/lib/jsonld.json'
 import { DESCRIPTIONS, SITE_URL, TITLES } from '@/lib/data'
 import './globals.css'
 
@@ -23,31 +22,28 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: TITLES.home,
+    default: '404 Studio',
     template: '%s | 404 Studio',
   },
   description: DESCRIPTIONS.home,
-  authors: [{ name: 'Kean Carl Donato' }],
-  robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
-  icons: { icon: '/favicon.png' },
-  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: '404 Studio',
     locale: 'en_PH',
-    url: SITE_URL + '/',
-    title: TITLES.home,
+    url: SITE_URL,
+    title: `${TITLES.home} | 404 Studio`,
     description: DESCRIPTIONS.home,
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: '404 Studio web developer portfolio',
-      },
-    ],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: '404 Studio web developer portfolio' }],
   },
-  twitter: { card: 'summary_large_image', title: TITLES.home, description: DESCRIPTIONS.home, images: ['/og-image.png'] },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${TITLES.home} | 404 Studio`,
+    description: DESCRIPTIONS.home,
+    images: ['/og-image.png'],
+  },
+  authors: [{ name: 'Kean Carl Donato' }],
+  robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  icons: { icon: '/favicon.png' },
 }
 
 // Applies the saved theme before first paint so there is no light/dark flash.
@@ -58,7 +54,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${syne.variable} ${instrument.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
         <Shell>{children}</Shell>

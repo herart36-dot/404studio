@@ -49,7 +49,9 @@ h1 .l:nth-child(2) span{transition-delay:.1s}h1 .l:nth-child(3) span{transition-
 @keyframes mq{to{transform:translateX(-50%)}}
 section{padding:clamp(40px,8vw,110px) clamp(16px,3vw,40px);max-width:1320px;margin:0 auto;position:relative}
 h2{font:800 clamp(48px,12vw,190px)/.85 var(--hd);letter-spacing:-.05em;margin:0 0 36px}
+h1.page-title{font:800 clamp(48px,12vw,190px)/.85 var(--hd);letter-spacing:-.05em;margin:0 0 36px;pointer-events:auto}
 h2 .o{display:block}h2 .in{display:block;margin-left:clamp(0px,9vw,150px)}
+h1.page-title .o{display:block}h1.page-title .in{display:block;margin-left:clamp(0px,9vw,150px)}
 .grid{display:grid;gap:32px;grid-template-columns:1fr}
 .meta{margin:0;border-top:2px solid var(--ink)}
 .meta div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-bottom:2px solid var(--ink)}

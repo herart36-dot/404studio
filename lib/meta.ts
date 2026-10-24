@@ -25,10 +25,10 @@ export function pageMeta(
       siteName: '404 Studio',
       locale: 'en_PH',
       url: SITE_URL + path,
-      title,
+      title: `${title} | 404 Studio`,
       description,
       images: [OG_IMAGE],
     },
-    twitter: { card: 'summary_large_image', title, description, images: ['/og-image.png'] },
+    twitter: { card: 'summary_large_image', title: `${title} | 404 Studio`, description, images: ['/og-image.png'] },
   }
 }

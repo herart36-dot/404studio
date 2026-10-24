@@ -18,6 +18,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
       'Content-Type': 'text/html; charset=utf-8',
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'SAMEORIGIN',
+      'X-Robots-Tag': 'noindex, nofollow',
     },
   })
 }

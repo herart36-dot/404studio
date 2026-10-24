@@ -8,10 +8,11 @@ export const metadata: Metadata = pageMeta('me', '/me')
 export default function MePage() {
   return (
     <section className="on" data-page="me">
-      <h2><span className="o">Hi,</span><span className="in">I&apos;m Kean.</span></h2>
+      <h1 className="page-title"><span className="o">Hi,</span><span className="in">I&apos;m Kean.</span></h1>
           <div className="prof">
             <IdCard />
             <div>
+              <h2 className="sr-only">About the developer</h2>
               <h3>Kean Carl Donato</h3>
               <p className="role">Owner and developer at 404 Studio, based in the Philippines and working remotely worldwide</p>
               <span className="avail">Available for projects</span>

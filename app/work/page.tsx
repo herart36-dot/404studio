@@ -11,8 +11,9 @@ export default function WorkPage() {
   return (
     <>
       <section className="work-index on" data-page="work">
-        <h1>Work and sample projects</h1>
-        <p className="lead">Selected business websites, online stores and interface samples by 404 Studio.</p>
+        <h1>Website project breakdowns</h1>
+        <p className="lead">Explore project briefs, build details and the features included in each website project.</p>
+        <p>For interactive demonstrations, <TLink href="/samples">browse the website samples</TLink>.</p>
         <div className="work-case-list">
           {WORK_CASES.map((project) => (
             <TLink key={project.slug} href={`/work/${project.slug}`}>

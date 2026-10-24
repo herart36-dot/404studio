@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMeta('contact', '/contact')
 export default function ContactPage() {
   return (
     <section className="ct on" data-page="contact">
-      <h2><span className="o">Let&apos;s</span><span className="in">work together.</span></h2>
+      <h1 className="page-title"><span className="o">Let&apos;s</span><span className="in">work together.</span></h1>
           <EmailAddress className="contact-email" />
           <div className="ll" style={{marginTop:"40px"}}>
             <a href="viber://chat?number=%2B639619679095">Viber <span>+</span></a>

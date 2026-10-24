@@ -11,6 +11,14 @@ const nextConfig = {
       { source: '/index.html', destination: '/', permanent: true },
     ]
   },
+  async headers() {
+    return [
+      {
+        source: '/sample-:slug.html',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+    ]
+  },
 }
 
 export default nextConfig
