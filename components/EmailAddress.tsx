@@ -77,9 +77,19 @@ export default function EmailAddress({
   return (
     <div className={`ec ${className}`.trim()} ref={root}>
       <p className="ec-label ec-fade">
-        <i className="live" /> Email me
+        <i className="live" />{' '}
+        {status === 'copied'
+          ? 'Copied to clipboard ✓'
+          : status === 'failed'
+            ? 'Copy failed, select the text'
+            : 'Click the email to copy'}
       </p>
-      <a className="ec-mail" href={`mailto:${EMAIL}`} aria-label={EMAIL}>
+      <button
+        type="button"
+        className="ec-mail"
+        onClick={copyEmail}
+        aria-label={`Copy email address ${EMAIL}`}
+      >
         {EMAIL.split('@').map((part, p) => (
           <span key={p} className="ec-line" aria-hidden="true">
             {(p === 1 ? '@' + part : part).split('').map((c, i) => (
@@ -89,18 +99,10 @@ export default function EmailAddress({
             ))}
           </span>
         ))}
-      </a>
+      </button>
       <p className="ec-loc ec-fade">Based in the Philippines · working with clients worldwide</p>
-      <div className="ec-actions ec-fade">
-        <button type="button" className="ec-btn ec-primary" onClick={copyEmail}>
-          {status === 'copied' ? 'Copied ✓' : 'Copy email'}
-        </button>
-        <a className="ec-btn ec-ghost" href={`mailto:${EMAIL}`}>
-          Open mail app
-        </a>
-      </div>
       <span className="sr-only" role="status" aria-live="polite">
-        {status === 'copied' ? 'Email copied' : status === 'failed' ? 'Copy failed' : ''}
+        {status === 'copied' ? 'Email copied' : ''}
       </span>
     </div>
   )

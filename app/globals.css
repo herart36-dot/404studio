@@ -434,3 +434,7 @@ footer a{margin-right:18px}
 .ec-line:nth-child(2) .ec-char.at{-webkit-text-stroke:2px var(--c3)}
 .ec-mail:hover .ec-line .ec-char{color:var(--c3);-webkit-text-stroke:0}
 .ec-loc{margin-top:18px}
+/* click-to-copy email */
+.ec{container-type:inline-size}
+.ec-mail{display:block;width:100%;background:none;border:0;padding:0;margin:0;text-align:left;cursor:pointer;color:var(--ink);white-space:nowrap;font-size:clamp(20px,7cqw,100px)}
+.ec-line{white-space:nowrap}
