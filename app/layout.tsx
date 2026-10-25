@@ -22,10 +22,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '404 Studio',
+    default: '404 Studio | Websites for Small Businesses in the Philippines',
     template: '%s | 404 Studio',
   },
   description: DESCRIPTIONS.home,
+  applicationName: '404 Studio',
+  creator: 'Kean Carl Donato',
   openGraph: {
     type: 'website',
     siteName: '404 Studio',
@@ -51,7 +53,7 @@ const THEME_INIT = `try{var t=localStorage.getItem("t");if(t)document.documentEl
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${instrument.variable}`} suppressHydrationWarning>
+    <html lang="en-PH" className={`${syne.variable} ${instrument.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>
