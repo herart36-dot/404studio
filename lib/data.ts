@@ -419,23 +419,23 @@ export const LOGOS: Record<string, { g?: string; d?: string; s?: string }> = {
 export const PAGES = ["home","work","samples","tools","reviews","me","contact"] as const
 
 export const TITLES: Record<string, string> = {
-  "home": "Websites for Small Businesses",
-  "work": "Website Project Breakdowns",
-  "samples": "Interactive Website Samples",
+  "home": "Web Developer for Philippine Small Businesses",
+  "work": "Website Case Studies for Small Businesses",
+  "samples": "Sample Websites for Small Businesses",
   "tools": "Web Design and Development Tools",
-  "reviews": "Client Feedback",
-  "me": "About Kean Carl Donato",
-  "contact": "Contact a Web Developer"
+  "reviews": "Client Reviews and Feedback",
+  "me": "Kean Carl Donato, Philippine Web Developer",
+  "contact": "Get a Website Quote in the Philippines"
 }
 
 export const DESCRIPTIONS: Record<string, string> = {
-  "home": "404 Studio builds clear business websites, online stores, booking forms and client dashboards for small businesses in the Philippines and worldwide.",
-  "work": "Review project briefs, features and build details for sample websites created for small businesses and creative projects.",
+  "home": "404 Studio builds fast, mobile-friendly websites, online stores and booking systems for salons, barbershops, restaurants and shops in the Philippines.",
+  "work": "Review project briefs, features and build details for sample websites created for salons, shops and other small businesses.",
   "samples": "Browse interactive website samples for salon owners, shop owners and creative businesses considering a custom website.",
   "tools": "See the design, development and launch tools Kean Carl Donato uses when building websites for small businesses.",
   "reviews": "Read feedback from a 404 Studio client about a salon website, its design and appointment features.",
-  "me": "Meet Kean Carl Donato, owner and developer at 404 Studio in the Philippines, working remotely with clients worldwide.",
-  "contact": "Contact 404 Studio to discuss a business website, online store, booking system or client dashboard for your small business."
+  "me": "Meet Kean Carl Donato, owner and developer at 404 Studio in the Philippines, who builds websites for salons, shops and local businesses.",
+  "contact": "Contact 404 Studio to discuss a website, online store, booking system or client dashboard for your small business in the Philippines."
 }
 
 export const JUMP_PAGES: { title: string; path: string }[] = [
